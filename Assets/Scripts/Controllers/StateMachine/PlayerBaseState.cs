@@ -11,6 +11,7 @@ public class PlayerBaseState : IState
 
         input.OnMoveEvent += MoveHandle;
         input.OnLookEvent += LookHandle;
+        input.OnDodgeEvent += DodgeHandle;
     }
     public virtual void Exit()
     {
@@ -19,6 +20,7 @@ public class PlayerBaseState : IState
 
         input.OnMoveEvent -= MoveHandle;
         input.OnLookEvent -= LookHandle;
+        input.OnDodgeEvent -= DodgeHandle;
     }
     private void MoveHandle(Vector2 inputValue)
     {
@@ -40,11 +42,30 @@ public class PlayerBaseState : IState
             Vector3 lookDirection = (targetPosition - stateMachine.Player.transform.position);
             lookDirection.y = 0;
             lookDirection.Normalize();
-            
+
             stateMachine.LookDirection = lookDirection;
         }
     }
-
+    private void DodgeHandle()
+    {
+        if (stateMachine.MovementType == Defines.CharacterMovementType.None) return;
+        
+        switch (stateMachine.MovementType)
+        {
+            case Defines.CharacterMovementType.Forward:
+                stateMachine.ChangeState(stateMachine.DodgeForwardState);
+                break;
+            case Defines.CharacterMovementType.Backward:
+                stateMachine.ChangeState(stateMachine.DodgeBackwardState);
+                break;
+            case Defines.CharacterMovementType.LeftStep:
+                stateMachine.ChangeState(stateMachine.DodgeLeftStepState);
+                break;
+            case Defines.CharacterMovementType.RightStep:
+                stateMachine.ChangeState(stateMachine.DodgeRightStepState);
+                break;
+        }
+    }
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {
         this.stateMachine = stateMachine;
@@ -64,15 +85,16 @@ public class PlayerBaseState : IState
     {
         if (stateMachine.MoveDirection == Vector3.zero)
         {
-            ChangeState(Defines.CharacterMovementType.None);
+            ChangeRunState(Defines.CharacterMovementType.None);
             return;
         }
 
-        Transform playerTransform = stateMachine.Player.transform;
         Defines.CharacterMovementType currentMovementType = GetMovementType(stateMachine.MoveDirection);
         float moveSpeed = GetMoveSpeed(currentMovementType);
-        playerTransform.position += stateMachine.MoveDirection * moveSpeed * Time.deltaTime;
-        ChangeState(currentMovementType);
+        Vector3 forceMovement = stateMachine.Player.ForceReceiver.GetForceMovement(stateMachine.MoveDirection);
+        Vector3 movement = (stateMachine.MoveDirection * moveSpeed) + forceMovement;
+        stateMachine.Controller.Move(movement * Time.deltaTime);
+        ChangeRunState(currentMovementType);
     }
     private float GetMoveSpeed(Defines.CharacterMovementType movementType)
     {
@@ -98,10 +120,10 @@ public class PlayerBaseState : IState
 
         return maxMoveSpeed;
     }
-    private void ChangeState(Defines.CharacterMovementType movementType)
+    protected void ChangeRunState(Defines.CharacterMovementType movementType)
     {
         if (stateMachine.MovementType == movementType) return;
-        
+
         switch (movementType)
         {
             case Defines.CharacterMovementType.None:
@@ -132,7 +154,7 @@ public class PlayerBaseState : IState
         Vector3 cameraRight = stateMachine.Player.MainCamera.transform.right;
         cameraRight.y = 0;
         cameraRight.Normalize();
-        return cameraForward * inputDirection.z + cameraRight * inputDirection.x;
+        return (cameraForward * inputDirection.z + cameraRight * inputDirection.x).normalized;
     }
 
     private void Rotate()

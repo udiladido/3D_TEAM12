@@ -7,8 +7,10 @@ public class Player : MonoBehaviour
     [field: SerializeField] public AnimationData AnimationData { get; private set; }
     [field: SerializeField] public LayerMask LookLayerMask { get; private set; }
     public InputController Input { get; private set; }
+    public CharacterController Controller { get; private set; }
     public Animator Animator { get; private set; }
     public Camera MainCamera { get; private set; }
+    public ForceReceiveController ForceReceiver { get; private set; }
     
     private PlayerStateMachine stateMachine;
     
@@ -29,12 +31,17 @@ public class Player : MonoBehaviour
     [field: Range(0, 1)]
     public float SideSpeedRatio { get; private set; } = 0.75f;
 
+    [field: SerializeField]
+    [field: Range(0, 10)]
+    public float DodgeForce { get; private set; } = 3f;
     private void Awake()
     {
         Input = GetComponent<InputController>();
         Animator = GetComponentInChildren<Animator>();
         Condition = GetComponent<Condition>();
+        Controller = GetComponent<CharacterController>();
         MainCamera = Camera.main;
+        ForceReceiver = GetComponent<ForceReceiveController>();
         
         stateMachine = new PlayerStateMachine(this);
         AnimationData.Initialize();

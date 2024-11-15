@@ -5,19 +5,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class UIBase : MonoBehaviour
+public abstract class UIBase : InitBase
 {
-    private bool isInit = false;
     protected Dictionary<Type, UnityEngine.Object[]> _objects = new Dictionary<Type, UnityEngine.Object[]>();
-
-    protected virtual bool Init()
-    {
-        if (isInit) // 한번이라도 초기화 했다면 다시 초기화 하지 않도록 하기.
-            return false;
-        
-        isInit = true;
-        return true;
-    }
 
     private void Awake()
     {

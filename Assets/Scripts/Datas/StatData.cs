@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 /// <summary>
 /// 가변 데이터를 가지는 스탯
@@ -12,6 +13,6 @@ public struct StatData
     public float passiveMpRegen;
     public float attack;
     public float armor;
-    public float moveSpeed;
     public float attackSpeed;
+    public float moveSpeed;
 }

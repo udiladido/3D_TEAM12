@@ -991,12 +991,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527833230}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.053836115, y: 0.85247165, z: -0.5122166, w: 0.08959834}
-  m_LocalPosition: {x: -4, y: 21, z: 10}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
+  m_LocalPosition: {x: 0, y: 1, z: 6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1897184567}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &527833234
 MonoBehaviour:
@@ -3327,6 +3327,7 @@ Transform:
   - {fileID: 543450652425660227}
   - {fileID: 1132426796}
   - {fileID: 1597873346}
+  - {fileID: 527833233}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1897184568
@@ -3578,6 +3579,7 @@ MonoBehaviour:
     jumpParameterName: Jump
     fallParameterName: Fall
     attackParameterName: '@Attack'
+    hitParameterName: '@Hit'
   <LookLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 1
@@ -3585,9 +3587,9 @@ MonoBehaviour:
   <RightDotRange>k__BackingField: 0.5
   <BackwardSpeedRatio>k__BackingField: 0.5
   <SideSpeedRatio>k__BackingField: 0.75
-  <DodgeForce>k__BackingField: 30
+  <DodgeForce>k__BackingField: 20
   <JumpForce>k__BackingField: 5
-  <FixedCameraFacing>k__BackingField: 0
+  <FixedCameraFacing>k__BackingField: 1
 --- !u!114 &1897184574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6201,4 +6203,3 @@ SceneRoots:
   - {fileID: 1139426670}
   - {fileID: 1897184567}
   - {fileID: 1614553744}
-  - {fileID: 527833233}

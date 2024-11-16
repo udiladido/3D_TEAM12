@@ -12,6 +12,8 @@ public class PlayerDodgeState : PlayerRunState
         stateMachine.Input.OnMoveEvent += MoveHandle;
         stateMachine.Input.OnMoveCancelEvent += MoveCancelHandle;
         stateMachine.Input.OnLookEvent += LookHandle;
+        StartAnimation(stateMachine.AnimationData.GroundHash);
+        StartAnimation(stateMachine.AnimationData.RunHash);
         StartAnimation(stateMachine.AnimationData.DodgeHash);
         // TODO : 재사용 대기시간 설정
         TryApplyForce();
@@ -23,6 +25,8 @@ public class PlayerDodgeState : PlayerRunState
         stateMachine.Input.OnMoveCancelEvent -= MoveCancelHandle;
         stateMachine.Input.OnLookEvent -= LookHandle;
         stateMachine.IsDodging = false;
+        StopAnimation(stateMachine.AnimationData.GroundHash);
+        StopAnimation(stateMachine.AnimationData.RunHash);
         StopAnimation(stateMachine.AnimationData.DodgeHash);
     }
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerIdleState : PlayerBaseState
+public class PlayerIdleState : PlayerGroundState
 {
     public PlayerIdleState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -17,4 +17,5 @@ public class PlayerIdleState : PlayerBaseState
         base.Exit();
         StopAnimation(stateMachine.AnimationData.IdleHash);
     }
+    
 }

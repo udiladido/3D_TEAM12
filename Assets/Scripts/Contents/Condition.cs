@@ -34,7 +34,6 @@ public class Condition : MonoBehaviour, IDamageable
         // 임시로 체력, 마나 바로 리젠 
         HpRegen();
         MpRegen();
-        TakeDamage(CurrentStat.attack * Time.deltaTime);
     }
 
     public void FullRecovery()

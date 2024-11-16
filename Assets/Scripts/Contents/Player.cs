@@ -11,9 +11,9 @@ public class Player : MonoBehaviour
     public Animator Animator { get; private set; }
     public Camera MainCamera { get; private set; }
     public ForceReceiveController ForceReceiver { get; private set; }
-    
+
     private PlayerStateMachine stateMachine;
-    
+
     [field: SerializeField]
     [field: Range(0, 1)]
     public float ForwardDotRange { get; private set; } = 0.5f;
@@ -31,9 +31,16 @@ public class Player : MonoBehaviour
     [field: Range(0, 1)]
     public float SideSpeedRatio { get; private set; } = 0.75f;
 
+    [field: Header("회피 및 점프 힘")]
     [field: SerializeField]
     [field: Range(0, 50)]
-    public float DodgeForce { get; private set; } = 3f;
+    public float DodgeForce { get; private set; } = 10f;
+
+    [field: SerializeField]
+    [field: Range(0, 50)]
+    public float JumpForce { get; private set; } = 10f;
+
+
     private void Awake()
     {
         Input = GetComponent<InputController>();
@@ -42,7 +49,7 @@ public class Player : MonoBehaviour
         Controller = GetComponent<CharacterController>();
         MainCamera = Camera.main;
         ForceReceiver = GetComponent<ForceReceiveController>();
-        
+
         stateMachine = new PlayerStateMachine(this);
         AnimationData.Initialize();
     }
@@ -68,11 +75,16 @@ public class Player : MonoBehaviour
         Condition.OnDead -= Die;
         stateMachine.ChangeState(stateMachine.DeadState);
     }
-    
+
     public void Revive()
     {
         Condition.OnDead += Die;
         Condition.FullRecovery();
         stateMachine.ChangeState(stateMachine.IdleState);
+    }
+
+    public void Jump()
+    {
+        ForceReceiver?.Jump(JumpForce);
     }
 }

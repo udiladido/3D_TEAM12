@@ -13,14 +13,16 @@ public class PlayerStateMachine : StateMachine
     public PlayerRunState RunState { get; private set; }
     public PlayerDodgeState DodgeState { get; private set; }
     public PlayerDeadState DeadState { get; private set; }
+    public PlayerJumpState JumpState { get; private set; }
+    public PlayerFallState FallState { get; private set; }
 
     public Vector3 LookDirection { get; set; }
     public Vector3 MoveDirection { get; set; }
-    public Vector3 MovementInput { get; set; }
 
     public Defines.CharacterMovementType MovementType { get; set; }
     public bool IsDodging { get; set; }
-    
+    public bool IsFalling { get; set; }
+
     public PlayerStateMachine(Player player)
     {
         Player = player;
@@ -28,5 +30,7 @@ public class PlayerStateMachine : StateMachine
         RunState = new PlayerRunState(this);
         DodgeState = new PlayerDodgeState(this);
         DeadState = new PlayerDeadState(this);
+        JumpState = new PlayerJumpState(this);
+        FallState = new PlayerFallState(this);
     }
 }

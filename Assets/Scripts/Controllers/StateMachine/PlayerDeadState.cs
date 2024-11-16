@@ -11,9 +11,7 @@ public class PlayerDeadState : PlayerBaseState
         // 죽으면 아무런 행위를 할 수 없기 때문에 이벤트 사용 못하도록 한다.
         // base.Enter();
         StartAnimation(stateMachine.AnimationData.DeadHash);
-        stateMachine.MovementType = Defines.CharacterMovementType.None;
-        stateMachine.MoveDirection = Vector3.zero;
-        stateMachine.MovementInput = Vector2.zero;
+        MoveCancelHandle();
     }
 
     public override void Exit()

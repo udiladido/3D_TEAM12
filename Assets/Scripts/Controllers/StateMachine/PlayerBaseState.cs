@@ -6,10 +6,12 @@ public class PlayerBaseState : IState
 
     public virtual void Enter()
     {
+        Debug.Log($"{GetType().Name} Enter");
         InputController input = stateMachine.Input;
         if (input == null) return;
 
         input.OnMoveEvent += MoveHandle;
+        input.OnMoveCancelEvent += MoveCancelHandle;
         input.OnLookEvent += LookHandle;
         input.OnDodgeEvent += DodgeHandle;
     }
@@ -19,12 +21,20 @@ public class PlayerBaseState : IState
         if (input == null) return;
 
         input.OnMoveEvent -= MoveHandle;
+        input.OnMoveCancelEvent -= MoveCancelHandle;
         input.OnLookEvent -= LookHandle;
         input.OnDodgeEvent -= DodgeHandle;
     }
-    private void MoveHandle(Vector2 inputValue)
+    protected void MoveHandle(Vector2 inputValue)
     {
-        stateMachine.MovementInput = new Vector3(inputValue.x, 0, inputValue.y);
+        stateMachine.MoveDirection = GetMoveDirection(new Vector3(inputValue.x, 0, inputValue.y));
+        stateMachine.MovementType = GetMovementType(stateMachine.MoveDirection);
+        stateMachine.ChangeState(stateMachine.RunState);
+    }
+    protected void MoveCancelHandle()
+    {
+        stateMachine.MoveDirection = Vector3.zero;
+        stateMachine.MovementType = Defines.CharacterMovementType.None;
     }
     private void LookHandle(Vector2 mousePosition)
     {
@@ -60,20 +70,20 @@ public class PlayerBaseState : IState
     }
     private void ApplyMove(Vector3 direction)
     {
-        Defines.CharacterMovementType currentMovementType = GetMovementType(direction);
-        if (currentMovementType != Defines.CharacterMovementType.None)
+        if (stateMachine.MovementType != Defines.CharacterMovementType.None)
         {
-            float moveSpeed = GetMoveSpeed(currentMovementType);
+            float moveSpeed = GetMoveSpeed(stateMachine.MovementType);
             Vector3 movement = (direction * moveSpeed) + stateMachine.Player.ForceReceiver.Movement;
             stateMachine.Controller.Move(movement * Time.deltaTime);
         }
-        ChangeRunState(currentMovementType);
+        else
+        {
+            // 가만히 있어도 낙하는 계속 해야한다.
+            stateMachine.Controller.Move(stateMachine.Player.ForceReceiver.Movement * Time.deltaTime);
+        }
     }
     private void Move()
     {
-        if (stateMachine.IsDodging == false)
-            stateMachine.MoveDirection = GetMoveDirection(stateMachine.MovementInput);
-        
         ApplyMove(stateMachine.MoveDirection);
     }
     private float GetMoveSpeed(Defines.CharacterMovementType movementType)
@@ -99,20 +109,6 @@ public class PlayerBaseState : IState
         }
 
         return maxMoveSpeed;
-    }
-    private void ChangeRunState(Defines.CharacterMovementType movementType)
-    {
-        if (stateMachine.MovementType == movementType) return;
-
-        stateMachine.MovementType = movementType;
-        if (stateMachine.MovementType == Defines.CharacterMovementType.None)
-        {
-            stateMachine.ChangeState(stateMachine.IdleState);
-        }
-        else
-        {
-            stateMachine.ChangeState(stateMachine.RunState);
-        }
     }
     private Vector3 GetMoveDirection(Vector3 inputDirection)
     {

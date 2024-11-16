@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class InputController : BaseController
 {
     public event Action<Vector2> OnMoveEvent;
+    public event Action OnMoveCancelEvent;
     public event Action<Vector2> OnLookEvent;
     public event Action OnDodgeEvent; 
 
@@ -13,7 +14,7 @@ public class InputController : BaseController
         if (context.phase == InputActionPhase.Performed)
             OnMoveEvent?.Invoke(context.ReadValue<Vector2>());
         else if (context.phase == InputActionPhase.Canceled)
-            OnMoveEvent?.Invoke(Vector2.zero);
+            OnMoveCancelEvent?.Invoke();
     }
 
     public void OnLook(InputAction.CallbackContext context)

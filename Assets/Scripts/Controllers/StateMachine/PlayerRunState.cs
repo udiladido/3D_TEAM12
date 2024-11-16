@@ -1,4 +1,4 @@
-public class PlayerRunState : PlayerBaseState
+public class PlayerRunState : PlayerGroundState
 {
     private Defines.CharacterMovementType currentMovementType;
     public PlayerRunState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
@@ -47,6 +47,17 @@ public class PlayerRunState : PlayerBaseState
             case Defines.CharacterMovementType.Forward:
                 StopAnimation(stateMachine.AnimationData.ForwardHash);
                 break;
+        }
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        if (stateMachine.MovementType == Defines.CharacterMovementType.None)
+        {
+            stateMachine.ChangeState(stateMachine.IdleState);
+            return;
         }
     }
 }

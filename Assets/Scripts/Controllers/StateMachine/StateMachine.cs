@@ -11,6 +11,11 @@ public abstract class StateMachine
         currentState?.Enter();
     }
 
+    public void Play(IState state)
+    {
+        state.Enter();
+    }
+
     public void HandleInput()
     {
         currentState?.HandleInput();

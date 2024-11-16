@@ -11,6 +11,9 @@ public class InputController : BaseController
     public event Action OnJumpEvent;
     public event Action<bool> OnRunEvent;
 
+    public event Action<Defines.CharacterAttackInputType> OnAttackEvent;
+    public event Action<Defines.CharacterAttackInputType> OnAttackCancelEvent;
+
     private bool isRunning;
 
     public void OnMove(InputAction.CallbackContext context)
@@ -60,5 +63,21 @@ public class InputController : BaseController
             isRunning = !isRunning;
             OnRunEvent?.Invoke(isRunning);
         }
+    }
+    
+    public void OnAttack1(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+            OnAttackEvent?.Invoke(Defines.CharacterAttackInputType.Key1);
+        else if (context.phase == InputActionPhase.Canceled)
+            OnAttackCancelEvent?.Invoke(Defines.CharacterAttackInputType.Key1);
+    }
+    
+    public void OnAttack2(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+            OnAttackEvent?.Invoke(Defines.CharacterAttackInputType.Key2);
+        else if (context.phase == InputActionPhase.Canceled)
+            OnAttackCancelEvent?.Invoke(Defines.CharacterAttackInputType.Key2);
     }
 }

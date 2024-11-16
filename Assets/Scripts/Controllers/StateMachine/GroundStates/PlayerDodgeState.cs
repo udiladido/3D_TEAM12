@@ -9,7 +9,9 @@ public class PlayerDodgeState : PlayerRunState
 
     public override void Enter()
     {
-        base.Enter();
+        stateMachine.Input.OnMoveEvent += MoveHandle;
+        stateMachine.Input.OnMoveCancelEvent += MoveCancelHandle;
+        stateMachine.Input.OnLookEvent += LookHandle;
         StartAnimation(stateMachine.AnimationData.DodgeHash);
         // TODO : 재사용 대기시간 설정
         TryApplyForce();
@@ -17,7 +19,9 @@ public class PlayerDodgeState : PlayerRunState
 
     public override void Exit()
     {
-        base.Exit();
+        stateMachine.Input.OnMoveEvent -= MoveHandle;
+        stateMachine.Input.OnMoveCancelEvent -= MoveCancelHandle;
+        stateMachine.Input.OnLookEvent -= LookHandle;
         stateMachine.IsDodging = false;
         StopAnimation(stateMachine.AnimationData.DodgeHash);
     }

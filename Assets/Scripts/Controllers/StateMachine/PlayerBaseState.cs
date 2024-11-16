@@ -3,7 +3,10 @@ using UnityEngine;
 public class PlayerBaseState : IState
 {
     protected PlayerStateMachine stateMachine;
-
+    public PlayerBaseState(PlayerStateMachine stateMachine)
+    {
+        this.stateMachine = stateMachine;
+    }
     public virtual void Enter()
     {
         Debug.Log($"{GetType().Name} Enter");
@@ -15,7 +18,9 @@ public class PlayerBaseState : IState
         input.OnLookEvent += LookHandle;
         input.OnDodgeEvent += DodgeHandle;
         input.OnJumpEvent += JumpHandle;
-        input.OnRunEvent += OnRunHandle;
+        input.OnRunEvent += RunHandle;
+        input.OnAttackEvent += AttackHandle;
+        input.OnAttackCancelEvent += AttackCancelHandle;
     }
     public virtual void Exit()
     {
@@ -27,6 +32,18 @@ public class PlayerBaseState : IState
         input.OnLookEvent -= LookHandle;
         input.OnDodgeEvent -= DodgeHandle;
         input.OnJumpEvent -= JumpHandle;
+        input.OnRunEvent -= RunHandle;
+        input.OnAttackEvent -= AttackHandle;
+        input.OnAttackCancelEvent -= AttackCancelHandle;
+    }
+    protected void AttackHandle(Defines.CharacterAttackInputType attackInputType)
+    {
+        stateMachine.IsAttacking = true;
+    }
+    protected void AttackCancelHandle(Defines.CharacterAttackInputType attackInputType)
+    {
+        stateMachine.IsAttacking = false;
+        // TODO : 키를 계속 누르고 있다가 떼면 할 일들..
     }
     protected void MoveHandle(Vector2 inputValue)
     {
@@ -54,7 +71,7 @@ public class PlayerBaseState : IState
             stateMachine.LookDirection = lookDirection;
         }
     }
-    private void DodgeHandle()
+    protected void DodgeHandle()
     {
         if (stateMachine.MovementType == Defines.CharacterMovementType.None) return;
         if (stateMachine.IsRunnung == false) return;
@@ -65,7 +82,7 @@ public class PlayerBaseState : IState
         if (stateMachine.JumpCount >= 2) return;
         stateMachine.ChangeState(stateMachine.JumpState);
     }
-    private void OnRunHandle(bool isRunning)
+    private void RunHandle(bool isRunning)
     {
         if (stateMachine.IsRunnung == isRunning) return;
         stateMachine.IsRunnung = isRunning;
@@ -86,10 +103,7 @@ public class PlayerBaseState : IState
         else
             stateMachine.ChangeState(stateMachine.WalkState);
     }
-    public PlayerBaseState(PlayerStateMachine stateMachine)
-    {
-        this.stateMachine = stateMachine;
-    }
+
     public void StartAnimation(int animationHash)
     {
         stateMachine.Animator.SetBool(animationHash, true);
@@ -230,8 +244,14 @@ public class PlayerBaseState : IState
     {
         if (stateMachine.Player.FixedCameraFacing == false)
             Rotate();
-        
+
         Move();
+        Attack();
+    }
+    private void Attack()
+    {
+        if (stateMachine.IsAttacking)
+            stateMachine.Play(stateMachine.AttackState);
     }
     public virtual void PhysicsUpdate()
     {

@@ -7,6 +7,7 @@ public class Condition : MonoBehaviour, IDamageable
     public event Action<float, float> OnMpChanged;
     public event Action<StatData> OnStatChanged;
     public event Action OnDead;
+    public event Action OnHit; 
 
     [field: SerializeField] public StatData CurrentStat { get; private set; }
 
@@ -53,7 +54,10 @@ public class Condition : MonoBehaviour, IDamageable
         {
             IsDead = true;
             OnDead?.Invoke();
-            return;
+        }
+        else
+        {
+            OnHit?.Invoke();
         }
     }
 

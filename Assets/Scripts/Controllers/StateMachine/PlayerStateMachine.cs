@@ -16,6 +16,10 @@ public class PlayerStateMachine : StateMachine
     public PlayerJumpState JumpState { get; private set; }
     public PlayerFallState FallState { get; private set; }
     public PlayerWalkState WalkState { get; private set; }
+    
+    public PlayerAttackState AttackState { get; private set; }
+    
+    public PlayerHitState HitState { get; private set; }
 
     public Vector3 LookDirection { get; set; }
     public Vector3 MoveDirection { get; set; }
@@ -24,6 +28,8 @@ public class PlayerStateMachine : StateMachine
     public bool IsDodging { get; set; }
     public bool IsFalling { get; set; }
     public bool IsRunnung { get; set; }
+    
+    public bool IsAttacking { get; set; }
     
     public int JumpCount { get; set; }
 
@@ -37,5 +43,7 @@ public class PlayerStateMachine : StateMachine
         JumpState = new PlayerJumpState(this);
         FallState = new PlayerFallState(this);
         WalkState = new PlayerWalkState(this);
+        AttackState = new PlayerAttackState(this);
+        HitState = new PlayerHitState(this);
     }
 }

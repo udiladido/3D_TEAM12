@@ -991,8 +991,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527833230}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.05463834, y: -0.85194826, z: 0.51278305, w: -0.090842545}
-  m_LocalPosition: {x: -3.9598866, y: 21.81659, z: 10.195729}
+  m_LocalRotation: {x: 0.053836115, y: 0.85247165, z: -0.5122166, w: 0.08959834}
+  m_LocalPosition: {x: -4, y: 21, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3513,6 +3513,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c1e6d57d-3651-4dcf-9e0a-5576a13ef553
     m_ActionName: Player/RunToggle[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1897184568}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: OnAttack1
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9ce6b41e-63d2-430f-b711-99b45b1c0e1f
+    m_ActionName: Player/Attack1[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1897184568}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: OnAttack2
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 62026ef9-3e3d-43ef-ac1f-9adad4b95a05
+    m_ActionName: Player/Attack2[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -3545,6 +3577,7 @@ MonoBehaviour:
     airParameterName: '@Air'
     jumpParameterName: Jump
     fallParameterName: Fall
+    attackParameterName: '@Attack'
   <LookLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 1
@@ -3554,7 +3587,7 @@ MonoBehaviour:
   <SideSpeedRatio>k__BackingField: 0.75
   <DodgeForce>k__BackingField: 30
   <JumpForce>k__BackingField: 5
-  fixedCameraFacing: 0
+  <FixedCameraFacing>k__BackingField: 0
 --- !u!114 &1897184574
 MonoBehaviour:
   m_ObjectHideFlags: 0

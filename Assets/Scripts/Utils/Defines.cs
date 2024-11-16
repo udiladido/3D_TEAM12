@@ -108,6 +108,13 @@ public static class Defines
         LeftStep,
         RightStep,
     }
+
+    public enum CharacterAttackInputType
+    {
+        None,
+        Key1,
+        Key2,
+    }
     
     public const string ITEM_RARIY_COMMON_COLOR = "808080";
     public const string ITEM_RARIY_RARE_COLOR = "0070dd";

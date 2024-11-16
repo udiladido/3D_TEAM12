@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         Revive();
+        Condition.OnHit += Hit;
     }
 
     private void Update()
@@ -83,6 +84,11 @@ public class Player : MonoBehaviour
         Condition.OnDead += Die;
         Condition.FullRecovery();
         stateMachine.ChangeState(stateMachine.IdleState);
+    }
+
+    public void Hit()
+    {
+        stateMachine.Play(stateMachine.HitState);
     }
 
     public void Jump()

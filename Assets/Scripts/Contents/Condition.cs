@@ -6,12 +6,13 @@ public class Condition : MonoBehaviour, IDamageable
     public event Action<float, float> OnHpChanged;
     public event Action<float, float> OnMpChanged;
     public event Action<StatData> OnStatChanged;
+    public event Action OnDead;
 
     [field: SerializeField] public StatData CurrentStat { get; private set; }
 
     public float currentHp;
     public float currentMp;
-    public bool IsDead => currentHp <= 0;
+    public bool IsDead;
 
     private void Start()
     {
@@ -33,52 +34,50 @@ public class Condition : MonoBehaviour, IDamageable
         // 임시로 체력, 마나 바로 리젠 
         HpRegen();
         MpRegen();
+        TakeDamage(CurrentStat.attack * Time.deltaTime);
     }
 
     public void FullRecovery()
     {
+        IsDead = false;
         currentHp = CurrentStat.maxHp;
         currentMp = CurrentStat.maxMp;
         OnHpChanged?.Invoke(currentHp, CurrentStat.maxHp);
         OnMpChanged?.Invoke(currentMp, CurrentStat.maxMp);
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
-        currentHp = Mathf.Max(currentHp - damage, 0);
+        currentHp = Mathf.Clamp(currentHp - damage, 0, CurrentStat.maxHp);
         // TODO : 피격 이펙트
         // TODO : 피격 사운드
-        if (IsDead)
+        if (currentHp <= 0)
         {
-            Die();
+            IsDead = true;
+            OnDead?.Invoke();
             return;
         }
     }
 
-    public void Heal(int heal)
+    public void Heal(float heal)
     {
-        currentHp = Mathf.Min(currentHp + heal, CurrentStat.maxHp);
+        currentHp = Mathf.Clamp(currentHp + heal, 0, CurrentStat.maxHp);
     }
 
     private void HpRegen()
     {
         if (CurrentStat.passiveHpRegen > 0)
-            currentHp = Mathf.Min(currentHp + CurrentStat.passiveHpRegen * Time.deltaTime, CurrentStat.maxHp);
+            currentHp = Mathf.Clamp(currentHp + CurrentStat.passiveHpRegen * Time.deltaTime, 0, CurrentStat.maxHp);
     }
 
     private void MpRegen()
     {
         if (CurrentStat.passiveMpRegen > 0)
-            currentMp = Mathf.Min(currentMp + CurrentStat.passiveMpRegen * Time.deltaTime, CurrentStat.maxMp);
+            currentMp = Mathf.Clamp(currentMp + CurrentStat.passiveMpRegen * Time.deltaTime, 0, CurrentStat.maxMp);
     }
 
 
     public void Knockback(Vector3 direction, float force, float duration)
     {
         // TODO : 넉백?
-    }
-
-    public void Die()
-    {
-        // TODO : 사망
     }
 }

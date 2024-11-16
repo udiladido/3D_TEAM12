@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     public float SideSpeedRatio { get; private set; } = 0.75f;
 
     [field: SerializeField]
-    [field: Range(0, 10)]
+    [field: Range(0, 50)]
     public float DodgeForce { get; private set; } = 3f;
     private void Awake()
     {
@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        stateMachine.ChangeState(stateMachine.IdleState);
+        Revive();
     }
 
     private void Update()
@@ -63,4 +63,16 @@ public class Player : MonoBehaviour
         stateMachine.PhysicsUpdate();
     }
 
+    public void Die()
+    {
+        Condition.OnDead -= Die;
+        stateMachine.ChangeState(stateMachine.DeadState);
+    }
+    
+    public void Revive()
+    {
+        Condition.OnDead += Die;
+        Condition.FullRecovery();
+        stateMachine.ChangeState(stateMachine.IdleState);
+    }
 }

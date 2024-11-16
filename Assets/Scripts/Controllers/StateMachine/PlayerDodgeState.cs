@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public class PlayerDodgeState : PlayerBaseState
+public class PlayerDodgeState : PlayerRunState
 {
-    private bool alreadyAppliedForce;
-    private float dodgeTime;
     public PlayerDodgeState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
 
@@ -12,9 +10,7 @@ public class PlayerDodgeState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        alreadyAppliedForce = false;
-        dodgeTime = 0.5f;
-        StartAnimation(stateMachine.Player.AnimationData.DodgeHash);
+        StartAnimation(stateMachine.AnimationData.DodgeHash);
         // TODO : 재사용 대기시간 설정
         TryApplyForce();
     }
@@ -22,13 +18,14 @@ public class PlayerDodgeState : PlayerBaseState
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.Player.AnimationData.DodgeHash);
+        stateMachine.IsDodging = false;
+        StopAnimation(stateMachine.AnimationData.DodgeHash);
     }
 
     private void TryApplyForce()
     {
-        if (alreadyAppliedForce) return;
-        alreadyAppliedForce = true;
+        if (stateMachine.IsDodging) return;
+        stateMachine.IsDodging = true;
 
         stateMachine.Player.ForceReceiver.Reset();
         stateMachine.Player.ForceReceiver.AddForce(stateMachine.MoveDirection * stateMachine.Player.DodgeForce);
@@ -38,7 +35,10 @@ public class PlayerDodgeState : PlayerBaseState
     {
         base.Update();
 
-        if (stateMachine.Player.ForceReceiver.IsImpaceZero())
-            ChangeRunState(stateMachine.MovementType);
+        float normalizedTime = GetNormalizedTime(stateMachine.Player.Animator, "Dodge");
+        if (normalizedTime >= 1f)
+        {
+            stateMachine.ChangeState(stateMachine.RunState);
+        }
     }
 }

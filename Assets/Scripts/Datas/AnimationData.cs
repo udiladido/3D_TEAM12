@@ -4,12 +4,13 @@ using UnityEngine;
 public class AnimationData
 {
     [SerializeField] private string runParameterName = "@Run";
-    [SerializeField] private string dodgeParameterName = "@Dodge";
+    [SerializeField] private string dodgeParameterName = "Dodge";
     [SerializeField] private string idleParameterName = "Idle";
     [SerializeField] private string forwardParameterName = "Forward";
     [SerializeField] private string backwardParameterName = "Backward";
     [SerializeField] private string leftParameterName = "LeftStep";
     [SerializeField] private string rightParameterName = "RightStep";
+    [SerializeField] private string deadParameterName = "Dead";
 
     public int RunHash { get; private set; }
     public int DodgeHash { get; private set; }
@@ -18,6 +19,7 @@ public class AnimationData
     public int BackwardHash { get; private set; }
     public int LeftHash { get; private set; }
     public int RightHash { get; private set; }
+    public int DeadHash { get; private set; }
 
     public void Initialize()
     {
@@ -28,5 +30,6 @@ public class AnimationData
         BackwardHash = Animator.StringToHash(backwardParameterName);
         LeftHash = Animator.StringToHash(leftParameterName);
         RightHash = Animator.StringToHash(rightParameterName);
+        DeadHash = Animator.StringToHash(deadParameterName);
     }
 }

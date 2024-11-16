@@ -24,14 +24,7 @@ public class PlayerBaseState : IState
     }
     private void MoveHandle(Vector2 inputValue)
     {
-        if (inputValue == Vector2.zero)
-        {
-            stateMachine.MoveDirection = Vector3.zero;
-        }
-        else
-        {
-            stateMachine.MoveDirection = GetMoveDirection(new Vector3(inputValue.x, 0, inputValue.y));
-        }
+        stateMachine.MovementInput = new Vector3(inputValue.x, 0, inputValue.y);
     }
     private void LookHandle(Vector2 mousePosition)
     {
@@ -49,22 +42,7 @@ public class PlayerBaseState : IState
     private void DodgeHandle()
     {
         if (stateMachine.MovementType == Defines.CharacterMovementType.None) return;
-        
-        switch (stateMachine.MovementType)
-        {
-            case Defines.CharacterMovementType.Forward:
-                stateMachine.ChangeState(stateMachine.DodgeForwardState);
-                break;
-            case Defines.CharacterMovementType.Backward:
-                stateMachine.ChangeState(stateMachine.DodgeBackwardState);
-                break;
-            case Defines.CharacterMovementType.LeftStep:
-                stateMachine.ChangeState(stateMachine.DodgeLeftStepState);
-                break;
-            case Defines.CharacterMovementType.RightStep:
-                stateMachine.ChangeState(stateMachine.DodgeRightStepState);
-                break;
-        }
+        stateMachine.ChangeState(stateMachine.DodgeState);
     }
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {
@@ -80,21 +58,23 @@ public class PlayerBaseState : IState
     {
         stateMachine.Animator.SetBool(animationHash, false);
     }
-
+    private void ApplyMove(Vector3 direction)
+    {
+        Defines.CharacterMovementType currentMovementType = GetMovementType(direction);
+        if (currentMovementType != Defines.CharacterMovementType.None)
+        {
+            float moveSpeed = GetMoveSpeed(currentMovementType);
+            Vector3 movement = (direction * moveSpeed) + stateMachine.Player.ForceReceiver.Movement;
+            stateMachine.Controller.Move(movement * Time.deltaTime);
+        }
+        ChangeRunState(currentMovementType);
+    }
     private void Move()
     {
-        if (stateMachine.MoveDirection == Vector3.zero)
-        {
-            ChangeRunState(Defines.CharacterMovementType.None);
-            return;
-        }
-
-        Defines.CharacterMovementType currentMovementType = GetMovementType(stateMachine.MoveDirection);
-        float moveSpeed = GetMoveSpeed(currentMovementType);
-        Vector3 forceMovement = stateMachine.Player.ForceReceiver.GetForceMovement(stateMachine.MoveDirection);
-        Vector3 movement = (stateMachine.MoveDirection * moveSpeed) + forceMovement;
-        stateMachine.Controller.Move(movement * Time.deltaTime);
-        ChangeRunState(currentMovementType);
+        if (stateMachine.IsDodging == false)
+            stateMachine.MoveDirection = GetMoveDirection(stateMachine.MovementInput);
+        
+        ApplyMove(stateMachine.MoveDirection);
     }
     private float GetMoveSpeed(Defines.CharacterMovementType movementType)
     {
@@ -120,30 +100,19 @@ public class PlayerBaseState : IState
 
         return maxMoveSpeed;
     }
-    protected void ChangeRunState(Defines.CharacterMovementType movementType)
+    private void ChangeRunState(Defines.CharacterMovementType movementType)
     {
         if (stateMachine.MovementType == movementType) return;
 
-        switch (movementType)
-        {
-            case Defines.CharacterMovementType.None:
-                stateMachine.ChangeState(stateMachine.IdleState);
-                break;
-            case Defines.CharacterMovementType.Backward:
-                stateMachine.ChangeState(stateMachine.RunBackwordState);
-                break;
-            case Defines.CharacterMovementType.LeftStep:
-                stateMachine.ChangeState(stateMachine.RunLeftStepState);
-                break;
-            case Defines.CharacterMovementType.RightStep:
-                stateMachine.ChangeState(stateMachine.RunRightStepState);
-                break;
-            case Defines.CharacterMovementType.Forward:
-                stateMachine.ChangeState(stateMachine.RunForwardState);
-                break;
-        }
-
         stateMachine.MovementType = movementType;
+        if (stateMachine.MovementType == Defines.CharacterMovementType.None)
+        {
+            stateMachine.ChangeState(stateMachine.IdleState);
+        }
+        else
+        {
+            stateMachine.ChangeState(stateMachine.RunState);
+        }
     }
     private Vector3 GetMoveDirection(Vector3 inputDirection)
     {
@@ -169,6 +138,9 @@ public class PlayerBaseState : IState
     /// <returns></returns>
     private Defines.CharacterMovementType GetMovementType(Vector3 direction)
     {
+        if (direction == Vector3.zero)
+            return Defines.CharacterMovementType.None;
+
         Transform playerTransform = stateMachine.Player.transform;
         float forwardDotRange = stateMachine.Player.ForwardDotRange;
         float rightDotRange = stateMachine.Player.RightDotRange;
@@ -197,13 +169,37 @@ public class PlayerBaseState : IState
         }
     }
 
+    protected float GetNormalizedTime(Animator animator, string tag)
+    {
+        //0.0: 애니메이션이 처음 시작된 상태입니다.
+        // 1.0: 애니메이션이 한 번 완료된 상태입니다.
+        // 1.0: 애니메이션이 반복 재생될 경우, 1을 넘어 계속 증가합니다.
+        // 예를 들어, normalizedTime이 2.5라면
+        // 애니메이션이 두 번 재생된 후 세 번째 재생의 50%가 진행된 것을 의미합니다. 
+        AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
+        AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
+
+        if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
+        {
+            return nextInfo.normalizedTime;
+        }
+        else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
+        {
+            return currentInfo.normalizedTime;
+        }
+        else
+        {
+            return 0f;
+        }
+    }
+
     public virtual void HandleInput()
     {
 
     }
     public virtual void Update()
     {
-        Rotate();
+        // Rotate();
         Move();
     }
     public virtual void PhysicsUpdate()

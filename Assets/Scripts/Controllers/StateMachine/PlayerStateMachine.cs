@@ -15,6 +15,7 @@ public class PlayerStateMachine : StateMachine
     public PlayerDeadState DeadState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
     public PlayerFallState FallState { get; private set; }
+    public PlayerWalkState WalkState { get; private set; }
 
     public Vector3 LookDirection { get; set; }
     public Vector3 MoveDirection { get; set; }
@@ -22,6 +23,9 @@ public class PlayerStateMachine : StateMachine
     public Defines.CharacterMovementType MovementType { get; set; }
     public bool IsDodging { get; set; }
     public bool IsFalling { get; set; }
+    public bool IsRunnung { get; set; }
+    
+    public int JumpCount { get; set; }
 
     public PlayerStateMachine(Player player)
     {
@@ -32,5 +36,6 @@ public class PlayerStateMachine : StateMachine
         DeadState = new PlayerDeadState(this);
         JumpState = new PlayerJumpState(this);
         FallState = new PlayerFallState(this);
+        WalkState = new PlayerWalkState(this);
     }
 }

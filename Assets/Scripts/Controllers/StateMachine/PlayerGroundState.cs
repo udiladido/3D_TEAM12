@@ -10,6 +10,8 @@ public class PlayerGroundState : PlayerBaseState
     {
         base.Enter();
         StartAnimation(stateMachine.AnimationData.GroundHash);
+
+        stateMachine.JumpCount = 0;
     }
 
     public override void Exit()

@@ -8,22 +8,20 @@ public class PlayerAirState : PlayerBaseState
     }
     public override void Enter()
     {
-        InputController input = stateMachine.Input;
-        if (input == null) return;
-        
-        input.OnMoveEvent += MoveHandle;
-        input.OnMoveCancelEvent += MoveCancelHandle;
+        stateMachine.Input.OnJumpEvent += JumpHandle;
+        stateMachine.Input.OnMoveEvent += MoveHandle;
+        stateMachine.Input.OnMoveCancelEvent += MoveCancelHandle;
+        stateMachine.Input.OnLookEvent += LookHandle;
         
         StartAnimation(stateMachine.AnimationData.AirHash);
     }
 
     public override void Exit()
     {
-        InputController input = stateMachine.Input;
-        if (input == null) return;
-        
-        input.OnMoveEvent -= MoveHandle;
-        input.OnMoveCancelEvent -= MoveCancelHandle;
+        stateMachine.Input.OnJumpEvent -= JumpHandle;
+        stateMachine.Input.OnMoveEvent -= MoveHandle;
+        stateMachine.Input.OnMoveCancelEvent -= MoveCancelHandle;
+        stateMachine.Input.OnLookEvent -= LookHandle;
         
         StopAnimation(stateMachine.AnimationData.AirHash);
     }

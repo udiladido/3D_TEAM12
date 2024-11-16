@@ -991,12 +991,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527833230}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 1, z: 6}
+  m_LocalRotation: {x: -0.05463834, y: -0.85194826, z: 0.51278305, w: -0.090842545}
+  m_LocalPosition: {x: -3.9598866, y: 21.81659, z: 10.195729}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1897184567}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &527833234
 MonoBehaviour:
@@ -3325,7 +3325,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 543450652425660227}
-  - {fileID: 527833233}
   - {fileID: 1132426796}
   - {fileID: 1597873346}
   m_Father: {fileID: 0}
@@ -3466,6 +3465,54 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0629c02b-9ac6-43d1-b7c7-9457f86a802c
     m_ActionName: Player/Dodge[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1897184568}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d41c4e89-422f-4e18-aed5-f219ff9836b6
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1897184568}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: OnRun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7026bf9a-1031-411c-ad2a-5aa2c9334734
+    m_ActionName: Player/Run[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1897184568}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: OnRunToggle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c1e6d57d-3651-4dcf-9e0a-5576a13ef553
+    m_ActionName: Player/RunToggle[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -3487,6 +3534,7 @@ MonoBehaviour:
   <AnimationData>k__BackingField:
     groundParameterName: '@Ground'
     runParameterName: '@Run'
+    walkParameterName: '@Walk'
     dodgeParameterName: Dodge
     idleParameterName: Idle
     forwardParameterName: Forward
@@ -3505,7 +3553,8 @@ MonoBehaviour:
   <BackwardSpeedRatio>k__BackingField: 0.5
   <SideSpeedRatio>k__BackingField: 0.75
   <DodgeForce>k__BackingField: 30
-  <JumpForce>k__BackingField: 10
+  <JumpForce>k__BackingField: 5
+  fixedCameraFacing: 0
 --- !u!114 &1897184574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3526,7 +3575,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   groundCheck: {fileID: 1597873346}
-  slopeRayDistance: 1
+  slopeRayDistance: 0.5
 --- !u!1 &1914558701
 GameObject:
   m_ObjectHideFlags: 0
@@ -6119,3 +6168,4 @@ SceneRoots:
   - {fileID: 1139426670}
   - {fileID: 1897184567}
   - {fileID: 1614553744}
+  - {fileID: 527833233}

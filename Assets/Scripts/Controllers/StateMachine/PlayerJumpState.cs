@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlayerJumpState : PlayerAirState
 {
     public PlayerJumpState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
@@ -7,7 +9,13 @@ public class PlayerJumpState : PlayerAirState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(stateMachine.AnimationData.JumpHash);
+        stateMachine.JumpCount += 1;
+        AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
+        if (currentInfo.IsTag("Jump"))
+            stateMachine.Animator.Play(currentInfo.shortNameHash, -1, 0f);
+        else
+            StartAnimation(stateMachine.AnimationData.JumpHash);
+
         stateMachine.Player.Jump();
     }
 
@@ -16,7 +24,7 @@ public class PlayerJumpState : PlayerAirState
         base.Exit();
         StopAnimation(stateMachine.AnimationData.JumpHash);
     }
-    
+
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();

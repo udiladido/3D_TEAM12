@@ -8,6 +8,10 @@ public class InputController : BaseController
     public event Action OnMoveCancelEvent;
     public event Action<Vector2> OnLookEvent;
     public event Action OnDodgeEvent; 
+    public event Action OnJumpEvent;
+    public event Action<bool> OnRunEvent;
+
+    private bool isRunning;
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -27,5 +31,34 @@ public class InputController : BaseController
     {
         if (context.phase == InputActionPhase.Started)
             OnDodgeEvent?.Invoke();
+    }
+    
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+            OnJumpEvent?.Invoke();
+    }
+    
+    public void OnRun(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            isRunning = true;
+            OnRunEvent?.Invoke(true);
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            isRunning = false;
+            OnRunEvent?.Invoke(false);
+        }
+    }
+    
+    public void OnRunToggle(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            isRunning = !isRunning;
+            OnRunEvent?.Invoke(isRunning);
+        }
     }
 }

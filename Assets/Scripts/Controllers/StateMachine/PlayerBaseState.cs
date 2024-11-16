@@ -14,6 +14,8 @@ public class PlayerBaseState : IState
         input.OnMoveCancelEvent += MoveCancelHandle;
         input.OnLookEvent += LookHandle;
         input.OnDodgeEvent += DodgeHandle;
+        input.OnJumpEvent += JumpHandle;
+        input.OnRunEvent += OnRunHandle;
     }
     public virtual void Exit()
     {
@@ -24,19 +26,22 @@ public class PlayerBaseState : IState
         input.OnMoveCancelEvent -= MoveCancelHandle;
         input.OnLookEvent -= LookHandle;
         input.OnDodgeEvent -= DodgeHandle;
+        input.OnJumpEvent -= JumpHandle;
     }
     protected void MoveHandle(Vector2 inputValue)
     {
         stateMachine.MoveDirection = GetMoveDirection(new Vector3(inputValue.x, 0, inputValue.y));
         stateMachine.MovementType = GetMovementType(stateMachine.MoveDirection);
-        stateMachine.ChangeState(stateMachine.RunState);
+        if (stateMachine.Player.ForceReceiver.IsGrounded())
+            MoveChange();
+
     }
     protected void MoveCancelHandle()
     {
         stateMachine.MoveDirection = Vector3.zero;
         stateMachine.MovementType = Defines.CharacterMovementType.None;
     }
-    private void LookHandle(Vector2 mousePosition)
+    protected void LookHandle(Vector2 mousePosition)
     {
         Ray ray = stateMachine.Player.MainCamera.ScreenPointToRay(mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, stateMachine.Player.LookLayerMask))
@@ -52,18 +57,43 @@ public class PlayerBaseState : IState
     private void DodgeHandle()
     {
         if (stateMachine.MovementType == Defines.CharacterMovementType.None) return;
+        if (stateMachine.IsRunnung == false) return;
         stateMachine.ChangeState(stateMachine.DodgeState);
+    }
+    protected void JumpHandle()
+    {
+        if (stateMachine.JumpCount >= 2) return;
+        stateMachine.ChangeState(stateMachine.JumpState);
+    }
+    private void OnRunHandle(bool isRunning)
+    {
+        if (stateMachine.IsRunnung == isRunning) return;
+        stateMachine.IsRunnung = isRunning;
+        if (stateMachine.MovementType == Defines.CharacterMovementType.None) return;
+        if (isRunning)
+        {
+            stateMachine.ChangeState(stateMachine.RunState);
+        }
+        else
+        {
+            stateMachine.ChangeState(stateMachine.WalkState);
+        }
+    }
+    protected void MoveChange()
+    {
+        if (stateMachine.IsRunnung)
+            stateMachine.ChangeState(stateMachine.RunState);
+        else
+            stateMachine.ChangeState(stateMachine.WalkState);
     }
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {
         this.stateMachine = stateMachine;
     }
-
     public void StartAnimation(int animationHash)
     {
         stateMachine.Animator.SetBool(animationHash, true);
     }
-
     public void StopAnimation(int animationHash)
     {
         stateMachine.Animator.SetBool(animationHash, false);
@@ -92,6 +122,9 @@ public class PlayerBaseState : IState
 
         float sideSpeedRatio = stateMachine.Player.SideSpeedRatio;
         float backwardSpeedRatio = stateMachine.Player.BackwardSpeedRatio;
+
+        if (stateMachine.IsRunnung == false)
+            return maxMoveSpeed * backwardSpeedRatio;
 
         switch (movementType)
         {
@@ -195,7 +228,9 @@ public class PlayerBaseState : IState
     }
     public virtual void Update()
     {
-        // Rotate();
+        if (stateMachine.Player.FixedCameraFacing == false)
+            Rotate();
+        
         Move();
     }
     public virtual void PhysicsUpdate()

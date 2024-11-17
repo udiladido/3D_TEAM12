@@ -50,7 +50,7 @@ public class PlayerBaseState : IState
         stateMachine.MoveDirection = GetMoveDirection(new Vector3(inputValue.x, 0, inputValue.y));
         stateMachine.MovementType = GetMovementType(stateMachine.MoveDirection);
         if (stateMachine.Player.ForceReceiver.IsGrounded())
-            MoveChange();
+            stateMachine.ChangeState(stateMachine.RunState);
 
     }
     protected void MoveCancelHandle()
@@ -86,22 +86,6 @@ public class PlayerBaseState : IState
     {
         if (stateMachine.IsRunnung == isRunning) return;
         stateMachine.IsRunnung = isRunning;
-        if (stateMachine.MovementType == Defines.CharacterMovementType.None) return;
-        if (isRunning)
-        {
-            stateMachine.ChangeState(stateMachine.RunState);
-        }
-        else
-        {
-            stateMachine.ChangeState(stateMachine.WalkState);
-        }
-    }
-    protected void MoveChange()
-    {
-        if (stateMachine.IsRunnung)
-            stateMachine.ChangeState(stateMachine.RunState);
-        else
-            stateMachine.ChangeState(stateMachine.WalkState);
     }
 
     public void StartAnimation(int animationHash)

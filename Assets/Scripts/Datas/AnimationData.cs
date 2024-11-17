@@ -5,7 +5,6 @@ public class AnimationData
 {
     [SerializeField] private string groundParameterName = "@Ground";
     [SerializeField] private string runParameterName = "@Run";
-    [SerializeField] private string walkParameterName = "@Walk";
     [SerializeField] private string dodgeParameterName = "Dodge";
     [SerializeField] private string idleParameterName = "Idle";
     [SerializeField] private string forwardParameterName = "Forward";
@@ -13,6 +12,8 @@ public class AnimationData
     [SerializeField] private string leftParameterName = "LeftStep";
     [SerializeField] private string rightParameterName = "RightStep";
     [SerializeField] private string deadParameterName = "Dead";
+    
+    [SerializeField] private string runBlendParameterName = "RunBlend";
     
     [SerializeField] private string airParameterName = "@Air";
     [SerializeField] private string jumpParameterName = "Jump";
@@ -24,7 +25,6 @@ public class AnimationData
     
     public int GroundHash { get; private set; }
     public int RunHash { get; private set; }
-    public int WalkHash { get; private set; }
     public int DodgeHash { get; private set; }
     public int IdleHash { get; private set; }
     public int ForwardHash { get; private set; }
@@ -32,6 +32,7 @@ public class AnimationData
     public int LeftHash { get; private set; }
     public int RightHash { get; private set; }
     public int DeadHash { get; private set; }
+    public int RunBlendHash { get; private set; }
     
     public int AirHash { get; private set; }
     public int JumpHash { get; private set; }
@@ -45,7 +46,6 @@ public class AnimationData
     {
         GroundHash = Animator.StringToHash(groundParameterName);
         RunHash = Animator.StringToHash(runParameterName);
-        WalkHash = Animator.StringToHash(walkParameterName);
         DodgeHash = Animator.StringToHash(dodgeParameterName);
         IdleHash = Animator.StringToHash(idleParameterName);
         ForwardHash = Animator.StringToHash(forwardParameterName);
@@ -53,6 +53,7 @@ public class AnimationData
         LeftHash = Animator.StringToHash(leftParameterName);
         RightHash = Animator.StringToHash(rightParameterName);
         DeadHash = Animator.StringToHash(deadParameterName);
+        RunBlendHash = Animator.StringToHash(runBlendParameterName);
         AirHash = Animator.StringToHash(airParameterName);
         JumpHash = Animator.StringToHash(jumpParameterName);
         FallHash = Animator.StringToHash(fallParameterName);

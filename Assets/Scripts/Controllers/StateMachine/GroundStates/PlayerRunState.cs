@@ -57,7 +57,10 @@ public class PlayerRunState : PlayerGroundState
         if (stateMachine.MovementType == Defines.CharacterMovementType.None)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
-            return;
+        }
+        else
+        {
+            stateMachine.Animator.SetFloat(stateMachine.AnimationData.RunBlendHash, stateMachine.IsRunnung ? 1f : 0f);
         }
     }
 }

@@ -15,7 +15,6 @@ public class PlayerStateMachine : StateMachine
     public PlayerDeadState DeadState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
     public PlayerFallState FallState { get; private set; }
-    public PlayerWalkState WalkState { get; private set; }
     
     public PlayerAttackState AttackState { get; private set; }
     
@@ -42,7 +41,6 @@ public class PlayerStateMachine : StateMachine
         DeadState = new PlayerDeadState(this);
         JumpState = new PlayerJumpState(this);
         FallState = new PlayerFallState(this);
-        WalkState = new PlayerWalkState(this);
         AttackState = new PlayerAttackState(this);
         HitState = new PlayerHitState(this);
     }

@@ -8,6 +8,7 @@ public static class Defines
         None,
         TitleScene,
         GameScene,
+        IntroScene,
     }
 
     /// <summary>

@@ -39,11 +39,15 @@ public class PlayerBaseState : IState
     protected void AttackHandle(Defines.CharacterAttackInputType attackInputType)
     {
         stateMachine.IsAttacking = true;
+        // 동시 입력 방지
+        if (stateMachine.AttackInputType != Defines.CharacterAttackInputType.None
+            && stateMachine.AttackInputType != attackInputType) return;
+        stateMachine.AttackInputType = attackInputType;
     }
     protected void AttackCancelHandle(Defines.CharacterAttackInputType attackInputType)
     {
-        stateMachine.IsAttacking = false;
         // TODO : 키를 계속 누르고 있다가 떼면 할 일들..
+        stateMachine.IsAttacking = false;
     }
     protected void MoveHandle(Vector2 inputValue)
     {
@@ -229,13 +233,16 @@ public class PlayerBaseState : IState
         if (stateMachine.Player.FixedCameraFacing == false)
             Rotate();
 
-        Move();
         Attack();
+        Move();
     }
     private void Attack()
     {
-        if (stateMachine.IsAttacking)
-            stateMachine.Play(stateMachine.AttackState);
+        if (stateMachine.IsAttacking == false) return;
+        if (stateMachine.AttackInputType == Defines.CharacterAttackInputType.ComboAttack)
+            stateMachine.Combat.ComboAttack(stateMachine.AnimationData.AttackHash, stateMachine.AnimationData.ComboAttackIndexHash);
+        else if (stateMachine.AttackInputType == Defines.CharacterAttackInputType.Attack)
+            stateMachine.Combat.Attack(stateMachine.AnimationData.AttackHash);
     }
     public virtual void PhysicsUpdate()
     {

@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public Animator Animator { get; private set; }
     public Camera MainCamera { get; private set; }
     public ForceReceiveController ForceReceiver { get; private set; }
+    public Combat Combat { get; private set; }
 
     private PlayerStateMachine stateMachine;
 
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour
         Controller = GetComponent<CharacterController>();
         MainCamera = Camera.main;
         ForceReceiver = GetComponent<ForceReceiveController>();
+        Combat = GetComponent<Combat>();
 
         stateMachine = new PlayerStateMachine(this);
         AnimationData.Initialize();
@@ -88,7 +90,7 @@ public class Player : MonoBehaviour
 
     public void Hit()
     {
-        stateMachine.Play(stateMachine.HitState);
+        stateMachine.Hit();
     }
 
     public void Jump()

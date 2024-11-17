@@ -16,8 +16,19 @@ public class ItemDataList : ScriptableObject
             foreach (var item in itemDataList.ItemList)
             {
                 foreach (var equipable in itemSheets.EquipableList)
+                {
                     if (equipable.itemId == item.id && item.itemType == Defines.ItemType.Equipment)
+                    {
                         item.equipableEntity = equipable;
+                        if (item.equipableEntity.equipmentType != Defines.ItemEquipmentType.Weapon) continue;
+                        item.equipableEntity.weaponCombatEntities = new List<ItemWeaponCombatEntity>();
+                        foreach (var combat in itemSheets.WeaponCombatList)
+                        {
+                            if (combat.itemId == item.id)
+                                item.equipableEntity.weaponCombatEntities.Add(combat);
+                        }
+                    }
+                }
 
                 item.statBoostEffectEntities = new List<ItemStatBoostEffectEntity>();
                 foreach (var statBoostEffect in itemSheets.StatBoostEffectList)

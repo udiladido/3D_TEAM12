@@ -991,12 +991,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527833230}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  m_LocalPosition: {x: 0, y: 1, z: 6}
+  m_LocalRotation: {x: 0.053836115, y: 0.85247165, z: -0.5122166, w: 0.08959834}
+  m_LocalPosition: {x: -4, y: 21, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1897184567}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &527833234
 MonoBehaviour:
@@ -3304,6 +3304,8 @@ GameObject:
   - component: {fileID: 1897184572}
   - component: {fileID: 1897184573}
   - component: {fileID: 1897184574}
+  - component: {fileID: 1897184575}
+  - component: {fileID: 1897184576}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3327,7 +3329,6 @@ Transform:
   - {fileID: 543450652425660227}
   - {fileID: 1132426796}
   - {fileID: 1597873346}
-  - {fileID: 527833233}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1897184568
@@ -3518,7 +3519,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1897184568}
         m_TargetAssemblyTypeName: InputController, Assembly-CSharp
-        m_MethodName: OnAttack1
+        m_MethodName: OnComboAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3534,7 +3535,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1897184568}
         m_TargetAssemblyTypeName: InputController, Assembly-CSharp
-        m_MethodName: OnAttack2
+        m_MethodName: OnAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3567,7 +3568,6 @@ MonoBehaviour:
   <AnimationData>k__BackingField:
     groundParameterName: '@Ground'
     runParameterName: '@Run'
-    walkParameterName: '@Walk'
     dodgeParameterName: Dodge
     idleParameterName: Idle
     forwardParameterName: Forward
@@ -3575,10 +3575,13 @@ MonoBehaviour:
     leftParameterName: LeftStep
     rightParameterName: RightStep
     deadParameterName: Dead
+    runBlendParameterName: RunBlend
     airParameterName: '@Air'
     jumpParameterName: Jump
     fallParameterName: Fall
     attackParameterName: '@Attack'
+    comboAttackParameterName: '@ComboAttack'
+    comboAttackIndexParameterName: ComboAttackIndex
     hitParameterName: '@Hit'
   <LookLayerMask>k__BackingField:
     serializedVersion: 2
@@ -3589,7 +3592,7 @@ MonoBehaviour:
   <SideSpeedRatio>k__BackingField: 0.75
   <DodgeForce>k__BackingField: 20
   <JumpForce>k__BackingField: 5
-  <FixedCameraFacing>k__BackingField: 1
+  <FixedCameraFacing>k__BackingField: 0
 --- !u!114 &1897184574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3611,6 +3614,32 @@ MonoBehaviour:
     m_Bits: 1
   groundCheck: {fileID: 1597873346}
   slopeRayDistance: 0.5
+--- !u!114 &1897184575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897184563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a328cca16944b56a538929a0af48ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CurrentComboAttackIndex>k__BackingField: 0
+  <ComboDuration>k__BackingField: 1
+--- !u!114 &1897184576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897184563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c673603ae1e404c8731da1535cd3e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1914558701
 GameObject:
   m_ObjectHideFlags: 0
@@ -4115,6 +4144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450652425660227}
   - component: {fileID: 1282687147}
+  - component: {fileID: 919132148155907578}
   m_Layer: 0
   m_Name: Barbarian
   m_TagString: Untagged
@@ -4122,6 +4152,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &919132148155907578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148155907577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae42085641b477797a0f31969cc6db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <LeftHand>k__BackingField: {fileID: 2196004507504145116}
+  <RightHand>k__BackingField: {fileID: 7997947302323883910}
 --- !u!1 &954683106296362026
 GameObject:
   m_ObjectHideFlags: 0
@@ -6203,3 +6247,4 @@ SceneRoots:
   - {fileID: 1139426670}
   - {fileID: 1897184567}
   - {fileID: 1614553744}
+  - {fileID: 527833233}

@@ -65,19 +65,19 @@ public class InputController : BaseController
         }
     }
     
-    public void OnAttack1(InputAction.CallbackContext context)
+    public void OnComboAttack(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
-            OnAttackEvent?.Invoke(Defines.CharacterAttackInputType.Key1);
+            OnAttackEvent?.Invoke(Defines.CharacterAttackInputType.ComboAttack);
         else if (context.phase == InputActionPhase.Canceled)
-            OnAttackCancelEvent?.Invoke(Defines.CharacterAttackInputType.Key1);
+            OnAttackCancelEvent?.Invoke(Defines.CharacterAttackInputType.ComboAttack);
     }
     
-    public void OnAttack2(InputAction.CallbackContext context)
+    public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
-            OnAttackEvent?.Invoke(Defines.CharacterAttackInputType.Key2);
+            OnAttackEvent?.Invoke(Defines.CharacterAttackInputType.Attack);
         else if (context.phase == InputActionPhase.Canceled)
-            OnAttackCancelEvent?.Invoke(Defines.CharacterAttackInputType.Key2);
+            OnAttackCancelEvent?.Invoke(Defines.CharacterAttackInputType.Attack);
     }
 }

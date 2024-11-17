@@ -8,6 +8,7 @@ public class PlayerStateMachine : StateMachine
     public Condition Condition => Player?.Condition;
     public InputController Input => Player?.Input;
     public CharacterController Controller => Player?.Controller;
+    public Combat Combat => Player?.Combat;
     
     public PlayerIdleState IdleState { get; private set; }
     public PlayerRunState RunState { get; private set; }
@@ -15,8 +16,6 @@ public class PlayerStateMachine : StateMachine
     public PlayerDeadState DeadState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
     public PlayerFallState FallState { get; private set; }
-    
-    public PlayerAttackState AttackState { get; private set; }
     
     public PlayerHitState HitState { get; private set; }
 
@@ -29,6 +28,7 @@ public class PlayerStateMachine : StateMachine
     public bool IsRunnung { get; set; }
     
     public bool IsAttacking { get; set; }
+    public Defines.CharacterAttackInputType AttackInputType { get; set; }
     
     public int JumpCount { get; set; }
 
@@ -41,7 +41,11 @@ public class PlayerStateMachine : StateMachine
         DeadState = new PlayerDeadState(this);
         JumpState = new PlayerJumpState(this);
         FallState = new PlayerFallState(this);
-        AttackState = new PlayerAttackState(this);
         HitState = new PlayerHitState(this);
+    }
+
+    public void Hit()
+    {
+        ChangeState(HitState);
     }
 }

@@ -1,30 +1,34 @@
-public class PlayerHitState : IState
+public class PlayerHitState : PlayerBaseState
 {
-    protected PlayerStateMachine stateMachine;
-    public PlayerHitState(PlayerStateMachine stateMachine)
+    public PlayerHitState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
-        this.stateMachine = stateMachine;
     }
-    
-    public void Enter()
+
+    public override void Enter()
     {
-        stateMachine.Animator.SetTrigger(stateMachine.AnimationData.HitHash);
+        MoveCancelHandle();
+        if (stateMachine.Player.ForceReceiver.IsGrounded())
+            StartAnimation(stateMachine.AnimationData.GroundHash);
+        else
+            StartAnimation(stateMachine.AnimationData.AirHash);
+
+        StartAnimation(stateMachine.AnimationData.HitHash);
     }
-    
-    public void Exit()
+
+    public override void Exit()
     {
-        
+        if (stateMachine.Player.ForceReceiver.IsGrounded())
+            StartAnimation(stateMachine.AnimationData.GroundHash);
+        else
+            StartAnimation(stateMachine.AnimationData.AirHash);
+
+        StopAnimation(stateMachine.AnimationData.HitHash);
     }
-    public void HandleInput()
+
+    public override void Update()
     {
-        
-    }
-    public void Update()
-    {
-        
-    }
-    public void PhysicsUpdate()
-    {
-        
+        float normalizedTime = GetNormalizedTime(stateMachine.Player.Animator, "Hit");
+        if (normalizedTime >= 1f)
+            stateMachine.ChangeState(stateMachine.IdleState);
     }
 }

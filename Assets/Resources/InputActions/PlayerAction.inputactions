@@ -60,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack1",
+                    "name": "ComboAttack",
                     "type": "Button",
                     "id": "9ce6b41e-63d2-430f-b711-99b45b1c0e1f",
                     "expectedControlType": "Button",
@@ -69,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack2",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "62026ef9-3e3d-43ef-ac1f-9adad4b95a05",
                     "expectedControlType": "Button",
@@ -196,7 +196,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack1",
+                    "action": "ComboAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -207,7 +207,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack2",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

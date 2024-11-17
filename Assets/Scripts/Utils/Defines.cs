@@ -112,9 +112,19 @@ public static class Defines
     public enum CharacterAttackInputType
     {
         None,
-        Key1,
-        Key2,
+        ComboAttack,
+        Attack,
     }
+
+    public enum CharacterCombatStyleType
+    {
+        None, // Base Layer Index
+        ComboAttack,
+        MeleeAttack,
+        RangeAttack,
+        MagicAttack,
+    }
+
     
     public const string ITEM_RARIY_COMMON_COLOR = "808080";
     public const string ITEM_RARIY_RARE_COLOR = "0070dd";

@@ -33,8 +33,6 @@ public class UIShopPopup : UIPopupBase
         BindObject(typeof(GameObjects));
 
         GetButton(Buttons.CloseButton).gameObject.BindEvent(() => { Close(); });
-
-        SetDragable(GetObject(GameObjects.ShopPopup));
         return true;
     }
 
@@ -42,11 +40,13 @@ public class UIShopPopup : UIPopupBase
     {
         base.Open(type);
         Managers.User.OnGoldChanged += UpdateGold;
+        SetDraggable(GetObject(GameObjects.ShopPopup));
     }
 
     public override void Close(Defines.UIAnimationType type = Defines.UIAnimationType.None)
     {
         Managers.User.OnGoldChanged -= UpdateGold;
+        ClearDraggable();
         base.Close(type);
     }
 

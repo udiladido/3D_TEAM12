@@ -57,6 +57,7 @@ public class Managers : MonoBehaviour
     private ResourceManager _resource = new ResourceManager();
     private CoroutineManager _coroutine = new CoroutineManager();
     private SceneManagerEx _scene = new SceneManagerEx();
+    private GameManager _game = new GameManager();
 
     public static DBManager DB
     {
@@ -85,6 +86,10 @@ public class Managers : MonoBehaviour
     public static SceneManagerEx Scene
     {
         get { return Instance?._scene; }
+    }
+    public static GameManager Game
+    {
+        get { return Instance?._game; }
     }
 
     #endregion

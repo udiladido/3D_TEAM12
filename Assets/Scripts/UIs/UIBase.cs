@@ -4,26 +4,90 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public abstract class UIBase : InitBase
 {
+
     protected Dictionary<Type, UnityEngine.Object[]> _objects = new Dictionary<Type, UnityEngine.Object[]>();
+
+    [SerializeField] float power = 0.1f;
+    [SerializeField] float duration = 0.2f;
+
+    [SerializeField] private Transform animationRoot;
 
     private void Awake()
     {
         Init();
     }
 
-    public virtual void Open(Defines.UIAnimationType type = Defines.UIAnimationType.None)
+    public virtual void Open()
     {
-        // TODO : Open Animation
-    }
-    
-    public virtual void Close(Defines.UIAnimationType type = Defines.UIAnimationType.None)
-    {
-        // TODO : Close Animation
+        Open(Defines.UIAnimationType.None);
     }
 
+    public virtual void Open(Defines.UIAnimationType type)
+    {
+        // TODO : Open Animation
+
+
+        if (animationRoot == null)
+        {
+            return;
+        }
+
+        switch (type)
+        {
+            case Defines.UIAnimationType.Bounce:
+                animationRoot
+                    .DOScale(Vector3.one, 0.3f)
+                    .ChangeStartValue(Vector3.zero)
+                    .SetEase(Ease.OutBack);
+                break;
+
+            default:
+              
+                break;
+        }
+
+    }
+
+    public virtual void Close()
+    {
+        Close(Defines.UIAnimationType.None);
+    }
+
+
+    public virtual void Close(Defines.UIAnimationType type)
+    {
+        // TODO : Close Animation
+
+        if (animationRoot == null)
+        {
+        
+            return;
+        }
+
+        switch (type)
+        {
+            case Defines.UIAnimationType.Bounce:
+                animationRoot
+                    .DOScale(Vector3.zero, 0.3f)
+                    .SetEase(Ease.InBack);
+                break;
+
+            default:
+      
+                break;
+
+        }
+
+
+    }
+
+  
+
+ 
     protected void Bind<T>(Type type) where T : UnityEngine.Object
     {
         string[] names = Enum.GetNames(type);
@@ -130,4 +194,6 @@ public abstract class UIBase : InitBase
                 break;
         }
     }
+
+ 
 }

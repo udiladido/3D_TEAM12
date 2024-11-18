@@ -8,7 +8,8 @@ public static class Defines
         None,
         TitleScene,
         GameScene,
-        DevScene
+        DevScene,
+        IntroScene,
     }
 
     /// <summary>
@@ -29,6 +30,7 @@ public static class Defines
     public enum UIAnimationType
     {
         None,
+        Bounce,
     }
 
     public enum CalcType

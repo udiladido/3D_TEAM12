@@ -32,7 +32,7 @@ public class UIShopPopup : UIPopupBase
         BindText(typeof(Texts));
         BindObject(typeof(GameObjects));
 
-        GetButton(Buttons.CloseButton).gameObject.BindEvent(() => { Close(); });
+        GetButton(Buttons.CloseButton).gameObject.BindEvent(() => { Close(Defines.UIAnimationType.Bounce); });
 
         SetDragable(GetObject(GameObjects.ShopPopup));
         return true;

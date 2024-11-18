@@ -655,6 +655,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d3dd00cb5e47d49726bdb39b9b303a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  power: 0.1
+  duration: 0.2
+  animationRoot: {fileID: 8753664015791616243}
 --- !u!1 &6380172378497034864
 GameObject:
   m_ObjectHideFlags: 0

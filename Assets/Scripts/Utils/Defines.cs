@@ -29,6 +29,7 @@ public static class Defines
     public enum UIAnimationType
     {
         None,
+        Bounce,
     }
 
     public enum CalcType

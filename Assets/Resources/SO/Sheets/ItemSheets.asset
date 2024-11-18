@@ -483,7 +483,8 @@ MonoBehaviour:
     manaCost: 3
     cooltime: 0
     duration: 0.25
-    scale: 1
+    startScale: 1
+    endScale: 1
     moveSpeed: 0
     damagePer: 80
     waitTime: 0.1
@@ -495,7 +496,8 @@ MonoBehaviour:
     manaCost: 3
     cooltime: 0
     duration: 0.25
-    scale: 1
+    startScale: 1
+    endScale: 1
     moveSpeed: 0
     damagePer: 100
     waitTime: 0.1
@@ -507,7 +509,8 @@ MonoBehaviour:
     manaCost: 5
     cooltime: 0
     duration: 0.5
-    scale: 1
+    startScale: 1
+    endScale: 1
     moveSpeed: 0
     damagePer: 120
     waitTime: 0.1
@@ -519,7 +522,8 @@ MonoBehaviour:
     manaCost: 3
     cooltime: 0
     duration: 0.25
-    scale: 1.2
+    startScale: 1.2
+    endScale: 1.2
     moveSpeed: 0
     damagePer: 80
     waitTime: 0.1
@@ -531,7 +535,8 @@ MonoBehaviour:
     manaCost: 3
     cooltime: 0
     duration: 0.25
-    scale: 1.2
+    startScale: 1.2
+    endScale: 1.2
     moveSpeed: 0
     damagePer: 100
     waitTime: 0.1
@@ -543,7 +548,8 @@ MonoBehaviour:
     manaCost: 5
     cooltime: 0
     duration: 0.5
-    scale: 1.2
+    startScale: 1.2
+    endScale: 1.2
     moveSpeed: 0
     damagePer: 120
     waitTime: 0.1
@@ -555,7 +561,8 @@ MonoBehaviour:
     manaCost: 3
     cooltime: 0
     duration: 0.25
-    scale: 1.5
+    startScale: 1.5
+    endScale: 1.5
     moveSpeed: 0
     damagePer: 80
     waitTime: 0.1
@@ -567,7 +574,8 @@ MonoBehaviour:
     manaCost: 3
     cooltime: 0
     duration: 0.25
-    scale: 1.5
+    startScale: 1.5
+    endScale: 1.5
     moveSpeed: 0
     damagePer: 100
     waitTime: 0.1
@@ -579,7 +587,8 @@ MonoBehaviour:
     manaCost: 5
     cooltime: 0
     duration: 0.5
-    scale: 1.5
+    startScale: 1.5
+    endScale: 1.5
     moveSpeed: 0
     damagePer: 120
     waitTime: 0.1
@@ -591,7 +600,8 @@ MonoBehaviour:
     manaCost: 3
     cooltime: 0
     duration: 0.25
-    scale: 2
+    startScale: 2
+    endScale: 2
     moveSpeed: 0
     damagePer: 80
     waitTime: 0.1
@@ -603,7 +613,8 @@ MonoBehaviour:
     manaCost: 3
     cooltime: 0
     duration: 0.25
-    scale: 2
+    startScale: 2
+    endScale: 2
     moveSpeed: 0
     damagePer: 100
     waitTime: 0.1
@@ -615,7 +626,8 @@ MonoBehaviour:
     manaCost: 5
     cooltime: 0
     duration: 0.5
-    scale: 2
+    startScale: 2
+    endScale: 2
     moveSpeed: 0
     damagePer: 120
     waitTime: 0.1
@@ -627,10 +639,11 @@ MonoBehaviour:
     manaCost: 20
     cooltime: 10
     duration: 2
-    scale: 1
+    startScale: 1
+    endScale: 1.5
     moveSpeed: 0
     damagePer: 400
-    waitTime: 0.1
+    waitTime: 1
     knockbackPower: 2
     hitInterval: 0.5
   - itemId: 1506
@@ -639,10 +652,11 @@ MonoBehaviour:
     manaCost: 10
     cooltime: 5
     duration: 3
-    scale: 1
-    moveSpeed: 6
+    startScale: 1
+    endScale: 1
+    moveSpeed: 10
     damagePer: 200
-    waitTime: 0.1
+    waitTime: 1
     knockbackPower: 2
     hitInterval: 0
   - itemId: 1507
@@ -651,10 +665,11 @@ MonoBehaviour:
     manaCost: 30
     cooltime: 15
     duration: 3
-    scale: 1
+    startScale: 1
+    endScale: 2
     moveSpeed: 4
     damagePer: 500
-    waitTime: 0.1
+    waitTime: 2
     knockbackPower: 2
     hitInterval: 1
   StatBoostEffectList:

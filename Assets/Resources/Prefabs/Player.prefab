@@ -327,7 +327,7 @@ MonoBehaviour:
     hitParameterName: '@Hit'
   <LookLayerMask>k__BackingField:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 64
   <ForwardDotRange>k__BackingField: 0.5
   <RightDotRange>k__BackingField: 0.5
   <BackwardSpeedRatio>k__BackingField: 0.5
@@ -370,6 +370,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CurrentComboAttackIndex>k__BackingField: 0
   <ComboDuration>k__BackingField: 1
+  <IsAttacking>k__BackingField: 0
+  <EnemyLayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1419057431946147549
 MonoBehaviour:
   m_ObjectHideFlags: 0

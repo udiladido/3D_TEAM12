@@ -26,8 +26,8 @@ public class PlayerStateMachine : StateMachine
     public bool IsDodging { get; set; }
     public bool IsFalling { get; set; }
     public bool IsRunnung { get; set; }
-    
-    public bool IsAttacking { get; set; }
+
+    public bool IsAttacking => Combat?.IsAttacking ?? false;
     public Defines.CharacterAttackInputType AttackInputType { get; set; }
     
     public int JumpCount { get; set; }

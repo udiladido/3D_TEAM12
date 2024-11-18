@@ -38,16 +38,15 @@ public class PlayerBaseState : IState
     }
     protected void AttackHandle(Defines.CharacterAttackInputType attackInputType)
     {
-        stateMachine.IsAttacking = true;
-        // 동시 입력 방지
-        if (stateMachine.AttackInputType != Defines.CharacterAttackInputType.None
-            && stateMachine.AttackInputType != attackInputType) return;
-        stateMachine.AttackInputType = attackInputType;
+        if (attackInputType == Defines.CharacterAttackInputType.ComboAttack)
+            stateMachine.Combat.ComboAttack(stateMachine.AnimationData.ComboAttackHash, stateMachine.AnimationData.ComboAttackIndexHash, stateMachine.AnimationData.AttackSpeedHash);
+        else if (attackInputType == Defines.CharacterAttackInputType.Skill)
+            stateMachine.Combat.Skill(stateMachine.AnimationData.SkillHash, stateMachine.AnimationData.AttackSpeedHash);
     }
     protected void AttackCancelHandle(Defines.CharacterAttackInputType attackInputType)
     {
         // TODO : 키를 계속 누르고 있다가 떼면 할 일들..
-        stateMachine.IsAttacking = false;
+        stateMachine.Combat?.AttackCancel();
     }
     protected void MoveHandle(Vector2 inputValue)
     {
@@ -233,16 +232,7 @@ public class PlayerBaseState : IState
         if (stateMachine.Player.FixedCameraFacing == false)
             Rotate();
 
-        Attack();
         Move();
-    }
-    private void Attack()
-    {
-        if (stateMachine.IsAttacking == false) return;
-        if (stateMachine.AttackInputType == Defines.CharacterAttackInputType.ComboAttack)
-            stateMachine.Combat.ComboAttack(stateMachine.AnimationData.ComboAttackHash, stateMachine.AnimationData.ComboAttackIndexHash);
-        else if (stateMachine.AttackInputType == Defines.CharacterAttackInputType.Skill)
-            stateMachine.Combat.Skill(stateMachine.AnimationData.SkillHash);
     }
     public virtual void PhysicsUpdate()
     {

@@ -77,7 +77,6 @@ public class Player : MonoBehaviour
         Animator = GetComponentInChildren<Animator>();
         Equipment.LoadModel();
         Condition.SetData(job.jobStatEntity);
-        Combat.SetAttackSpeed(AnimationData.AttackSpeedHash, Condition.CurrentStat.attackSpeed);
         Revive();
     }
 

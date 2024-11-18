@@ -5,8 +5,6 @@ using System.Collections.Generic;
 [Serializable]
 public class ShopEntity : EntityBase
 {
-    public string displayTitle;
-    public string description;
     
     public List<ShopSaleEntity> shopSaleEntities;
 }

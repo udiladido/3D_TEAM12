@@ -4,8 +4,6 @@ using System.Collections.Generic;
 [Serializable]
 public class ItemEntity : EntityBase
 {
-    public string displayTitle;
-    public string description;
     public Defines.ItemType itemType;
     public Defines.ItemRarityType rarityType;
     public string dropPrefabPath;
@@ -48,6 +46,7 @@ public class ItemWeaponCombatEntity
     public float damagePer; // 데미지(본체 공격력 퍼센트)
     public float waitTime; // x초 후 발사(애니메이션 타이밍 맞추기용)
     public float knockbackPower; // 넉백 파워
+    public float hitInterval; // 피격 간격
 }
 
 [Serializable]

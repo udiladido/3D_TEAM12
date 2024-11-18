@@ -76,8 +76,8 @@ public class InputController : BaseController
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
-            OnAttackEvent?.Invoke(Defines.CharacterAttackInputType.Attack);
+            OnAttackEvent?.Invoke(Defines.CharacterAttackInputType.Skill);
         else if (context.phase == InputActionPhase.Canceled)
-            OnAttackCancelEvent?.Invoke(Defines.CharacterAttackInputType.Attack);
+            OnAttackCancelEvent?.Invoke(Defines.CharacterAttackInputType.Skill);
     }
 }

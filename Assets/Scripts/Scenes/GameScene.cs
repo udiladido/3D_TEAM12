@@ -13,35 +13,6 @@ public class GameScene : SceneBase
         
         Managers.UI.LoadSceneUI<UIGameScene>();
 
-        Managers.Coroutine.StartCoroutine("Dummy", Dummy());
-    }
-
-    private IEnumerator Dummy()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            GameObject go = SpawnDummy(i);
-            yield return new WaitForSeconds(0.5f);
-            StartCoroutine(DespawnDummy(go));
-            yield return new WaitForSeconds(0.5f);
-        }
-    }
-
-    private GameObject SpawnDummy(int num)
-    {
-        GameObject go = Managers.Pool.Spawn("Dummy");
-        Vector3 pos = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
-        go.transform.position = pos;
-        SpriteRenderer sr = go.GetComponent<SpriteRenderer>();
-        sr.sprite = Managers.Resource.Load<Sprite>($"Textures/status/status_{num}", true);
-        return go;
-    }
-
-    private IEnumerator DespawnDummy(GameObject go)
-    {
-        yield return new WaitForSeconds(2f);
-        Managers.Sound.PlaySFX(Random.Range(0,2) == 0 ? "Damaged" : "HitResource", go.transform.position);
-        Managers.Pool.Despawn(go);
     }
 
 

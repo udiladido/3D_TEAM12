@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public class AnimationData
@@ -14,15 +15,17 @@ public class AnimationData
     [SerializeField] private string deadParameterName = "Dead";
     
     [SerializeField] private string runBlendParameterName = "RunBlend";
+    [SerializeField] private string moveSpeedParameterName = "MoveSpeed";
+
     
     [SerializeField] private string airParameterName = "@Air";
     [SerializeField] private string jumpParameterName = "Jump";
     [SerializeField] private string fallParameterName = "Fall";
 
-    [SerializeField] private string attackParameterName = "@Attack";
+    [SerializeField] private string skillParameterName = "@Skill";
     [SerializeField] private string comboAttackParameterName = "@ComboAttack";
     [SerializeField] private string comboAttackIndexParameterName = "@ComboAttackIndex";
-    
+    [SerializeField] private string attackSpeedParameterName = "AttackSpeed";
     
     [SerializeField] private string hitParameterName = "@Hit";
     
@@ -36,14 +39,16 @@ public class AnimationData
     public int RightHash { get; private set; }
     public int DeadHash { get; private set; }
     public int RunBlendHash { get; private set; }
+    public int MoveSpeedHash { get; private set; }
     
     public int AirHash { get; private set; }
     public int JumpHash { get; private set; }
     public int FallHash { get; private set; }
     
-    public int AttackHash { get; private set; }
+    public int SkillHash { get; private set; }
     public int ComboAttackHash { get; private set; }
     public int ComboAttackIndexHash { get; private set; }
+    public int AttackSpeedHash { get; private set; }
     
     public int HitHash { get; private set; }
 
@@ -62,9 +67,11 @@ public class AnimationData
         AirHash = Animator.StringToHash(airParameterName);
         JumpHash = Animator.StringToHash(jumpParameterName);
         FallHash = Animator.StringToHash(fallParameterName);
-        AttackHash = Animator.StringToHash(attackParameterName);
+        SkillHash = Animator.StringToHash(skillParameterName);
         ComboAttackHash = Animator.StringToHash(comboAttackParameterName);
         ComboAttackIndexHash = Animator.StringToHash(comboAttackIndexParameterName);
+        AttackSpeedHash = Animator.StringToHash(attackSpeedParameterName);
         HitHash = Animator.StringToHash(hitParameterName);
+        MoveSpeedHash = Animator.StringToHash(moveSpeedParameterName);
     }
 }

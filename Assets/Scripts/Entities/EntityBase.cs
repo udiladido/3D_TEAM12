@@ -8,4 +8,6 @@ using System;
 public class EntityBase
 {
     public int id;
+    public string displayTitle;
+    public string description;
 }

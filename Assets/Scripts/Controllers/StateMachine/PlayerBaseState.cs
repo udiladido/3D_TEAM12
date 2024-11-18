@@ -240,12 +240,19 @@ public class PlayerBaseState : IState
     {
         if (stateMachine.IsAttacking == false) return;
         if (stateMachine.AttackInputType == Defines.CharacterAttackInputType.ComboAttack)
-            stateMachine.Combat.ComboAttack(stateMachine.AnimationData.AttackHash, stateMachine.AnimationData.ComboAttackIndexHash);
-        else if (stateMachine.AttackInputType == Defines.CharacterAttackInputType.Attack)
-            stateMachine.Combat.Attack(stateMachine.AnimationData.AttackHash);
+            stateMachine.Combat.ComboAttack(stateMachine.AnimationData.ComboAttackHash, stateMachine.AnimationData.ComboAttackIndexHash);
+        else if (stateMachine.AttackInputType == Defines.CharacterAttackInputType.Skill)
+            stateMachine.Combat.Skill(stateMachine.AnimationData.SkillHash);
     }
     public virtual void PhysicsUpdate()
     {
 
+    }
+
+    protected float GetAnimationMoveSpeed()
+    {
+        float moveSpeed = GetMoveSpeed(stateMachine.MovementType);
+
+        return moveSpeed / Defines.MOVE_ANIMATION_SPEED_OFFSET;
     }
 }

@@ -16,6 +16,7 @@ public class PlayerDodgeState : PlayerRunState
         StartAnimation(stateMachine.AnimationData.GroundHash);
         StartAnimation(stateMachine.AnimationData.RunHash);
         StartAnimation(stateMachine.AnimationData.DodgeHash);
+        stateMachine.Animator.SetFloat(stateMachine.AnimationData.MoveSpeedHash, GetAnimationMoveSpeed());
         currentMovementType = stateMachine.MovementType;
         switch (currentMovementType)
         {
@@ -45,6 +46,7 @@ public class PlayerDodgeState : PlayerRunState
         StopAnimation(stateMachine.AnimationData.GroundHash);
         StopAnimation(stateMachine.AnimationData.RunHash);
         StopAnimation(stateMachine.AnimationData.DodgeHash);
+        stateMachine.Animator.SetFloat(stateMachine.AnimationData.MoveSpeedHash, 1f);
         switch (currentMovementType)
         {
             case Defines.CharacterMovementType.Backward:

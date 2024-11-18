@@ -209,7 +209,7 @@ MonoBehaviour:
     equipableEntity:
       itemId: 1501
       equipmentType: 1
-      equipedPrefabPath: /Equips/Weapon
+      equipedPrefabPath: /Equips/Sword_1H
       combatStyleType: 1
       weaponCombatEntities:
       - itemId: 1501
@@ -223,6 +223,7 @@ MonoBehaviour:
         damagePer: 80
         waitTime: 0.1
         knockbackPower: 1
+        hitInterval: 0
       - itemId: 1501
         comboIndex: 2
         projectilePrefabPath: /Projectiles/ComboAttack2
@@ -234,6 +235,7 @@ MonoBehaviour:
         damagePer: 100
         waitTime: 0.1
         knockbackPower: 1
+        hitInterval: 0
       - itemId: 1501
         comboIndex: 3
         projectilePrefabPath: /Projectiles/ComboAttack3
@@ -245,6 +247,7 @@ MonoBehaviour:
         damagePer: 120
         waitTime: 0.1
         knockbackPower: 1
+        hitInterval: 0
     statBoostEffectEntities:
     - itemId: 1501
       statType: 3
@@ -261,7 +264,7 @@ MonoBehaviour:
     equipableEntity:
       itemId: 1502
       equipmentType: 1
-      equipedPrefabPath: /Equips/Weapon
+      equipedPrefabPath: /Equips/Sword_1H
       combatStyleType: 1
       weaponCombatEntities:
       - itemId: 1502
@@ -275,6 +278,7 @@ MonoBehaviour:
         damagePer: 80
         waitTime: 0.1
         knockbackPower: 1
+        hitInterval: 0
       - itemId: 1502
         comboIndex: 2
         projectilePrefabPath: /Projectiles/ComboAttack2
@@ -286,6 +290,7 @@ MonoBehaviour:
         damagePer: 100
         waitTime: 0.1
         knockbackPower: 1
+        hitInterval: 0
       - itemId: 1502
         comboIndex: 3
         projectilePrefabPath: /Projectiles/ComboAttack3
@@ -297,6 +302,7 @@ MonoBehaviour:
         damagePer: 120
         waitTime: 0.1
         knockbackPower: 1
+        hitInterval: 0
     statBoostEffectEntities:
     - itemId: 1502
       statType: 3
@@ -313,7 +319,7 @@ MonoBehaviour:
     equipableEntity:
       itemId: 1503
       equipmentType: 1
-      equipedPrefabPath: /Equips/Weapon
+      equipedPrefabPath: /Equips/Sword_1H
       combatStyleType: 1
       weaponCombatEntities:
       - itemId: 1503
@@ -327,6 +333,7 @@ MonoBehaviour:
         damagePer: 80
         waitTime: 0.1
         knockbackPower: 1
+        hitInterval: 0
       - itemId: 1503
         comboIndex: 2
         projectilePrefabPath: /Projectiles/ComboAttack2
@@ -338,6 +345,7 @@ MonoBehaviour:
         damagePer: 100
         waitTime: 0.1
         knockbackPower: 1
+        hitInterval: 0
       - itemId: 1503
         comboIndex: 3
         projectilePrefabPath: /Projectiles/ComboAttack3
@@ -349,6 +357,7 @@ MonoBehaviour:
         damagePer: 120
         waitTime: 0.1
         knockbackPower: 1
+        hitInterval: 0
     statBoostEffectEntities:
     - itemId: 1503
       statType: 3
@@ -370,7 +379,7 @@ MonoBehaviour:
     equipableEntity:
       itemId: 1504
       equipmentType: 1
-      equipedPrefabPath: /Equips/Weapon
+      equipedPrefabPath: /Equips/Sword_1H
       combatStyleType: 1
       weaponCombatEntities:
       - itemId: 1504
@@ -384,6 +393,7 @@ MonoBehaviour:
         damagePer: 80
         waitTime: 0.1
         knockbackPower: 1
+        hitInterval: 0
       - itemId: 1504
         comboIndex: 2
         projectilePrefabPath: /Projectiles/ComboAttack2
@@ -395,6 +405,7 @@ MonoBehaviour:
         damagePer: 100
         waitTime: 0.1
         knockbackPower: 1
+        hitInterval: 0
       - itemId: 1504
         comboIndex: 3
         projectilePrefabPath: /Projectiles/ComboAttack3
@@ -406,6 +417,7 @@ MonoBehaviour:
         damagePer: 120
         waitTime: 0.1
         knockbackPower: 1
+        hitInterval: 0
     statBoostEffectEntities:
     - itemId: 1504
       statType: 3
@@ -427,7 +439,7 @@ MonoBehaviour:
     equipableEntity:
       itemId: 1505
       equipmentType: 1
-      equipedPrefabPath: /Equips/Weapon
+      equipedPrefabPath: /Equips/Sword_2H
       combatStyleType: 2
       weaponCombatEntities:
       - itemId: 1505
@@ -441,6 +453,7 @@ MonoBehaviour:
         damagePer: 400
         waitTime: 0.1
         knockbackPower: 2
+        hitInterval: 0.5
     statBoostEffectEntities:
     - itemId: 1505
       statType: 3
@@ -458,7 +471,7 @@ MonoBehaviour:
     equipableEntity:
       itemId: 1506
       equipmentType: 1
-      equipedPrefabPath: /Equips/Weapon
+      equipedPrefabPath: /Equips/CrossBox_2H
       combatStyleType: 3
       weaponCombatEntities:
       - itemId: 1506
@@ -472,6 +485,7 @@ MonoBehaviour:
         damagePer: 200
         waitTime: 0.1
         knockbackPower: 2
+        hitInterval: 0
     statBoostEffectEntities:
     - itemId: 1506
       statType: 3
@@ -489,7 +503,7 @@ MonoBehaviour:
     equipableEntity:
       itemId: 1507
       equipmentType: 1
-      equipedPrefabPath: /Equips/Weapon
+      equipedPrefabPath: /Equips/Staff_2H
       combatStyleType: 4
       weaponCombatEntities:
       - itemId: 1507
@@ -503,6 +517,7 @@ MonoBehaviour:
         damagePer: 500
         waitTime: 0.1
         knockbackPower: 2
+        hitInterval: 1
     statBoostEffectEntities:
     - itemId: 1507
       statType: 3

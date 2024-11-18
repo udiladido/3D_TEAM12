@@ -1,16 +1,20 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DBManager : IManager
 {
     private const string dataListDirPath = "SO/DataList";
 
+    private Dictionary<int, EntityBase> jobDb = new Dictionary<int, EntityBase>();
     private Dictionary<int, EntityBase> itemDb = new Dictionary<int, EntityBase>();
     private Dictionary<int, EntityBase> monsterDb = new Dictionary<int, EntityBase>();
     private Dictionary<int, EntityBase> shopDb = new Dictionary<int, EntityBase>();
 
     public void Init()
     {
+        ListJobDb();
         LoadItemDb();
         LoadMonsterDb();
         LoadShopDb();
@@ -19,6 +23,7 @@ public class DBManager : IManager
     {
         
     }
+    
 
     private T LoadDataList<T>() where T : ScriptableObject
     {
@@ -27,6 +32,13 @@ public class DBManager : IManager
             Debug.LogError($"Failed to load {nameof(dataListDirPath)}");
         
         return dataList;
+    }
+    
+    private void ListJobDb()
+    {
+        JobDataList jobDataList = LoadDataList<JobDataList>();
+        foreach (JobEntity jobEntity in jobDataList.JobList)
+            jobDb.Add(jobEntity.id, jobEntity);
     }
 
     private void LoadItemDb()
@@ -78,6 +90,13 @@ public class DBManager : IManager
                 return value as T;
             }
         }
+        else if (typeof(T) == typeof(JobEntity))
+        {
+            if (jobDb.TryGetValue(id, out EntityBase value))
+            {
+                return value as T;
+            }
+        }
 
         return null;
     }
@@ -90,5 +109,28 @@ public class DBManager : IManager
             return monsterDb.Count;
 
         return 0;
+    }
+    
+    public List<T> GetAll<T>() where T : EntityBase
+    {
+        List<T> list = new List<T>();
+        if (typeof(T) == typeof(ItemEntity))
+        {
+            return itemDb.Values.Select(s => s as T).ToList();
+        }
+        else if (typeof(T) == typeof(MonsterEntity))
+        {
+            return monsterDb.Values.Select(s => s as T).ToList();
+        }
+        else if (typeof(T) == typeof(ShopEntity))
+        {
+            return shopDb.Values.Select(s => s as T).ToList();
+        }
+        else if (typeof(T) == typeof(JobEntity))
+        {
+            return jobDb.Values.Select(s => s as T).ToList();
+        }
+
+        return Array.Empty<T>().ToList();
     }
 }

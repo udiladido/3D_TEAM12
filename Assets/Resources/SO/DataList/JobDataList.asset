@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa5c429962054fcb92034f8a358c6739, type: 3}
+  m_Name: JobDataList
+  m_EditorClassIdentifier: 
+  JobList:
+  - id: 11
+    displayTitle: "\uBC14\uBC14\uB9AC\uC548"
+    description: "\uC6A9\uB9F9\uD55C \uBC14\uBC14\uB9AC\uC548, \uC77C\uB2E8 \uACF5\uACA9\uD558\uACE0
+      \uBCF8\uB2E4"
+    image: /Textures/Job/barbarian_photo
+    prefabPath: /Jobs/Barbarian
+    jobStatEntity:
+      jobId: 11
+      maxHp: 300
+      passiveHpRegen: 5
+      maxMp: 150
+      passiveMpRegen: 5
+      attack: 10
+      armor: 5
+      attackSpeed: 1
+      moveSpeed: 3.5
+  - id: 12
+    displayTitle: "\uAE30\uC0AC"
+    description: "\uC2E0\uC911\uD55C \uAE30\uC0AC, \uACF5\uACA9 \uAE30\uD68C\uB97C
+      \uB178\uB9AC\uC790"
+    image: /Textures/Job/knight_photo
+    prefabPath: /Jobs/Knight
+    jobStatEntity:
+      jobId: 12
+      maxHp: 250
+      passiveHpRegen: 5
+      maxMp: 200
+      passiveMpRegen: 5
+      attack: 8
+      armor: 8
+      attackSpeed: 1
+      moveSpeed: 4
+  - id: 13
+    displayTitle: "\uB3C4\uC801"
+    description: "\uC7AC\uBE60\uB978 \uB3C4\uC801, \uCE58\uACE0 \uBE60\uC9C0\uAE30\uC5D0
+      \uB300\uAC00"
+    image: /Textures/Job/rogue_photo
+    prefabPath: /Jobs/Rouge
+    jobStatEntity:
+      jobId: 13
+      maxHp: 200
+      passiveHpRegen: 3
+      maxMp: 200
+      passiveMpRegen: 5
+      attack: 5
+      armor: 5
+      attackSpeed: 1.5
+      moveSpeed: 4.5
+  - id: 14
+    displayTitle: "\uB9C8\uBC95\uC0AC"
+    description: "\uD604\uBA85\uD55C \uB9C8\uBC95\uC0AC, \uC804\uB7B5\uC801\uC73C\uB85C
+      \uC2F8\uC6B0\uC790"
+    image: /Textures/Job/mage_photo
+    prefabPath: /Jobs/Mage
+    jobStatEntity:
+      jobId: 14
+      maxHp: 150
+      passiveHpRegen: 3
+      maxMp: 300
+      passiveMpRegen: 10
+      attack: 10
+      armor: 10
+      attackSpeed: 1
+      moveSpeed: 3

@@ -15,4 +15,16 @@ public struct StatData
     public float armor;
     public float attackSpeed;
     public float moveSpeed;
+
+    public StatData(JobStatEntity stat)
+    {
+        this.maxHp = stat.maxHp;
+        this.passiveHpRegen = stat.passiveHpRegen;
+        this.maxMp = stat.maxMp;
+        this.passiveMpRegen = stat.passiveMpRegen;
+        this.attack = stat.attack;
+        this.armor = stat.armor;
+        this.attackSpeed = stat.attackSpeed;
+        this.moveSpeed = stat.moveSpeed;
+    }
 }

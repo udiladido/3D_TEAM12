@@ -8,6 +8,7 @@ public static class Defines
         None,
         TitleScene,
         GameScene,
+        DevScene
     }
 
     /// <summary>
@@ -113,16 +114,16 @@ public static class Defines
     {
         None,
         ComboAttack,
-        Attack,
+        Skill,
     }
 
     public enum CharacterCombatStyleType
     {
         None, // Base Layer Index
         ComboAttack,
-        MeleeAttack,
-        RangeAttack,
-        MagicAttack,
+        MeleeSkill,
+        RangedSkill,
+        MagicSkill,
     }
 
     
@@ -130,4 +131,7 @@ public static class Defines
     public const string ITEM_RARIY_RARE_COLOR = "0070dd";
     public const string ITEM_RARIY_EPIC_COLOR = "a335ee";
     public const string ITEM_RARIY_UNIQUE_COLOR = "ff8000";
+
+    public const float MOVE_ANIMATION_SPEED_OFFSET = 3.5f;
+    public const float ATTACK_ANIMATION_SPEED_OFFSET = 1f;
 }

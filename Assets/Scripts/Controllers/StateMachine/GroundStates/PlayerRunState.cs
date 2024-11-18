@@ -10,8 +10,8 @@ public class PlayerRunState : PlayerGroundState
     {
         base.Enter();
         StartAnimation(stateMachine.AnimationData.RunHash);
+        stateMachine.Animator.SetFloat(stateMachine.AnimationData.MoveSpeedHash, GetAnimationMoveSpeed());
         currentMovementType = stateMachine.MovementType;
-
         switch (currentMovementType)
         {
             case Defines.CharacterMovementType.Backward:
@@ -33,6 +33,7 @@ public class PlayerRunState : PlayerGroundState
     {
         base.Exit();
         StopAnimation(stateMachine.Player.AnimationData.RunHash);
+        stateMachine.Animator.SetFloat(stateMachine.AnimationData.MoveSpeedHash, 1f);
         switch (currentMovementType)
         {
             case Defines.CharacterMovementType.Backward:

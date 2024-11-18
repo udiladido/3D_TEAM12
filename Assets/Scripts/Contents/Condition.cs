@@ -8,10 +8,10 @@ public class Condition : MonoBehaviour, IDamageable
     public event Action<float, float> OnMpChanged;
     public event Action<StatData> OnStatChanged;
     public event Action OnDead;
-    public event Action OnHit; 
+    public event Action OnHit;
 
     [field: SerializeField] public StatData CurrentStat { get; private set; }
-
+    private JobStatEntity statEntity;
     public float currentHp;
     public float currentMp;
     public bool IsDead;
@@ -23,9 +23,10 @@ public class Condition : MonoBehaviour, IDamageable
         FullRecovery();
     }
 
-    public void SetData(StatData statData, bool isFullRecovery = false)
+    public void SetData(JobStatEntity statEntity, bool isFullRecovery = false)
     {
-        CurrentStat = statData;
+        this.statEntity = statEntity;
+        CurrentStat = new StatData(statEntity);
         OnStatChanged?.Invoke(CurrentStat);
 
         if (isFullRecovery) FullRecovery();

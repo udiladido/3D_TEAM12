@@ -8,7 +8,20 @@ public class Equipment : MonoBehaviour, IEquipable
     private ModelPivot modelPivot;
     private void Awake()
     {
+        LoadModel();
+    }
+
+    public void LoadModel()
+    {
+        UnLoadModel();
         modelPivot = GetComponentInChildren<ModelPivot>();
+    }
+
+    public void UnLoadModel()
+    {
+        if (modelPivot == null) return;
+        Managers.Resource.Destroy(modelPivot.gameObject);
+        modelPivot = null;
     }
 
     public void Equip(ItemEntity item)
@@ -18,7 +31,7 @@ public class Equipment : MonoBehaviour, IEquipable
         {
             UnEquip(EquippedComboWeapon);
             EquippedComboWeapon = item;
-            modelPivot?.EquipLeftHand(item.equipableEntity);
+            modelPivot?.EquipRightHand(item.equipableEntity);
         }
         else
         {
@@ -26,7 +39,7 @@ public class Equipment : MonoBehaviour, IEquipable
             EquippedWeapon = item;
             modelPivot?.EquipLeftHand(item.equipableEntity);
         }
-        
+
     }
     public void UnEquip(ItemEntity item)
     {
@@ -44,7 +57,7 @@ public class Equipment : MonoBehaviour, IEquipable
     }
     public ItemEquipableEntity GetWeaponInfo(Defines.CharacterAttackInputType inputType)
     {
-        if (inputType == Defines.CharacterAttackInputType.Attack)
+        if (inputType == Defines.CharacterAttackInputType.Skill)
             return EquippedWeapon?.equipableEntity;
         else if (inputType == Defines.CharacterAttackInputType.ComboAttack)
             return EquippedComboWeapon?.equipableEntity;

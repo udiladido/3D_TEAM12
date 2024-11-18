@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public Camera MainCamera { get; private set; }
     public ForceReceiveController ForceReceiver { get; private set; }
     public Combat Combat { get; private set; }
+    public Equipment Equipment { get; private set; }
 
     private PlayerStateMachine stateMachine;
 
@@ -43,31 +44,41 @@ public class Player : MonoBehaviour
     public float JumpForce { get; private set; } = 10f;
 
     [field: SerializeField] public bool FixedCameraFacing { get; private set; }
-
+    private bool canControl = true;
     private void Awake()
     {
+        MainCamera = Camera.main;
         Input = GetComponent<InputController>();
         Animator = GetComponentInChildren<Animator>();
         Condition = GetComponent<Condition>();
         Controller = GetComponent<CharacterController>();
-        MainCamera = Camera.main;
         ForceReceiver = GetComponent<ForceReceiveController>();
         Combat = GetComponent<Combat>();
+        Equipment = GetComponent<Equipment>();
 
         stateMachine = new PlayerStateMachine(this);
         AnimationData.Initialize();
     }
 
-    private void Start()
-    {
-        Revive();
-        Condition.OnHit += Hit;
-    }
-
     private void Update()
     {
+        if (canControl == false) return;
+        
         stateMachine.HandleInput();
         stateMachine.Update();
+    }
+
+    public void SetJob(JobEntity job)
+    {
+        if (Animator != null) Animator = null;
+        GameObject jobGo = Managers.Resource.Instantiate(job.prefabPath, transform);
+        jobGo.transform.localPosition = Vector3.zero;
+        if (Equipment == null) Equipment = GetComponent<Equipment>();
+        Animator = GetComponentInChildren<Animator>();
+        Equipment.LoadModel();
+        Condition.SetData(job.jobStatEntity);
+        Combat.SetAttackSpeed(AnimationData.AttackSpeedHash, Condition.CurrentStat.attackSpeed);
+        Revive();
     }
 
     private void FixedUpdate()
@@ -78,14 +89,18 @@ public class Player : MonoBehaviour
     public void Die()
     {
         Condition.OnDead -= Die;
+        Condition.OnHit -= Hit;
         stateMachine.ChangeState(stateMachine.DeadState);
+        canControl = false;
     }
 
     public void Revive()
     {
         Condition.OnDead += Die;
+        Condition.OnHit += Hit;
         Condition.FullRecovery();
         stateMachine.ChangeState(stateMachine.IdleState);
+        canControl = true;
     }
 
     public void Hit()

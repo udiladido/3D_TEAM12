@@ -100,6 +100,9 @@ public class ResourceManager : IManager
 
     public GameObject Instantiate(string prefabPath, Transform parent = null)
     {
+        if (prefabPath.StartsWith("/"))
+            prefabPath = prefabPath.Substring(1);
+        
         GameObject prefab = Load<GameObject>($"Prefabs/{prefabPath}");
         if (prefab == null)
         {
@@ -107,7 +110,9 @@ public class ResourceManager : IManager
             return null;
         }
 
-        return GameObject.Instantiate(prefab, parent);
+        GameObject go = GameObject.Instantiate(prefab, parent);
+        go.name = prefab.name;
+        return go;
     }
 
     public void Destroy(GameObject go)

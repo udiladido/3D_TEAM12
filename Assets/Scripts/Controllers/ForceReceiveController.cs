@@ -33,10 +33,6 @@ public class ForceReceiveController : MonoBehaviour
     private void Update()
     {
         bool isOnSlope = IsOnSlope();
-        // bool isGrounded = IsGrounded();
-
-        Debug.Log($"isGrounded: {controller.isGrounded}, isOnSlope: {isOnSlope}");
-
         if (verticalVelocity < 0f && controller.isGrounded && isOnSlope)
         {
             verticalVelocity += Physics.gravity.y * controller.velocity.magnitude * Time.deltaTime;

@@ -31,7 +31,7 @@ public class PlayerStateMachine : StateMachine
     public Defines.CharacterAttackInputType AttackInputType { get; set; }
     
     public int JumpCount { get; set; }
-
+    
     public PlayerStateMachine(Player player)
     {
         Player = player;

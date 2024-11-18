@@ -1966,7 +1966,7 @@ GameObject:
   - component: {fileID: 9059755160675577218}
   - component: {fileID: 5839881256867360646}
   m_Layer: 0
-  m_Name: Rogue
+  m_Name: Rouge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

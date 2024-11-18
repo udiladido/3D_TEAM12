@@ -316,12 +316,14 @@ MonoBehaviour:
     rightParameterName: RightStep
     deadParameterName: Dead
     runBlendParameterName: RunBlend
+    moveSpeedParameterName: MoveSpeed
     airParameterName: '@Air'
     jumpParameterName: Jump
     fallParameterName: Fall
-    attackParameterName: '@Attack'
+    skillParameterName: '@Skill'
     comboAttackParameterName: '@ComboAttack'
     comboAttackIndexParameterName: ComboAttackIndex
+    attackSpeedParameterName: AttackSpeed
     hitParameterName: '@Hit'
   <LookLayerMask>k__BackingField:
     serializedVersion: 2
@@ -351,7 +353,7 @@ MonoBehaviour:
   groundCheckSize: {x: 0.7, y: 0.2, z: 0.7}
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 65
   groundCheck: {fileID: 6486736539937772545}
   slopeRayDistance: 0.5
 --- !u!114 &9150884198949136996

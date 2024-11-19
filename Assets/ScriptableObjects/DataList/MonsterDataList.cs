@@ -13,13 +13,13 @@ public class MonsterDataList : ScriptableObject
         if (sheet is MonsterSheets monsterSheets)
         {
             monsterDataList.MonsterList = monsterSheets.MonsterList;
-            foreach (var monster in monsterDataList.MonsterList)
-            {
-                monster.MonsterDropItemEntities = new List<MonsterDropItemEntity>();
-                foreach (var monsterDropItem in monsterSheets.MonsterDropItemList)
-                    if (monsterDropItem.monsterId == monster.id)
-                        monster.MonsterDropItemEntities.Add(monsterDropItem);
-            }
+            //foreach (var monster in monsterDataList.MonsterList)
+            //{
+            //    monster.MonsterDropItemEntities = new List<MonsterDropItemEntity>();
+            //    foreach (var monsterDropItem in monsterSheets.MonsterDropItemList)
+            //        if (monsterDropItem.monsterId == monster.id)
+            //            monster.MonsterDropItemEntities.Add(monsterDropItem);
+            //}
         }
 
         return monsterDataList;

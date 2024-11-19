@@ -8,7 +8,27 @@ public class MonsterEntity : EntityBase
     public string prefabPath;
     public string iconPath;
 
-    public List<MonsterDropItemEntity> MonsterDropItemEntities;
+    public float colliderRadius;
+    public float colliderCenterY;
+
+    public float maxHp;
+    public float armor;
+    public float moveSpeed;
+    public float attractDistance;
+
+    public List<MonsterAttack> monsterAttackList;
+    //public List<MonsterDropItemEntity> MonsterDropItemEntities;
+}
+
+[Serializable]
+public class MonsterAttack
+{
+    public string projectilePrefabPath;
+    public float selectWeight;
+
+    public float attackRange;
+    public float attackDamage;
+    public float attackSpeed;
 }
 
 [Serializable]

@@ -8,7 +8,7 @@ public class PlayerStateMachine : StateMachine
     public Condition Condition => Player?.Condition;
     public InputController Input => Player?.Input;
     public CharacterController Controller => Player?.Controller;
-    public Combat Combat => Player?.Combat;
+    public CombatSlots CombatSlots => Player?.CombatSlots;
     
     public PlayerIdleState IdleState { get; private set; }
     public PlayerRunState RunState { get; private set; }
@@ -26,8 +26,7 @@ public class PlayerStateMachine : StateMachine
     public bool IsDodging { get; set; }
     public bool IsFalling { get; set; }
     public bool IsRunnung { get; set; }
-    
-    public bool IsAttacking { get; set; }
+
     public Defines.CharacterAttackInputType AttackInputType { get; set; }
     
     public int JumpCount { get; set; }

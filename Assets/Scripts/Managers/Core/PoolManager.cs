@@ -37,7 +37,9 @@ public class PoolManager : IManager
     public GameObject Spawn(string prefabPathWithoutPrefabRoot, Transform parent = null)
     {
         string name = prefabPathWithoutPrefabRoot.Substring(prefabPathWithoutPrefabRoot.LastIndexOf('/') + 1);
-
+        if (prefabPathWithoutPrefabRoot.StartsWith("/"))
+            prefabPathWithoutPrefabRoot = prefabPathWithoutPrefabRoot.Substring(1);
+        
         if (poolDict.TryGetValue(name, out ObjectPool pool) == false)
         {
             GameObject prefab = Managers.Resource.Load<GameObject>($"Prefabs/{prefabPathWithoutPrefabRoot}");

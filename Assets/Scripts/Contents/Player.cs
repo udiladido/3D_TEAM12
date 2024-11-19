@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public Animator Animator { get; private set; }
     public Camera MainCamera { get; private set; }
     public ForceReceiveController ForceReceiver { get; private set; }
-    public Combat Combat { get; private set; }
+    public CombatSlots CombatSlots { get; private set; }
     public Equipment Equipment { get; private set; }
 
     private PlayerStateMachine stateMachine;
@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
         Condition = GetComponent<Condition>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiveController>();
-        Combat = GetComponent<Combat>();
+        CombatSlots = GetComponent<CombatSlots>();
         Equipment = GetComponent<Equipment>();
 
         stateMachine = new PlayerStateMachine(this);
@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
         Animator = GetComponentInChildren<Animator>();
         Equipment.LoadModel();
         Condition.SetData(job.jobStatEntity);
-        Combat.SetAttackSpeed(AnimationData.AttackSpeedHash, Condition.CurrentStat.attackSpeed);
+        CombatSlots.Init(AnimationData);
         Revive();
     }
 

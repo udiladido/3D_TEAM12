@@ -129,6 +129,7 @@ public class Managers : MonoBehaviour
         Pool?.Clear();
         Sound?.Clear();
         Coroutine?.Clear();
+        Game?.Clear();
     }
 
 }

@@ -11,8 +11,8 @@ public abstract class UIBase : InitBase
 
     protected Dictionary<Type, UnityEngine.Object[]> _objects = new Dictionary<Type, UnityEngine.Object[]>();
 
-    [SerializeField] float power = 0.1f;
-    [SerializeField] float duration = 0.2f;
+    [SerializeField] protected float power = 0.1f;
+    [SerializeField] protected float duration = 0.2f;
 
     [SerializeField] private Transform animationRoot;
 

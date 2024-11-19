@@ -28,8 +28,6 @@ public abstract class UIBase : InitBase
 
     public virtual void Open(Defines.UIAnimationType type)
     {
-        // TODO : Open Animation
-
 
         if (animationRoot == null)
         {
@@ -60,7 +58,7 @@ public abstract class UIBase : InitBase
 
     public virtual void Close(Defines.UIAnimationType type)
     {
-        // TODO : Close Animation
+
 
         if (animationRoot == null)
         {
@@ -85,10 +83,7 @@ public abstract class UIBase : InitBase
 
     }
 
-  
-
- 
-    protected void Bind<T>(Type type) where T : UnityEngine.Object
+      protected void Bind<T>(Type type) where T : UnityEngine.Object
     {
         string[] names = Enum.GetNames(type);
         UnityEngine.Object[] objects = new UnityEngine.Object[names.Length];
@@ -112,6 +107,7 @@ public abstract class UIBase : InitBase
     protected void BindButton(Type type) { Bind<Button>(type); }
     protected void BindToggle(Type type) { Bind<Toggle>(type); }
 
+    protected void BindSlider(Type type) { Bind<Slider>(type); }
 
     protected T Get<T>(int idx) where T : UnityEngine.Object
     {
@@ -127,6 +123,10 @@ public abstract class UIBase : InitBase
     protected Button GetButton(Enum idx) { return Get<Button>((int)(object)idx); }
     protected Image GetImage(Enum idx) { return Get<Image>((int)(object)idx); }
     protected Toggle GetToggle(Enum idx) { return Get<Toggle>((int)(object)idx); }
+
+    protected Slider GetSlider(Enum idx) { return Get<Slider>((int)(object)idx); }
+
+
 
     public static void BindEvent(GameObject go, Action action = null, Action<BaseEventData> dragAction = null, Defines.UIEvent type = Defines.UIEvent.Click)
     {

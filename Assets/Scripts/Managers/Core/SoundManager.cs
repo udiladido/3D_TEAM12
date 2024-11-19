@@ -25,13 +25,19 @@ public class SoundManager : IManager
     }
     private AudioSourcePool audioSourcePool;
     
-
     private AudioMixer masterMixer;
+
+   
+
 
     private int defaultCapacity = 10;
     private int maxSize = 20;
     
     private bool initialized;
+
+    private float masterVolume;
+    private float bgmVolume;
+    private float sfxVolume;
 
     public void Init()
     {
@@ -117,16 +123,48 @@ public class SoundManager : IManager
         masterMixer.SetFloat("SFX", LinearToDecibel(volume));
     }
 
+    public void SetSFXVolume()
+    {
+        if (masterMixer == null) return;
+        masterMixer.SetFloat("SFX", LinearToDecibel(sfxVolume));
+    }
+
     public void SetBGMVolume(float volume)
     {
         if (masterMixer == null) return;
         masterMixer.SetFloat("BGM", LinearToDecibel(volume));
     }
 
+    public void SetBGMVolume()
+    {
+        if (masterMixer == null) return;
+        masterMixer.SetFloat("BGM", LinearToDecibel(bgmVolume));
+    }
+
     public void SetMasterVolume(float volume)
     {
         if (masterMixer == null) return;
         masterMixer.SetFloat("Master", LinearToDecibel(volume));
+    }
+
+    public void SetMasterVolume()
+    {
+        if (masterMixer == null) return;
+        masterMixer.SetFloat("Master", LinearToDecibel(masterVolume));
+    }
+
+    public void SetControlMasterVolume(float sliderValue)
+    { 
+        masterVolume = sliderValue;
+    }
+
+    public void SetControlBgmVolume(float sliderValue)
+    {
+        bgmVolume = sliderValue;
+    }
+    public void SetControlSfxVolume(float sliderValue)
+    {
+        sfxVolume = sliderValue;
     }
 
     private float LinearToDecibel(float linear)

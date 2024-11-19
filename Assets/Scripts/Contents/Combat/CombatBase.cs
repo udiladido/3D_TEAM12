@@ -8,7 +8,7 @@ public abstract class CombatBase
 
     protected float cooltime;
 
-    public abstract void Use();
+    public abstract void Execute();
 
     public CombatBase(CombatSlots combatSlots)
     {

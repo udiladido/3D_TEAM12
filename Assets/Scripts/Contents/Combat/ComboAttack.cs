@@ -37,7 +37,7 @@ public class ComboAttack : CombatBase
         }
     }
 
-    public override void Use()
+    public override void Execute()
     {
         nextComboIndex = GetNextComboIndex(currentComboIndex);
         comboAttackTime = Time.time;

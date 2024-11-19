@@ -17,7 +17,7 @@ public class SkillAttack : CombatBase
         skillEntity = EquipEntity.weaponCombatEntities[0];
     }
 
-    public override void Use()
+    public override void Execute()
     {
         if (cooltime > 0) return;
         

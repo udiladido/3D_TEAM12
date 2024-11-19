@@ -14,7 +14,18 @@ public class InputController : BaseController
     public event Action<Defines.CharacterAttackInputType> OnAttackEvent;
     public event Action<Defines.CharacterAttackInputType> OnAttackCancelEvent;
 
-    private bool isRunning;
+    [SerializeField] private bool isRunning;
+
+    private CameraController cameraController;
+
+    private void Awake()
+    {
+        cameraController = GetComponent<CameraController>();
+    }
+    private void Start()
+    {
+        OnRunEvent?.Invoke(isRunning);
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -79,5 +90,17 @@ public class InputController : BaseController
             OnAttackEvent?.Invoke(Defines.CharacterAttackInputType.Skill);
         else if (context.phase == InputActionPhase.Canceled)
             OnAttackCancelEvent?.Invoke(Defines.CharacterAttackInputType.Skill);
+    }
+    
+    public void OnZoom(InputAction.CallbackContext context)
+    {
+        if (cameraController == null) return;
+        
+        if (context.phase == InputActionPhase.Performed)
+        {
+            float delta = context.ReadValue<float>();
+            Debug.Log(delta);
+            cameraController.Zoom(context.ReadValue<float>());
+        }
     }
 }

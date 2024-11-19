@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 3919761883023555423}
   - component: {fileID: 1419057431946147549}
   - component: {fileID: 702018519351761310}
+  - component: {fileID: -8287460433744117890}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -109,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 088b207c5b134fcda92f3b13670c7ee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRunning: 1
 --- !u!114 &2446249870394749308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +289,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 62026ef9-3e3d-43ef-ac1f-9adad4b95a05
     m_ActionName: Player/Attack2[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8117852675393999964}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: OnZoom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a6d39103-c1ab-42f0-a7eb-02b33aabaa09
+    m_ActionName: Player/Zoom[/Mouse/scroll]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -380,3 +398,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8062d57702354b689cd7dafa89312bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <EnemyLayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &-8287460433744117890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518671117097245982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2371e84bb79042c7a81b24b9c9722e96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultFollowOffset: {x: -15, y: 20, z: 15}
+  zoomSpeed: 50
+  trackedObjectOffset: {x: 0, y: 1, z: 0}

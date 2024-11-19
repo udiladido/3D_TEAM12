@@ -21,20 +21,11 @@ public class SkillAttack : CombatBase
     {
         if (cooltime > 0) return;
         
+        CombatData combat = new CombatData(skillEntity);
+        cooltime = combat.cooltime;
         combatSlots.ChangeLayerWeight(EquipEntity.combatStyleType);
         combatSlots.Animator.SetFloat(combatSlots.AnimationData.AttackSpeedHash, combatSlots.Condition.CurrentStat.attackSpeed);
         combatSlots.Animator.SetTrigger(combatSlots.AnimationData.SkillHash);
-        CombatData combat = new CombatData(skillEntity);
-        cooltime = combat.cooltime;
-        ApplySkill(skillEntity.projectilePrefabPath, combat);
-    }
-
-    private void ApplySkill(string projectilePrefabPath, CombatData combatData, Transform parent = null)
-    {
-        GameObject go = Managers.Pool.Spawn(projectilePrefabPath, parent);
-        if (go == null) return;
-        ProjectileController projectile = go.GetComponent<ProjectileController>();
-        projectile.SetData(combatSlots.transform, combatData, combatSlots.EnemyLayerMask);
-        projectile.Launch();
+        ApplyAttack(skillEntity.projectilePrefabPath, combat);
     }
 }

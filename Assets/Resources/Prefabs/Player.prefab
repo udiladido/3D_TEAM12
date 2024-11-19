@@ -380,3 +380,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8062d57702354b689cd7dafa89312bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <EnemyLayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 0

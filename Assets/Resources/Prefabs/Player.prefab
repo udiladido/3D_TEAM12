@@ -46,8 +46,8 @@ GameObject:
   - component: {fileID: 8006664061986191744}
   - component: {fileID: 2687901389935931222}
   - component: {fileID: 3919761883023555423}
-  - component: {fileID: 9150884198949136996}
   - component: {fileID: 1419057431946147549}
+  - component: {fileID: 702018519351761310}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -356,24 +356,6 @@ MonoBehaviour:
     m_Bits: 65
   groundCheck: {fileID: 6486736539937772545}
   slopeRayDistance: 0.5
---- !u!114 &9150884198949136996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8518671117097245982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a328cca16944b56a538929a0af48ea2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <CurrentComboAttackIndex>k__BackingField: 0
-  <ComboDuration>k__BackingField: 1
-  <IsAttacking>k__BackingField: 0
-  <EnemyLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1419057431946147549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,5 +366,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c673603ae1e404c8731da1535cd3e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &702018519351761310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518671117097245982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8062d57702354b689cd7dafa89312bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

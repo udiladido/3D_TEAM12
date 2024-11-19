@@ -6,6 +6,7 @@ public class Equipment : MonoBehaviour, IEquipable
     public ItemEntity EquippedWeapon { get; private set; }
 
     private ModelPivot modelPivot;
+    private CombatSlots combatSlots;
     private void Awake()
     {
         LoadModel();
@@ -15,6 +16,7 @@ public class Equipment : MonoBehaviour, IEquipable
     {
         UnLoadModel();
         modelPivot = GetComponentInChildren<ModelPivot>();
+        combatSlots = GetComponent<CombatSlots>();
     }
 
     public void UnLoadModel()
@@ -32,12 +34,14 @@ public class Equipment : MonoBehaviour, IEquipable
             UnEquip(EquippedComboWeapon);
             EquippedComboWeapon = item;
             modelPivot?.EquipRightHand(item.equipableEntity);
+            combatSlots.AddSlot(Defines.CharacterAttackInputType.ComboAttack, item.equipableEntity);
         }
         else
         {
             UnEquip(EquippedWeapon);
             EquippedWeapon = item;
             modelPivot?.EquipLeftHand(item.equipableEntity);
+            combatSlots.AddSlot(Defines.CharacterAttackInputType.Skill, item.equipableEntity);
         }
 
     }
@@ -48,11 +52,13 @@ public class Equipment : MonoBehaviour, IEquipable
         {
             EquippedComboWeapon = null;
             modelPivot?.UnEquipLeftHand();
+            combatSlots.RemoveSlot(Defines.CharacterAttackInputType.ComboAttack);
         }
         else
         {
             EquippedWeapon = null;
             modelPivot?.UnEquipLeftHand();
+            combatSlots.RemoveSlot(Defines.CharacterAttackInputType.Skill);
         }
     }
     public ItemEquipableEntity GetWeaponInfo(Defines.CharacterAttackInputType inputType)

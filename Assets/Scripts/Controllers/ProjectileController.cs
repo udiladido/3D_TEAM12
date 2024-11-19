@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProjectileController : BaseController
 {
-    private ItemWeaponCombatEntity data;
+    private CombatData projectileData;
     private Transform owner;
 
     private Vector3 direction;
@@ -13,7 +13,7 @@ public class ProjectileController : BaseController
     private Collider hitBoxCollider;
 
     private bool isLaunched;
-    private Combat combat;
+    private CombatBase combat;
     private Condition condition; 
 
     private float timer;
@@ -29,7 +29,7 @@ public class ProjectileController : BaseController
     {
         if (isLaunched)
         {
-            if (Time.time - timer > data.duration)
+            if (Time.time - timer > projectileData.duration)
                 DestroySelf();
 
             Move();
@@ -40,33 +40,31 @@ public class ProjectileController : BaseController
 
     private void Scale()
     {
-        float scale = data.endScale - data.startScale;
+        float scale = projectileData.endScale - projectileData.startScale;
         if (scale == 0) return;
         
-        transform.localScale += Vector3.one * scale * Time.deltaTime / data.duration;
+        transform.localScale += Vector3.one * scale * Time.deltaTime / projectileData.duration;
     }
 
-    public void SetData(Transform owner, ItemWeaponCombatEntity data)
+    public void SetData(Transform owner, CombatData projectileData, LayerMask enemyLayerMask)
     {
-        this.data = data;
+        this.projectileData = projectileData;
         this.owner = owner;
         isLaunched = false;
         meshRenderer.enabled = false;
         hitBoxCollider.enabled = false;
         
-        transform.localScale = new Vector3(data.startScale, data.startScale, data.startScale);
+        transform.localScale = new Vector3(this.projectileData.startScale, this.projectileData.startScale, this.projectileData.startScale);
         transform.position = owner.position;
         transform.rotation = owner.rotation;
         direction = owner.forward.normalized;
-        combat = owner.GetComponent<Combat>();
         condition = owner.GetComponent<Condition>();
-        targetLayer = combat.EnemyLayerMask;
+        targetLayer = enemyLayerMask;
     }
 
     public void Launch()
     {
         if (owner == null) return;
-        if (data == null) return;
         // TODO : 발사
         float waitTime = Defines.ATTACK_ANIMATION_SPEED_OFFSET / condition.CurrentStat.attackSpeed;
         Invoke(nameof(ApplyLaunch), waitTime);
@@ -82,13 +80,13 @@ public class ProjectileController : BaseController
 
     private void Move()
     {
-        if (data.moveSpeed == 0)
+        if (projectileData.moveSpeed == 0)
         {
             transform.position = owner.position;
         }
         else
         {
-            transform.position += direction * data.moveSpeed * Time.deltaTime;
+            transform.position += direction * projectileData.moveSpeed * Time.deltaTime;
         }
     }
 
@@ -106,7 +104,7 @@ public class ProjectileController : BaseController
             if (other.TryGetComponent(out IDamageable damageable))
             {
                 Condition condition = owner.GetComponent<Condition>();
-                float damage = condition.CurrentStat.attack * (data.damagePer / 100);
+                float damage = condition.CurrentStat.attack * (projectileData.damagePer / 100);
                 damageable.TakeDamage(damage);
                 DestroySelf();
             }

@@ -38,15 +38,12 @@ public class PlayerBaseState : IState
     }
     protected void AttackHandle(Defines.CharacterAttackInputType attackInputType)
     {
-        if (attackInputType == Defines.CharacterAttackInputType.ComboAttack)
-            stateMachine.Combat.ComboAttack(stateMachine.AnimationData.ComboAttackHash, stateMachine.AnimationData.ComboAttackIndexHash, stateMachine.AnimationData.AttackSpeedHash);
-        else if (attackInputType == Defines.CharacterAttackInputType.Skill)
-            stateMachine.Combat.Skill(stateMachine.AnimationData.SkillHash, stateMachine.AnimationData.AttackSpeedHash);
+        stateMachine.CombatSlots.Use(attackInputType);
     }
     protected void AttackCancelHandle(Defines.CharacterAttackInputType attackInputType)
     {
         // TODO : 키를 계속 누르고 있다가 떼면 할 일들..
-        stateMachine.Combat?.AttackCancel();
+        stateMachine.CombatSlots?.UnUse();
     }
     protected void MoveHandle(Vector2 inputValue)
     {

@@ -71,4 +71,9 @@ public class Utils
             _ => Color.white,
         };
     }
+    
+    public static bool LayerMaskContains(LayerMask layerMask, int targetLayer)
+    {
+        return (layerMask & (1 << targetLayer)) != 0;
+    }
 }

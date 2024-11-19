@@ -4,24 +4,28 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    [field: SerializeField] public Condition Condition { get; private set; }
-    //[field: SerializeField] public AnimationData AnimationData { get; private set; }
-    public Animator Animator { get; private set; }
+    [field: SerializeField] private MonsterEntity currentMonster;
+    [field: SerializeField] private MonsterCondition Condition;
+    [field: SerializeField] private MonsterAnimatorController AnimationController;
 
+    public int Identifier { get; private set; }
     //private PlayerStateMachine stateMachine;
 
     private void Awake()
     {
-        Condition = GetComponent<Condition>();
-        Animator = GetComponentInChildren<Animator>();
+        Condition = GetComponent<MonsterCondition>();
 
         //stateMachine = new PlayerStateMachine(this);
-        //AnimationData.Initialize();
     }
 
-    private void OnEnable()
+    private void Initialize(MonsterEntity monsterEntity)
     {
-        
+        currentMonster = monsterEntity;
+
+        Condition.SetData(monsterEntity.maxHp);
+
+        AnimationController = GetComponentInChildren<MonsterAnimatorController>();
+        AnimationController.Initialize();
     }
 
     private void FixedUpdate()
@@ -31,8 +35,8 @@ public class Monster : MonoBehaviour
 
     public void Die()
     {
-        Condition.OnDead -= Die;
         Condition.OnHit -= Hit;
+        Condition.OnDead -= Die;
         //stateMachine.ChangeState(stateMachine.DeadState);
     }
 

@@ -8,6 +8,7 @@ public class UIIntroScene : UISceneBase
     {
         StartButton,
         QuitButton,
+        SettingButton
     }
 
     protected override bool Init()
@@ -19,6 +20,7 @@ public class UIIntroScene : UISceneBase
 
         GetButton(Buttons.StartButton).gameObject.BindEvent(StartButtonEvent);
         GetButton(Buttons.QuitButton).gameObject.BindEvent(QuitButtonEvent);
+        GetButton(Buttons.SettingButton).gameObject.BindEvent(SettingPopupButtonEvent);
         return true;
     }
 
@@ -39,4 +41,13 @@ public class UIIntroScene : UISceneBase
 #endif
 
     }
+
+    public void SettingPopupButtonEvent()
+    {
+
+        Managers.UI.ShowPopupUI<UISettingPopup>();
+    
+    
+    }
+
 }

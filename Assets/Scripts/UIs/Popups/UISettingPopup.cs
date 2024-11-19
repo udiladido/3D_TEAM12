@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class UISettingPopup : UIPopupBase
 {
@@ -25,40 +27,46 @@ public class UISettingPopup : UIPopupBase
     }
 
 
-    // 고민해봐야 할 부분 - 씬 넘어갔다 와도 저장되어 있어야 하는데
-    private bool isOn;
-    private float prevSoundValue;
+
 
     protected override bool Init()
     {
+
+
+
         if (base.Init() == false)
             return false;
 
         BindButton(typeof(Buttons));
+        BindToggle(typeof(Toggle));
         BindSlider(typeof(Slider));
 
         GetButton(Buttons.CloseButton).gameObject.BindEvent(() => { Close(Defines.UIAnimationType.Bounce); });
         GetToggle(Toggle.MuteToggle).gameObject.BindEvent(OnMuteClick);
-        GetSlider(Slider.BGMSlider).gameObject.BindEvent();
-        GetSlider(Slider.SFXSlider).gameObject.BindEvent();
+
+        GetSlider(Slider.BGMSlider).onValueChanged.AddListener(SetSFXVolume);
+        GetSlider(Slider.SFXSlider).onValueChanged.AddListener(SetBGMVolume);
 
         return true;
     }
 
 
 
-    public void SetSFXVolume(float sliderValue)
+    public void SetSFXVolume(float value)
     {
-
-
-
-
+        if(Managers.Sound.IsSoundOn)
+        Managers.Sound.SetSFXVolume(value);
+        else
+            Managers.Sound.SetSFXVolume(0);
 
     }
 
-    public void SetBGMVolume(float sliderValue)
+    public void SetBGMVolume(float value)
     {
-
+        if (Managers.Sound.IsSoundOn)
+            Managers.Sound.SetSFXVolume(value);
+        else
+            Managers.Sound.SetSFXVolume(0);
 
     }
 
@@ -67,15 +75,28 @@ public class UISettingPopup : UIPopupBase
     public void OnMuteClick()
     {
 
-        //  토글이 체크 되어 있을 때
-        if (isOn){ 
-        
+        //  토글이 체크 되어 있을 때 = 음소거 해제
+        if (Managers.Sound.IsSoundOn)
+        {
+         
+            Managers.Sound.PrevSoundBgmValue = GetSlider(Slider.BGMSlider).value;
+            Managers.Sound.PrevSoundSfxValue = GetSlider(Slider.SFXSlider).value;
 
+            GetSlider(Slider.BGMSlider).value = 0f;
+            GetSlider(Slider.SFXSlider).value = 0f;
+
+            Managers.Sound.IsSoundOn = false;
         }
 
-        // 토글이 체크 해제 되어 있을 때
-        else { 
-        
+        // 토글이 체크 해제 되어 있을 때 = 음소거
+        else 
+        {
+
+            GetSlider(Slider.BGMSlider).value = Managers.Sound.PrevSoundBgmValue;
+            GetSlider(Slider.SFXSlider).value = Managers.Sound.PrevSoundSfxValue;
+
+            Managers.Sound.IsSoundOn = true;
+
         }
 
 

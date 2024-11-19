@@ -10,6 +10,7 @@ public class CombatSlots : MonoBehaviour
     [field: SerializeField] public LayerMask EnemyLayerMask { get; private set; }
     public Defines.CharacterCombatStyleType currentCombatStyleType { get; private set; }
 
+    public bool IsSkillCasting { get; set; }
     public Animator Animator { get; private set; }
     public IEquipable Equipment { get; private set; }
     public Condition Condition { get; private set; }
@@ -55,6 +56,7 @@ public class CombatSlots : MonoBehaviour
         {
             combatBase = new SkillAttack(this);
             combatBase.SetData(equipEntity);
+            OnUpdate += combatBase.Update;
         }
 
         slots.Add(attackInput, combatBase);

@@ -27,22 +27,29 @@ public class SkillAttack : CombatBase
         }
     }
 
-    public override void SetData(ItemEquipableEntity equipEntity)
+    public override void SetData(Defines.CharacterAttackInputType attackInputType, ItemEquipableEntity equipEntity)
     {
-        base.SetData(equipEntity);
+        base.SetData(attackInputType, equipEntity);
         skillEntity = EquipEntity.weaponCombatEntities[0];
     }
 
     public override void Execute()
     {
         if (cooltime > 0) return;
+        
+        if (combatSlots.Condition.TryUseMana(skillEntity.manaCost) == false)
+        {
+            // TODO : 마나 부족
+            return;
+        }
 
         freezeTime = Defines.ATTACK_ANIMATION_SPEED_OFFSET / combatSlots.Condition.CurrentStat.attackSpeed;
 
         CombatData combat = new CombatData(skillEntity);
         float cooltimeReduction = combatSlots.Condition.CurrentStat.cooltimeReduction;
         // 쿨타임 감소 연산 공식 [스킬쿨타임] * ([쿨타임감소수치] - 1)
-        cooltime = cooltimeReduction > 1 ? combat.cooltime * (cooltimeReduction - 1) : combat.cooltime;
+        maxCooltime = cooltimeReduction > 1 ? combat.cooltime * (cooltimeReduction - 1) : combat.cooltime;
+        cooltime = maxCooltime;
         combatSlots.ChangeLayerWeight(EquipEntity.combatStyleType);
         combatSlots.Animator.SetFloat(combatSlots.AnimationData.AttackSpeedHash, combatSlots.Condition.CurrentStat.attackSpeed);
         combatSlots.Animator.SetTrigger(combatSlots.AnimationData.SkillHash);

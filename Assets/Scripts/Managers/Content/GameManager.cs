@@ -89,7 +89,7 @@ public class GameManager : IManager
 
     public void CreatePlayer(int jobid)
     {
-        JobEntity job = Managers.DB.Get<JobEntity>(11);
+        JobEntity job = Managers.DB.Get<JobEntity>(jobid);
 
         Player player = GameObject.FindObjectOfType<Player>();
         if (player == null)

@@ -46,9 +46,17 @@ public class ComboAttack : CombatBase
     private void Attack(int comboIndex)
     {
         if (comboIndex == -1) return;
+        
         ItemWeaponCombatEntity combatEntity = comboAttacks[comboIndex];
+        if (combatSlots.Condition.TryUseMana(combatEntity.manaCost) == false)
+        {
+            // TODO : 마나 부족
+            return;
+        }
+
         CombatData combat = new CombatData(combatEntity);
-        cooltime = combatEntity.cooltime * Defines.ATTACK_ANIMATION_SPEED_OFFSET / combatSlots.Condition.CurrentStat.attackSpeed;
+        maxCooltime = combatEntity.cooltime * Defines.ATTACK_ANIMATION_SPEED_OFFSET / combatSlots.Condition.CurrentStat.attackSpeed;
+        cooltime = maxCooltime;
         combatSlots.ChangeLayerWeight(EquipEntity.combatStyleType);
         combatSlots.Animator.SetFloat(combatSlots.AnimationData.AttackSpeedHash, combatSlots.Condition.CurrentStat.attackSpeed);
         combatSlots.Animator.SetTrigger(combatSlots.AnimationData.ComboAttackHash);

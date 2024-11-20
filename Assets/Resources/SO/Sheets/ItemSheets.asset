@@ -480,7 +480,7 @@ MonoBehaviour:
   - itemId: 1501
     comboIndex: 1
     projectilePrefabPath: /Projectiles/Player/ComboAttack1
-    manaCost: 3
+    manaCost: 10
     cooltime: 1
     duration: 0.4
     startScale: 1
@@ -497,7 +497,7 @@ MonoBehaviour:
   - itemId: 1501
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
-    manaCost: 3
+    manaCost: 10
     cooltime: 1
     duration: 0.4
     startScale: 1
@@ -514,7 +514,7 @@ MonoBehaviour:
   - itemId: 1501
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
-    manaCost: 5
+    manaCost: 15
     cooltime: 1.5
     duration: 0.4
     startScale: 1
@@ -531,7 +531,7 @@ MonoBehaviour:
   - itemId: 1502
     comboIndex: 1
     projectilePrefabPath: /Projectiles/Player/ComboAttack1
-    manaCost: 3
+    manaCost: 10
     cooltime: 1
     duration: 0.4
     startScale: 1.2
@@ -548,7 +548,7 @@ MonoBehaviour:
   - itemId: 1502
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
-    manaCost: 3
+    manaCost: 10
     cooltime: 1
     duration: 0.4
     startScale: 1.2
@@ -565,7 +565,7 @@ MonoBehaviour:
   - itemId: 1502
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
-    manaCost: 5
+    manaCost: 15
     cooltime: 1.5
     duration: 0.4
     startScale: 1.2
@@ -582,7 +582,7 @@ MonoBehaviour:
   - itemId: 1503
     comboIndex: 1
     projectilePrefabPath: /Projectiles/Player/ComboAttack1
-    manaCost: 3
+    manaCost: 10
     cooltime: 1
     duration: 0.4
     startScale: 1.5
@@ -599,7 +599,7 @@ MonoBehaviour:
   - itemId: 1503
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
-    manaCost: 3
+    manaCost: 10
     cooltime: 1
     duration: 0.4
     startScale: 1.5
@@ -616,7 +616,7 @@ MonoBehaviour:
   - itemId: 1503
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
-    manaCost: 5
+    manaCost: 15
     cooltime: 1.5
     duration: 0.4
     startScale: 1.5
@@ -633,7 +633,7 @@ MonoBehaviour:
   - itemId: 1504
     comboIndex: 1
     projectilePrefabPath: /Projectiles/Player/ComboAttack1
-    manaCost: 3
+    manaCost: 10
     cooltime: 1
     duration: 0.4
     startScale: 2
@@ -650,7 +650,7 @@ MonoBehaviour:
   - itemId: 1504
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
-    manaCost: 3
+    manaCost: 10
     cooltime: 1
     duration: 0.4
     startScale: 2
@@ -667,7 +667,7 @@ MonoBehaviour:
   - itemId: 1504
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
-    manaCost: 5
+    manaCost: 15
     cooltime: 1.5
     duration: 0.4
     startScale: 2
@@ -684,7 +684,7 @@ MonoBehaviour:
   - itemId: 1505
     comboIndex: 0
     projectilePrefabPath: /Projectiles/Player/MeleeAttack
-    manaCost: 20
+    manaCost: 40
     cooltime: 10
     duration: 3
     startScale: 3
@@ -701,7 +701,7 @@ MonoBehaviour:
   - itemId: 1506
     comboIndex: 0
     projectilePrefabPath: /Projectiles/Player/RangedAttack
-    manaCost: 10
+    manaCost: 25
     cooltime: 5
     duration: 3
     startScale: 1
@@ -718,7 +718,7 @@ MonoBehaviour:
   - itemId: 1507
     comboIndex: 0
     projectilePrefabPath: /Projectiles/Player/MagicAttack
-    manaCost: 30
+    manaCost: 55
     cooltime: 15
     duration: 5
     startScale: 2

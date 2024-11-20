@@ -1,11 +1,11 @@
+using UnityEngine;
+
 public class UIGameScene : UISceneBase
 {
-    enum Buttons
+    enum Objects
     {
-        PotionShopButton,
-        WeaponShopButton,
-        ArmorShopButton,
-        AccessoryShopButton,
+        Status,
+        Weapons,
     }
     
     protected override bool Init()
@@ -13,43 +13,20 @@ public class UIGameScene : UISceneBase
         if (base.Init() == false)
             return false;
 
-        BindButton(typeof(Buttons));
-
-        GetButton(Buttons.PotionShopButton).gameObject.BindEvent(PotionShopEvent);
-        GetButton(Buttons.WeaponShopButton).gameObject.BindEvent(WeaponShopEvent);
-        GetButton(Buttons.ArmorShopButton).gameObject.BindEvent(ArmorShopEvent);
-        GetButton(Buttons.AccessoryShopButton).gameObject.BindEvent(AccessoryShopEvent);
+        Bind<GameObject>(typeof(Objects));
 
         return true;
     }
     
-    public void PopupOpenEvent()
+    public void HideUI()
     {
-        Managers.UI.ShowPopupUI<UIMyPopup>();
+        GetObject(Objects.Status).SetActive(false);
+        GetObject(Objects.Weapons).SetActive(false);
     }
     
-    public void TitleSceneEvent()
+    public void ShowUI()
     {
-        Managers.Scene.LoadScene(Defines.SceneType.TitleScene);
-    }
-    
-    public void PotionShopEvent()
-    {
-        Managers.UI.ShowPopupUI<UIShopPopup>().SetData(501);
-    }
-    
-    public void WeaponShopEvent()
-    {
-        Managers.UI.ShowPopupUI<UIShopPopup>().SetData(502);
-    }
-    
-    public void ArmorShopEvent()
-    {
-        Managers.UI.ShowPopupUI<UIShopPopup>().SetData(503);
-    }
-    
-    public void AccessoryShopEvent()
-    {
-        Managers.UI.ShowPopupUI<UIShopPopup>().SetData(504);
+        GetObject(Objects.Status).SetActive(true);
+        GetObject(Objects.Weapons).SetActive(true);
     }
 }

@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Equipment : MonoBehaviour, IEquipment
 {
+    public event Action<Defines.UIEquipmentType, ItemEntity> OnEquipped;
+    
     public ItemEntity EquippedComboWeapon { get; private set; }
     public StatData ComboWeaponStatData { get; private set; }
     public ItemEntity EquippedWeapon { get; private set; }
@@ -46,6 +49,7 @@ public class Equipment : MonoBehaviour, IEquipment
                 combatSlots.AddSlot(Defines.CharacterAttackInputType.ComboAttack, item.equipableEntity);
                 ComboWeaponStatData = new StatData(item.statBoostEffectEntities);
                 statHandler?.AddStatModifier(ComboWeaponStatData.statModifiers);
+                OnEquipped?.Invoke(Defines.UIEquipmentType.ComboWeapon, item);
             }
             else
             {
@@ -55,6 +59,7 @@ public class Equipment : MonoBehaviour, IEquipment
                 combatSlots.AddSlot(Defines.CharacterAttackInputType.Skill, item.equipableEntity);
                 WeaponStatData = new StatData(item.statBoostEffectEntities);
                 statHandler?.AddStatModifier(WeaponStatData.statModifiers);
+                OnEquipped?.Invoke(Defines.UIEquipmentType.SkillWeapon, item);
             }
         }
         else
@@ -65,6 +70,7 @@ public class Equipment : MonoBehaviour, IEquipment
                 EquippedArmor = item;
                 ArmorStatData = new StatData(item.statBoostEffectEntities);
                 statHandler?.AddStatModifier(ArmorStatData.statModifiers);
+                OnEquipped?.Invoke(Defines.UIEquipmentType.Armor, item);
             }
             else if (item.equipableEntity.equipmentType == Defines.ItemEquipmentType.Accessory)
             {
@@ -72,6 +78,7 @@ public class Equipment : MonoBehaviour, IEquipment
                 EquippedAccessory = item;
                 AccessoryStatData = new StatData(item.statBoostEffectEntities);
                 statHandler?.AddStatModifier(AccessoryStatData.statModifiers);
+                OnEquipped?.Invoke(Defines.UIEquipmentType.Accessory, item);
             }
         }
     }
@@ -87,6 +94,7 @@ public class Equipment : MonoBehaviour, IEquipment
                 combatSlots.RemoveSlot(Defines.CharacterAttackInputType.ComboAttack);
                 statHandler?.RemoveStatModifier(ComboWeaponStatData.statModifiers);
                 ComboWeaponStatData = null;
+                OnEquipped?.Invoke(Defines.UIEquipmentType.ComboWeapon, item);
             }
             else
             {
@@ -95,6 +103,7 @@ public class Equipment : MonoBehaviour, IEquipment
                 combatSlots.RemoveSlot(Defines.CharacterAttackInputType.Skill);
                 statHandler?.RemoveStatModifier(WeaponStatData.statModifiers);
                 WeaponStatData = null;
+                OnEquipped?.Invoke(Defines.UIEquipmentType.SkillWeapon, item);
             }
         }
         else
@@ -104,12 +113,14 @@ public class Equipment : MonoBehaviour, IEquipment
                 EquippedArmor = null;
                 statHandler?.RemoveStatModifier(ArmorStatData.statModifiers);
                 ArmorStatData = null;
+                OnEquipped?.Invoke(Defines.UIEquipmentType.Armor, item);
             }
             else if (item.equipableEntity.equipmentType == Defines.ItemEquipmentType.Accessory)
             {
                 EquippedAccessory = null;
                 statHandler?.RemoveStatModifier(AccessoryStatData.statModifiers);
                 AccessoryStatData = null;
+                OnEquipped?.Invoke(Defines.UIEquipmentType.Accessory, item);
             }
         }
     }

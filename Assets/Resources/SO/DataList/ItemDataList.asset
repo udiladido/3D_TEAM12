@@ -216,39 +216,39 @@ MonoBehaviour:
         comboIndex: 1
         projectilePrefabPath: /Projectiles/Player/ComboAttack1
         manaCost: 3
-        cooltime: 0
-        duration: 0.25
+        cooltime: 1
+        duration: 0.4
         startScale: 1
         endScale: 1
         moveSpeed: 0
         damagePer: 80
-        waitTime: 0.1
+        waitTime: 0.5
         knockbackPower: 1
         hitInterval: 0
       - itemId: 1501
         comboIndex: 2
         projectilePrefabPath: /Projectiles/Player/ComboAttack2
         manaCost: 3
-        cooltime: 0
-        duration: 0.25
+        cooltime: 1
+        duration: 0.4
         startScale: 1
         endScale: 1
         moveSpeed: 0
         damagePer: 100
-        waitTime: 0.1
+        waitTime: 0.5
         knockbackPower: 1
         hitInterval: 0
       - itemId: 1501
         comboIndex: 3
         projectilePrefabPath: /Projectiles/Player/ComboAttack3
         manaCost: 5
-        cooltime: 0
-        duration: 0.5
+        cooltime: 1.5
+        duration: 0.4
         startScale: 1
         endScale: 1
         moveSpeed: 0
         damagePer: 120
-        waitTime: 0.1
+        waitTime: 0.8
         knockbackPower: 1
         hitInterval: 0
     statBoostEffectEntities:
@@ -274,39 +274,39 @@ MonoBehaviour:
         comboIndex: 1
         projectilePrefabPath: /Projectiles/Player/ComboAttack1
         manaCost: 3
-        cooltime: 0
-        duration: 0.25
+        cooltime: 1
+        duration: 0.4
         startScale: 1.2
         endScale: 1.2
         moveSpeed: 0
         damagePer: 80
-        waitTime: 0.1
+        waitTime: 0.5
         knockbackPower: 1
         hitInterval: 0
       - itemId: 1502
         comboIndex: 2
         projectilePrefabPath: /Projectiles/Player/ComboAttack2
         manaCost: 3
-        cooltime: 0
-        duration: 0.25
+        cooltime: 1
+        duration: 0.4
         startScale: 1.2
         endScale: 1.2
         moveSpeed: 0
         damagePer: 100
-        waitTime: 0.1
+        waitTime: 0.5
         knockbackPower: 1
         hitInterval: 0
       - itemId: 1502
         comboIndex: 3
         projectilePrefabPath: /Projectiles/Player/ComboAttack3
         manaCost: 5
-        cooltime: 0
-        duration: 0.5
+        cooltime: 1.5
+        duration: 0.4
         startScale: 1.2
         endScale: 1.2
         moveSpeed: 0
         damagePer: 120
-        waitTime: 0.1
+        waitTime: 0.8
         knockbackPower: 1
         hitInterval: 0
     statBoostEffectEntities:
@@ -332,39 +332,39 @@ MonoBehaviour:
         comboIndex: 1
         projectilePrefabPath: /Projectiles/Player/ComboAttack1
         manaCost: 3
-        cooltime: 0
-        duration: 0.25
+        cooltime: 1
+        duration: 0.4
         startScale: 1.5
         endScale: 1.5
         moveSpeed: 0
         damagePer: 80
-        waitTime: 0.1
+        waitTime: 0.5
         knockbackPower: 1
         hitInterval: 0
       - itemId: 1503
         comboIndex: 2
         projectilePrefabPath: /Projectiles/Player/ComboAttack2
         manaCost: 3
-        cooltime: 0
-        duration: 0.25
+        cooltime: 1
+        duration: 0.4
         startScale: 1.5
         endScale: 1.5
         moveSpeed: 0
         damagePer: 100
-        waitTime: 0.1
+        waitTime: 0.5
         knockbackPower: 1
         hitInterval: 0
       - itemId: 1503
         comboIndex: 3
         projectilePrefabPath: /Projectiles/Player/ComboAttack3
         manaCost: 5
-        cooltime: 0
-        duration: 0.5
+        cooltime: 1.5
+        duration: 0.4
         startScale: 1.5
         endScale: 1.5
         moveSpeed: 0
         damagePer: 120
-        waitTime: 0.1
+        waitTime: 0.8
         knockbackPower: 1
         hitInterval: 0
     statBoostEffectEntities:
@@ -395,39 +395,39 @@ MonoBehaviour:
         comboIndex: 1
         projectilePrefabPath: /Projectiles/Player/ComboAttack1
         manaCost: 3
-        cooltime: 0
-        duration: 0.25
+        cooltime: 1
+        duration: 0.4
         startScale: 2
         endScale: 2
         moveSpeed: 0
         damagePer: 80
-        waitTime: 0.1
+        waitTime: 0.5
         knockbackPower: 1
         hitInterval: 0
       - itemId: 1504
         comboIndex: 2
         projectilePrefabPath: /Projectiles/Player/ComboAttack2
         manaCost: 3
-        cooltime: 0
-        duration: 0.25
+        cooltime: 1
+        duration: 0.4
         startScale: 2
         endScale: 2
         moveSpeed: 0
         damagePer: 100
-        waitTime: 0.1
+        waitTime: 0.5
         knockbackPower: 1
         hitInterval: 0
       - itemId: 1504
         comboIndex: 3
         projectilePrefabPath: /Projectiles/Player/ComboAttack3
         manaCost: 5
-        cooltime: 0
-        duration: 0.5
+        cooltime: 1.5
+        duration: 0.4
         startScale: 2
         endScale: 2
         moveSpeed: 0
         damagePer: 120
-        waitTime: 0.1
+        waitTime: 0.8
         knockbackPower: 1
         hitInterval: 0
     statBoostEffectEntities:
@@ -459,9 +459,9 @@ MonoBehaviour:
         projectilePrefabPath: /Projectiles/Player/MeleeAttack
         manaCost: 20
         cooltime: 10
-        duration: 2
-        startScale: 1
-        endScale: 1.5
+        duration: 3
+        startScale: 3
+        endScale: 5
         moveSpeed: 0
         damagePer: 400
         waitTime: 1
@@ -526,8 +526,8 @@ MonoBehaviour:
         manaCost: 30
         cooltime: 15
         duration: 3
-        startScale: 1
-        endScale: 2
+        startScale: 2
+        endScale: 4
         moveSpeed: 4
         damagePer: 500
         waitTime: 2

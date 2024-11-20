@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     [field: SerializeField]
     [field: Range(0, 50)]
     public float JumpForce { get; private set; } = 10f;
-
+    
     [field: SerializeField] public bool FixedCameraFacing { get; private set; }
     private bool canControl = true;
     private void Awake()

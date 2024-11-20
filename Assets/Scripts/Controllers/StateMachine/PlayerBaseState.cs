@@ -112,6 +112,8 @@ public class PlayerBaseState : IState
     }
     private void Move()
     {
+        if (stateMachine.CombatSlots.IsSkillCasting) return;
+        
         ApplyMove(stateMachine.MoveDirection);
     }
     private float GetMoveSpeed(Defines.CharacterMovementType movementType)

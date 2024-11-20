@@ -6,9 +6,25 @@ public class SkillAttack : CombatBase
 {
     private ItemWeaponCombatEntity skillEntity;
     
+    private float freezeTime;
+    
+    
     public SkillAttack(CombatSlots combatSlots) : base(combatSlots)
     {
         
+    }
+    
+    public override void Update()
+    {
+        base.Update();
+        if (combatSlots.IsSkillCasting)
+        {
+            freezeTime -= Time.deltaTime;
+            if (freezeTime <= 0)
+            {
+                combatSlots.IsSkillCasting = false;
+            }
+        }
     }
     
     public override void SetData(ItemEquipableEntity equipEntity)
@@ -17,24 +33,18 @@ public class SkillAttack : CombatBase
         skillEntity = EquipEntity.weaponCombatEntities[0];
     }
 
-    public override void Use()
+    public override void Execute()
     {
         if (cooltime > 0) return;
+
+        freezeTime = Defines.ATTACK_ANIMATION_SPEED_OFFSET / combatSlots.Condition.CurrentStat.attackSpeed;
         
+        CombatData combat = new CombatData(skillEntity);
+        cooltime = combat.cooltime;
         combatSlots.ChangeLayerWeight(EquipEntity.combatStyleType);
         combatSlots.Animator.SetFloat(combatSlots.AnimationData.AttackSpeedHash, combatSlots.Condition.CurrentStat.attackSpeed);
         combatSlots.Animator.SetTrigger(combatSlots.AnimationData.SkillHash);
-        CombatData combat = new CombatData(skillEntity);
-        cooltime = combat.cooltime;
-        ApplySkill(skillEntity.projectilePrefabPath, combat);
-    }
-
-    private void ApplySkill(string projectilePrefabPath, CombatData combatData, Transform parent = null)
-    {
-        GameObject go = Managers.Pool.Spawn(projectilePrefabPath, parent);
-        if (go == null) return;
-        ProjectileController projectile = go.GetComponent<ProjectileController>();
-        projectile.SetData(combatSlots.transform, combatData, combatSlots.EnemyLayerMask);
-        projectile.Launch();
+        ApplyAttack(skillEntity.projectilePrefabPath, combat, null);
+        combatSlots.IsSkillCasting = true;
     }
 }

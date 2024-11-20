@@ -10,6 +10,7 @@ public class GameScene : SceneBase
         Managers.Sound.Init();
         Managers.Pool.Init();
         Managers.Coroutine.Init();
+        Managers.Game.Init();
         
         Managers.UI.LoadSceneUI<UIGameScene>();
 
@@ -27,6 +28,6 @@ public class GameScene : SceneBase
     protected override void OnSceneUnload()
     {
         // 3. 씬 언로드시 필요한 로직을 수행
-
+        
     }
 }

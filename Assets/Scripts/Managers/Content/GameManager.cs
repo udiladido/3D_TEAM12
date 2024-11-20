@@ -9,7 +9,7 @@ public class GameManager : IManager
     Player player;
 
     int monsterCount;
-    private float startTime = Time.time;  
+    private float startTime;// = Time.time;  
     private bool isWaveActive = false;
     private GameObject timerTextObject;
     private GameObject waveCounter;

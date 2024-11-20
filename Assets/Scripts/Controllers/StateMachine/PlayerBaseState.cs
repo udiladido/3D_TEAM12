@@ -112,8 +112,6 @@ public class PlayerBaseState : IState
     }
     private void Move()
     {
-        if (stateMachine.CombatSlots.IsSkillCasting) return;
-        
         ApplyMove(stateMachine.MoveDirection);
     }
     private float GetMoveSpeed(Defines.CharacterMovementType movementType)
@@ -230,6 +228,13 @@ public class PlayerBaseState : IState
     {
         if (stateMachine.Player.FixedCameraFacing == false)
             Rotate();
+
+        if (stateMachine.CombatSlots.IsSkillCasting)
+        {
+            MoveCancelHandle();
+            stateMachine.ChangeState(stateMachine.IdleState);
+            return;
+        }
 
         Move();
     }

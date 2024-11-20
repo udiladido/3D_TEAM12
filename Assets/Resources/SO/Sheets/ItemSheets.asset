@@ -490,6 +490,9 @@ MonoBehaviour:
     waitTime: 0.5
     knockbackPower: 1
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1501
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
@@ -503,6 +506,9 @@ MonoBehaviour:
     waitTime: 0.5
     knockbackPower: 1
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1501
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
@@ -516,6 +522,9 @@ MonoBehaviour:
     waitTime: 0.8
     knockbackPower: 1
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1502
     comboIndex: 1
     projectilePrefabPath: /Projectiles/Player/ComboAttack1
@@ -529,6 +538,9 @@ MonoBehaviour:
     waitTime: 0.5
     knockbackPower: 1
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1502
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
@@ -542,6 +554,9 @@ MonoBehaviour:
     waitTime: 0.5
     knockbackPower: 1
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1502
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
@@ -555,6 +570,9 @@ MonoBehaviour:
     waitTime: 0.8
     knockbackPower: 1
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1503
     comboIndex: 1
     projectilePrefabPath: /Projectiles/Player/ComboAttack1
@@ -568,6 +586,9 @@ MonoBehaviour:
     waitTime: 0.5
     knockbackPower: 1
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1503
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
@@ -581,6 +602,9 @@ MonoBehaviour:
     waitTime: 0.5
     knockbackPower: 1
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1503
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
@@ -594,6 +618,9 @@ MonoBehaviour:
     waitTime: 0.8
     knockbackPower: 1
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1504
     comboIndex: 1
     projectilePrefabPath: /Projectiles/Player/ComboAttack1
@@ -607,6 +634,9 @@ MonoBehaviour:
     waitTime: 0.5
     knockbackPower: 1
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1504
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
@@ -620,6 +650,9 @@ MonoBehaviour:
     waitTime: 0.5
     knockbackPower: 1
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1504
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
@@ -633,6 +666,9 @@ MonoBehaviour:
     waitTime: 0.8
     knockbackPower: 1
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1505
     comboIndex: 0
     projectilePrefabPath: /Projectiles/Player/MeleeAttack
@@ -645,7 +681,10 @@ MonoBehaviour:
     damagePer: 400
     waitTime: 1
     knockbackPower: 2
-    hitInterval: 0.5
+    hitInterval: 1
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1506
     comboIndex: 0
     projectilePrefabPath: /Projectiles/Player/RangedAttack
@@ -654,24 +693,30 @@ MonoBehaviour:
     duration: 3
     startScale: 1
     endScale: 1
-    moveSpeed: 10
+    moveSpeed: 20
     damagePer: 200
     waitTime: 1
     knockbackPower: 2
     hitInterval: 0
+    numberOfProjectilePerShot: 5
+    multipleProjectilesAngle: 45
+    pierceCount: 0
   - itemId: 1507
     comboIndex: 0
     projectilePrefabPath: /Projectiles/Player/MagicAttack
     manaCost: 30
     cooltime: 15
-    duration: 3
+    duration: 5
     startScale: 2
     endScale: 4
-    moveSpeed: 4
+    moveSpeed: 3
     damagePer: 500
-    waitTime: 2
+    waitTime: 1
     knockbackPower: 2
     hitInterval: 1
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   StatBoostEffectList:
   - itemId: 1501
     statType: 3

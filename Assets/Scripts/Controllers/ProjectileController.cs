@@ -67,12 +67,19 @@ public class ProjectileController : BaseController
     {
         foreach (var particle in particleSystems)
         {
+            if (particle.main.scalingMode == ParticleSystemScalingMode.Hierarchy)
+                continue;
             ParticleSystem.ShapeModule shape = particle.shape;
             shape.scale = scaleVector;
         }
     }
 
     public void SetData(Transform owner, CombatData projectileData, LayerMask enemyLayerMask)
+    {
+        SetData(owner, projectileData, enemyLayerMask, owner.forward);
+    }
+    
+    public void SetData(Transform owner, CombatData projectileData, LayerMask enemyLayerMask, Vector3 direction)
     {
         this.projectileData = projectileData;
         this.owner = owner;
@@ -82,8 +89,8 @@ public class ProjectileController : BaseController
         transform.localScale = new Vector3(this.projectileData.startScale, this.projectileData.startScale, this.projectileData.startScale);
         ParticleShapeScale(transform.localScale);
         transform.position = owner.position + Vector3.up;
-        transform.rotation = owner.rotation;
-        direction = owner.forward.normalized;
+        transform.rotation = Quaternion.LookRotation(direction);
+        this.direction = direction.normalized;
         condition = owner.GetComponent<Condition>();
         targetLayer = enemyLayerMask;
     }

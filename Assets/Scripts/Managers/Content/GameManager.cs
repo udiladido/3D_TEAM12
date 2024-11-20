@@ -16,7 +16,7 @@ public class GameManager : IManager
     private GameObject timerTextObject;
     private GameObject waveCounter;
     private GameObject countDownPopupUI;
-    UICountDownPopup uICountDownPopup;
+    UICountDownPopup uiCountDownPopup;
     
 
     //HashSet<MonsterDataList> monsterDataList = new HashSet<MonsterDataList>();
@@ -30,7 +30,7 @@ public class GameManager : IManager
         
         CreateTimer(); // 타이머 UI 텍스트 생성
         CreateWaveCounter();
-        uICountDownPopup.CreateCountDown();
+        uiCountDownPopup.CreateCountDown();
     }
 
 

@@ -224,6 +224,7 @@ MonoBehaviour:
         damagePer: 80
         waitTime: 0.5
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -240,6 +241,7 @@ MonoBehaviour:
         damagePer: 100
         waitTime: 0.5
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -256,6 +258,7 @@ MonoBehaviour:
         damagePer: 120
         waitTime: 0.8
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -291,6 +294,7 @@ MonoBehaviour:
         damagePer: 80
         waitTime: 0.5
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -307,6 +311,7 @@ MonoBehaviour:
         damagePer: 100
         waitTime: 0.5
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -323,6 +328,7 @@ MonoBehaviour:
         damagePer: 120
         waitTime: 0.8
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -358,6 +364,7 @@ MonoBehaviour:
         damagePer: 80
         waitTime: 0.5
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -374,6 +381,7 @@ MonoBehaviour:
         damagePer: 100
         waitTime: 0.5
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -390,6 +398,7 @@ MonoBehaviour:
         damagePer: 120
         waitTime: 0.8
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -430,6 +439,7 @@ MonoBehaviour:
         damagePer: 80
         waitTime: 0.5
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -446,6 +456,7 @@ MonoBehaviour:
         damagePer: 100
         waitTime: 0.5
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -462,6 +473,7 @@ MonoBehaviour:
         damagePer: 120
         waitTime: 0.8
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -502,6 +514,7 @@ MonoBehaviour:
         damagePer: 400
         waitTime: 1
         knockbackPower: 2
+        knockbackDuration: 0.2
         hitInterval: 1
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -538,10 +551,11 @@ MonoBehaviour:
         damagePer: 200
         waitTime: 1
         knockbackPower: 2
+        knockbackDuration: 0.5
         hitInterval: 0
         numberOfProjectilePerShot: 5
         multipleProjectilesAngle: 45
-        pierceCount: 0
+        pierceCount: 2
     statBoostEffectEntities:
     - itemId: 1506
       statType: 3
@@ -574,6 +588,7 @@ MonoBehaviour:
         damagePer: 500
         waitTime: 1
         knockbackPower: 2
+        knockbackDuration: 0.5
         hitInterval: 1
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0

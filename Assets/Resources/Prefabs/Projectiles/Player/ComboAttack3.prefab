@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 317074446833395984}
   - component: {fileID: 8256999528746131802}
   - component: {fileID: 4961376927892632894}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shiny
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5015,7 +5015,7 @@ GameObject:
   - component: {fileID: 2644411069956860804}
   - component: {fileID: 7340910823642202195}
   - component: {fileID: 4712286228102783867}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ComboAttack3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5087,7 +5087,7 @@ GameObject:
   - component: {fileID: 4282034992558081546}
   - component: {fileID: 5405277442088301398}
   - component: {fileID: 4311647447431497663}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'Shiny Slash '
   m_TagString: Untagged
   m_Icon: {fileID: 0}

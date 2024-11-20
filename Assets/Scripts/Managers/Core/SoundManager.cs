@@ -92,6 +92,10 @@ public class SoundManager : IManager
             defaultCapacity: defaultCapacity,
             maxSize: maxSize
         );
+
+        prevSoundBgmValue = 1f;
+        prevSoundMasterValue = 1f;
+        prevSoundMasterValue = 1f;
     }
     public void Clear()
     {

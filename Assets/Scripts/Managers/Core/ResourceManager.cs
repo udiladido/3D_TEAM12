@@ -39,6 +39,10 @@ public class ResourceManager : IManager
         {
             return LoadSprite(path, isMultiple) as T;
         }
+        else
+        {
+            return Resources.Load<T>(path);
+        }
 
         return null;
     }

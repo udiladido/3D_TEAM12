@@ -14,6 +14,9 @@ public struct CombatData
     public float waitTime; // x초 후 발사(애니메이션 타이밍 맞추기용)
     public float knockbackPower; // 넉백 파워
     public float hitInterval;
+    public int numberOfProjectilePerShot; // 다중 발사 수
+    public float multipleProjectilesAngle; // 다중 발사 각도
+    public int pierceCount; // 관통 수 (0이면 무한)
     
     public CombatData(ItemWeaponCombatEntity entity)
     {
@@ -28,5 +31,8 @@ public struct CombatData
         this.waitTime = entity.waitTime;
         this.knockbackPower = entity.knockbackPower;
         this.hitInterval = entity.hitInterval;
+        this.numberOfProjectilePerShot = entity.numberOfProjectilePerShot;
+        this.multipleProjectilesAngle = entity.multipleProjectilesAngle;
+        this.pierceCount = entity.pierceCount;
     }
 }

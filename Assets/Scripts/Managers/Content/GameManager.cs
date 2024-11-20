@@ -11,6 +11,7 @@ public class GameManager : IManager
     int monsterCount;
     private float elapsedTime;
     private float startTime;  
+  
     private bool isWaveActive = false;
     private GameObject timerTextObject;
     private GameObject waveCounter;

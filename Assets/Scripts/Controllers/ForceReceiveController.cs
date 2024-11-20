@@ -91,8 +91,6 @@ public class ForceReceiveController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-
-
         Gizmos.color = IsGrounded() ? Color.blue : Color.yellow;
         Gizmos.DrawWireCube(groundCheck.position, groundCheck.localScale);
         Gizmos.color = IsOnSlope() ? Color.red : Color.yellow;

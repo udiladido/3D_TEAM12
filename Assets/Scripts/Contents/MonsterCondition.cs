@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class MonsterCondition : IDamageable
 {
     public event Action OnDead;
 
-    public bool IsDead { get; private set; }
-    private float maxHp;
-    private float currentHp;
+    [field: SerializeField] public bool IsDead { get; private set; }
+    [SerializeField] private float maxHp;
+    [SerializeField] private float currentHp;
 
     public void SetData(float _maxHp)
     {

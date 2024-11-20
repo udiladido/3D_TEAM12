@@ -1028,7 +1028,6 @@ GameObject:
   m_Component:
   - component: {fileID: 341157866}
   - component: {fileID: 341157865}
-  - component: {fileID: 341157864}
   - component: {fileID: 341157863}
   - component: {fileID: 341157862}
   - component: {fileID: 341157861}
@@ -1110,21 +1109,10 @@ MonoBehaviour:
   attackIndexName: AttackIndex
   hitName: Hit
   hitIndexName: HitIndex
+  isStaggerName: IsStagger
   deathName: Death
   deathIndexName: DeathIndex
   isDeadName: IsDead
---- !u!114 &341157864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341157860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78e0c01696d13c7458dd9a5bbc9d6614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &341157865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1137,22 +1125,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f690faef22e53e240a7ead41b89ae243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMonster:
-    id: 0
-    displayTitle: 
-    description: 
-    level: 0
-    prefabPath: 
-    iconPath: 
-    colliderRadius: 0
-    colliderCenterY: 0
+  <Condition>k__BackingField:
+    <IsDead>k__BackingField: 0
     maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  Condition: {fileID: 0}
-  AnimationController: {fileID: 0}
+    currentHp: 0
+  testtime: 10
 --- !u!4 &341157866
 Transform:
   m_ObjectHideFlags: 0
@@ -1988,7 +1965,6 @@ GameObject:
   m_Component:
   - component: {fileID: 538183131}
   - component: {fileID: 538183130}
-  - component: {fileID: 538183129}
   - component: {fileID: 538183128}
   - component: {fileID: 538183127}
   - component: {fileID: 538183126}
@@ -2070,21 +2046,10 @@ MonoBehaviour:
   attackIndexName: AttackIndex
   hitName: Hit
   hitIndexName: HitIndex
+  isStaggerName: IsStagger
   deathName: Death
   deathIndexName: DeathIndex
   isDeadName: IsDead
---- !u!114 &538183129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 538183125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78e0c01696d13c7458dd9a5bbc9d6614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &538183130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2097,22 +2062,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f690faef22e53e240a7ead41b89ae243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMonster:
-    id: 0
-    displayTitle: 
-    description: 
-    level: 0
-    prefabPath: 
-    iconPath: 
-    colliderRadius: 0
-    colliderCenterY: 0
+  <Condition>k__BackingField:
+    <IsDead>k__BackingField: 0
     maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  Condition: {fileID: 0}
-  AnimationController: {fileID: 0}
+    currentHp: 0
+  testtime: 10
 --- !u!4 &538183131
 Transform:
   m_ObjectHideFlags: 0
@@ -2139,7 +2093,6 @@ GameObject:
   m_Component:
   - component: {fileID: 553451255}
   - component: {fileID: 553451254}
-  - component: {fileID: 553451253}
   - component: {fileID: 553451252}
   - component: {fileID: 553451251}
   - component: {fileID: 553451250}
@@ -2221,21 +2174,10 @@ MonoBehaviour:
   attackIndexName: AttackIndex
   hitName: Hit
   hitIndexName: HitIndex
+  isStaggerName: IsStagger
   deathName: Death
   deathIndexName: DeathIndex
   isDeadName: IsDead
---- !u!114 &553451253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 553451249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78e0c01696d13c7458dd9a5bbc9d6614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &553451254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2248,22 +2190,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f690faef22e53e240a7ead41b89ae243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMonster:
-    id: 0
-    displayTitle: 
-    description: 
-    level: 0
-    prefabPath: 
-    iconPath: 
-    colliderRadius: 0
-    colliderCenterY: 0
+  <Condition>k__BackingField:
+    <IsDead>k__BackingField: 0
     maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  Condition: {fileID: 0}
-  AnimationController: {fileID: 0}
+    currentHp: 0
+  testtime: 10
 --- !u!4 &553451255
 Transform:
   m_ObjectHideFlags: 0
@@ -2471,7 +2402,6 @@ GameObject:
   m_Component:
   - component: {fileID: 599515658}
   - component: {fileID: 599515657}
-  - component: {fileID: 599515656}
   - component: {fileID: 599515655}
   - component: {fileID: 599515654}
   - component: {fileID: 599515653}
@@ -2553,21 +2483,10 @@ MonoBehaviour:
   attackIndexName: AttackIndex
   hitName: Hit
   hitIndexName: HitIndex
+  isStaggerName: IsStagger
   deathName: Death
   deathIndexName: DeathIndex
   isDeadName: IsDead
---- !u!114 &599515656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 599515652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78e0c01696d13c7458dd9a5bbc9d6614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &599515657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2580,22 +2499,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f690faef22e53e240a7ead41b89ae243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMonster:
-    id: 0
-    displayTitle: 
-    description: 
-    level: 0
-    prefabPath: 
-    iconPath: 
-    colliderRadius: 0
-    colliderCenterY: 0
+  <Condition>k__BackingField:
+    <IsDead>k__BackingField: 0
     maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  Condition: {fileID: 0}
-  AnimationController: {fileID: 0}
+    currentHp: 0
+  testtime: 10
 --- !u!4 &599515658
 Transform:
   m_ObjectHideFlags: 0
@@ -3131,7 +3039,6 @@ GameObject:
   m_Component:
   - component: {fileID: 737025718}
   - component: {fileID: 737025717}
-  - component: {fileID: 737025716}
   - component: {fileID: 737025715}
   - component: {fileID: 737025714}
   - component: {fileID: 737025713}
@@ -3213,21 +3120,10 @@ MonoBehaviour:
   attackIndexName: AttackIndex
   hitName: Hit
   hitIndexName: HitIndex
+  isStaggerName: IsStagger
   deathName: Death
   deathIndexName: DeathIndex
   isDeadName: IsDead
---- !u!114 &737025716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 737025712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78e0c01696d13c7458dd9a5bbc9d6614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &737025717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3240,22 +3136,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f690faef22e53e240a7ead41b89ae243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMonster:
-    id: 0
-    displayTitle: 
-    description: 
-    level: 0
-    prefabPath: 
-    iconPath: 
-    colliderRadius: 0
-    colliderCenterY: 0
+  <Condition>k__BackingField:
+    <IsDead>k__BackingField: 0
     maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  Condition: {fileID: 0}
-  AnimationController: {fileID: 0}
+    currentHp: 0
+  testtime: 10
 --- !u!4 &737025718
 Transform:
   m_ObjectHideFlags: 0
@@ -3821,7 +3706,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1049938367}
   - component: {fileID: 1049938366}
-  - component: {fileID: 1049938365}
   - component: {fileID: 1049938364}
   - component: {fileID: 1049938363}
   - component: {fileID: 1049938362}
@@ -3903,21 +3787,10 @@ MonoBehaviour:
   attackIndexName: AttackIndex
   hitName: Hit
   hitIndexName: HitIndex
+  isStaggerName: IsStagger
   deathName: Death
   deathIndexName: DeathIndex
   isDeadName: IsDead
---- !u!114 &1049938365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049938361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78e0c01696d13c7458dd9a5bbc9d6614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1049938366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3930,22 +3803,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f690faef22e53e240a7ead41b89ae243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMonster:
-    id: 0
-    displayTitle: 
-    description: 
-    level: 0
-    prefabPath: 
-    iconPath: 
-    colliderRadius: 0
-    colliderCenterY: 0
+  <Condition>k__BackingField:
+    <IsDead>k__BackingField: 0
     maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  Condition: {fileID: 0}
-  AnimationController: {fileID: 0}
+    currentHp: 0
+  testtime: 10
 --- !u!4 &1049938367
 Transform:
   m_ObjectHideFlags: 0
@@ -4336,7 +4198,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1197064960}
   - component: {fileID: 1197064959}
-  - component: {fileID: 1197064958}
   - component: {fileID: 1197064957}
   - component: {fileID: 1197064956}
   - component: {fileID: 1197064955}
@@ -4418,21 +4279,10 @@ MonoBehaviour:
   attackIndexName: AttackIndex
   hitName: Hit
   hitIndexName: HitIndex
+  isStaggerName: IsStagger
   deathName: Death
   deathIndexName: DeathIndex
   isDeadName: IsDead
---- !u!114 &1197064958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197064954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78e0c01696d13c7458dd9a5bbc9d6614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1197064959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4445,22 +4295,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f690faef22e53e240a7ead41b89ae243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMonster:
-    id: 0
-    displayTitle: 
-    description: 
-    level: 0
-    prefabPath: 
-    iconPath: 
-    colliderRadius: 0
-    colliderCenterY: 0
+  <Condition>k__BackingField:
+    <IsDead>k__BackingField: 0
     maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  Condition: {fileID: 0}
-  AnimationController: {fileID: 0}
+    currentHp: 0
+  testtime: 10
 --- !u!4 &1197064960
 Transform:
   m_ObjectHideFlags: 0
@@ -5186,7 +5025,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1511915455}
   - component: {fileID: 1511915458}
-  - component: {fileID: 1511915457}
   - component: {fileID: 1511915459}
   - component: {fileID: 1511915460}
   - component: {fileID: 1511915461}
@@ -5213,18 +5051,6 @@ Transform:
   - {fileID: 82577157}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1511915457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1511915454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78e0c01696d13c7458dd9a5bbc9d6614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1511915458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5237,22 +5063,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f690faef22e53e240a7ead41b89ae243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMonster:
-    id: 0
-    displayTitle: 
-    description: 
-    level: 0
-    prefabPath: 
-    iconPath: 
-    colliderRadius: 0
-    colliderCenterY: 0
+  <Condition>k__BackingField:
+    <IsDead>k__BackingField: 0
     maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  Condition: {fileID: 0}
-  AnimationController: {fileID: 0}
+    currentHp: 0
+  testtime: 10
 --- !u!114 &1511915459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5274,6 +5089,7 @@ MonoBehaviour:
   attackIndexName: AttackIndex
   hitName: Hit
   hitIndexName: HitIndex
+  isStaggerName: IsStagger
   deathName: Death
   deathIndexName: DeathIndex
   isDeadName: IsDead
@@ -5993,7 +5809,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1825153562}
   - component: {fileID: 1825153561}
-  - component: {fileID: 1825153560}
   - component: {fileID: 1825153559}
   - component: {fileID: 1825153558}
   - component: {fileID: 1825153557}
@@ -6075,21 +5890,10 @@ MonoBehaviour:
   attackIndexName: AttackIndex
   hitName: Hit
   hitIndexName: HitIndex
+  isStaggerName: IsStagger
   deathName: Death
   deathIndexName: DeathIndex
   isDeadName: IsDead
---- !u!114 &1825153560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1825153556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78e0c01696d13c7458dd9a5bbc9d6614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1825153561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6102,22 +5906,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f690faef22e53e240a7ead41b89ae243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMonster:
-    id: 0
-    displayTitle: 
-    description: 
-    level: 0
-    prefabPath: 
-    iconPath: 
-    colliderRadius: 0
-    colliderCenterY: 0
+  <Condition>k__BackingField:
+    <IsDead>k__BackingField: 0
     maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  Condition: {fileID: 0}
-  AnimationController: {fileID: 0}
+    currentHp: 0
+  testtime: 10
 --- !u!4 &1825153562
 Transform:
   m_ObjectHideFlags: 0
@@ -6251,7 +6044,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1869414549}
   - component: {fileID: 1869414548}
-  - component: {fileID: 1869414547}
   - component: {fileID: 1869414546}
   - component: {fileID: 1869414545}
   - component: {fileID: 1869414544}
@@ -6333,21 +6125,10 @@ MonoBehaviour:
   attackIndexName: AttackIndex
   hitName: Hit
   hitIndexName: HitIndex
+  isStaggerName: IsStagger
   deathName: Death
   deathIndexName: DeathIndex
   isDeadName: IsDead
---- !u!114 &1869414547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1869414543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78e0c01696d13c7458dd9a5bbc9d6614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1869414548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6360,22 +6141,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f690faef22e53e240a7ead41b89ae243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMonster:
-    id: 0
-    displayTitle: 
-    description: 
-    level: 0
-    prefabPath: 
-    iconPath: 
-    colliderRadius: 0
-    colliderCenterY: 0
+  <Condition>k__BackingField:
+    <IsDead>k__BackingField: 0
     maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  Condition: {fileID: 0}
-  AnimationController: {fileID: 0}
+    currentHp: 0
+  testtime: 10
 --- !u!4 &1869414549
 Transform:
   m_ObjectHideFlags: 0

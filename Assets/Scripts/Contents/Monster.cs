@@ -8,7 +8,7 @@ public class Monster : MonoBehaviour
     public int Identifier { get; private set; }
 
     public MonsterEntity Stat { get; private set; }
-    public MonsterCondition Condition { get; private set; }
+    [field: SerializeField] public MonsterCondition Condition { get; private set; }
     public CapsuleCollider HitCollider { get; private set; }
     public MonsterAnimatorController AnimationController { get; private set; }
 

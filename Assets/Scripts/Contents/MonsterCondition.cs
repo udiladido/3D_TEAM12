@@ -3,22 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterCondition : MonoBehaviour, IDamageable
+public class MonsterCondition : IDamageable
 {
-    public event Action OnHit;
     public event Action OnDead;
 
     public bool IsDead { get; private set; }
     private float maxHp;
     private float currentHp;
-    private int nextAttackIndex;
 
     public void SetData(float _maxHp)
     {
         IsDead = false;
         maxHp = _maxHp;
         currentHp = maxHp;
-        nextAttackIndex = 0;
     }
 
     public void TakeDamage(float damage)
@@ -30,10 +27,6 @@ public class MonsterCondition : MonoBehaviour, IDamageable
         {
             IsDead = true;
             OnDead?.Invoke();
-        }
-        else
-        {
-            OnHit?.Invoke();
         }
     }
 

@@ -14,9 +14,11 @@ public class MonsterEntity : EntityBase
     public float maxHp;
     public float armor;
     public float moveSpeed;
-    public float attractDistance;
+    public float staggerDamage; // 맞아도 주춤하지 않을 대미지 한계값
 
-    public List<MonsterAttack> monsterAttackList;
+    public float attractDistance;
+    public float chasePeriod;
+    public List<MonsterAttack> skillList;
     //public List<MonsterDropItemEntity> MonsterDropItemEntities;
 }
 
@@ -28,7 +30,7 @@ public class MonsterAttack
 
     public float attackRange;
     public float attackDamage;
-    public float attackSpeed;
+    public float attackPeriod;
 }
 
 [Serializable]

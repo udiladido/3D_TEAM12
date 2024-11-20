@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6891296342087471409}
   - component: {fileID: 3017268776404811248}
   - component: {fileID: 1015670192462349061}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Basic Slash Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4900,7 +4900,7 @@ GameObject:
   - component: {fileID: 8834571424339178984}
   - component: {fileID: -6507030955661748227}
   - component: {fileID: 3749131371729890706}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ComboAttack2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4972,7 +4972,7 @@ GameObject:
   - component: {fileID: 2795306256544973580}
   - component: {fileID: 2391396103336235611}
   - component: {fileID: 514992994752023787}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shockwave 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9860,7 +9860,7 @@ GameObject:
   - component: {fileID: 5626176738868304076}
   - component: {fileID: 29316709352191139}
   - component: {fileID: 3421727397868645485}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shockwave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14748,7 +14748,7 @@ GameObject:
   - component: {fileID: 6880460012821101738}
   - component: {fileID: 5667735398524506578}
   - component: {fileID: 6212995566030828747}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}

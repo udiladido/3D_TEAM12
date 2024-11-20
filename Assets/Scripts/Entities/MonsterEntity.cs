@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class MonsterEntity : EntityBase
@@ -14,27 +15,21 @@ public class MonsterEntity : EntityBase
     public float maxHp;
     public float armor;
     public float moveSpeed;
-    public float attractDistance;
+    public float staggerDamage; // 맞아도 주춤하지 않을 대미지 한계값
 
-    public List<MonsterAttack> monsterAttackList;
-    //public List<MonsterDropItemEntity> MonsterDropItemEntities;
+    public float attractDistance;
+    public float chasePeriod;
+    public List<MonsterSkillEntity> skillEntities;
 }
 
 [Serializable]
-public class MonsterAttack
+public class MonsterSkillEntity
 {
+    public int monsterId;
     public string projectilePrefabPath;
     public float selectWeight;
 
     public float attackRange;
     public float attackDamage;
-    public float attackSpeed;
-}
-
-[Serializable]
-public class MonsterDropItemEntity
-{
-    public int monsterId;
-    public int itemId;
-    public int dropRate;
+    public float attackPeriod;
 }

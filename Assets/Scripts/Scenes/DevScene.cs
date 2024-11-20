@@ -33,8 +33,12 @@ public class DevScene : SceneBase
         player.SetJob(job);
         ItemEntity comboWeapon = Managers.DB.Get<ItemEntity>(1503);
         ItemEntity skillWeapon = Managers.DB.Get<ItemEntity>(1505);
+        ItemEntity armor = Managers.DB.Get<ItemEntity>(1601);
+        ItemEntity accessory = Managers.DB.Get<ItemEntity>(1704);
         player.Equipment.Equip(comboWeapon);
         player.Equipment.Equip(skillWeapon);
+        player.Equipment.Equip(armor);
+        player.Equipment.Equip(accessory);
     }
 
 

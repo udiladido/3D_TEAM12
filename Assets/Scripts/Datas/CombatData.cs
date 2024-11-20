@@ -13,6 +13,7 @@ public struct CombatData
     public float damagePer; // 데미지(본체 공격력 퍼센트)
     public float waitTime; // x초 후 발사(애니메이션 타이밍 맞추기용)
     public float knockbackPower; // 넉백 파워
+    public float knockbackDuration; // 넉백 지속 시간
     public float hitInterval;
     public int numberOfProjectilePerShot; // 다중 발사 수
     public float multipleProjectilesAngle; // 다중 발사 각도
@@ -30,6 +31,7 @@ public struct CombatData
         this.damagePer = entity.damagePer;
         this.waitTime = entity.waitTime;
         this.knockbackPower = entity.knockbackPower;
+        this.knockbackDuration = entity.knockbackDuration;
         this.hitInterval = entity.hitInterval;
         this.numberOfProjectilePerShot = entity.numberOfProjectilePerShot;
         this.multipleProjectilesAngle = entity.multipleProjectilesAngle;

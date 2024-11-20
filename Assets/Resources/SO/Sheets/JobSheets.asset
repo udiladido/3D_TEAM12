@@ -29,6 +29,7 @@ MonoBehaviour:
       armor: 0
       attackSpeed: 0
       moveSpeed: 0
+      cooltimeReduction: 0
   - id: 12
     displayTitle: "\uAE30\uC0AC"
     description: "\uC2E0\uC911\uD55C \uAE30\uC0AC, \uACF5\uACA9 \uAE30\uD68C\uB97C
@@ -45,6 +46,7 @@ MonoBehaviour:
       armor: 0
       attackSpeed: 0
       moveSpeed: 0
+      cooltimeReduction: 0
   - id: 13
     displayTitle: "\uB3C4\uC801"
     description: "\uC7AC\uBE60\uB978 \uB3C4\uC801, \uCE58\uACE0 \uBE60\uC9C0\uAE30\uC5D0
@@ -61,6 +63,7 @@ MonoBehaviour:
       armor: 0
       attackSpeed: 0
       moveSpeed: 0
+      cooltimeReduction: 0
   - id: 14
     displayTitle: "\uB9C8\uBC95\uC0AC"
     description: "\uD604\uBA85\uD55C \uB9C8\uBC95\uC0AC, \uC804\uB7B5\uC801\uC73C\uB85C
@@ -77,6 +80,7 @@ MonoBehaviour:
       armor: 0
       attackSpeed: 0
       moveSpeed: 0
+      cooltimeReduction: 0
   StatList:
   - jobId: 11
     maxHp: 300
@@ -87,6 +91,7 @@ MonoBehaviour:
     armor: 5
     attackSpeed: 1
     moveSpeed: 3.5
+    cooltimeReduction: 1
   - jobId: 12
     maxHp: 250
     passiveHpRegen: 5
@@ -96,6 +101,7 @@ MonoBehaviour:
     armor: 8
     attackSpeed: 1
     moveSpeed: 4
+    cooltimeReduction: 1
   - jobId: 13
     maxHp: 200
     passiveHpRegen: 3
@@ -105,12 +111,14 @@ MonoBehaviour:
     armor: 5
     attackSpeed: 1.5
     moveSpeed: 4.5
+    cooltimeReduction: 1
   - jobId: 14
     maxHp: 150
     passiveHpRegen: 3
     maxMp: 300
     passiveMpRegen: 10
     attack: 10
-    armor: 10
+    armor: 2
     attackSpeed: 1
     moveSpeed: 3
+    cooltimeReduction: 1

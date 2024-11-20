@@ -14,158 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MonsterList:
   - id: 10001
-    displayTitle: "\uC2AC\uB77C\uC7841"
-    description: "\uB9D0\uB791\uB9D0\uB791 \uC2AC\uB77C\uC784"
+    displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uBBF8\uB2C8\uC5B8"
+    description: "\uC544\uBB34 \uBB34\uAE30\uB3C4 \uAC00\uC9C0\uACE0 \uC788\uC9C0
+      \uC54A\uB2E4"
     level: 1
-    prefabPath: /Prefabs/Monsters/Slime
+    prefabPath: /Prefabs/Monsters/Skeleton_Minion
     iconPath: /Textures/icons/monsters/monster
-    colliderRadius: 0
-    colliderCenterY: 0
-    maxHp: 0
+    colliderRadius: 0.5
+    colliderCenterY: 0.5
+    maxHp: 10
     armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  - id: 10002
-    displayTitle: "\uACE0\uBE14\uB9B01"
-    description: "\uBABB\uC0DD\uAE34 \uACE0\uBE14\uB9B0"
-    level: 3
-    prefabPath: /Prefabs/Monsters/Goblin
-    iconPath: /Textures/icons/monsters/monster
-    colliderRadius: 0
-    colliderCenterY: 0
-    maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  - id: 10003
-    displayTitle: "\uC624\uD06C1"
-    description: "\uB6B1\uB6B1\uD55C \uC624\uD06C"
-    level: 5
-    prefabPath: /Prefabs/Monsters/Orc
-    iconPath: /Textures/icons/monsters/monster
-    colliderRadius: 0
-    colliderCenterY: 0
-    maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  - id: 10004
-    displayTitle: "\uB370\uC2A4\uB098\uC774\uD2B81"
-    description: "\uC880 \uBA4B\uC9C4 \uB370\uC2A4\uB098\uC774\uD2B8"
-    level: 10
-    prefabPath: /Prefabs/Monsters/Goblin
-    iconPath: /Textures/icons/monsters/monster
-    colliderRadius: 0
-    colliderCenterY: 0
-    maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  - id: 10005
-    displayTitle: "\uC2AC\uB77C\uC7842"
-    description: "\uB9D0\uB791\uB9D0\uB791 \uC2AC\uB77C\uC784"
-    level: 11
-    prefabPath: /Prefabs/Monsters/Slime
-    iconPath: /Textures/icons/monsters/monster
-    colliderRadius: 0
-    colliderCenterY: 0
-    maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  - id: 10006
-    displayTitle: "\uACE0\uBE14\uB9B02"
-    description: "\uBABB\uC0DD\uAE34 \uACE0\uBE14\uB9B0"
-    level: 13
-    prefabPath: /Prefabs/Monsters/Goblin
-    iconPath: /Textures/icons/monsters/monster
-    colliderRadius: 0
-    colliderCenterY: 0
-    maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  - id: 10007
-    displayTitle: "\uC624\uD06C2"
-    description: "\uB6B1\uB6B1\uD55C \uC624\uD06C"
-    level: 15
-    prefabPath: /Prefabs/Monsters/Slime
-    iconPath: /Textures/icons/monsters/monster
-    colliderRadius: 0
-    colliderCenterY: 0
-    maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  - id: 10008
-    displayTitle: "\uB370\uC2A4\uB098\uC774\uD2B82"
-    description: "\uC880 \uBA4B\uC9C4 \uB370\uC2A4\uB098\uC774\uD2B8"
-    level: 20
-    prefabPath: /Prefabs/Monsters/Goblin
-    iconPath: /Textures/icons/monsters/monster
-    colliderRadius: 0
-    colliderCenterY: 0
-    maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  - id: 10009
-    displayTitle: "\uC2AC\uB77C\uC7843"
-    description: "\uB9D0\uB791\uB9D0\uB791 \uC2AC\uB77C\uC784"
-    level: 21
-    prefabPath: /Prefabs/Monsters/Slime
-    iconPath: /Textures/icons/monsters/monster
-    colliderRadius: 0
-    colliderCenterY: 0
-    maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  - id: 10010
-    displayTitle: "\uACE0\uBE14\uB9B03"
-    description: "\uBABB\uC0DD\uAE34 \uACE0\uBE14\uB9B0"
-    level: 23
-    prefabPath: /Prefabs/Monsters/Goblin
-    iconPath: /Textures/icons/monsters/monster
-    colliderRadius: 0
-    colliderCenterY: 0
-    maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  - id: 10011
-    displayTitle: "\uC624\uD06C3"
-    description: "\uB6B1\uB6B1\uD55C \uC624\uD06C"
-    level: 25
-    prefabPath: /Prefabs/Monsters/Slime
-    iconPath: /Textures/icons/monsters/monster
-    colliderRadius: 0
-    colliderCenterY: 0
-    maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
-  - id: 10012
-    displayTitle: "\uB370\uC2A4\uB098\uC774\uD2B83"
-    description: "\uC880 \uBA4B\uC9C4 \uB370\uC2A4\uB098\uC774\uD2B8"
-    level: 30
-    prefabPath: /Prefabs/Monsters/Goblin
-    iconPath: /Textures/icons/monsters/monster
-    colliderRadius: 0
-    colliderCenterY: 0
-    maxHp: 0
-    armor: 0
-    moveSpeed: 0
-    attractDistance: 0
-    monsterAttackList: []
+    moveSpeed: 3
+    staggerDamage: 0
+    attractDistance: 5
+    chasePeriod: 5
+    skillEntities:
+    - monsterId: 10001
+      projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+      selectWeight: 1
+      attackRange: 1
+      attackDamage: 5
+      attackPeriod: 2

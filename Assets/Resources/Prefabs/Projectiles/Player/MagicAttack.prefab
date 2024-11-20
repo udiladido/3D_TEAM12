@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4226809053945380198}
   - component: {fileID: -8265585525421212094}
   - component: {fileID: 6997119513206112316}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MagicAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 3295231979244356918}
   - component: {fileID: 3295231979254764606}
   - component: {fileID: 382597299065487860}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 3295231979244356920}
   - component: {fileID: 6283560167577922123}
   - component: {fileID: 5737451927152020327}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireBall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5035,7 +5035,7 @@ GameObject:
   - component: {fileID: 3295231979244356922}
   - component: {fileID: 3295231979229151354}
   - component: {fileID: 3295231979229264346}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9850,7 +9850,7 @@ GameObject:
   - component: {fileID: 3295231979244356924}
   - component: {fileID: 3295231979229151356}
   - component: {fileID: 3295231979229264348}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14548,7 +14548,7 @@ GameObject:
   - component: {fileID: 3295231979244356926}
   - component: {fileID: 3295231979229151358}
   - component: {fileID: 3295231979229264350}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}

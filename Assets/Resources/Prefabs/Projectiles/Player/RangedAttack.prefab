@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5681131070758813598}
   - component: {fileID: -8092948748185769932}
   - component: {fileID: 4028682778874166350}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RangedAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,6 +147,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: arrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 93a800d9629e33048af502d77333af52,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

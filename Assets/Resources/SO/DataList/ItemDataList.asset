@@ -224,6 +224,7 @@ MonoBehaviour:
         damagePer: 80
         waitTime: 0.5
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -240,6 +241,7 @@ MonoBehaviour:
         damagePer: 100
         waitTime: 0.5
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -256,6 +258,7 @@ MonoBehaviour:
         damagePer: 120
         waitTime: 0.8
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -291,6 +294,7 @@ MonoBehaviour:
         damagePer: 80
         waitTime: 0.5
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -307,6 +311,7 @@ MonoBehaviour:
         damagePer: 100
         waitTime: 0.5
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -323,6 +328,7 @@ MonoBehaviour:
         damagePer: 120
         waitTime: 0.8
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -358,6 +364,7 @@ MonoBehaviour:
         damagePer: 80
         waitTime: 0.5
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -374,6 +381,7 @@ MonoBehaviour:
         damagePer: 100
         waitTime: 0.5
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -390,6 +398,7 @@ MonoBehaviour:
         damagePer: 120
         waitTime: 0.8
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -401,7 +410,7 @@ MonoBehaviour:
       calcType: 0
     - itemId: 1503
       statType: 4
-      amount: 1
+      amount: 1.1
       calcType: 1
     consumableEntities: []
   - id: 1504
@@ -430,6 +439,7 @@ MonoBehaviour:
         damagePer: 80
         waitTime: 0.5
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -446,6 +456,7 @@ MonoBehaviour:
         damagePer: 100
         waitTime: 0.5
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -462,6 +473,7 @@ MonoBehaviour:
         damagePer: 120
         waitTime: 0.8
         knockbackPower: 1
+        knockbackDuration: 0.2
         hitInterval: 0
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -473,7 +485,7 @@ MonoBehaviour:
       calcType: 0
     - itemId: 1504
       statType: 4
-      amount: 2
+      amount: 1.5
       calcType: 1
     consumableEntities: []
   - id: 1505
@@ -502,6 +514,7 @@ MonoBehaviour:
         damagePer: 400
         waitTime: 1
         knockbackPower: 2
+        knockbackDuration: 0.2
         hitInterval: 1
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -538,10 +551,11 @@ MonoBehaviour:
         damagePer: 200
         waitTime: 1
         knockbackPower: 2
+        knockbackDuration: 0.5
         hitInterval: 0
         numberOfProjectilePerShot: 5
         multipleProjectilesAngle: 45
-        pierceCount: 0
+        pierceCount: 2
     statBoostEffectEntities:
     - itemId: 1506
       statType: 3
@@ -574,6 +588,7 @@ MonoBehaviour:
         damagePer: 500
         waitTime: 1
         knockbackPower: 2
+        knockbackDuration: 0.5
         hitInterval: 1
         numberOfProjectilePerShot: 1
         multipleProjectilesAngle: 0
@@ -582,6 +597,10 @@ MonoBehaviour:
     - itemId: 1507
       statType: 3
       amount: 50
+      calcType: 0
+    - itemId: 1507
+      statType: 9
+      amount: 0.1
       calcType: 0
     consumableEntities: []
   - id: 1601
@@ -642,7 +661,7 @@ MonoBehaviour:
       calcType: 0
     - itemId: 1603
       statType: 5
-      amount: 1
+      amount: 1.2
       calcType: 1
     consumableEntities: []
   - id: 1604
@@ -666,11 +685,11 @@ MonoBehaviour:
       calcType: 0
     - itemId: 1604
       statType: 5
-      amount: 2
+      amount: 1.5
       calcType: 1
     - itemId: 1604
       statType: 1
-      amount: 2
+      amount: 1.5
       calcType: 1
     consumableEntities: []
   - id: 1701
@@ -689,11 +708,11 @@ MonoBehaviour:
     statBoostEffectEntities:
     - itemId: 1701
       statType: 1
-      amount: 1
+      amount: 1.2
       calcType: 1
     - itemId: 1701
       statType: 2
-      amount: 1
+      amount: 1.2
       calcType: 1
     consumableEntities: []
   - id: 1702
@@ -712,11 +731,11 @@ MonoBehaviour:
     statBoostEffectEntities:
     - itemId: 1702
       statType: 1
-      amount: 2
+      amount: 1.5
       calcType: 1
     - itemId: 1702
       statType: 2
-      amount: 2
+      amount: 1.5
       calcType: 1
     consumableEntities: []
   - id: 1703
@@ -743,7 +762,7 @@ MonoBehaviour:
       calcType: 1
     - itemId: 1703
       statType: 4
-      amount: 1
+      amount: 1.2
       calcType: 1
     consumableEntities: []
   - id: 1704
@@ -763,26 +782,30 @@ MonoBehaviour:
     statBoostEffectEntities:
     - itemId: 1704
       statType: 1
-      amount: 2
+      amount: 2.5
       calcType: 1
     - itemId: 1704
       statType: 2
-      amount: 2
+      amount: 2.5
       calcType: 1
     - itemId: 1704
       statType: 3
-      amount: 2
+      amount: 1.5
       calcType: 1
     - itemId: 1704
       statType: 4
-      amount: 2
+      amount: 1.5
       calcType: 1
     - itemId: 1704
       statType: 5
-      amount: 2
+      amount: 1.5
       calcType: 1
     - itemId: 1704
       statType: 6
-      amount: 2
+      amount: 1.5
+      calcType: 1
+    - itemId: 1704
+      statType: 9
+      amount: 1.5
       calcType: 1
     consumableEntities: []

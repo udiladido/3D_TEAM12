@@ -747,7 +747,7 @@ MonoBehaviour:
     calcType: 0
   - itemId: 1503
     statType: 4
-    amount: 1
+    amount: 1.1
     calcType: 1
   - itemId: 1504
     statType: 3
@@ -755,7 +755,7 @@ MonoBehaviour:
     calcType: 0
   - itemId: 1504
     statType: 4
-    amount: 2
+    amount: 1.5
     calcType: 1
   - itemId: 1505
     statType: 3
@@ -768,6 +768,10 @@ MonoBehaviour:
   - itemId: 1507
     statType: 3
     amount: 50
+    calcType: 0
+  - itemId: 1507
+    statType: 9
+    amount: 0.1
     calcType: 0
   - itemId: 1601
     statType: 6
@@ -783,7 +787,7 @@ MonoBehaviour:
     calcType: 0
   - itemId: 1603
     statType: 5
-    amount: 1
+    amount: 1.2
     calcType: 1
   - itemId: 1604
     statType: 6
@@ -791,27 +795,27 @@ MonoBehaviour:
     calcType: 0
   - itemId: 1604
     statType: 5
-    amount: 2
+    amount: 1.5
     calcType: 1
   - itemId: 1604
     statType: 1
-    amount: 2
+    amount: 1.5
     calcType: 1
   - itemId: 1701
     statType: 1
-    amount: 1
+    amount: 1.2
     calcType: 1
   - itemId: 1701
     statType: 2
-    amount: 1
+    amount: 1.2
     calcType: 1
   - itemId: 1702
     statType: 1
-    amount: 2
+    amount: 1.5
     calcType: 1
   - itemId: 1702
     statType: 2
-    amount: 2
+    amount: 1.5
     calcType: 1
   - itemId: 1703
     statType: 1
@@ -823,31 +827,35 @@ MonoBehaviour:
     calcType: 1
   - itemId: 1703
     statType: 4
-    amount: 1
+    amount: 1.2
     calcType: 1
   - itemId: 1704
     statType: 1
-    amount: 2
+    amount: 2.5
     calcType: 1
   - itemId: 1704
     statType: 2
-    amount: 2
+    amount: 2.5
     calcType: 1
   - itemId: 1704
     statType: 3
-    amount: 2
+    amount: 1.5
     calcType: 1
   - itemId: 1704
     statType: 4
-    amount: 2
+    amount: 1.5
     calcType: 1
   - itemId: 1704
     statType: 5
-    amount: 2
+    amount: 1.5
     calcType: 1
   - itemId: 1704
     statType: 6
-    amount: 2
+    amount: 1.5
+    calcType: 1
+  - itemId: 1704
+    statType: 9
+    amount: 1.5
     calcType: 1
   ConsumableList:
   - itemId: 1001

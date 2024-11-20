@@ -74,10 +74,10 @@ public class Player : MonoBehaviour
         GameObject jobGo = Managers.Resource.Instantiate(job.prefabPath, transform);
         jobGo.transform.localPosition = Vector3.zero;
         if (Equipment == null) Equipment = GetComponent<Equipment>();
-        Animator = GetComponentInChildren<Animator>();
-        Equipment.LoadModel();
+        Equipment.LoadModel(jobGo.transform);
+        Animator = jobGo.transform.GetComponentInChildren<Animator>();
         Condition.SetData(job.jobStatEntity);
-        CombatSlots.Init(AnimationData);
+        CombatSlots.Init(Animator, AnimationData);
         Revive();
     }
 

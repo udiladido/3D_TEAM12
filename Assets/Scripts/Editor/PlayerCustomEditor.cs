@@ -19,16 +19,35 @@ public class PlayerCustomEditor : Editor
         if (Application.isPlaying)
         {
             List<ItemEntity> items = Managers.DB.GetAll<ItemEntity>();
-            items = items.Where(
-                s => s.itemType == Defines.ItemType.Equipment && s.equipableEntity?.equipmentType == Defines.ItemEquipmentType.Weapon
-            ).ToList();
+            items = items.Where(s => s.itemType == Defines.ItemType.Equipment).ToList();
             GUILayout.Space(20);
             GUILayout.Label("콤보 무기 장착");
             DrawComboWeaponButtons(items);
+            DrawUnEquipButton(Defines.ItemEquipmentType.Weapon, Defines.CharacterCombatStyleType.ComboAttack);
             
             GUILayout.Space(20);
-            GUILayout.Label("그냥 무기 장착");
+            GUILayout.Label("스킬 무기 장착");
             DrawWeaponButtons(items);
+            DrawUnEquipButton(Defines.ItemEquipmentType.Weapon);
+            
+            GUILayout.Space(20);
+            GUILayout.Label("방어구 장착");
+            DrawEquipableButtons(items, Defines.ItemEquipmentType.Armor);
+            DrawUnEquipButton(Defines.ItemEquipmentType.Armor);
+            
+            GUILayout.Space(20);
+            GUILayout.Label("악세사리 장착");
+            DrawEquipableButtons(items, Defines.ItemEquipmentType.Accessory);
+            DrawUnEquipButton(Defines.ItemEquipmentType.Accessory);
+        }
+    }
+    
+    private void DrawEquipableButtons(List<ItemEntity> items, Defines.ItemEquipmentType equipmentType)
+    {
+        foreach (var item in items)
+        {
+            if (item.equipableEntity.equipmentType == equipmentType)
+                DrawGenerateButton(item);
         }
     }
 
@@ -59,6 +78,15 @@ public class PlayerCustomEditor : Editor
             Player player = (Player)target;
             player.gameObject.name = nameof(Player);
             player.Equipment.Equip(item);
+        }
+    }
+    
+    private void DrawUnEquipButton(Defines.ItemEquipmentType equipmentType, Defines.CharacterCombatStyleType combatStyleType = Defines.CharacterCombatStyleType.None)
+    {
+        if (GUILayout.Button($"장착 해제"))
+        {
+            Player player = (Player)target;
+            player.Equipment.UnEquip(equipmentType, combatStyleType);
         }
     }
 }

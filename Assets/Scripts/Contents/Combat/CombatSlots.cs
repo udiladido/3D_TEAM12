@@ -12,7 +12,7 @@ public class CombatSlots : MonoBehaviour
 
     public bool IsSkillCasting { get; set; }
     public Animator Animator { get; private set; }
-    public IEquipable Equipment { get; private set; }
+    public IEquipment Equipment { get; private set; }
     public Condition Condition { get; private set; }
     public AnimationData AnimationData { get; private set; }
 
@@ -27,15 +27,15 @@ public class CombatSlots : MonoBehaviour
     {
         OnTimerChanged?.Invoke();
         OnUpdate?.Invoke();
-        if (isComboAttaking)
+        if (isComboAttaking && Equipment.CanAction(Defines.CharacterAttackInputType.ComboAttack))
             TryExecute(Defines.CharacterAttackInputType.ComboAttack);
     }
 
-    public void Init(AnimationData data)
+    public void Init(Animator animator, AnimationData data)
     {
         AnimationData = data;
-        Animator = GetComponentInChildren<Animator>();
-        Equipment = GetComponent<IEquipable>();
+        Animator = animator;
+        Equipment = GetComponent<IEquipment>();
         Condition = GetComponent<Condition>();
     }
 
@@ -79,7 +79,8 @@ public class CombatSlots : MonoBehaviour
             isComboAttaking = true;
         else
         {
-            TryExecute(attackInput);
+            if (Equipment.CanAction(attackInput))
+                TryExecute(attackInput);
         }
     }
 

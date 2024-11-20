@@ -59,7 +59,7 @@ public class ItemStatBoostEffectEntity
 {
     public int itemId;
     public Defines.CharacterStatType statType;
-    public int amount;
+    public float amount;
     public Defines.CalcType calcType;
 }
 

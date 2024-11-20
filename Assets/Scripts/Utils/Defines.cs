@@ -101,6 +101,9 @@ public static class Defines
         AttackSpeed,
         MoveSpeed,
         Armor,
+        HpRegen,
+        MpRegen,
+        CooltimeReduction,
     }
 
     public enum CharacterMovementType
@@ -136,4 +139,9 @@ public static class Defines
 
     public const float MOVE_ANIMATION_SPEED_OFFSET = 3.5f;
     public const float ATTACK_ANIMATION_SPEED_OFFSET = 1f;
+    
+    public const float STAT_MAX_ATTACK_SPEED = 2.5f;
+    public const float STAT_MAX_MOVE_SPEED = 10f;
+    public const float STAT_MAX_ARMOR = 80f;
+    public const float STAT_MAX_COOLTIME_REDUCE_RATE = 1.8f; // 최대 80% 까지 감소
 }

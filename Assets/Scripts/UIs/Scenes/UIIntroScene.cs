@@ -6,7 +6,7 @@ public class UIIntroScene : UISceneBase
 {
     enum Buttons
     {
-        StartButton,
+        CharacterSelectButton,
         QuitButton,
         SettingButton
     }
@@ -18,16 +18,16 @@ public class UIIntroScene : UISceneBase
 
         BindButton(typeof(Buttons));
 
-        GetButton(Buttons.StartButton).gameObject.BindEvent(StartButtonEvent);
+        GetButton(Buttons.CharacterSelectButton).gameObject.BindEvent(CharacterSelectButtonEvent);
         GetButton(Buttons.QuitButton).gameObject.BindEvent(QuitButtonEvent);
         GetButton(Buttons.SettingButton).gameObject.BindEvent(SettingPopupButtonEvent);
         return true;
     }
 
 
-    public void StartButtonEvent()
+    public void CharacterSelectButtonEvent()
     {
-        Managers.Scene.LoadScene(Defines.SceneType.GameScene);
+        Managers.UI.ShowPopupUI<UICharacterSelectPopup>();
     }
 
     public void QuitButtonEvent()

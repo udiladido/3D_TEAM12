@@ -6,13 +6,18 @@ using System.Collections.Generic;
 
 public class GameManager : IManager
 {
-    Player player;
+    public Player Player {get; private set;}
 
     int monsterCount;
-    private float startTime;// = Time.time;  
+    private float elapsedTime;
+    private float startTime;  
+  
     private bool isWaveActive = false;
     private GameObject timerTextObject;
     private GameObject waveCounter;
+    private GameObject countDownPopupUI;
+    UICountDownPopup uiCountDownPopup;
+    
 
     //HashSet<MonsterDataList> monsterDataList = new HashSet<MonsterDataList>();
 
@@ -21,10 +26,11 @@ public class GameManager : IManager
         // 게임시작하기 데이터 초기화 
         // 몬스터 데이터 연동, 웨이브 데이터 연동
         // 여기서 캐릭터 생성을 해야 하는가 아니면 캐릭터 선택창을 따로 만들 것인가
-        player.Condition.OnDead += GameOver;
+        startTime = Time.time;
         
         CreateTimer(); // 타이머 UI 텍스트 생성
         CreateWaveCounter();
+        uiCountDownPopup.CreateCountDown();
     }
 
 
@@ -39,9 +45,10 @@ public class GameManager : IManager
         // 실제로 게임을 시작하는 함수
         // 타이틀씬에서 버튼 연동 필요
         //isWaveActive = true;
+        startTime = Time.time;
+        elapsedTime = 0f;
 
         Managers.Scene.LoadScene(Defines.SceneType.GameScene);
-        Managers.UI.ShowPopupUI<UICountDownPopup>();
     }
 
     public void GameOver()
@@ -54,13 +61,12 @@ public class GameManager : IManager
     {
         if (isWaveActive)
         {
-            float elapsedTime = Time.time - startTime; // 경과 시간 계산
+            elapsedTime = Time.time - startTime; // 경과 시간 계산
             timerTextObject.GetComponentInChildren<Text>().text = Mathf.FloorToInt(elapsedTime).ToString();
         }
         else
         {
-            float elapsedTime = 0;
-            timerTextObject.GetComponentInChildren<Text>().text = "0";
+            timerTextObject.GetComponentInChildren<Text>().text = Mathf.FloorToInt(elapsedTime).ToString();
         }
     }
 
@@ -71,18 +77,39 @@ public class GameManager : IManager
 
     private void CreateTimer()
     {
-        GameObject timerTextPrefab = Managers.Resource.Instantiate("Prefabs/TimerTextPrefab"); // Resources 폴더에서 프리팹 로드
+        GameObject timerTextPrefab = Managers.Resource.Instantiate("Prefabs/UI/Popup/TimerTextPrefab"); // Resources 폴더에서 프리팹 로드
         timerTextObject = GameObject.Instantiate(timerTextPrefab); // 프리팹을 인스턴스화하여 타이머 텍스트 생성
     }
 
     private void CreateWaveCounter()
     {
-        GameObject waveCounterPrefab = Managers.Resource.Instantiate("Prefabs/WaveCounter"); // Resources 폴더에서 프리팹 로드
+        GameObject waveCounterPrefab = Managers.Resource.Instantiate("Prefabs/UI/Popup/WaveCounter"); // Resources 폴더에서 프리팹 로드
         waveCounter = GameObject.Instantiate(waveCounterPrefab); // 프리팹을 인스턴스화하여 타이머 텍스트 생성
+    }
+
+    public void CreatePlayer(int jobid)
+    {
+        JobEntity job = Managers.DB.Get<JobEntity>(11);
+
+        Player player = GameObject.FindObjectOfType<Player>();
+        if (player == null)
+            player = Managers.Resource.Instantiate("Player")?.GetComponent<Player>();
+
+        if (player == null)
+        {
+            Debug.LogWarning("Player 프리팹이 없습니다.");
+            return;
+        }
+        player.gameObject.name = nameof(Player);
+        player.SetJob(job);
+        ItemEntity comboWeapon = Managers.DB.Get<ItemEntity>(1501);
+        player.Equipment.Equip(comboWeapon);
+        player.Condition.OnDead += GameOver;
+        Player = player;
     }
 
     void Update()
     {
-        Timer(); // 타이머 업데이트
+        Timer(); 
     }
 }

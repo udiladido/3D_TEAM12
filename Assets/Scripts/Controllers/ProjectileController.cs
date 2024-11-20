@@ -1,5 +1,7 @@
 using DG.Tweening;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ProjectileController : BaseController
@@ -9,55 +11,117 @@ public class ProjectileController : BaseController
 
     private Vector3 direction;
 
+    private ParticleSystem parentParticleSystem;
+    private ParticleSystem[] particleSystems;
     private MeshRenderer meshRenderer;
     private Collider hitBoxCollider;
 
     private bool isLaunched;
     private CombatBase combat;
-    private Condition condition; 
+    private Condition condition;
 
-    private float timer;
+    private List<IDamageable> hitTargets = new List<IDamageable>();
+    private float hitTimer = 0f;
+    private int hitCounter = 0;
+
+    private float durationTimer;
     [SerializeField] private LayerMask targetLayer;
 
     private void Awake()
     {
         meshRenderer = GetComponentInChildren<MeshRenderer>();
         hitBoxCollider = GetComponentInChildren<Collider>();
+        parentParticleSystem = GetComponentInChildren<ParticleSystem>();
+        particleSystems = GetComponentsInChildren<ParticleSystem>();
     }
 
     private void Update()
     {
         if (isLaunched)
         {
-            if (Time.time - timer > projectileData.duration)
+            if (Time.time - durationTimer > projectileData.duration)
                 DestroySelf();
 
             Move();
             Scale();
 
+            if (Time.time - hitTimer > projectileData.hitInterval)
+            {
+                hitTimer = Time.time;
+                Hits();
+            }
         }
+    }
+
+    private void Hits()
+    {
+        if (hitTargets.Count == 0) return;
+        float damage = condition.CurrentStat.attack * (projectileData.damagePer / 100);
+        Vector3 knockbackDirection = transform.forward;
+        foreach (var target in hitTargets)
+            Hit(target, damage, knockbackDirection);
+    }
+
+    private void Hit(IDamageable target, float damage, Vector3 knockbackDirection)
+    {
+        target.TakeDamage(damage);
+        if (projectileData.knockbackPower > 0)
+            target.Knockback(knockbackDirection, projectileData.knockbackPower, projectileData.knockbackDuration);
+            
+        if (projectileData.pierceCount > 0 && ++hitCounter > projectileData.pierceCount)
+        {
+            DestroySelf();
+        }
+    }
+
+    private void EnableHitBox(bool enable)
+    {
+        if (hitBoxCollider != null)
+            hitBoxCollider.enabled = enable;
+        if (meshRenderer != null)
+            meshRenderer.enabled = enable;
+        if (parentParticleSystem != null)
+            parentParticleSystem.gameObject.SetActive(enable);
     }
 
     private void Scale()
     {
         float scale = projectileData.endScale - projectileData.startScale;
         if (scale == 0) return;
-        
-        transform.localScale += Vector3.one * scale * Time.deltaTime / projectileData.duration;
+        Vector3 scaleVector = Vector3.one * scale * Time.deltaTime / projectileData.duration;
+        transform.localScale += scaleVector;
+        ParticleShapeScale(transform.localScale);
+    }
+
+    private void ParticleShapeScale(Vector3 scaleVector)
+    {
+        foreach (var particle in particleSystems)
+        {
+            if (particle.main.scalingMode == ParticleSystemScalingMode.Hierarchy)
+                continue;
+            ParticleSystem.ShapeModule shape = particle.shape;
+            shape.scale = scaleVector;
+        }
     }
 
     public void SetData(Transform owner, CombatData projectileData, LayerMask enemyLayerMask)
     {
+        SetData(owner, projectileData, enemyLayerMask, owner.forward);
+    }
+
+    public void SetData(Transform owner, CombatData projectileData, LayerMask enemyLayerMask, Vector3 direction)
+    {
         this.projectileData = projectileData;
         this.owner = owner;
+        hitTargets.Clear();
         isLaunched = false;
-        meshRenderer.enabled = false;
-        hitBoxCollider.enabled = false;
-        
+        EnableHitBox(false);
+        hitCounter = 0;
         transform.localScale = new Vector3(this.projectileData.startScale, this.projectileData.startScale, this.projectileData.startScale);
-        transform.position = owner.position;
-        transform.rotation = owner.rotation;
-        direction = owner.forward.normalized;
+        ParticleShapeScale(transform.localScale);
+        transform.position = owner.position + Vector3.up;
+        transform.rotation = Quaternion.LookRotation(direction);
+        this.direction = direction.normalized;
         condition = owner.GetComponent<Condition>();
         targetLayer = enemyLayerMask;
     }
@@ -66,25 +130,20 @@ public class ProjectileController : BaseController
     {
         if (owner == null) return;
         // TODO : 발사
-        float waitTime = Defines.ATTACK_ANIMATION_SPEED_OFFSET / condition.CurrentStat.attackSpeed;
+        float waitTime = projectileData.waitTime / condition.CurrentStat.attackSpeed;
         Invoke(nameof(ApplyLaunch), waitTime);
     }
 
     private void ApplyLaunch()
     {
-        meshRenderer.enabled = true;
-        hitBoxCollider.enabled = true;
-        timer = Time.time;
+        EnableHitBox(true);
+        durationTimer = Time.time;
         isLaunched = true;
     }
 
     private void Move()
     {
-        if (projectileData.moveSpeed == 0)
-        {
-            transform.position = owner.position;
-        }
-        else
+        if (projectileData.moveSpeed > 0)
         {
             transform.position += direction * projectileData.moveSpeed * Time.deltaTime;
         }
@@ -92,7 +151,6 @@ public class ProjectileController : BaseController
 
     private void DestroySelf()
     {
-        transform.DOKill();
         Managers.Pool.Despawn(gameObject);
     }
 
@@ -103,10 +161,19 @@ public class ProjectileController : BaseController
         {
             if (other.TryGetComponent(out IDamageable damageable))
             {
-                Condition condition = owner.GetComponent<Condition>();
                 float damage = condition.CurrentStat.attack * (projectileData.damagePer / 100);
-                damageable.TakeDamage(damage);
-                DestroySelf();
+                Hit(damageable, damage, transform.forward);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (Utils.LayerMaskContains(targetLayer, other.gameObject.layer))
+        {
+            if (other.TryGetComponent(out IDamageable damageable))
+            {
+                hitTargets.Remove(damageable);
             }
         }
     }

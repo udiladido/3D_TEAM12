@@ -21,4 +21,5 @@ public class JobStatEntity
      public float armor;
      public float attackSpeed;
      public float moveSpeed;
+     public float cooltimeReduction; // 쿨타임 감소
 }

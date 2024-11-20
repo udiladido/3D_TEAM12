@@ -482,170 +482,222 @@ MonoBehaviour:
     projectilePrefabPath: /Projectiles/Player/ComboAttack1
     manaCost: 3
     cooltime: 1
-    duration: 0.25
+    duration: 0.4
     startScale: 1
     endScale: 1
     moveSpeed: 0
     damagePer: 80
-    waitTime: 0.1
+    waitTime: 0.5
     knockbackPower: 1
+    knockbackDuration: 0.2
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1501
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
     manaCost: 3
     cooltime: 1
-    duration: 0.25
+    duration: 0.4
     startScale: 1
     endScale: 1
     moveSpeed: 0
     damagePer: 100
-    waitTime: 0.1
+    waitTime: 0.5
     knockbackPower: 1
+    knockbackDuration: 0.2
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1501
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
     manaCost: 5
     cooltime: 1.5
-    duration: 0.5
+    duration: 0.4
     startScale: 1
     endScale: 1
     moveSpeed: 0
     damagePer: 120
-    waitTime: 0.1
+    waitTime: 0.8
     knockbackPower: 1
+    knockbackDuration: 0.2
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1502
     comboIndex: 1
     projectilePrefabPath: /Projectiles/Player/ComboAttack1
     manaCost: 3
     cooltime: 1
-    duration: 0.25
+    duration: 0.4
     startScale: 1.2
     endScale: 1.2
     moveSpeed: 0
     damagePer: 80
-    waitTime: 0.1
+    waitTime: 0.5
     knockbackPower: 1
+    knockbackDuration: 0.2
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1502
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
     manaCost: 3
     cooltime: 1
-    duration: 0.25
+    duration: 0.4
     startScale: 1.2
     endScale: 1.2
     moveSpeed: 0
     damagePer: 100
-    waitTime: 0.1
+    waitTime: 0.5
     knockbackPower: 1
+    knockbackDuration: 0.2
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1502
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
     manaCost: 5
     cooltime: 1.5
-    duration: 0.5
+    duration: 0.4
     startScale: 1.2
     endScale: 1.2
     moveSpeed: 0
     damagePer: 120
-    waitTime: 0.1
+    waitTime: 0.8
     knockbackPower: 1
+    knockbackDuration: 0.2
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1503
     comboIndex: 1
     projectilePrefabPath: /Projectiles/Player/ComboAttack1
     manaCost: 3
     cooltime: 1
-    duration: 0.25
+    duration: 0.4
     startScale: 1.5
     endScale: 1.5
     moveSpeed: 0
     damagePer: 80
-    waitTime: 0.1
+    waitTime: 0.5
     knockbackPower: 1
+    knockbackDuration: 0.2
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1503
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
     manaCost: 3
     cooltime: 1
-    duration: 0.25
+    duration: 0.4
     startScale: 1.5
     endScale: 1.5
     moveSpeed: 0
     damagePer: 100
-    waitTime: 0.1
+    waitTime: 0.5
     knockbackPower: 1
+    knockbackDuration: 0.2
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1503
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
     manaCost: 5
     cooltime: 1.5
-    duration: 0.5
+    duration: 0.4
     startScale: 1.5
     endScale: 1.5
     moveSpeed: 0
     damagePer: 120
-    waitTime: 0.1
+    waitTime: 0.8
     knockbackPower: 1
+    knockbackDuration: 0.2
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1504
     comboIndex: 1
     projectilePrefabPath: /Projectiles/Player/ComboAttack1
     manaCost: 3
     cooltime: 1
-    duration: 0.25
+    duration: 0.4
     startScale: 2
     endScale: 2
     moveSpeed: 0
     damagePer: 80
-    waitTime: 0.1
+    waitTime: 0.5
     knockbackPower: 1
+    knockbackDuration: 0.2
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1504
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
     manaCost: 3
     cooltime: 1
-    duration: 0.25
+    duration: 0.4
     startScale: 2
     endScale: 2
     moveSpeed: 0
     damagePer: 100
-    waitTime: 0.1
+    waitTime: 0.5
     knockbackPower: 1
+    knockbackDuration: 0.2
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1504
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
     manaCost: 5
     cooltime: 1.5
-    duration: 0.5
+    duration: 0.4
     startScale: 2
     endScale: 2
     moveSpeed: 0
     damagePer: 120
-    waitTime: 0.1
+    waitTime: 0.8
     knockbackPower: 1
+    knockbackDuration: 0.2
     hitInterval: 0
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1505
     comboIndex: 0
     projectilePrefabPath: /Projectiles/Player/MeleeAttack
     manaCost: 20
     cooltime: 10
-    duration: 2
-    startScale: 1
-    endScale: 1.5
+    duration: 3
+    startScale: 3
+    endScale: 5
     moveSpeed: 0
     damagePer: 400
     waitTime: 1
     knockbackPower: 2
-    hitInterval: 0.5
+    knockbackDuration: 0.2
+    hitInterval: 1
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   - itemId: 1506
     comboIndex: 0
     projectilePrefabPath: /Projectiles/Player/RangedAttack
@@ -654,24 +706,32 @@ MonoBehaviour:
     duration: 3
     startScale: 1
     endScale: 1
-    moveSpeed: 10
+    moveSpeed: 20
     damagePer: 200
     waitTime: 1
     knockbackPower: 2
+    knockbackDuration: 0.5
     hitInterval: 0
+    numberOfProjectilePerShot: 5
+    multipleProjectilesAngle: 45
+    pierceCount: 2
   - itemId: 1507
     comboIndex: 0
     projectilePrefabPath: /Projectiles/Player/MagicAttack
     manaCost: 30
     cooltime: 15
-    duration: 3
-    startScale: 1
-    endScale: 2
-    moveSpeed: 4
+    duration: 5
+    startScale: 2
+    endScale: 4
+    moveSpeed: 3
     damagePer: 500
-    waitTime: 2
+    waitTime: 1
     knockbackPower: 2
+    knockbackDuration: 0.5
     hitInterval: 1
+    numberOfProjectilePerShot: 1
+    multipleProjectilesAngle: 0
+    pierceCount: 0
   StatBoostEffectList:
   - itemId: 1501
     statType: 3
@@ -687,7 +747,7 @@ MonoBehaviour:
     calcType: 0
   - itemId: 1503
     statType: 4
-    amount: 1
+    amount: 1.1
     calcType: 1
   - itemId: 1504
     statType: 3
@@ -695,7 +755,7 @@ MonoBehaviour:
     calcType: 0
   - itemId: 1504
     statType: 4
-    amount: 2
+    amount: 1.5
     calcType: 1
   - itemId: 1505
     statType: 3
@@ -708,6 +768,10 @@ MonoBehaviour:
   - itemId: 1507
     statType: 3
     amount: 50
+    calcType: 0
+  - itemId: 1507
+    statType: 9
+    amount: 0.1
     calcType: 0
   - itemId: 1601
     statType: 6
@@ -723,7 +787,7 @@ MonoBehaviour:
     calcType: 0
   - itemId: 1603
     statType: 5
-    amount: 1
+    amount: 1.2
     calcType: 1
   - itemId: 1604
     statType: 6
@@ -731,27 +795,27 @@ MonoBehaviour:
     calcType: 0
   - itemId: 1604
     statType: 5
-    amount: 2
+    amount: 1.5
     calcType: 1
   - itemId: 1604
     statType: 1
-    amount: 2
+    amount: 1.5
     calcType: 1
   - itemId: 1701
     statType: 1
-    amount: 1
+    amount: 1.2
     calcType: 1
   - itemId: 1701
     statType: 2
-    amount: 1
+    amount: 1.2
     calcType: 1
   - itemId: 1702
     statType: 1
-    amount: 2
+    amount: 1.5
     calcType: 1
   - itemId: 1702
     statType: 2
-    amount: 2
+    amount: 1.5
     calcType: 1
   - itemId: 1703
     statType: 1
@@ -763,31 +827,35 @@ MonoBehaviour:
     calcType: 1
   - itemId: 1703
     statType: 4
-    amount: 1
+    amount: 1.2
     calcType: 1
   - itemId: 1704
     statType: 1
-    amount: 2
+    amount: 2.5
     calcType: 1
   - itemId: 1704
     statType: 2
-    amount: 2
+    amount: 2.5
     calcType: 1
   - itemId: 1704
     statType: 3
-    amount: 2
+    amount: 1.5
     calcType: 1
   - itemId: 1704
     statType: 4
-    amount: 2
+    amount: 1.5
     calcType: 1
   - itemId: 1704
     statType: 5
-    amount: 2
+    amount: 1.5
     calcType: 1
   - itemId: 1704
     statType: 6
-    amount: 2
+    amount: 1.5
+    calcType: 1
+  - itemId: 1704
+    statType: 9
+    amount: 1.5
     calcType: 1
   ConsumableList:
   - itemId: 1001

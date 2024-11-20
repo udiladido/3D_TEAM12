@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Condition : MonoBehaviour, IDamageable
+public class Condition : MonoBehaviour, IDamageable, IStatHandler
 {
     public event Action<float, float> OnHpChanged;
     public event Action<float, float> OnMpChanged;
@@ -16,6 +17,9 @@ public class Condition : MonoBehaviour, IDamageable
     public float currentMp;
     public bool IsDead;
 
+    private StatData baseStat;
+    private List<StatModifier> statsModifiers = new List<StatModifier>();
+
     private void Start()
     {
         currentHp = CurrentStat.maxHp;
@@ -26,7 +30,7 @@ public class Condition : MonoBehaviour, IDamageable
     public void SetData(JobStatEntity statEntity, bool isFullRecovery = false)
     {
         this.statEntity = statEntity;
-        CurrentStat = new StatData(statEntity);
+        baseStat = new StatData(statEntity);
         OnStatChanged?.Invoke(CurrentStat);
 
         if (isFullRecovery) FullRecovery();
@@ -49,7 +53,9 @@ public class Condition : MonoBehaviour, IDamageable
     }
     public void TakeDamage(float damage)
     {
-        currentHp = Mathf.Clamp(currentHp - damage, 0, CurrentStat.maxHp);
+        float value = (CurrentStat.armor / 100) * damage;
+        
+        currentHp = Mathf.Clamp(currentHp - value, 0, CurrentStat.maxHp);
         // TODO : 피격 이펙트
         // TODO : 피격 사운드
         if (currentHp <= 0)
@@ -84,5 +90,41 @@ public class Condition : MonoBehaviour, IDamageable
     public void Knockback(Vector3 direction, float force, float duration)
     {
         // TODO : 넉백?
+    }
+    
+    public void AddStatModifier(params StatModifier[] modifiers)
+    {
+        statsModifiers.AddRange(modifiers);
+        UpdateStatModifier();
+    }
+    public void RemoveStatModifier(params StatModifier[] modifiers)
+    {
+        foreach (var modifier in modifiers)
+            statsModifiers.Remove(modifier);
+        UpdateStatModifier();
+    }
+    
+    public void UpdateStatModifier()
+    {
+        foreach (var modifier in baseStat.statModifiers)
+        {
+            ApplyStatModifier(modifier);
+        }
+
+        foreach (var modifier in statsModifiers)
+        {
+            ApplyStatModifier(modifier);
+        }
+    }
+    private void ApplyStatModifier(StatModifier modifier)
+    {
+        Func<float, float, float> operation = modifier.calcType switch
+        {
+            Defines.CalcType.Add => (current, value) => current + value,
+            Defines.CalcType.Multiply => (current, value) => current * value,
+            _ => (current, value) => value
+        };
+        
+        CurrentStat.UpdateStat(operation, modifier);
     }
 }

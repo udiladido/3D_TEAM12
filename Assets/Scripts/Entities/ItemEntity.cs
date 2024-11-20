@@ -47,7 +47,11 @@ public class ItemWeaponCombatEntity
     public float damagePer; // 데미지(본체 공격력 퍼센트)
     public float waitTime; // x초 후 발사(애니메이션 타이밍 맞추기용)
     public float knockbackPower; // 넉백 파워
+    public float knockbackDuration; // 넉백 지속 시간
     public float hitInterval; // 피격 간격
+    public int numberOfProjectilePerShot; // 다중 발사 수
+    public float multipleProjectilesAngle; // 다중 발사 각도
+    public int pierceCount; // 관통 수 (0이면 무한)
 }
 
 [Serializable]
@@ -55,7 +59,7 @@ public class ItemStatBoostEffectEntity
 {
     public int itemId;
     public Defines.CharacterStatType statType;
-    public int amount;
+    public float amount;
     public Defines.CalcType calcType;
 }
 

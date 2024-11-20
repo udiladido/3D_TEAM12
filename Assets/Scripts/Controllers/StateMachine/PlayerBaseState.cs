@@ -229,6 +229,13 @@ public class PlayerBaseState : IState
         if (stateMachine.Player.FixedCameraFacing == false)
             Rotate();
 
+        if (stateMachine.CombatSlots.IsSkillCasting)
+        {
+            MoveCancelHandle();
+            stateMachine.ChangeState(stateMachine.IdleState);
+            return;
+        }
+
         Move();
     }
     public virtual void PhysicsUpdate()

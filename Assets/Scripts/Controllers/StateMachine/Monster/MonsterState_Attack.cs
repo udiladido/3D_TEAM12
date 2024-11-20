@@ -16,7 +16,7 @@ public class MonsterState_Attack : MonsterBaseState
             triggered = stateMachine.Monster.AnimationController.TriggerAttack(stateMachine.Monster.NextSkillIndex);
             if (triggered)
             {
-                attackTimeDelay = stateMachine.Monster.Stat.skillList[stateMachine.Monster.NextSkillIndex].attackPeriod;
+                attackTimeDelay = stateMachine.Monster.Stat.skillEntities[stateMachine.Monster.NextSkillIndex].attackPeriod;
             }
         }
         else
@@ -42,7 +42,7 @@ public class MonsterState_Attack : MonsterBaseState
                 triggered = stateMachine.Monster.AnimationController.TriggerAttack(stateMachine.Monster.NextSkillIndex);
                 if (triggered)
                 {
-                    attackTimeDelay = stateMachine.Monster.Stat.skillList[stateMachine.Monster.NextSkillIndex].attackPeriod;
+                    attackTimeDelay = stateMachine.Monster.Stat.skillEntities[stateMachine.Monster.NextSkillIndex].attackPeriod;
                 }
             }
         }

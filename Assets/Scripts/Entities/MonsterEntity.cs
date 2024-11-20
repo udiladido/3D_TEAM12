@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class MonsterEntity : EntityBase
@@ -18,25 +19,17 @@ public class MonsterEntity : EntityBase
 
     public float attractDistance;
     public float chasePeriod;
-    public List<MonsterAttack> skillList;
-    //public List<MonsterDropItemEntity> MonsterDropItemEntities;
+    public List<MonsterSkillEntity> skillEntities;
 }
 
 [Serializable]
-public class MonsterAttack
+public class MonsterSkillEntity
 {
+    public int monsterId;
     public string projectilePrefabPath;
     public float selectWeight;
 
     public float attackRange;
     public float attackDamage;
     public float attackPeriod;
-}
-
-[Serializable]
-public class MonsterDropItemEntity
-{
-    public int monsterId;
-    public int itemId;
-    public int dropRate;
 }

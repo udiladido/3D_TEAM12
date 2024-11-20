@@ -25,10 +25,12 @@ MonoBehaviour:
     maxHp: 10
     armor: 0
     moveSpeed: 3
+    staggerDamage: 0
     attractDistance: 5
     chasePeriod: 5
-    skillList:
-    - projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+    skillEntities:
+    - monsterId: 10001
+      projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 1
       attackDamage: 5

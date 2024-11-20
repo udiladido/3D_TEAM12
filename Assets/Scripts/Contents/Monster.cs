@@ -64,15 +64,15 @@ public class Monster : MonoBehaviour
         OnDisabled = null;
 
         // 스킬 데이터
-        if (Stat.skillList != null && Stat.skillList.Count > 0)
+        if (Stat.skillEntities != null && Stat.skillEntities.Count > 0)
         {
-            skillNum = Stat.skillList.Count;
+            skillNum = Stat.skillEntities.Count;
             NextSkillIndex = 0;
-            NextSkillRange = Stat.skillList[0].attackRange;
+            NextSkillRange = Stat.skillEntities[0].attackRange;
 
-            for (int i = 0; i < Stat.skillList.Count; i++)
+            for (int i = 0; i < Stat.skillEntities.Count; i++)
             {
-                skillWeightTotal += Stat.skillList[i].selectWeight;
+                skillWeightTotal += Stat.skillEntities[i].selectWeight;
             }
 
             ValidSkill = true;
@@ -117,9 +117,9 @@ public class Monster : MonoBehaviour
 
         float skillWeightSelect = Random.Range(0, skillWeightTotal);
         float skillWeightCumulative = 0;
-        for (int i = 0; i < Stat.skillList.Count; i++)
+        for (int i = 0; i < Stat.skillEntities.Count; i++)
         {
-            skillWeightCumulative += Stat.skillList[i].selectWeight;
+            skillWeightCumulative += Stat.skillEntities[i].selectWeight;
             if (skillWeightSelect < skillWeightCumulative)
             {
                 NextSkillIndex = i;

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -18,8 +19,17 @@ public abstract class UIPopupBase : UIBase
     public override void Close(Defines.UIAnimationType type = Defines.UIAnimationType.None)
     {
         base.Close(type);
-        Managers.UI.ClosePopupUI(this);
+        Invoke("CloseAfterAnimation", duration);
+        
     }
+
+    private void CloseAfterAnimation()
+    {
+
+        Managers.UI.ClosePopupUI(this);
+
+    }
+
 
     protected void SetDraggable(GameObject targetGo)
     {

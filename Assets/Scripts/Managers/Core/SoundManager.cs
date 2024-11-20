@@ -25,13 +25,44 @@ public class SoundManager : IManager
     }
     private AudioSourcePool audioSourcePool;
     
-
     private AudioMixer masterMixer;
+
+   
 
     private int defaultCapacity = 10;
     private int maxSize = 20;
     
     private bool initialized;
+
+    protected bool isSoundOn;
+    protected float prevSoundSfxValue;
+    protected float prevSoundBgmValue;
+    protected float prevSoundMasterValue;
+
+    public bool IsSoundOn
+    {
+        get { return isSoundOn; }
+        set { isSoundOn = value; }
+    }
+
+    public float PrevSoundSfxValue
+    {
+        get { return prevSoundSfxValue; }
+        set { prevSoundSfxValue = value; }
+    }
+
+    public float PrevSoundBgmValue
+    {
+        get { return prevSoundBgmValue; }
+        set { prevSoundBgmValue = value; }
+    }
+
+    public float PrevSoundMasterValue
+    {
+        get { return prevSoundMasterValue; }
+        set { prevSoundMasterValue = value; }
+    }
+
 
     public void Init()
     {
@@ -61,6 +92,10 @@ public class SoundManager : IManager
             defaultCapacity: defaultCapacity,
             maxSize: maxSize
         );
+
+        prevSoundBgmValue = 1f;
+        prevSoundMasterValue = 1f;
+        prevSoundMasterValue = 1f;
     }
     public void Clear()
     {
@@ -111,11 +146,28 @@ public class SoundManager : IManager
         BgmSource.Stop();
     }
 
+
+
+    public void SetSFXVolume()
+    {
+        if (masterMixer == null) return;
+        masterMixer.SetFloat("SFX", LinearToDecibel(prevSoundSfxValue));
+    }
+
+
     public void SetSFXVolume(float volume)
     {
         if (masterMixer == null) return;
         masterMixer.SetFloat("SFX", LinearToDecibel(volume));
     }
+
+
+    public void SetBGMVolume()
+    {
+        if (masterMixer == null) return;
+        masterMixer.SetFloat("BGM", LinearToDecibel(prevSoundBgmValue));
+    }
+
 
     public void SetBGMVolume(float volume)
     {
@@ -123,11 +175,22 @@ public class SoundManager : IManager
         masterMixer.SetFloat("BGM", LinearToDecibel(volume));
     }
 
+
+
     public void SetMasterVolume(float volume)
     {
         if (masterMixer == null) return;
         masterMixer.SetFloat("Master", LinearToDecibel(volume));
     }
+
+    public void SetMasterVolume()
+    {
+        if (masterMixer == null) return;
+
+        Debug.Log(prevSoundMasterValue);
+        masterMixer.SetFloat("Master", LinearToDecibel(prevSoundMasterValue));
+    }
+
 
     private float LinearToDecibel(float linear)
     {

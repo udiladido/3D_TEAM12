@@ -6,14 +6,16 @@ public class IntroScene : SceneBase
 {
     protected override void OnSceneLoad()
     {
-      
+
+        Managers.UI.LoadSceneUI<UIIntroScene>();
+        LoadPlayer();
+
     }
 
     protected override void OnSceneLoaded()
     {
 
-        Managers.UI.LoadSceneUI<UIIntroScene>();
-
+  
     }
 
     protected override void OnSceneUnload()
@@ -21,5 +23,12 @@ public class IntroScene : SceneBase
        
     }
 
+
+    private void LoadPlayer()
+    {
+       
   
+    }
+
+
 }

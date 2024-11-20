@@ -37,15 +37,32 @@ public class SoundManager : IManager
     protected bool isSoundOn;
     protected float prevSoundSfxValue;
     protected float prevSoundBgmValue;
+    protected float prevSoundMasterValue;
 
-    public bool IsSoundOn { get; set;}
-    public float PrevSoundSfxValue { get; set; }
+    public bool IsSoundOn
+    {
+        get { return isSoundOn; }
+        set { isSoundOn = value; }
+    }
 
-    public float PrevSoundBgmValue { get; set;}
- 
+    public float PrevSoundSfxValue
+    {
+        get { return prevSoundSfxValue; }
+        set { prevSoundSfxValue = value; }
+    }
 
+    public float PrevSoundBgmValue
+    {
+        get { return prevSoundBgmValue; }
+        set { prevSoundBgmValue = value; }
+    }
 
-  
+    public float PrevSoundMasterValue
+    {
+        get { return prevSoundMasterValue; }
+        set { prevSoundMasterValue = value; }
+    }
+
 
     public void Init()
     {
@@ -125,10 +142,26 @@ public class SoundManager : IManager
         BgmSource.Stop();
     }
 
+
+
+    public void SetSFXVolume()
+    {
+        if (masterMixer == null) return;
+        masterMixer.SetFloat("SFX", LinearToDecibel(prevSoundSfxValue));
+    }
+
+
     public void SetSFXVolume(float volume)
     {
         if (masterMixer == null) return;
         masterMixer.SetFloat("SFX", LinearToDecibel(volume));
+    }
+
+
+    public void SetBGMVolume()
+    {
+        if (masterMixer == null) return;
+        masterMixer.SetFloat("BGM", LinearToDecibel(prevSoundBgmValue));
     }
 
 
@@ -146,8 +179,15 @@ public class SoundManager : IManager
         masterMixer.SetFloat("Master", LinearToDecibel(volume));
     }
 
+    public void SetMasterVolume()
+    {
+        if (masterMixer == null) return;
 
-    
+        Debug.Log(prevSoundMasterValue);
+        masterMixer.SetFloat("Master", LinearToDecibel(prevSoundMasterValue));
+    }
+
+
     private float LinearToDecibel(float linear)
     {
         float dB;

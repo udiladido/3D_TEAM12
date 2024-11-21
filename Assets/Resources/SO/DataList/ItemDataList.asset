@@ -19,7 +19,7 @@ MonoBehaviour:
     itemType: 2
     rarityType: 1
     dropPrefabPath: /DropItems/Potion
-    iconPath: /Textures/status/hp_potion
+    iconPath: /Textures/icons/consumables/hp_potion
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -39,7 +39,7 @@ MonoBehaviour:
     itemType: 2
     rarityType: 1
     dropPrefabPath: /DropItems/Potion
-    iconPath: /Textures/status/mp_potion
+    iconPath: /Textures/icons/consumables/mp_potion
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
     itemType: 2
     rarityType: 2
     dropPrefabPath: /DropItems/Potion
-    iconPath: /Textures/status/movespeed_potion
+    iconPath: /Textures/icons/consumables/buff_potion
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -81,7 +81,7 @@ MonoBehaviour:
     itemType: 2
     rarityType: 2
     dropPrefabPath: /DropItems/Potion
-    iconPath: /Textures/status/attackspeed_potion
+    iconPath: /Textures/icons/consumables/attackspeed_potion
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
     itemType: 2
     rarityType: 2
     dropPrefabPath: /DropItems/Potion
-    iconPath: /Textures/status/attackdamage_potion
+    iconPath: /Textures/icons/consumables/attackdamage_potion
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
     itemType: 2
     rarityType: 2
     dropPrefabPath: /DropItems/Potion
-    iconPath: /Textures/status/maxhp_potion
+    iconPath: /Textures/icons/consumables/maxhp_potion
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -205,7 +205,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 1
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon/combo_weapon
+    iconPath: /Textures/icons/equipments/combo_weapon_01
     equipableEntity:
       itemId: 1501
       equipmentType: 1
@@ -275,7 +275,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 2
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon/combo_weapon
+    iconPath: /Textures/icons/equipments/combo_weapon_01
     equipableEntity:
       itemId: 1502
       equipmentType: 1
@@ -345,7 +345,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 3
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon/combo_weapon
+    iconPath: /Textures/icons/equipments/combo_weapon_01
     equipableEntity:
       itemId: 1503
       equipmentType: 1
@@ -420,7 +420,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 4
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon/combo_weapon
+    iconPath: /Textures/icons/equipments/combo_weapon_02
     equipableEntity:
       itemId: 1504
       equipmentType: 1
@@ -495,7 +495,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 3
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon/skill_melee_weapon
+    iconPath: /Textures/icons/equipments/skill_melee_weapon
     equipableEntity:
       itemId: 1505
       equipmentType: 1
@@ -536,7 +536,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 3
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon/skill_ranged_weapon
+    iconPath: /Textures/icons/equipments/skill_ranged_weapon
     equipableEntity:
       itemId: 1506
       equipmentType: 1
@@ -577,7 +577,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 3
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon/skill_magic_weapon
+    iconPath: /Textures/icons/equipments/skill_magic_weapon
     equipableEntity:
       itemId: 1507
       equipmentType: 1
@@ -621,7 +621,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 1
     dropPrefabPath: /DropItems/Armor
-    iconPath: /Textures/icons/equipments/armor
+    iconPath: /Textures/icons/equipments/armor_01
     equipableEntity:
       itemId: 1601
       equipmentType: 2
@@ -640,7 +640,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 2
     dropPrefabPath: /DropItems/Armor
-    iconPath: /Textures/icons/equipments/armor
+    iconPath: /Textures/icons/equipments/armor_02
     equipableEntity:
       itemId: 1602
       equipmentType: 2
@@ -659,7 +659,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 3
     dropPrefabPath: /DropItems/Armor
-    iconPath: /Textures/icons/equipments/armor
+    iconPath: /Textures/icons/equipments/armor_03
     equipableEntity:
       itemId: 1603
       equipmentType: 2
@@ -683,7 +683,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 4
     dropPrefabPath: /DropItems/Armor
-    iconPath: /Textures/icons/equipments/armor
+    iconPath: /Textures/icons/equipments/armor_04
     equipableEntity:
       itemId: 1604
       equipmentType: 2
@@ -710,7 +710,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 1
     dropPrefabPath: /DropItems/Accessory
-    iconPath: /Textures/icons/equipments/accessory
+    iconPath: /Textures/icons/equipments/ring_01
     equipableEntity:
       itemId: 1701
       equipmentType: 3
@@ -733,7 +733,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 2
     dropPrefabPath: /DropItems/Accessory
-    iconPath: /Textures/icons/equipments/accessory
+    iconPath: /Textures/icons/equipments/ring_01
     equipableEntity:
       itemId: 1702
       equipmentType: 3
@@ -756,7 +756,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 3
     dropPrefabPath: /DropItems/Accessory
-    iconPath: /Textures/icons/equipments/accessory
+    iconPath: /Textures/icons/equipments/ring_02
     equipableEntity:
       itemId: 1703
       equipmentType: 3
@@ -784,7 +784,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 4
     dropPrefabPath: /DropItems/Accessory
-    iconPath: /Textures/icons/equipments/accessory
+    iconPath: /Textures/icons/equipments/ring_03
     equipableEntity:
       itemId: 1704
       equipmentType: 3

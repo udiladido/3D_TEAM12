@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 
 public class UICharacterSelectPopup : UIPopupBase
@@ -11,7 +13,7 @@ public class UICharacterSelectPopup : UIPopupBase
 
     enum Buttons
     {
-        Babirain = 0,
+        Barbirian = 0,
         Knight,
         Rogue,
         Mage,
@@ -34,14 +36,12 @@ public class UICharacterSelectPopup : UIPopupBase
         if (base.Init() == false)
             return false;
 
-        SpawnPrevCharacter();
-
         BindButton(typeof(Buttons));
         BindText(typeof(Texts));
-        GetButton(Buttons.Babirain).gameObject.BindEvent();
-        GetButton(Buttons.Knight).gameObject.BindEvent(SelectPlayer);
-        GetButton(Buttons.Rogue).gameObject.BindEvent(SelectPlayer);
-        GetButton(Buttons.Mage).gameObject.BindEvent(SelectPlayer);
+        GetButton(Buttons.Barbirian).gameObject.BindEvent(SelectPrevCharacter);
+        GetButton(Buttons.Knight).gameObject.BindEvent(SelectPrevCharacter);
+        GetButton(Buttons.Rogue).gameObject.BindEvent(SelectPrevCharacter);
+        GetButton(Buttons.Mage).gameObject.BindEvent(SelectPrevCharacter);
         GetButton(Buttons.GameStartButton).gameObject.BindEvent(GameStart);
 
 
@@ -60,18 +60,26 @@ public class UICharacterSelectPopup : UIPopupBase
         //GetText(Texts.CharacterInfo).text = job.description;
     }
 
-    private void SpawnPrevCharacter()
+    private void SelectPrevCharacter()
     {
 
+        //이름으로 소환하기 
+        CharacterPreview preview = GameObject.FindObjectOfType<CharacterPreview>();
+        if (preview == null)
+            preview = Managers.Resource.Instantiate("CharacterPreview")?.GetComponent<CharacterPreview>();
+        preview.gameObject.name = nameof(CharacterPreview);
 
-        // prefabs/Jobs에서 4개 다 소환 후 false하기
+        CharacterID characterId = (CharacterID)Enum.Parse(typeof(CharacterID), preview.gameObject.name);
 
-        for (int i = 0; i < (int)Buttons.CharacterCount; i++)
-        {
-            JobEntity job = Managers.DB.Get<JobEntity>(10+i);
-            GameObject jobGo = Managers.Resource.Instantiate(job.prefabPath, transform);
-            jobGo.SetActive(false);
-        }
+        JobEntity job = Managers.DB.Get<JobEntity>((int)characterId);
+
+        preview.SetJob(job);
+
+
+        //Managers.Game. 에 jobid 변수 값 넘겨주기
+        //Managers.Game.Jobid = (int)characterId;
+
+        GetText(Texts.CharacterInfo).text = job.description;
 
     }
 

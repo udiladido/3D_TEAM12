@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/Prefabs/UI/Slot/UIQuickSlot.prefab.meta
 guid: 6cc1a616bb002744893f1f4e3ddc3b0d
+========
+guid: f19cb59c43043374cbebcc1c9c8eae71
+>>>>>>>> Dev:Assets/Resources/Prefabs/CharacterPreview.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

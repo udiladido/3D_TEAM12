@@ -1486,7 +1486,7 @@ GameObject:
   - component: {fileID: 6951184924249864580}
   - component: {fileID: 2297538032963388350}
   m_Layer: 5
-  m_Name: UICharacterSelect
+  m_Name: UICharacterSelectPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -44,7 +44,7 @@ public class UIQuickSlot : UISlotBase
             }
             else
             {
-                icon.sprite = Managers.Resource.Load<Sprite>(item.itemEntity.iconPath, true);
+                icon.sprite = Managers.Resource.Load<Sprite>(item.itemEntity.iconPath);
                 countText.text = item.Count.ToString();
                 background.color = Utils.GetItemRarityColor(item.itemEntity.rarityType);
             }

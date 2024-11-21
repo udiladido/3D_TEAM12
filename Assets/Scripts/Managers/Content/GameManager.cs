@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class GameManager : IManager
 {
     public Player Player {get; private set;}
+    public int JobId { get; private set; }
 
-    int monsterCount;
-    int waveCount;
+    private int monsterCount;
+    private int waveCount;
     private float elapsedTime;
     private float startTime;
-    public int jobId;
-  
+
     private bool isWaveActive = false;
     private GameObject timerTextObject;
     private GameObject monsterCounter;
@@ -102,6 +102,10 @@ public class GameManager : IManager
         monsterCounterText = monsterCounter.GetComponentInChildren<Text>();
     }
 
+    public void CreatePlayer()
+    {
+        CreatePlayer(JobId);
+    }
     public void CreatePlayer(int jobid)
     {
         JobEntity job = Managers.DB.Get<JobEntity>(jobid); //11
@@ -171,5 +175,9 @@ public class GameManager : IManager
             Defines.ItemQuickSlotInputType inputType = (Defines.ItemQuickSlotInputType) index;
             Managers.Game.Player?.ItemQuickSlots?.Use(inputType);
         }
+    }
+    public void SetPlayerJobId(int jobId)
+    {
+        this.JobId = jobId;
     }
 }

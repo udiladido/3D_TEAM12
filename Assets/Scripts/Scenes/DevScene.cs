@@ -13,8 +13,7 @@ public class DevScene : SceneBase
         Managers.Game.Init();
         
         Managers.UI.LoadSceneUI<UIGameScene>();
-        Managers.Game.jobId = 11;
-        Managers.Game.CreatePlayer();
+        Managers.Game.CreatePlayer(11);
     }
 
     protected override void OnSceneLoaded()

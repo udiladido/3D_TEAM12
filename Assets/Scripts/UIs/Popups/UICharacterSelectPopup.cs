@@ -49,7 +49,6 @@ public class UICharacterSelectPopup : UIPopupBase
         BindText(typeof(Texts));
         BindImage(typeof(Images));
 
-        
 
         GetButton(Buttons.Barbarian).gameObject.BindEvent(SelectPrevCharacter);
         GetButton(Buttons.Knight).gameObject.BindEvent(SelectPrevCharacter);
@@ -69,10 +68,8 @@ public class UICharacterSelectPopup : UIPopupBase
     }
 
 
-
-      private void SelectPrevCharacter() 
+    private void SelectPrevCharacter()
     {
-
 
 
         CharacterPreview preview = GameObject.FindObjectOfType<CharacterPreview>();
@@ -81,19 +78,17 @@ public class UICharacterSelectPopup : UIPopupBase
         preview.gameObject.name = nameof(CharacterPreview);
 
 
-
         //버튼 이름 확인  - 캐릭터 ID 가져오기
         Button clickedButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
         CharacterID characterId = (CharacterID)Enum.Parse(typeof(CharacterID), clickedButton.gameObject.name);
 
-    
+
         JobEntity job = Managers.DB.Get<JobEntity>((int)characterId);
 
 
         preview.SetJob(job);
 
-
-        Managers.Game.jobId = (int)characterId;
+        Managers.Game.SetPlayerJobId((int)characterId);
         GetText(Texts.CharacterInfo).text = job.description;
 
     }
@@ -112,17 +107,17 @@ public class UICharacterSelectPopup : UIPopupBase
         preview.SetJob(job);
 
 
-        Managers.Game.jobId = (int)CharacterID.Barbarian;
+        Managers.Game.SetPlayerJobId((int)CharacterID.Barbarian);
         GetText(Texts.CharacterInfo).text = job.description;
 
     }
 
     /*
-    
+
     private void SelectPrevCharacter_Knight()
     {
 
-     
+
         CharacterPreview preview = GameObject.FindObjectOfType<CharacterPreview>();
         if (preview == null)
             preview = Managers.Resource.Instantiate("CharacterPreview")?.GetComponent<CharacterPreview>();
@@ -144,7 +139,7 @@ public class UICharacterSelectPopup : UIPopupBase
     private void SelectPrevCharacter_Rogue()
     {
 
-    
+
         CharacterPreview preview = GameObject.FindObjectOfType<CharacterPreview>();
         if (preview == null)
             preview = Managers.Resource.Instantiate("CharacterPreview")?.GetComponent<CharacterPreview>();
@@ -183,22 +178,19 @@ public class UICharacterSelectPopup : UIPopupBase
         GetText(Texts.CharacterInfo).text = job.description;
 
     }
-     
-     
+
+
      */
 
 
     public void SetButtonImageData()
     {
-
         List<JobEntity> jobs = Managers.DB.GetAll<JobEntity>();
-
 
         GetImage(Images.Barbarian).sprite = Managers.Resource.Load<Sprite>(jobs[(int)Images.Barbarian].image);
         GetImage(Images.Knight).sprite = Managers.Resource.Load<Sprite>(jobs[(int)Images.Knight].image);
         GetImage(Images.Rogue).sprite = Managers.Resource.Load<Sprite>(jobs[(int)Images.Rogue].image);
         GetImage(Images.Mage).sprite = Managers.Resource.Load<Sprite>(jobs[(int)Images.Mage].image);
-
     }
 
 
@@ -209,10 +201,6 @@ public class UICharacterSelectPopup : UIPopupBase
 
 
     }
-
-
-
-    
 
 
 }

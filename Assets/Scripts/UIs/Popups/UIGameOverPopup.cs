@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIGameOverScene : UIPopupBase
+public class UIGameOverPopup : UIPopupBase
 {
     enum Buttons
     {

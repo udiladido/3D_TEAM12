@@ -1,0 +1,243 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4051fb76e3214545a32f9ada5366d6ac, type: 3}
+  m_Name: WaveDataList
+  m_EditorClassIdentifier: 
+  WaveList:
+  - id: 100100
+    displayTitle: Wave 1
+    description: "\uBAAC\uC2A4\uD130\uB97C \uACA9\uD30C\uD558\uB77C!"
+    waveSeq: 1
+    SmallWaveEntities:
+    - waveId: 100100
+      startInterval: 1
+      waveType: 0
+      pointGroup: 2
+      monsterID: 10001
+      monsterCount: 10
+      spawnInterval: 0.4
+    - waveId: 100100
+      startInterval: 5
+      waveType: 1
+      pointGroup: 1
+      monsterID: 10001
+      monsterCount: 0
+      spawnInterval: 0
+    - waveId: 100100
+      startInterval: 5
+      waveType: 2
+      pointGroup: 0
+      monsterID: 10001
+      monsterCount: 0
+      spawnInterval: 0.2
+    - waveId: 100100
+      startInterval: 5
+      waveType: 0
+      pointGroup: 3
+      monsterID: 10003
+      monsterCount: 3
+      spawnInterval: 1
+  - id: 100200
+    displayTitle: Wave 2
+    description: "\uBAAC\uC2A4\uD130\uB97C \uACA9\uD30C\uD558\uB77C!"
+    waveSeq: 2
+    SmallWaveEntities:
+    - waveId: 100200
+      startInterval: 2
+      waveType: 2
+      pointGroup: 1
+      monsterID: 10001
+      monsterCount: 0
+      spawnInterval: 0.4
+    - waveId: 100200
+      startInterval: 2
+      waveType: 0
+      pointGroup: 2
+      monsterID: 10003
+      monsterCount: 6
+      spawnInterval: 0.75
+    - waveId: 100200
+      startInterval: 1
+      waveType: 0
+      pointGroup: 0
+      monsterID: 10001
+      monsterCount: 20
+      spawnInterval: 1
+    - waveId: 100200
+      startInterval: 5
+      waveType: 1
+      pointGroup: 3
+      monsterID: 10005
+      monsterCount: 0
+      spawnInterval: 0
+    - waveId: 100200
+      startInterval: 10
+      waveType: 0
+      pointGroup: 1
+      monsterID: 10002
+      monsterCount: 3
+      spawnInterval: 0.5
+  - id: 100300
+    displayTitle: Wave 3
+    description: "\uBAAC\uC2A4\uD130\uB97C \uACA9\uD30C\uD558\uB77C!"
+    waveSeq: 3
+    SmallWaveEntities:
+    - waveId: 100300
+      startInterval: 2
+      waveType: 0
+      pointGroup: 0
+      monsterID: 10002
+      monsterCount: 10
+      spawnInterval: 2
+    - waveId: 100300
+      startInterval: 0
+      waveType: 0
+      pointGroup: 1
+      monsterID: 10001
+      monsterCount: 20
+      spawnInterval: 1
+    - waveId: 100300
+      startInterval: 0
+      waveType: 0
+      pointGroup: 2
+      monsterID: 10004
+      monsterCount: 10
+      spawnInterval: 2
+    - waveId: 100300
+      startInterval: 0
+      waveType: 0
+      pointGroup: 3
+      monsterID: 10005
+      monsterCount: 15
+      spawnInterval: 1.333
+    - waveId: 100300
+      startInterval: 21
+      waveType: 1
+      pointGroup: 0
+      monsterID: 10003
+      monsterCount: 0
+      spawnInterval: 0
+    - waveId: 100300
+      startInterval: 0
+      waveType: 1
+      pointGroup: 3
+      monsterID: 10003
+      monsterCount: 0
+      spawnInterval: 0
+  - id: 100400
+    displayTitle: Wave 4
+    description: "\uBAAC\uC2A4\uD130\uB97C \uACA9\uD30C\uD558\uB77C!"
+    waveSeq: 4
+    SmallWaveEntities:
+    - waveId: 100400
+      startInterval: 2
+      waveType: 0
+      pointGroup: 2
+      monsterID: 10005
+      monsterCount: 12
+      spawnInterval: 0.3
+    - waveId: 100400
+      startInterval: 0
+      waveType: 2
+      pointGroup: 1
+      monsterID: 10001
+      monsterCount: 0
+      spawnInterval: 0.2
+    - waveId: 100400
+      startInterval: 2
+      waveType: 2
+      pointGroup: 1
+      monsterID: 10003
+      monsterCount: 0
+      spawnInterval: 0.1
+    - waveId: 100400
+      startInterval: 5
+      waveType: 1
+      pointGroup: 2
+      monsterID: 10003
+      monsterCount: 0
+      spawnInterval: 0
+    - waveId: 100400
+      startInterval: 8
+      waveType: 0
+      pointGroup: 3
+      monsterID: 10007
+      monsterCount: 1
+      spawnInterval: 0
+    - waveId: 100400
+      startInterval: 0.5
+      waveType: 0
+      pointGroup: 0
+      monsterID: 10004
+      monsterCount: 6
+      spawnInterval: 1
+  - id: 100500
+    displayTitle: Wave 5
+    description: "\uBAAC\uC2A4\uD130\uB97C \uACA9\uD30C\uD558\uB77C!"
+    waveSeq: 5
+    SmallWaveEntities:
+    - waveId: 100500
+      startInterval: 2
+      waveType: 1
+      pointGroup: 0
+      monsterID: 10001
+      monsterCount: 0
+      spawnInterval: 0
+    - waveId: 100500
+      startInterval: 2
+      waveType: 1
+      pointGroup: 1
+      monsterID: 10003
+      monsterCount: 0
+      spawnInterval: 0
+    - waveId: 100500
+      startInterval: 2
+      waveType: 1
+      pointGroup: 2
+      monsterID: 10002
+      monsterCount: 0
+      spawnInterval: 0
+    - waveId: 100500
+      startInterval: 2
+      waveType: 1
+      pointGroup: 3
+      monsterID: 10005
+      monsterCount: 0
+      spawnInterval: 0
+    - waveId: 100500
+      startInterval: 5
+      waveType: 0
+      pointGroup: 0
+      monsterID: 10004
+      monsterCount: 10
+      spawnInterval: 0.5
+    - waveId: 100500
+      startInterval: 3
+      waveType: 0
+      pointGroup: 2
+      monsterID: 10006
+      monsterCount: 10
+      spawnInterval: 3
+    - waveId: 100500
+      startInterval: 3
+      waveType: 2
+      pointGroup: 1
+      monsterID: 10002
+      monsterCount: 0
+      spawnInterval: 0.75
+    - waveId: 100500
+      startInterval: 3
+      waveType: 2
+      pointGroup: 3
+      monsterID: 10005
+      monsterCount: 0
+      spawnInterval: 0.5

@@ -11,6 +11,7 @@ public class DBManager : IManager
     private Dictionary<int, EntityBase> itemDb = new Dictionary<int, EntityBase>();
     private Dictionary<int, EntityBase> monsterDb = new Dictionary<int, EntityBase>();
     private Dictionary<int, EntityBase> shopDb = new Dictionary<int, EntityBase>();
+    private Dictionary<int, EntityBase> waveDb = new Dictionary<int, EntityBase>();
 
     public void Init()
     {
@@ -18,6 +19,7 @@ public class DBManager : IManager
         LoadItemDb();
         LoadMonsterDb();
         LoadShopDb();
+        LoadWaveDb();
     }
     public void Clear()
     {
@@ -66,6 +68,14 @@ public class DBManager : IManager
         
         Debug.Log($"Shop Loaded Count : {shopDb.Count}");
     }
+    private void LoadWaveDb()
+    {
+        WaveDataList dataList = LoadDataList<WaveDataList>();
+        foreach (WaveEntity entity in dataList.WaveList)
+            waveDb.Add(entity.id, entity);
+        
+        Debug.Log($"Wave Loaded Count : {waveDb.Count}");
+    }
 
     public T Get<T>(int id) where T : EntityBase
     {
@@ -97,6 +107,13 @@ public class DBManager : IManager
                 return value as T;
             }
         }
+        else if (typeof(T) == typeof(WaveEntity))
+        {
+            if (waveDb.TryGetValue(id, out EntityBase value))
+            {
+                return value as T;
+            }
+        }
 
         return null;
     }
@@ -107,6 +124,12 @@ public class DBManager : IManager
             return itemDb.Count;
         else if (typeof(T) == typeof(MonsterEntity))
             return monsterDb.Count;
+        else if (typeof(T) == typeof(ShopEntity))
+            return shopDb.Count;
+        else if (typeof(T) == typeof(JobEntity))
+            return jobDb.Count;
+        else if (typeof(T) == typeof(WaveEntity))
+            return waveDb.Count;
 
         return 0;
     }
@@ -129,6 +152,10 @@ public class DBManager : IManager
         else if (typeof(T) == typeof(JobEntity))
         {
             return jobDb.Values.Select(s => s as T).ToList();
+        }
+        else if (typeof(T) == typeof(WaveEntity))
+        {
+            return waveDb.Values.Select(s => s as T).ToList();
         }
 
         return Array.Empty<T>().ToList();

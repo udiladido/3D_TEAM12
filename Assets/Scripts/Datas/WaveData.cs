@@ -8,14 +8,15 @@ using Random = UnityEngine.Random;
 public class WaveData
 {
     public List<SmallWave> smallWaveDatas;
-}
-
-
-public enum SmallWaveType
-{
-    RandomPoint,
-    AllPoint,
-    SequentialPoint
+    
+    public WaveData(WaveEntity entity)
+    {
+        smallWaveDatas = new List<SmallWave>();
+        foreach (var smallWaveEntity in entity.SmallWaveEntities)
+        {
+            smallWaveDatas.Add(new SmallWave(smallWaveEntity));
+        }
+    }
 }
 
 [Serializable]
@@ -30,7 +31,7 @@ public class SmallWave
     /// <para> AllPoint : monsterID </para>
     /// <para> SequentialPoint : monsterID, spawnInterval </para>
     /// </summary>
-    public SmallWaveType waveType;
+    public Defines.SmallWaveType waveType;
     public int pointGroup;
     public int monsterID;
     public int monsterCount;
@@ -38,6 +39,16 @@ public class SmallWave
 
     private WaitForSecondsRealtime waitTime;
     private string coroutineKey;
+    
+    public SmallWave(SmallWaveEntity entity)
+    {
+        startInterval = entity.startInterval;
+        waveType = entity.waveType;
+        pointGroup = entity.pointGroup;
+        monsterID = entity.monsterID;
+        monsterCount = entity.monsterCount;
+        spawnInterval = entity.spawnInterval;
+    }
 
     public void Spawn(int waveIndex, int smallWaveIndex, Action spawnEndCollback = null)
     {
@@ -45,11 +56,11 @@ public class SmallWave
 
         switch (waveType)
         {
-            case SmallWaveType.RandomPoint:
+            case Defines.SmallWaveType.RandomPoint:
                 waitTime = new WaitForSecondsRealtime(spawnInterval);
                 Managers.Coroutine.StartCoroutine(coroutineKey, SpawnCoroutine_Random(spawnEndCollback));
                 break;
-            case SmallWaveType.AllPoint:
+            case Defines.SmallWaveType.AllPoint:
                 SpawnCoroutine_All();
                 spawnEndCollback?.Invoke();
                 break;

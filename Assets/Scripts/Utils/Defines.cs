@@ -167,6 +167,18 @@ public static class Defines
         ItemCount,
     }
 
+    /// <summary>
+    /// <para> RandomPoint : monsterID, monsterCount, spawnInterval </para>
+    /// <para> AllPoint : monsterID </para>
+    /// <para> SequentialPoint : monsterID, spawnInterval </para>
+    /// </summary>
+    public enum SmallWaveType
+    {
+        RandomPoint,
+        AllPoint,
+        SequentialPoint
+    }
+
     
     public const string ITEM_RARIY_COMMON_COLOR = "808080";
     public const string ITEM_RARIY_RARE_COLOR = "0070dd";

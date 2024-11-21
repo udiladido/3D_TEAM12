@@ -31,11 +31,18 @@ MonoBehaviour:
     chasePeriod: 5
     skillEntities:
     - monsterId: 10001
-      projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+      projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 1.5
       attackDamage: 5
       attackPeriod: 1.5
+      duration: 0.4
+      startScale: 1
+      endScale: 1
+      moveSpeed: 0
+      waitTime: 0
+      knockbackPower: 0
+      knockbackDuration: 0
   - id: 10002
     displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uC6CC\uB9AC\uC5B4"
     description: "\uC591\uC190\uB3C4\uB07C\uB97C \uB4E0 \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
@@ -53,17 +60,31 @@ MonoBehaviour:
     chasePeriod: 10
     skillEntities:
     - monsterId: 10002
-      projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+      projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 2.25
       attackDamage: 15
       attackPeriod: 2
+      duration: 0.4
+      startScale: 1
+      endScale: 1
+      moveSpeed: 0
+      waitTime: 0
+      knockbackPower: 0
+      knockbackDuration: 0
     - monsterId: 10002
-      projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+      projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 0.3
       attackRange: 3
       attackDamage: 15
       attackPeriod: 3
+      duration: 0.4
+      startScale: 1
+      endScale: 1
+      moveSpeed: 0
+      waitTime: 0
+      knockbackPower: 0
+      knockbackDuration: 0
   - id: 10003
     displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uB85C\uADF8"
     description: "\uB2E8\uAC80\uC744 \uB4E0 \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
@@ -81,17 +102,31 @@ MonoBehaviour:
     chasePeriod: 15
     skillEntities:
     - monsterId: 10003
-      projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+      projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 2
       attackDamage: 10
       attackPeriod: 1.2
+      duration: 0.4
+      startScale: 1
+      endScale: 1
+      moveSpeed: 0
+      waitTime: 0
+      knockbackPower: 0
+      knockbackDuration: 0
     - monsterId: 10003
-      projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+      projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 0.8
       attackRange: 2.2
       attackDamage: 15
       attackPeriod: 2
+      duration: 0.4
+      startScale: 1
+      endScale: 1
+      moveSpeed: 0
+      waitTime: 0
+      knockbackPower: 0
+      knockbackDuration: 0
   - id: 10004
     displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uBA54\uC774\uC9C0"
     description: "\uB9C8\uBC95\uC744 \uC3E0 \uC218 \uC788\uB294 \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
@@ -109,11 +144,18 @@ MonoBehaviour:
     chasePeriod: 5
     skillEntities:
     - monsterId: 10004
-      projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+      projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 15
       attackDamage: 10
       attackPeriod: 2
+      duration: 0.4
+      startScale: 1
+      endScale: 1
+      moveSpeed: 0
+      waitTime: 0
+      knockbackPower: 0
+      knockbackDuration: 0
   - id: 10005
     displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uB808\uC778\uC800"
     description: "\uC11D\uAD81\uC744 \uB4E0 \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
@@ -131,11 +173,18 @@ MonoBehaviour:
     chasePeriod: 5
     skillEntities:
     - monsterId: 10005
-      projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+      projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 15
       attackDamage: 8
       attackPeriod: 2
+      duration: 0.4
+      startScale: 1
+      endScale: 1
+      moveSpeed: 0
+      waitTime: 0
+      knockbackPower: 0
+      knockbackDuration: 0
   - id: 10006
     displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uAC00\uB514\uC5B8"
     description: "\uC911\uBB34\uC7A5\uC744 \uD55C \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
@@ -153,23 +202,44 @@ MonoBehaviour:
     chasePeriod: 15
     skillEntities:
     - monsterId: 10006
-      projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+      projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 2.25
       attackDamage: 15
       attackPeriod: 1.5
+      duration: 0.4
+      startScale: 1
+      endScale: 1
+      moveSpeed: 0
+      waitTime: 0
+      knockbackPower: 0
+      knockbackDuration: 0
     - monsterId: 10006
-      projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+      projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 3
       attackDamage: 20
       attackPeriod: 2
+      duration: 0.4
+      startScale: 1
+      endScale: 1
+      moveSpeed: 0
+      waitTime: 0
+      knockbackPower: 0
+      knockbackDuration: 0
     - monsterId: 10006
-      projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+      projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 0.5
       attackRange: 3
       attackDamage: 20
       attackPeriod: 3
+      duration: 0.4
+      startScale: 1
+      endScale: 1
+      moveSpeed: 0
+      waitTime: 0
+      knockbackPower: 0
+      knockbackDuration: 0
   - id: 10007
     displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uC790\uC774\uC5B8\uD2B8\uAC70\uB300\uD55C
       \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
@@ -188,14 +258,28 @@ MonoBehaviour:
     chasePeriod: 1000
     skillEntities:
     - monsterId: 10007
-      projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+      projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 5.5
       attackDamage: 30
       attackPeriod: 3.5
+      duration: 0.4
+      startScale: 1
+      endScale: 1
+      moveSpeed: 0
+      waitTime: 0
+      knockbackPower: 0
+      knockbackDuration: 0
     - monsterId: 10007
-      projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+      projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 4
       attackDamage: 30
       attackPeriod: 2.5
+      duration: 0.4
+      startScale: 1
+      endScale: 1
+      moveSpeed: 0
+      waitTime: 0
+      knockbackPower: 0
+      knockbackDuration: 0

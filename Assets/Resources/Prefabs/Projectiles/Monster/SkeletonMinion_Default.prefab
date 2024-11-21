@@ -114,7 +114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7362461453814553439}
-  - component: {fileID: -4979957284235129639}
+  - component: {fileID: 1813216641617687664}
   m_Layer: 0
   m_Name: SkeletonMinion_Default
   m_TagString: Untagged
@@ -138,7 +138,7 @@ Transform:
   - {fileID: 2905221359003306136}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4979957284235129639
+--- !u!114 &1813216641617687664
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,6 +147,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6574297221488128028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 285bd91ee08845d3bf7e093fef83ca29, type: 3}
+  m_Script: {fileID: 11500000, guid: be5aa29c53b04cb08af5c49c97d322c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

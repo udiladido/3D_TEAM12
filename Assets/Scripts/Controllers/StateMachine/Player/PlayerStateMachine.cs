@@ -19,6 +19,7 @@ public class PlayerStateMachine : StateMachine
     
     public PlayerHitState HitState { get; private set; }
 
+    public Vector2 LastInputValue { get; set; }
     public Vector3 LookDirection { get; set; }
     public Vector3 MoveDirection { get; set; }
 

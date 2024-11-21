@@ -79,10 +79,21 @@ public class GameManager : IManager
 
         player.gameObject.name = nameof(Player);
         player.SetJob(job);
-        ItemEntity comboWeapon = Managers.DB.Get<ItemEntity>(1501);
-        player.Equipment.Equip(comboWeapon);
         player.Condition.OnDead += GameOver;
         Player = player;
+
+        DefaultItemEquip();
+    }
+
+    public void DefaultItemEquip()
+    {
+        if (Player == null) return;
+        ItemEntity comboWeapon = Managers.DB.Get<ItemEntity>(Defines.DEFAULT_COMBO_WEAPON_ID);
+        ItemEntity hpPotion = Managers.DB.Get<ItemEntity>(Defines.REWARD_HP_POTION_ID);
+        ItemEntity mpPotion = Managers.DB.Get<ItemEntity>(Defines.REWARD_MP_POTION_ID);
+        Player.Equipment.Equip(comboWeapon);
+        Player.ItemQuickSlots.Equip(hpPotion);
+        Player.ItemQuickSlots.Equip(mpPotion);
     }
 
     public void UpdateWaveCounter(int waveCount)

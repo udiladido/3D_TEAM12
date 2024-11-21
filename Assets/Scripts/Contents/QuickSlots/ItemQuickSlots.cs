@@ -9,13 +9,13 @@ public class ItemQuickSlots : MonoBehaviour
     private Dictionary<Defines.ItemQuickSlotInputType, QuickSlotItem> quickSlots =
         new Dictionary<Defines.ItemQuickSlotInputType, QuickSlotItem>();
     public Condition Condition { get; private set; }
-    private void Start()
+    
+    private void Awake()
     {
         Condition = GetComponent<Condition>();
-        InitQuickSlots();
     }
 
-    public void InitQuickSlots()
+    public void Init()
     {
         quickSlots.Clear();
         Defines.ItemQuickSlotInputType[] quickSlotInputTypes =

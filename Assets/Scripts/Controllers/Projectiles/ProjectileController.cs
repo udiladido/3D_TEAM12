@@ -29,7 +29,7 @@ public class ProjectileController : ProjectileBaseController
                 DestroySelf();
 
             Move();
-            Scale();
+            Scale(projectileData.startScale, projectileData.endScale, projectileData.duration);
 
             if (Time.time - hitTimer > projectileData.hitInterval)
             {
@@ -57,26 +57,6 @@ public class ProjectileController : ProjectileBaseController
         if (projectileData.pierceCount > 0 && ++hitCounter > projectileData.pierceCount)
         {
             DestroySelf();
-        }
-    }
-
-    private void Scale()
-    {
-        float scale = projectileData.endScale - projectileData.startScale;
-        if (scale == 0) return;
-        Vector3 scaleVector = Vector3.one * scale * Time.deltaTime / projectileData.duration;
-        transform.localScale += scaleVector;
-        ParticleShapeScale(transform.localScale);
-    }
-
-    private void ParticleShapeScale(Vector3 scaleVector)
-    {
-        foreach (var particle in particleSystems)
-        {
-            if (particle.main.scalingMode == ParticleSystemScalingMode.Hierarchy)
-                continue;
-            ParticleSystem.ShapeModule shape = particle.shape;
-            shape.scale = scaleVector;
         }
     }
 
@@ -125,11 +105,6 @@ public class ProjectileController : ProjectileBaseController
         {
             transform.position += direction * projectileData.moveSpeed * Time.deltaTime;
         }
-    }
-
-    private void DestroySelf()
-    {
-        Managers.Pool.Despawn(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)

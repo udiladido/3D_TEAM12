@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlayerHitState : PlayerBaseState
 {
     public PlayerHitState(PlayerStateMachine stateMachine) : base(stateMachine)
@@ -7,6 +9,7 @@ public class PlayerHitState : PlayerBaseState
     public override void Enter()
     {
         MoveCancelHandle();
+        stateMachine.CombatSlots?.UnUse();
         if (stateMachine.Player.ForceReceiver.IsGrounded())
             StartAnimation(stateMachine.AnimationData.GroundHash);
         else
@@ -28,7 +31,12 @@ public class PlayerHitState : PlayerBaseState
     public override void Update()
     {
         float normalizedTime = GetNormalizedTime(stateMachine.Player.Animator, "Hit");
-        if (normalizedTime >= 1f)
-            stateMachine.ChangeState(stateMachine.IdleState);
+        if (normalizedTime >= 0.5f)
+        {
+            if (stateMachine.LastInputValue == Vector2.zero)
+                stateMachine.ChangeState(stateMachine.IdleState);
+            else
+                MoveHandle(stateMachine.LastInputValue);
+        }
     }
 }

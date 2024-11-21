@@ -10,6 +10,7 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
     public event Action<StatData> OnStatChanged;
     public event Action OnDead;
     public event Action OnHit;
+    public event Action<float, float> OnDodgeTimerChanged;
 
     [field: SerializeField] public StatData CurrentStat { get; private set; }
     private JobStatEntity statEntity;
@@ -23,8 +24,12 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
     // 무적 시간
     [SerializeField] private float invincibilityPeriod = 0.5f;
     private float invincibilityTimer;
-    
-    
+
+    // 회피 소모 마나
+    [SerializeField] private float dodgeCost = 10;
+    [SerializeField] private float dodgeCooltime = 1f;
+    private float dodgeTimer;
+
     private void Start()
     {
         currentHp = CurrentStat.maxHp;
@@ -43,11 +48,17 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
 
     public void Update()
     {
-        invincibilityTimer += Time.deltaTime;
-        
+        TimerUpdate();
         // 임시로 체력, 마나 바로 리젠 
         HpRegen();
         MpRegen();
+    }
+    
+    private void TimerUpdate()
+    {
+        invincibilityTimer += Time.deltaTime;
+        dodgeTimer += Time.deltaTime;
+        OnDodgeTimerChanged?.Invoke(dodgeTimer, dodgeCooltime);
     }
 
     public void FullRecovery()
@@ -65,7 +76,7 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
 
         invincibilityTimer = 0;
         float value = (1 - CurrentStat.armor * 0.01f) * damage;
-        
+
         currentHp = Mathf.Clamp(currentHp - value, 0, CurrentStat.maxHp);
         OnHpChanged?.Invoke(currentHp, CurrentStat.maxHp);
         // TODO : 피격 이펙트
@@ -86,7 +97,7 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
         currentHp = Mathf.Clamp(currentHp + heal, 0, CurrentStat.maxHp);
         OnHpChanged?.Invoke(currentHp, CurrentStat.maxHp);
     }
-    
+
     public void MpRecovery(float recovery)
     {
         currentMp = Mathf.Clamp(currentMp + recovery, 0, CurrentStat.maxMp);
@@ -98,7 +109,7 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
         if (CurrentStat.passiveHpRegen > 0)
         {
             currentHp = Mathf.Clamp(currentHp + CurrentStat.passiveHpRegen * Time.deltaTime, 0, CurrentStat.maxHp);
-            OnHpChanged?.Invoke(currentHp, CurrentStat.maxHp);           
+            OnHpChanged?.Invoke(currentHp, CurrentStat.maxHp);
         }
     }
 
@@ -110,7 +121,7 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
             OnMpChanged?.Invoke(currentMp, CurrentStat.maxMp);
         }
     }
-    
+
     public bool TryUseMana(float cost)
     {
         if (currentMp < cost)
@@ -121,12 +132,20 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
         return true;
     }
 
+    public bool TryDodge()
+    {
+        if (TryUseMana(dodgeCost) == false) return false;
+        if (dodgeTimer < dodgeCooltime) return false;
+        dodgeTimer = 0;
+        return true;
+    }
+
 
     public void Knockback(Vector3 direction, float force, float duration)
     {
         // TODO : 넉백?
     }
-    
+
     public void AddStatModifier(params StatModifier[] modifiers)
     {
         statsModifiers.AddRange(modifiers);
@@ -138,7 +157,7 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
             statsModifiers.Remove(modifier);
         UpdateStatModifier();
     }
-    
+
     public void UpdateStatModifier()
     {
         foreach (var modifier in baseStat.statModifiers)

@@ -36,6 +36,26 @@ public abstract class ProjectileBaseController : BaseController
         
     }
 
+    protected void Scale(float startScale, float endScale, float duration)
+    {
+        float scale = endScale - startScale;
+        if (scale == 0) return;
+        Vector3 scaleVector = Vector3.one * scale * Time.deltaTime / duration;
+        transform.localScale += scaleVector;
+        ParticleShapeScale(transform.localScale);
+    }
+    
+    protected void ParticleShapeScale(Vector3 scaleVector)
+    {
+        foreach (var particle in particleSystems)
+        {
+            if (particle.main.scalingMode == ParticleSystemScalingMode.Hierarchy)
+                continue;
+            ParticleSystem.ShapeModule shape = particle.shape;
+            shape.scale = scaleVector;
+        }
+    }
+
     protected void EnableHitBox(bool enable)
     {
         if (hitBoxCollider != null)

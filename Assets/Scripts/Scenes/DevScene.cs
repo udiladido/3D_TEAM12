@@ -14,6 +14,7 @@ public class DevScene : SceneBase
         
         Managers.UI.LoadSceneUI<UIGameScene>();
         Managers.Game.CreatePlayer(11);
+        Managers.Game.Player.Input.InputEnable();
     }
 
     protected override void OnSceneLoaded()

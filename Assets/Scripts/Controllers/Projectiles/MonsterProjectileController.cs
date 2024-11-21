@@ -22,6 +22,8 @@ public class MonsterProjectileController : ProjectileBaseController
             
             if (skillEntity.moveSpeed > 0)
                 transform.position += direction * skillEntity.moveSpeed * Time.deltaTime;
+            
+            Scale(skillEntity.startScale, skillEntity.endScale, skillEntity.duration);
         }
     }
 
@@ -34,6 +36,7 @@ public class MonsterProjectileController : ProjectileBaseController
         isLaunched = false;
         EnableHitBox(false);
         transform.localScale = new Vector3(skillEntity.startScale, skillEntity.startScale, skillEntity.startScale);
+        ParticleShapeScale(transform.localScale);
         transform.position = owner.position + Vector3.up;
         direction = (target.position - owner.position).normalized;
         transform.forward = direction;

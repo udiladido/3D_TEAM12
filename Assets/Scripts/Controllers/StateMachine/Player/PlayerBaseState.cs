@@ -47,14 +47,17 @@ public class PlayerBaseState : IState
     }
     protected void MoveHandle(Vector2 inputValue)
     {
+        stateMachine.LastInputValue = inputValue;
         stateMachine.MoveDirection = GetMoveDirection(new Vector3(inputValue.x, 0, inputValue.y));
         stateMachine.MovementType = GetMovementType(stateMachine.MoveDirection);
+
         if (stateMachine.Player.ForceReceiver.IsGrounded())
             stateMachine.ChangeState(stateMachine.RunState);
 
     }
     protected void MoveCancelHandle()
     {
+        stateMachine.LastInputValue = Vector2.zero;
         stateMachine.MoveDirection = Vector3.zero;
         stateMachine.MovementType = Defines.CharacterMovementType.None;
     }
@@ -69,11 +72,13 @@ public class PlayerBaseState : IState
             lookDirection.Normalize();
 
             stateMachine.LookDirection = lookDirection;
+            stateMachine.MovementType = GetMovementType(stateMachine.MoveDirection);
         }
     }
     protected void DodgeHandle()
     {
         if (stateMachine.MovementType == Defines.CharacterMovementType.None) return;
+        if (stateMachine.Condition.TryDodge() == false) return;
         if (stateMachine.IsRunnung == false) return;
         stateMachine.ChangeState(stateMachine.DodgeState);
     }
@@ -97,7 +102,7 @@ public class PlayerBaseState : IState
         stateMachine.Animator.SetBool(animationHash, false);
     }
     private void ApplyMove(Vector3 direction)
-    {
+    {        
         if (stateMachine.MovementType != Defines.CharacterMovementType.None)
         {
             float moveSpeed = GetMoveSpeed(stateMachine.MovementType);

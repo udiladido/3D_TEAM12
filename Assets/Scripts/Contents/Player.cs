@@ -80,6 +80,7 @@ public class Player : MonoBehaviour
         Animator = jobGo.transform.GetComponentInChildren<Animator>();
         Condition.SetData(job.jobStatEntity);
         CombatSlots.Init(Animator, AnimationData);
+        ItemQuickSlots.Init();
         Revive();
     }
 

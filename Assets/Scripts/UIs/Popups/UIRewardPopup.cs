@@ -16,8 +16,10 @@ public class UIRewardPopup : UIPopupBase
     private Queue<ItemEntity> armors;
     private Queue<ItemEntity> accessories;
     private List<ItemEntity> skillWeapons;
-    private List<ItemEntity> consumeables;
 
+    private ItemEntity hpPotion;
+    private ItemEntity mpPotion;
+    
     protected override bool Init()
     {
         if (base.Init() == false)
@@ -45,7 +47,6 @@ public class UIRewardPopup : UIPopupBase
         skillWeapons = new List<ItemEntity>();
         armors = new Queue<ItemEntity>();
         accessories = new Queue<ItemEntity>();
-        consumeables = new List<ItemEntity>();
 
         foreach (var item in Managers.DB.GetAll<ItemEntity>()
                      .OrderBy(s => s.rarityType))
@@ -54,9 +55,9 @@ public class UIRewardPopup : UIPopupBase
             if (item.itemType == Defines.ItemType.Consumable)
             {
                 if (item.id == Defines.REWARD_HP_POTION_ID)
-                    consumeables.Add(item);
+                    hpPotion = item;
                 else if (item.id == Defines.REWARD_MP_POTION_ID)
-                    consumeables.Add(item);
+                    mpPotion = item;
             }
             else if (item?.equipableEntity.equipmentType == Defines.ItemEquipmentType.Weapon)
             {
@@ -98,10 +99,14 @@ public class UIRewardPopup : UIPopupBase
         if (item.itemType == Defines.ItemType.Equipment)
             Managers.Game.Player.Equipment.Equip(item);
         else if (item.itemType == Defines.ItemType.Consumable)
-            Managers.Game.Player.ItemQuickSlots.Equip(item);
+            Managers.Game.Player.ItemQuickSlots.Equip(item, 3);
+
+        Managers.Game.Player.ItemQuickSlots.Equip(hpPotion);
+        Managers.Game.Player.ItemQuickSlots.Equip(mpPotion);
         
         Managers.UI.ClosePopupUI<UIRewardPopup>();
     }
+    
 
     public override void Open(Defines.UIAnimationType type = Defines.UIAnimationType.None)
     {
@@ -169,8 +174,7 @@ public class UIRewardPopup : UIPopupBase
 
     private ItemEntity GetRandomConsumeableItem()
     {
-        int randomIndex = Random.Range(0, consumeables.Count);
-        return consumeables[randomIndex];
+        return Random.Range(0, 2) == 0 ? hpPotion : mpPotion;
     }
 
 }

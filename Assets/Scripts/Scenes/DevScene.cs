@@ -10,6 +10,7 @@ public class DevScene : SceneBase
         Managers.Sound.Init();
         Managers.Pool.Init();
         Managers.Coroutine.Init();
+        Managers.Game.Init();
         
         Managers.UI.LoadSceneUI<UIGameScene>();
 

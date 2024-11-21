@@ -10,6 +10,7 @@ public class MonsterEntity : EntityBase
     public string iconPath;
 
     public float colliderRadius;
+    public float colliderHeight;
     public float colliderCenterY;
 
     public float maxHp;

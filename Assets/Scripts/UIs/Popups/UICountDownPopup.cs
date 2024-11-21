@@ -17,7 +17,6 @@ public class UICountDownPopup : UIPopupBase
             return false;
 
         BindText(typeof(Texts));
-        //텍스트 바인드 건거 이용해서 바꾸기
 
         return true;
     }
@@ -29,7 +28,7 @@ public class UICountDownPopup : UIPopupBase
 
     public void CreateCountDown()
     {
-        countDownText = GetText(Texts.countDownText);        
+        countDownText = GetText(Texts.countDownText);
         Managers.Coroutine.StartCoroutine("CountDown",CountDown());
     }
 

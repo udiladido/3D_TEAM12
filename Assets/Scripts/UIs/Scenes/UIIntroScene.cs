@@ -27,8 +27,9 @@ public class UIIntroScene : UISceneBase
 
     public void CharacterSelectButtonEvent()
     {
-        Managers.UI.Clear();
+    
         Managers.UI.ShowPopupUI<UICharacterSelectPopup>();
+        gameObject.SetActive(false);
     }
 
     public void QuitButtonEvent()

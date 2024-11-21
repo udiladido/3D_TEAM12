@@ -13,6 +13,7 @@ public class GameScene : SceneBase
         Managers.Game.Init();
         
         Managers.UI.LoadSceneUI<UIGameScene>();
+        Managers.Game.CreatePlayer(Managers.Game.jobId);
 
     }
 

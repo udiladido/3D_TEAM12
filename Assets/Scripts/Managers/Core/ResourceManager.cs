@@ -81,6 +81,10 @@ public class ResourceManager : IManager
         }
         else
         {
+            if (filePath.StartsWith("/"))
+                filePath = filePath.Substring(1);
+
+
             // 파일 하나에서 스프라이트 가져옴
             if (spriteDict.TryGetValue(filePath, out Sprite sprite) == false)
             {

@@ -1,10 +1,7 @@
-using DG.Tweening;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class ProjectileController : BaseController
+public class ProjectileController : ProjectileBaseController
 {
     private CombatData projectileData;
     private Transform owner;
@@ -23,6 +20,7 @@ public class ProjectileController : BaseController
     private List<IDamageable> hitTargets = new List<IDamageable>();
     private float hitTimer = 0f;
     private int hitCounter = 0;
+    private float damage = 0;
 
     private float durationTimer;
     [SerializeField] private LayerMask targetLayer;
@@ -104,12 +102,12 @@ public class ProjectileController : BaseController
         }
     }
 
-    public void SetData(Transform owner, CombatData projectileData, LayerMask enemyLayerMask)
+    public override void SetData(Transform owner, CombatData projectileData, LayerMask enemyLayerMask)
     {
         SetData(owner, projectileData, enemyLayerMask, owner.forward);
     }
 
-    public void SetData(Transform owner, CombatData projectileData, LayerMask enemyLayerMask, Vector3 direction)
+    public override void SetData(Transform owner, CombatData projectileData, LayerMask enemyLayerMask, Vector3 direction)
     {
         this.projectileData = projectileData;
         this.owner = owner;
@@ -124,9 +122,11 @@ public class ProjectileController : BaseController
         this.direction = direction.normalized;
         condition = owner.GetComponent<Condition>();
         targetLayer = enemyLayerMask;
+        damage = condition.CurrentStat.attack * (projectileData.damagePer / 100);
     }
+    
 
-    public void Launch()
+    public override void Launch()
     {
         if (owner == null) return;
         // TODO : 발사
@@ -134,7 +134,7 @@ public class ProjectileController : BaseController
         Invoke(nameof(ApplyLaunch), waitTime);
     }
 
-    private void ApplyLaunch()
+    protected override void ApplyLaunch()
     {
         EnableHitBox(true);
         durationTimer = Time.time;

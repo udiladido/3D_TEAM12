@@ -22,10 +22,12 @@ public class Monster : MonoBehaviour
     /// 매개변수 : IsStagger
     /// </summary>
     public event Action<bool> OnHit;
+
     /// <summary>
     /// 매개변수 : Identifier
     /// </summary>
     public event Action<int> OnDead;
+
     /// <summary>
     /// 매개변수 : Identifier
     /// </summary>
@@ -54,7 +56,7 @@ public class Monster : MonoBehaviour
     public bool Initialize(int identifier, int monsterID, Vector3 spawnPoint)
     {
         Identifier = identifier;
-        
+
         this.transform.localPosition = spawnPoint;
         MonsterEntity monsterEntity = Managers.DB.Get<MonsterEntity>(monsterID);
         if (monsterEntity == null) return false;
@@ -68,7 +70,11 @@ public class Monster : MonoBehaviour
         HitCollider.center = new Vector3(0, Stat.colliderCenterY, 0);
         AnimationController = GetComponentInChildren<MonsterAnimatorController>();
         ValidAnimator = AnimationController != null;
-        if (ValidAnimator) AnimationController.Initialize();
+        if (ValidAnimator)
+        {
+            AnimationController.Initialize();
+            AnimationController.OnShot += Shot;
+        }
 
         stateMachine.ChangeState(stateMachine.State_Spawning);
 
@@ -104,7 +110,7 @@ public class Monster : MonoBehaviour
     {
         stateMachine.Update();
     }
-    
+
 
     public void TakeDamage(float damage)
     {
@@ -150,5 +156,16 @@ public class Monster : MonoBehaviour
         OnDead = null;
         OnDisabled = null;
         gameObject.SetActive(false);
+    }
+
+    public void Shot()
+    {
+        // TODO : Projectile 생성
+        var skill = Stat.skillEntities[NextSkillIndex];
+        GameObject go = Managers.Pool.Spawn(skill.projectilePrefabPath);
+        MonsterProjectileController projectile = go.GetComponent<MonsterProjectileController>();
+        Transform target = Managers.Game.Player.gameObject.transform;
+        projectile.SetData(transform, target, skill, target.gameObject.layer);
+        projectile.Launch();
     }
 }

@@ -33,4 +33,12 @@ public class MonsterSkillEntity
     public float attackRange;
     public float attackDamage;
     public float attackPeriod;
+    public float duration;
+    public float startScale;
+    public float endScale;
+    public float moveSpeed;
+    public float waitTime;
+    public float knockbackPower;
+    public float knockbackDuration;
+
 }

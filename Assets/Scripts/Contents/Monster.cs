@@ -41,6 +41,7 @@ public class Monster : MonoBehaviour
 
     private void Awake()
     {
+        Condition = GetComponent<MonsterCondition>();
         Condition.OnHit += TakeDamage;
         Condition.OnDead += Die;
         HitCollider = GetComponent<CapsuleCollider>();
@@ -50,10 +51,11 @@ public class Monster : MonoBehaviour
     }
 
 
-    public bool Initialize(int identifier, int monsterID)
+    public bool Initialize(int identifier, int monsterID, Vector3 spawnPoint)
     {
         Identifier = identifier;
         
+        this.transform.localPosition = spawnPoint;
         MonsterEntity monsterEntity = Managers.DB.Get<MonsterEntity>(monsterID);
         if (monsterEntity == null) return false;
         GameObject go = Managers.Resource.Instantiate(monsterEntity.prefabPath, this.transform);
@@ -62,6 +64,7 @@ public class Monster : MonoBehaviour
         Stat = monsterEntity;
         Condition.SetData(Stat.maxHp);
         HitCollider.radius = Stat.colliderRadius;
+        HitCollider.height = Stat.colliderHeight;
         HitCollider.center = new Vector3(0, Stat.colliderCenterY, 0);
         AnimationController = GetComponentInChildren<MonsterAnimatorController>();
         ValidAnimator = AnimationController != null;

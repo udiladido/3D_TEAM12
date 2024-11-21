@@ -10,14 +10,17 @@ public class GameManager : IManager
     int monsterCount;
     int waveCount;
     private float elapsedTime;
-    private float startTime;  
+    private float startTime;
+    public int jobId;
   
     private bool isWaveActive = false;
     private GameObject timerTextObject;
+    private GameObject monsterCounter;
     private GameObject waveCounter;
     private GameObject countDownPopupUI;
     UICountDownPopup uiCountDownPopup;
     Text timerTextObjectText;
+    private MonsterSpawner monsterSpawner;
 
     //HashSet<MonsterDataList> monsterDataList = new HashSet<MonsterDataList>();
 
@@ -31,6 +34,7 @@ public class GameManager : IManager
         CreateTimer(); // 타이머 UI 텍스트 생성
         CreateWaveCounter();
         uiCountDownPopup.CreateCountDown();
+        CreateMonsterCounter();
     }
 
     public void Clear()
@@ -47,8 +51,10 @@ public class GameManager : IManager
         startTime = Time.time;
         elapsedTime = 0f;
 
+        monsterSpawner = new MonsterSpawner();
         timerTextObjectText = timerTextObject.GetComponentInChildren<Text>();
         Managers.Coroutine.StartCoroutine("UpdateTimer", UpdateTimer());
+        monsterSpawner.OnClearWave += UpdateWaveCounter;
     }
 
     public void GameOver()
@@ -72,26 +78,27 @@ public class GameManager : IManager
         timerTextObjectText.text = Mathf.FloorToInt(elapsedTime).ToString();
     }
 
-    public void UpdateWaveCounter()
-    {
-        //waveCounter.GetComponentInChildren<Text>().text = $"WAVE {monsterSpawner.waveCount}";
-    }
-
     private void CreateTimer()
     {
-        GameObject timerTextPrefab = Managers.Resource.Instantiate("Prefabs/UI/Popup/TimerTextPrefab"); // Resources 폴더에서 프리팹 로드
-        timerTextObject = GameObject.Instantiate(timerTextPrefab); // 프리팹을 인스턴스화하여 타이머 텍스트 생성
+        GameObject timerTextPrefab = Managers.Resource.Instantiate("UI/Popup/TimerTextPrefab"); // Resources 폴더에서 프리팹 로드
+        timerTextObject = GameObject.Instantiate(timerTextPrefab); 
     }
 
     private void CreateWaveCounter()
     {
-        GameObject waveCounterPrefab = Managers.Resource.Instantiate("Prefabs/UI/Popup/WaveCounter"); // Resources 폴더에서 프리팹 로드
-        waveCounter = GameObject.Instantiate(waveCounterPrefab); // 프리팹을 인스턴스화하여 타이머 텍스트 생성
+        GameObject waveCounterPrefab = Managers.Resource.Instantiate("UI/Popup/WaveCounter"); // Resources 폴더에서 프리팹 로드
+        waveCounter = GameObject.Instantiate(waveCounterPrefab); 
     }
 
-    public void CreatePlayer(int jobId)
+    private void CreateMonsterCounter()
     {
-        JobEntity job = Managers.DB.Get<JobEntity>(jobId);
+        GameObject monsterCounterPrefab = Managers.Resource.Instantiate("Prefabs/UI/Popup/MonsterCounter");
+        monsterCounter = GameObject.Instantiate(monsterCounterPrefab);
+    }
+
+    public void CreatePlayer()
+    {
+        JobEntity job = Managers.DB.Get<JobEntity>(jobId); //11
 
         Player player = GameObject.FindObjectOfType<Player>();
 
@@ -116,11 +123,24 @@ public class GameManager : IManager
     {
         WaitForSeconds wait1Sec = new WaitForSeconds(1f);
 
-        while (isWaveActive)
+        while (true) 
         {
             Timer();
             yield return wait1Sec;
         }
+    }
+
+    public void UpdateWaveCounter(int waveCount)
+    {
+        if (monsterSpawner != null)
+        {
+            waveCounter.GetComponentInChildren<Text>().text = $"WAVE {waveCount}";
+        }
+    }
+
+    public void UpdateMonsterCounter()
+    {
+
     }
     
     public void ItemKeyPressed(int index)

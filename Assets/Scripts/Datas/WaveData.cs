@@ -26,8 +26,9 @@ public class SmallWave
 
     public float startInterval;
     /// <summary>
-    /// AllPoint : monsterCount,spawnInterval 무시
-    /// SequentialPoint : monsterCount 무시
+    /// <para> RandomPoint : monsterID, monsterCount, spawnInterval </para>
+    /// <para> AllPoint : monsterID </para>
+    /// <para> SequentialPoint : monsterID, spawnInterval </para>
     /// </summary>
     public SmallWaveType waveType;
     public int pointGroup;

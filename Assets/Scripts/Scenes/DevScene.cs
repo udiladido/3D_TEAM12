@@ -10,9 +10,11 @@ public class DevScene : SceneBase
         Managers.Sound.Init();
         Managers.Pool.Init();
         Managers.Coroutine.Init();
+        Managers.Game.Init();
         
         Managers.UI.LoadSceneUI<UIGameScene>();
-        Managers.Game.CreatePlayer(11);
+        Managers.Game.jobId = 11;
+        Managers.Game.CreatePlayer();
     }
 
     protected override void OnSceneLoaded()

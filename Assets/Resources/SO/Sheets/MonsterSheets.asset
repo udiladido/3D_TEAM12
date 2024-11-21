@@ -21,7 +21,7 @@ MonoBehaviour:
     prefabPath: /Prefabs/Monsters/Skeleton_Minion
     iconPath: /Textures/icons/monsters/monster
     colliderRadius: 0.5
-    colliderCenterY: 0.5
+    colliderCenterY: 0.75
     maxHp: 10
     armor: 0
     moveSpeed: 3
@@ -33,6 +33,6 @@ MonoBehaviour:
   - monsterId: 10001
     projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
     selectWeight: 1
-    attackRange: 1
+    attackRange: 1.5
     attackDamage: 5
     attackPeriod: 2

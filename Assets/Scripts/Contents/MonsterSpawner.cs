@@ -20,6 +20,7 @@ public class MonsterSpawner
     /// 매개변수 : 완료된 웨이브 인덱스
     /// </summary>
     public event Action<int> OnClearWave;
+    public event Action OnWaveAllClear;
 
     public void StartSpawn(LevelContainer levelContainer)
     {
@@ -48,13 +49,15 @@ public class MonsterSpawner
     {
         for (int i = 0; i < waveDatas.Count; i++)
         {
+            currentWave++;
             waveEnd = false;
             isSpawning = true;
             StartWave(i);
             yield return new WaitUntil(() => waveEnd);
-            currentWave++;
-            OnClearWave?.Invoke(i + 1);
+            OnClearWave?.Invoke(currentWave);
         }
+
+        OnWaveAllClear?.Invoke();
     }
 
     private void StartWave(int waveIndex)
@@ -167,7 +170,7 @@ public class MonsterSpawner
         waveData.smallWaveDatas = new List<SmallWave>();
 
         smallWave = new SmallWave();
-        smallWave.startInterval = 0;
+        smallWave.startInterval = 1;
         smallWave.waveType = SmallWaveType.RandomPoint;
         smallWave.pointGroup = 2;
         smallWave.monsterID = 10001;
@@ -210,7 +213,7 @@ public class MonsterSpawner
         waveData.smallWaveDatas = new List<SmallWave>();
 
         smallWave = new SmallWave();
-        smallWave.startInterval = 0;
+        smallWave.startInterval = 2;
         smallWave.waveType = SmallWaveType.SequentialPoint;
         smallWave.pointGroup = 1;
         smallWave.monsterID = 10001;
@@ -262,7 +265,7 @@ public class MonsterSpawner
         waveData.smallWaveDatas = new List<SmallWave>();
 
         smallWave = new SmallWave();
-        smallWave.startInterval = 0;
+        smallWave.startInterval = 2;
         smallWave.waveType = SmallWaveType.RandomPoint;
         smallWave.pointGroup = 0;
         smallWave.monsterID = 10002;
@@ -323,7 +326,7 @@ public class MonsterSpawner
         waveData.smallWaveDatas = new List<SmallWave>();
 
         smallWave = new SmallWave();
-        smallWave.startInterval = 0;
+        smallWave.startInterval = 2;
         smallWave.waveType = SmallWaveType.RandomPoint;
         smallWave.pointGroup = 2;
         smallWave.monsterID = 10005;
@@ -384,7 +387,7 @@ public class MonsterSpawner
         waveData.smallWaveDatas = new List<SmallWave>();
 
         smallWave = new SmallWave();
-        smallWave.startInterval = 0;
+        smallWave.startInterval = 2;
         smallWave.waveType = SmallWaveType.AllPoint;
         smallWave.pointGroup = 0;
         smallWave.monsterID = 10001;

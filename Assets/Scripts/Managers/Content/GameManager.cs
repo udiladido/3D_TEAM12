@@ -19,8 +19,11 @@ public class GameManager : IManager
     private GameObject monsterCounter;
     private GameObject waveCounter;
     private GameObject countDownPopupUI;
-    UICountDownPopup uiCountDownPopup;
-    Text timerTextObjectText;
+    private UICountDownPopup uiCountDownPopup;
+    private Text timerTextObjectText;
+    private Text waveCounterText;
+    private Text monsterCounterText;
+
     private MonsterSpawner monsterSpawner;
 
     //HashSet<MonsterDataList> monsterDataList = new HashSet<MonsterDataList>();
@@ -48,13 +51,14 @@ public class GameManager : IManager
     {
         // 실제로 게임을 시작하는 함수
         // 타이틀씬에서 버튼 연동 필요
-        
         startTime = Time.time;
         elapsedTime = 0f;
 
         monsterSpawner = new MonsterSpawner();
         timerTextObjectText = timerTextObject.GetComponentInChildren<Text>();
         Managers.Coroutine.StartCoroutine("UpdateTimer", UpdateTimer());
+        LevelContainer level = GameObject.FindFirstObjectByType<LevelContainer>();
+        monsterSpawner.StartSpawn(level);
         monsterSpawner.OnClearWave += UpdateWaveCounter;
     }
 
@@ -88,13 +92,15 @@ public class GameManager : IManager
     private void CreateWaveCounter()
     {
         GameObject waveCounterPrefab = Managers.Resource.Instantiate("UI/Popup/WaveCounter"); // Resources 폴더에서 프리팹 로드
-        waveCounter = GameObject.Instantiate(waveCounterPrefab); 
+        waveCounter = GameObject.Instantiate(waveCounterPrefab);
+        waveCounterText = waveCounter.GetComponentInChildren<Text>();
     }
 
     private void CreateMonsterCounter()
     {
         GameObject monsterCounterPrefab = Managers.Resource.Instantiate("Prefabs/UI/Popup/MonsterCounter");
         monsterCounter = GameObject.Instantiate(monsterCounterPrefab);
+        monsterCounterText = monsterCounter.GetComponentInChildren<Text>();
     }
 
     public void CreatePlayer()
@@ -141,6 +147,21 @@ public class GameManager : IManager
 
     public void UpdateMonsterCounter()
     {
+        monsterCounterText.text = $"남은 몬스터 수: {monsterCount}";
+    }
 
+    public void IncreaseMonsterCount()
+    {
+        monsterCount++;
+        UpdateMonsterCounter(); // UI 업데이트
+    }
+
+    public void DecreaseMonsterCount()
+    {
+        if (monsterCount > 0)
+        {
+            monsterCount--;
+            UpdateMonsterCounter(); // UI 업데이트
+        }
     }
 }

@@ -1,17 +1,11 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UICountDownPopup : UIPopupBase
 {
-    private GameObject countDownPopupUI;
-    string countDownPopupUIText;
-    
+    TMP_Text countDownText;
+
     enum Texts
     {
         countDownText,
@@ -23,6 +17,7 @@ public class UICountDownPopup : UIPopupBase
             return false;
 
         BindText(typeof(Texts));
+        //텍스트 바인드 건거 이용해서 바꾸기
 
         return true;
     }
@@ -34,23 +29,23 @@ public class UICountDownPopup : UIPopupBase
 
     public void CreateCountDown()
     {
-        countDownPopupUI = Managers.UI.ShowPopupUI<UICountDownPopup>().gameObject;
-        countDownPopupUIText = countDownPopupUI.GetComponentInChildren<Text>().text;
+        countDownText = GetText(Texts.countDownText);        
         Managers.Coroutine.StartCoroutine("CountDown",CountDown());
     }
 
     private IEnumerator CountDown()
     {
         //Time.timeScale = 0;
-        countDownPopupUIText = "3";
+        countDownText.gameObject.SetActive(true);
+        countDownText.text = "3";
         yield return new WaitForSecondsRealtime(1);
-        countDownPopupUIText = "2";
+        countDownText.text = "2";
         yield return new WaitForSecondsRealtime(1);
-        countDownPopupUIText = "1";
+        countDownText.text = "1";
         yield return new WaitForSecondsRealtime(1);
-        countDownPopupUIText = "시작!";
+        countDownText.text = "시작!";
         yield return new WaitForSecondsRealtime(1);
-        countDownPopupUI.SetActive(false);
+        countDownText.gameObject.SetActive(false);
         //Time.timeScale = 1f; // 게임 시작
     }
 }

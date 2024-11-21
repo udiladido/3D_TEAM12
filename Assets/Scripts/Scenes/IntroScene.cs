@@ -8,7 +8,7 @@ public class IntroScene : SceneBase
     {
 
         Managers.UI.LoadSceneUI<UIIntroScene>();
-        LoadPlayer();
+
 
     }
 
@@ -24,11 +24,7 @@ public class IntroScene : SceneBase
     }
 
 
-    private void LoadPlayer()
-    {
-       
   
-    }
 
 
 }

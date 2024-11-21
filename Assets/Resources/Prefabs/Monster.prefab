@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7676485644711821366}
   - component: {fileID: 3290100766084982336}
+  - component: {fileID: 1851801786110302663}
   - component: {fileID: 2685346600640482991}
   - component: {fileID: 2193270984110308286}
   m_Layer: 9
@@ -46,12 +47,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f690faef22e53e240a7ead41b89ae243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Condition>k__BackingField:
-    <IsDead>k__BackingField: 0
-    maxHp: 0
-    currentHp: 0
-  TestPlayer: {fileID: 0}
-  testtime: 10
+--- !u!114 &1851801786110302663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834268153312345692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e0c01696d13c7458dd9a5bbc9d6614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IsDead>k__BackingField: 0
+  maxHp: 0
+  currentHp: 0
 --- !u!136 &2685346600640482991
 CapsuleCollider:
   m_ObjectHideFlags: 0

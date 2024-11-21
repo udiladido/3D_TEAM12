@@ -10,7 +10,7 @@ public class Monster : MonoBehaviour
     public int Identifier { get; private set; }
 
     public MonsterEntity Stat { get; private set; }
-    [field: SerializeField] public MonsterCondition Condition { get; private set; }
+    public MonsterCondition Condition { get; private set; }
     public CapsuleCollider HitCollider { get; private set; }
     public Rigidbody RigidBody { get; private set; }
     public MonsterAnimatorController AnimationController { get; private set; }
@@ -41,8 +41,7 @@ public class Monster : MonoBehaviour
 
     private void Awake()
     {
-        Condition = new MonsterCondition();
-
+        Condition.OnHit += TakeDamage;
         Condition.OnDead += Die;
         HitCollider = GetComponent<CapsuleCollider>();
         RigidBody = GetComponent<Rigidbody>();
@@ -106,11 +105,7 @@ public class Monster : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        Condition.TakeDamage(damage);
-        if (Condition.IsDead == false)
-        {
-            OnHit?.Invoke(damage > Stat.staggerDamage);
-        }
+        OnHit?.Invoke(damage > Stat.staggerDamage);
     }
 
 

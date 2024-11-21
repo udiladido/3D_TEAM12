@@ -48,13 +48,13 @@ public class ResourceManager : IManager
     }
     private Sprite LoadSprite(string filePath, bool isMultiple = false)
     {
+        if (filePath.StartsWith("/"))
+            filePath = filePath.Substring(1);
         if (isMultiple)
         {
             // 파일 여러개에서 스프라이트 가져옴
             string multipleSpriteName = filePath.Substring(filePath.LastIndexOf('/') + 1);
             string filePathWithoutName = filePath.Substring(0, filePath.LastIndexOf('/'));
-            if (filePathWithoutName.StartsWith("/"))
-                filePathWithoutName = filePathWithoutName.Substring(1);
             if (spriteDict.TryGetValue(filePath, out Sprite sprite) == false)
             {
                 Sprite[] sprites = Resources.LoadAll<Sprite>(filePathWithoutName);

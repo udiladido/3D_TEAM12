@@ -16,8 +16,6 @@ public class MonsterState_Chase : MonsterBaseState
 
     public override void Enter()
     {
-        stateMachine.Monster.SetNextSkill();
-
         stateMachine.Monster.OnHit += Hit;
 
         chaseTimeRemain = stateMachine.Monster.Stat.chasePeriod;
@@ -54,7 +52,7 @@ public class MonsterState_Chase : MonsterBaseState
             }
 
             // Move
-            transform.Translate(stateMachine.Monster.Stat.moveSpeed * Vector3.forward * Time.deltaTime, Space.World);
+            transform.Translate(stateMachine.Monster.Stat.moveSpeed * transform.forward * Time.deltaTime, Space.World);
         }
         // 공격 개시
         else

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
+
 public class UICharacterSelectPopup : UIPopupBase
 {
     enum Texts
@@ -72,7 +73,8 @@ public class UICharacterSelectPopup : UIPopupBase
       private void SelectPrevCharacter() 
     {
 
-        //이름으로 소환하기 
+
+
         CharacterPreview preview = GameObject.FindObjectOfType<CharacterPreview>();
         if (preview == null)
             preview = Managers.Resource.Instantiate("CharacterPreview")?.GetComponent<CharacterPreview>();
@@ -80,18 +82,18 @@ public class UICharacterSelectPopup : UIPopupBase
 
 
 
+        //버튼 이름 확인  - 캐릭터 ID 가져오기
         Button clickedButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
         CharacterID characterId = (CharacterID)Enum.Parse(typeof(CharacterID), clickedButton.gameObject.name);
 
     
         JobEntity job = Managers.DB.Get<JobEntity>((int)characterId);
 
+
         preview.SetJob(job);
 
 
-        //Managers.Game. 에 jobid 변수 값 넘겨주기
-        //Managers.Game.Jobid = (int)characterId;
-
+        Managers.Game.jobId = (int)characterId;
         GetText(Texts.CharacterInfo).text = job.description;
 
     }
@@ -110,9 +112,7 @@ public class UICharacterSelectPopup : UIPopupBase
         preview.SetJob(job);
 
 
-        //Managers.Game. 에 jobid 변수 값 넘겨주기
-        //Managers.Game.Jobid = (int)characterId;
-
+        Managers.Game.jobId = (int)CharacterID.Barbarian;
         GetText(Texts.CharacterInfo).text = job.description;
 
     }
@@ -122,7 +122,7 @@ public class UICharacterSelectPopup : UIPopupBase
     private void SelectPrevCharacter_Knight()
     {
 
-        //이름으로 소환하기 
+     
         CharacterPreview preview = GameObject.FindObjectOfType<CharacterPreview>();
         if (preview == null)
             preview = Managers.Resource.Instantiate("CharacterPreview")?.GetComponent<CharacterPreview>();
@@ -144,7 +144,7 @@ public class UICharacterSelectPopup : UIPopupBase
     private void SelectPrevCharacter_Rogue()
     {
 
-        //이름으로 소환하기 
+    
         CharacterPreview preview = GameObject.FindObjectOfType<CharacterPreview>();
         if (preview == null)
             preview = Managers.Resource.Instantiate("CharacterPreview")?.GetComponent<CharacterPreview>();
@@ -166,7 +166,6 @@ public class UICharacterSelectPopup : UIPopupBase
     private void SelectPrevCharacter_Mage()
     {
 
-        //이름으로 소환하기 
         CharacterPreview preview = GameObject.FindObjectOfType<CharacterPreview>();
         if (preview == null)
             preview = Managers.Resource.Instantiate("CharacterPreview")?.GetComponent<CharacterPreview>();
@@ -194,12 +193,12 @@ public class UICharacterSelectPopup : UIPopupBase
 
         List<JobEntity> jobs = Managers.DB.GetAll<JobEntity>();
 
-      
 
-        GetImage(Images.Barbarian).sprite = Managers.Resource.Load<Sprite>(jobs[0].image);
-        GetImage(Images.Knight).sprite = Managers.Resource.Load<Sprite>(jobs[1].image);
-        GetImage(Images.Rogue).sprite = Managers.Resource.Load<Sprite>(jobs[2].image);
-        GetImage(Images.Mage).sprite = Managers.Resource.Load<Sprite>(jobs[3].image);
+        GetImage(Images.Barbarian).sprite = Managers.Resource.Load<Sprite>(jobs[(int)Images.Barbarian].image);
+        GetImage(Images.Knight).sprite = Managers.Resource.Load<Sprite>(jobs[(int)Images.Knight].image);
+        GetImage(Images.Rogue).sprite = Managers.Resource.Load<Sprite>(jobs[(int)Images.Rogue].image);
+        GetImage(Images.Mage).sprite = Managers.Resource.Load<Sprite>(jobs[(int)Images.Mage].image);
+
     }
 
 
@@ -207,6 +206,7 @@ public class UICharacterSelectPopup : UIPopupBase
     {
 
         Managers.Scene.LoadScene(Defines.SceneType.GameScene);
+
 
     }
 

@@ -48,6 +48,11 @@ public class ResourceManager : IManager
     }
     private Sprite LoadSprite(string filePath, bool isMultiple = false)
     {
+
+        if (filePath.StartsWith("/"))
+            filePath = filePath.Substring(1);
+
+
         if (isMultiple)
         {
             // 파일 여러개에서 스프라이트 가져옴
@@ -81,9 +86,7 @@ public class ResourceManager : IManager
         }
         else
         {
-            if (filePath.StartsWith("/"))
-                filePath = filePath.Substring(1);
-
+       
 
             // 파일 하나에서 스프라이트 가져옴
             if (spriteDict.TryGetValue(filePath, out Sprite sprite) == false)

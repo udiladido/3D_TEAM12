@@ -34,8 +34,8 @@ public class GameManager : IManager
         
         CreateTimer(); // 타이머 UI 텍스트 생성
         CreateWaveCounter();
-        uiCountDownPopup.CreateCountDown();
-        CreateMonsterCounter();
+        //uiCountDownPopup.CreateCountDown();
+        //CreateMonsterCounter();
     }
 
     public void Clear()
@@ -81,25 +81,25 @@ public class GameManager : IManager
 
     private void CreateTimer()
     {
-        GameObject timerTextPrefab = Managers.Resource.Instantiate("UI/Popup/TimerTextPrefab"); // Resources 폴더에서 프리팹 로드
-        timerTextObject = GameObject.Instantiate(timerTextPrefab); 
+        //GameObject timerTextPrefab = Managers.Resource.Instantiate("UI/Popup/TimerTextPrefab"); // Resources 폴더에서 프리팹 로드
+        //timerTextObject = GameObject.Instantiate(timerTextPrefab); 
     }
 
     private void CreateWaveCounter()
     {
-        GameObject waveCounterPrefab = Managers.Resource.Instantiate("UI/Popup/WaveCounter"); // Resources 폴더에서 프리팹 로드
-        waveCounter = GameObject.Instantiate(waveCounterPrefab); 
+        //GameObject waveCounterPrefab = Managers.Resource.Instantiate("UI/Popup/WaveCounter"); // Resources 폴더에서 프리팹 로드
+        //waveCounter = GameObject.Instantiate(waveCounterPrefab); 
     }
 
     private void CreateMonsterCounter()
     {
-        GameObject monsterCounterPrefab = Managers.Resource.Instantiate("Prefabs/UI/Popup/MonsterCounter");
-        monsterCounter = GameObject.Instantiate(monsterCounterPrefab);
+        //GameObject monsterCounterPrefab = Managers.Resource.Instantiate("Prefabs/UI/Popup/MonsterCounter");
+        //monsterCounter = GameObject.Instantiate(monsterCounterPrefab);
     }
 
-    public void CreatePlayer()
+    public void CreatePlayer(int jobid)
     {
-        JobEntity job = Managers.DB.Get<JobEntity>(jobId); //11
+        JobEntity job = Managers.DB.Get<JobEntity>(jobid); //11
 
         Player player = GameObject.FindObjectOfType<Player>();
 

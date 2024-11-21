@@ -5,15 +5,17 @@ using UnityEngine;
 public class CharacterPreview : MonoBehaviour
 {
 
-
+    private GameObject currentCharacter;  // 현재 캐릭터 저장용 변수
 
     public void SetJob(JobEntity job)
     {
-     
-        GameObject jobGo = Managers.Resource.Instantiate(job.prefabPath, transform);
-        jobGo.transform.localPosition = Vector3.zero;
-  
-        
+
+        if (currentCharacter != null)
+            Managers.Resource.Destroy(currentCharacter);
+
+        currentCharacter = Managers.Resource.Instantiate(job.prefabPath, transform);
+        currentCharacter.transform.localPosition = Vector3.zero;
+
     }
 
 }

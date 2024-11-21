@@ -15,7 +15,7 @@ public class CharacterPreview : MonoBehaviour
 
         currentCharacter = Managers.Resource.Instantiate(job.prefabPath, transform);
         currentCharacter.transform.localPosition = Vector3.zero;
-
+        currentCharacter.transform.localRotation = Quaternion.Euler(0, 180, 0);  // y축 180도 회전
     }
 
 }

@@ -8,7 +8,7 @@ public class UICountDownPopup : UIPopupBase
 
     enum Texts
     {
-        countDownText,
+        CountDownTxt,
     }
 
     protected override bool Init()
@@ -21,15 +21,10 @@ public class UICountDownPopup : UIPopupBase
         return true;
     }
 
-    public override void Open(Defines.UIAnimationType type = Defines.UIAnimationType.None)
+    public void StartCountDown()
     {
-        base.Open(type);
-    }
-
-    public void CreateCountDown()
-    {
-        countDownText = GetText(Texts.countDownText);
-        Managers.Coroutine.StartCoroutine("CountDown",CountDown());
+        countDownText = GetText(Texts.CountDownTxt);
+        StartCoroutine(CountDown());
     }
 
     private IEnumerator CountDown()
@@ -48,6 +43,7 @@ public class UICountDownPopup : UIPopupBase
         //Time.timeScale = 1f; // 게임 시작
         
         Managers.Game.CreatePlayer();
+        Managers.UI.LoadSceneUI<UIGameScene>();
         Managers.Game.GameStart();
     }
 }

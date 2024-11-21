@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 3482696347755139566}
   - component: {fileID: 7524093598666402557}
   - component: {fileID: 7327174836619581003}
+  - component: {fileID: -5036078454342852869}
   m_Layer: 5
   m_Name: UICountDownPopup
   m_TagString: Untagged
@@ -237,3 +238,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &-5036078454342852869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9037399706518130049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e60102d0068254aa0617c6f89e35fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power: 0.1
+  duration: 0.2
+  animationRoot: {fileID: 0}

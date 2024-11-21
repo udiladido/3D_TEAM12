@@ -103,4 +103,15 @@ public class InputController : BaseController
             cameraController.Zoom(context.ReadValue<float>());
         }
     }
+    
+    public void OnItemSlot(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            if (int.TryParse( context.control.name, out int slotKey))
+            {
+                Managers.Game.ItemKeyPressed(slotKey);
+            }
+        }
+    }
 }

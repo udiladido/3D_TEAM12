@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CombatSlots : MonoBehaviour
 {
+    public event Action<float, float> OnSkillCooltimeChanged;
+    public event Action<float, float> OnComboAttackCooltimeChanged;
     public event Action OnTimerChanged;
     public event Action OnUpdate;
     private Dictionary<Defines.CharacterAttackInputType, CombatBase> slots;
@@ -27,7 +29,7 @@ public class CombatSlots : MonoBehaviour
     {
         OnTimerChanged?.Invoke();
         OnUpdate?.Invoke();
-        if (isComboAttaking && Equipment.CanAction(Defines.CharacterAttackInputType.ComboAttack))
+        if (isComboAttaking)
             TryExecute(Defines.CharacterAttackInputType.ComboAttack);
     }
 
@@ -49,13 +51,15 @@ public class CombatSlots : MonoBehaviour
         {
 
             combatBase = new ComboAttack(this);
-            combatBase.SetData(equipEntity);
+            combatBase.SetData(attackInput, equipEntity);
+            OnTimerChanged += combatBase.Timer;
             OnUpdate += combatBase.Update;
         }
         else if (attackInput == Defines.CharacterAttackInputType.Skill)
         {
             combatBase = new SkillAttack(this);
-            combatBase.SetData(equipEntity);
+            combatBase.SetData(attackInput, equipEntity);
+            OnTimerChanged += combatBase.Timer;
             OnUpdate += combatBase.Update;
         }
 
@@ -66,6 +70,7 @@ public class CombatSlots : MonoBehaviour
     {
         if (slots.TryGetValue(attackInput, out CombatBase combatBase))
         {
+            OnTimerChanged -= combatBase.Timer;
             OnUpdate -= combatBase.Update;
             combatBase.RemoveData();
         }
@@ -79,8 +84,7 @@ public class CombatSlots : MonoBehaviour
             isComboAttaking = true;
         else
         {
-            if (Equipment.CanAction(attackInput))
-                TryExecute(attackInput);
+            TryExecute(attackInput);
         }
     }
 
@@ -92,6 +96,9 @@ public class CombatSlots : MonoBehaviour
 
     private void TryExecute(Defines.CharacterAttackInputType attackInput)
     {
+        if (Equipment.CanAction(attackInput) == false)
+            return;
+
         if (slots.TryGetValue(attackInput, out CombatBase combatBase))
         {
             combatBase.Execute();
@@ -104,5 +111,16 @@ public class CombatSlots : MonoBehaviour
         Animator.SetLayerWeight((int)currentCombatStyleType, 0);
         currentCombatStyleType = combatStyleType;
         Animator.SetLayerWeight((int)currentCombatStyleType, 1);
+    }
+
+    public void UpdateCooltime(Defines.CharacterAttackInputType attackInput, float cooltime, float maxCooltime)
+    {
+        if (slots.TryGetValue(attackInput, out CombatBase combatBase))
+        {
+            if (attackInput == Defines.CharacterAttackInputType.Skill)
+                OnSkillCooltimeChanged?.Invoke(cooltime, maxCooltime);
+            else if (attackInput == Defines.CharacterAttackInputType.ComboAttack)
+                OnComboAttackCooltimeChanged?.Invoke(cooltime, maxCooltime);
+        }
     }
 }

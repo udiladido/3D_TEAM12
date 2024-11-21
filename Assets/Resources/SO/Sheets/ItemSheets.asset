@@ -19,7 +19,7 @@ MonoBehaviour:
     itemType: 2
     rarityType: 1
     dropPrefabPath: /DropItems/Potion
-    iconPath: /Textures/icons/consumables/hp_position
+    iconPath: /Textures/icons/consumables/hp_potion
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -34,7 +34,7 @@ MonoBehaviour:
     itemType: 2
     rarityType: 1
     dropPrefabPath: /DropItems/Potion
-    iconPath: /Textures/icons/consumables/mp_position
+    iconPath: /Textures/icons/consumables/mp_potion
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
     itemType: 2
     rarityType: 2
     dropPrefabPath: /DropItems/Potion
-    iconPath: /Textures/icons/consumables/movespeed_potion
+    iconPath: /Textures/icons/consumables/buff_potion
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 1
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon
+    iconPath: /Textures/icons/equipments/combo_weapon_01
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -190,7 +190,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 2
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon
+    iconPath: /Textures/icons/equipments/combo_weapon_01
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -205,7 +205,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 3
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon
+    iconPath: /Textures/icons/equipments/combo_weapon_01
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 4
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon
+    iconPath: /Textures/icons/equipments/combo_weapon_02
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 3
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon
+    iconPath: /Textures/icons/equipments/skill_melee_weapon
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -253,7 +253,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 3
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon
+    iconPath: /Textures/icons/equipments/skill_ranged_weapon
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -269,7 +269,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 3
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon
+    iconPath: /Textures/icons/equipments/skill_magic_weapon
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -284,7 +284,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 1
     dropPrefabPath: /DropItems/Armor
-    iconPath: /Textures/icons/equipments/armor
+    iconPath: /Textures/icons/equipments/armor_01
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -299,7 +299,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 2
     dropPrefabPath: /DropItems/Armor
-    iconPath: /Textures/icons/equipments/armor
+    iconPath: /Textures/icons/equipments/armor_02
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -314,7 +314,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 3
     dropPrefabPath: /DropItems/Armor
-    iconPath: /Textures/icons/equipments/armor
+    iconPath: /Textures/icons/equipments/armor_03
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -330,7 +330,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 4
     dropPrefabPath: /DropItems/Armor
-    iconPath: /Textures/icons/equipments/armor
+    iconPath: /Textures/icons/equipments/armor_04
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -345,7 +345,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 1
     dropPrefabPath: /DropItems/Accessory
-    iconPath: /Textures/icons/equipments/accessory
+    iconPath: /Textures/icons/equipments/ring_01
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -360,7 +360,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 2
     dropPrefabPath: /DropItems/Accessory
-    iconPath: /Textures/icons/equipments/accessory
+    iconPath: /Textures/icons/equipments/ring_01
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -375,7 +375,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 3
     dropPrefabPath: /DropItems/Accessory
-    iconPath: /Textures/icons/equipments/accessory
+    iconPath: /Textures/icons/equipments/ring_02
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 4
     dropPrefabPath: /DropItems/Accessory
-    iconPath: /Textures/icons/equipments/accessory
+    iconPath: /Textures/icons/equipments/ring_03
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -480,7 +480,7 @@ MonoBehaviour:
   - itemId: 1501
     comboIndex: 1
     projectilePrefabPath: /Projectiles/Player/ComboAttack1
-    manaCost: 3
+    manaCost: 10
     cooltime: 1
     duration: 0.4
     startScale: 1
@@ -497,7 +497,7 @@ MonoBehaviour:
   - itemId: 1501
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
-    manaCost: 3
+    manaCost: 10
     cooltime: 1
     duration: 0.4
     startScale: 1
@@ -514,7 +514,7 @@ MonoBehaviour:
   - itemId: 1501
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
-    manaCost: 5
+    manaCost: 15
     cooltime: 1.5
     duration: 0.4
     startScale: 1
@@ -531,7 +531,7 @@ MonoBehaviour:
   - itemId: 1502
     comboIndex: 1
     projectilePrefabPath: /Projectiles/Player/ComboAttack1
-    manaCost: 3
+    manaCost: 10
     cooltime: 1
     duration: 0.4
     startScale: 1.2
@@ -548,7 +548,7 @@ MonoBehaviour:
   - itemId: 1502
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
-    manaCost: 3
+    manaCost: 10
     cooltime: 1
     duration: 0.4
     startScale: 1.2
@@ -565,7 +565,7 @@ MonoBehaviour:
   - itemId: 1502
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
-    manaCost: 5
+    manaCost: 15
     cooltime: 1.5
     duration: 0.4
     startScale: 1.2
@@ -582,7 +582,7 @@ MonoBehaviour:
   - itemId: 1503
     comboIndex: 1
     projectilePrefabPath: /Projectiles/Player/ComboAttack1
-    manaCost: 3
+    manaCost: 10
     cooltime: 1
     duration: 0.4
     startScale: 1.5
@@ -599,7 +599,7 @@ MonoBehaviour:
   - itemId: 1503
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
-    manaCost: 3
+    manaCost: 10
     cooltime: 1
     duration: 0.4
     startScale: 1.5
@@ -616,7 +616,7 @@ MonoBehaviour:
   - itemId: 1503
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
-    manaCost: 5
+    manaCost: 15
     cooltime: 1.5
     duration: 0.4
     startScale: 1.5
@@ -633,7 +633,7 @@ MonoBehaviour:
   - itemId: 1504
     comboIndex: 1
     projectilePrefabPath: /Projectiles/Player/ComboAttack1
-    manaCost: 3
+    manaCost: 10
     cooltime: 1
     duration: 0.4
     startScale: 2
@@ -650,7 +650,7 @@ MonoBehaviour:
   - itemId: 1504
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
-    manaCost: 3
+    manaCost: 10
     cooltime: 1
     duration: 0.4
     startScale: 2
@@ -667,7 +667,7 @@ MonoBehaviour:
   - itemId: 1504
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
-    manaCost: 5
+    manaCost: 15
     cooltime: 1.5
     duration: 0.4
     startScale: 2
@@ -684,7 +684,7 @@ MonoBehaviour:
   - itemId: 1505
     comboIndex: 0
     projectilePrefabPath: /Projectiles/Player/MeleeAttack
-    manaCost: 20
+    manaCost: 40
     cooltime: 10
     duration: 3
     startScale: 3
@@ -701,7 +701,7 @@ MonoBehaviour:
   - itemId: 1506
     comboIndex: 0
     projectilePrefabPath: /Projectiles/Player/RangedAttack
-    manaCost: 10
+    manaCost: 25
     cooltime: 5
     duration: 3
     startScale: 1
@@ -718,7 +718,7 @@ MonoBehaviour:
   - itemId: 1507
     comboIndex: 0
     projectilePrefabPath: /Projectiles/Player/MagicAttack
-    manaCost: 30
+    manaCost: 55
     cooltime: 15
     duration: 5
     startScale: 2
@@ -761,10 +761,18 @@ MonoBehaviour:
     statType: 3
     amount: 50
     calcType: 0
+  - itemId: 1505
+    statType: 7
+    amount: 10
+    calcType: 0
   - itemId: 1506
     statType: 3
     amount: 50
     calcType: 0
+  - itemId: 1506
+    statType: 4
+    amount: 1.5
+    calcType: 1
   - itemId: 1507
     statType: 3
     amount: 50
@@ -772,6 +780,10 @@ MonoBehaviour:
   - itemId: 1507
     statType: 9
     amount: 0.1
+    calcType: 0
+  - itemId: 1507
+    statType: 8
+    amount: 10
     calcType: 0
   - itemId: 1601
     statType: 6
@@ -857,34 +869,38 @@ MonoBehaviour:
     statType: 9
     amount: 1.5
     calcType: 1
+  - itemId: 1704
+    statType: 9
+    amount: 1.5
+    calcType: 1
   ConsumableList:
   - itemId: 1001
-    consumableType: 0
-    amount: 1.5
+    consumableType: 1
+    amount: 0.5
     duration: 0
     calcType: 1
   - itemId: 1002
-    consumableType: 0
-    amount: 1.5
+    consumableType: 2
+    amount: 0.5
     duration: 0
     calcType: 1
   - itemId: 1003
-    consumableType: 0
-    amount: 1.2
+    consumableType: 3
+    amount: 0.2
     duration: 60
     calcType: 1
   - itemId: 1004
-    consumableType: 0
-    amount: 1.2
+    consumableType: 4
+    amount: 0.2
     duration: 60
     calcType: 1
   - itemId: 1005
-    consumableType: 0
-    amount: 1.2
+    consumableType: 5
+    amount: 0.2
     duration: 60
     calcType: 1
   - itemId: 1006
-    consumableType: 0
-    amount: 1.2
+    consumableType: 6
+    amount: 0.2
     duration: 60
     calcType: 1

@@ -57,7 +57,6 @@ public class Managers : MonoBehaviour
     private ResourceManager _resource = new ResourceManager();
     private CoroutineManager _coroutine = new CoroutineManager();
     private SceneManagerEx _scene = new SceneManagerEx();
-    private GameManager _game = new GameManager();
 
     public static DBManager DB
     {
@@ -87,10 +86,6 @@ public class Managers : MonoBehaviour
     {
         get { return Instance?._scene; }
     }
-    public static GameManager Game
-    {
-        get { return Instance?._game; }
-    }
 
     #endregion
 
@@ -98,6 +93,9 @@ public class Managers : MonoBehaviour
 
     private ShopManager _shop = new ShopManager();
     private UserManager _user = new UserManager();
+    private QuickSlotManager _quickSlot = new QuickSlotManager();
+    private GameManager _game = new GameManager();
+
 
     public static ShopManager Shop
     {
@@ -106,6 +104,14 @@ public class Managers : MonoBehaviour
     public static UserManager User
     {
         get { return Instance?._user; }
+    }
+    public static QuickSlotManager QuickSlot
+    {
+        get { return Instance?._quickSlot; }
+    }
+    public static GameManager Game
+    {
+        get { return Instance?._game; }
     }
 
     #endregion

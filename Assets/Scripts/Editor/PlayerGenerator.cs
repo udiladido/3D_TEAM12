@@ -24,7 +24,8 @@ public class PlayerGenerator : Editor
     {
         if (GUILayout.Button($"{job.displayTitle} 생성"))
         {
-            Managers.Game.CreatePlayer(job.id);
+            Managers.Game.SetPlayerJobId(job.id);
+            Managers.Game.CreatePlayer();
         }
     }
 }

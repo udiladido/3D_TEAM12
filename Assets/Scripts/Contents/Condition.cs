@@ -56,6 +56,7 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
         float value = (CurrentStat.armor / 100) * damage;
         
         currentHp = Mathf.Clamp(currentHp - value, 0, CurrentStat.maxHp);
+        OnHpChanged?.Invoke(currentHp, CurrentStat.maxHp);
         // TODO : 피격 이펙트
         // TODO : 피격 사운드
         if (currentHp <= 0)
@@ -72,18 +73,41 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
     public void Heal(float heal)
     {
         currentHp = Mathf.Clamp(currentHp + heal, 0, CurrentStat.maxHp);
+        OnHpChanged?.Invoke(currentHp, CurrentStat.maxHp);
+    }
+    
+    public void MpRecovery(float recovery)
+    {
+        currentMp = Mathf.Clamp(currentMp + recovery, 0, CurrentStat.maxMp);
+        OnMpChanged?.Invoke(currentMp, CurrentStat.maxMp);
     }
 
     private void HpRegen()
     {
         if (CurrentStat.passiveHpRegen > 0)
+        {
             currentHp = Mathf.Clamp(currentHp + CurrentStat.passiveHpRegen * Time.deltaTime, 0, CurrentStat.maxHp);
+            OnHpChanged?.Invoke(currentHp, CurrentStat.maxHp);           
+        }
     }
 
     private void MpRegen()
     {
         if (CurrentStat.passiveMpRegen > 0)
+        {
             currentMp = Mathf.Clamp(currentMp + CurrentStat.passiveMpRegen * Time.deltaTime, 0, CurrentStat.maxMp);
+            OnMpChanged?.Invoke(currentMp, CurrentStat.maxMp);
+        }
+    }
+    
+    public bool TryUseMana(float cost)
+    {
+        if (currentMp < cost)
+            return false;
+
+        currentMp = Mathf.Clamp(currentMp - cost, 0, CurrentStat.maxMp);
+        OnMpChanged?.Invoke(currentMp, CurrentStat.maxMp);
+        return true;
     }
 
 
@@ -118,13 +142,6 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
     }
     private void ApplyStatModifier(StatModifier modifier)
     {
-        Func<float, float, float> operation = modifier.calcType switch
-        {
-            Defines.CalcType.Add => (current, value) => current + value,
-            Defines.CalcType.Multiply => (current, value) => current * value,
-            _ => (current, value) => value
-        };
-        
-        CurrentStat.UpdateStat(operation, modifier);
+        CurrentStat.UpdateStat(Utils.Operation(modifier.calcType), modifier);
     }
 }

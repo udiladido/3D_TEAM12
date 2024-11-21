@@ -43,11 +43,11 @@ public class ResourceManager : IManager
         {
             return Resources.Load<T>(path);
         }
-
-        return null;
     }
     private Sprite LoadSprite(string filePath, bool isMultiple = false)
     {
+        if (filePath.StartsWith("/"))
+            filePath = filePath.Substring(1);
         if (isMultiple)
         {
             // 파일 여러개에서 스프라이트 가져옴
@@ -67,7 +67,7 @@ public class ResourceManager : IManager
                     if (s.name == multipleSpriteName)
                         sprite = s;
 
-                    spriteDict.Add($"{filePathWithoutName}/{s.name}", s);
+                    spriteDict.TryAdd($"{filePathWithoutName}/{s.name}", s);
                 }
 
                 if (sprite == null)

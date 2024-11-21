@@ -21,7 +21,6 @@ MonoBehaviour:
     prefabPath: /Prefabs/Monsters/Skeleton_Minion
     iconPath: /Textures/icons/monsters/monster
     colliderRadius: 0.5
-    colliderHeight: 1.5
     colliderCenterY: 0.75
     maxHp: 10
     armor: 0

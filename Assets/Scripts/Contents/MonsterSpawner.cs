@@ -116,11 +116,15 @@ public class MonsterSpawner
         monster.OnDead += Dead;
         monster.OnDisabled += Disabled;
         spawnCount++;
+
+        Managers.Game.IncreaseMonsterCount();
     }
 
     private void Dead(int identifier)
     {
         spawnCount--;
+        Managers.Game.DecreaseMonsterCount();
+
         if (isSpawning == false && spawnCount == 0)
         {
             waveEnd = true;

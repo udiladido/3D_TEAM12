@@ -4,6 +4,4 @@ public interface IEquipment
     void UnEquip(ItemEntity item);
     
     bool CanAction(Defines.CharacterAttackInputType inputType);
-
-    ItemEquipableEntity GetWeaponInfo(Defines.CharacterAttackInputType inputType);
 }

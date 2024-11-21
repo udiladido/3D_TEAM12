@@ -46,6 +46,9 @@ public class UICountDownPopup : UIPopupBase
         yield return new WaitForSecondsRealtime(1);
         countDownText.gameObject.SetActive(false);
         //Time.timeScale = 1f; // 게임 시작
+        
+        Managers.Game.CreatePlayer();
+        Managers.Game.GameStart();
     }
 }
     

@@ -122,6 +122,13 @@ public static class Defines
         Skill,
     }
 
+    public enum ItemQuickSlotInputType
+    {
+        None,
+        QuickSlot1,
+        QuickSlot2,
+    }
+
     public enum CharacterCombatStyleType
     {
         None, // Base Layer Index
@@ -129,6 +136,35 @@ public static class Defines
         MeleeSkill,
         RangedSkill,
         MagicSkill,
+    }
+
+    public enum UIStatusType
+    {
+        None,
+        Hp,
+        Mp,
+    }
+    
+    public enum UIEquipmentType
+    {
+        None,
+        ComboWeapon,
+        SkillWeapon,
+        Armor,
+        Accessory,
+    }
+
+    public enum UIRewardItemType
+    {
+        None,
+        ComboWeapon,
+        SkillWeapon,
+        Armor,
+        Accessory,
+        HpPotion,
+        MpPotion,
+        
+        ItemCount,
     }
 
     
@@ -144,4 +180,8 @@ public static class Defines
     public const float STAT_MAX_MOVE_SPEED = 10f;
     public const float STAT_MAX_ARMOR = 80f;
     public const float STAT_MAX_COOLTIME_REDUCE_RATE = 1.8f; // 최대 80% 까지 감소
+    
+    public const int REWARD_HP_POTION_ID = 1001;
+    public const int REWARD_MP_POTION_ID = 1002;
+    public const int DEFAULT_COMBO_WEAPON_ID = 1501;
 }

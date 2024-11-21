@@ -42,17 +42,8 @@ public class MonsterState_Chase : MonsterBaseState
         // 이동
         else if (targetDistance > stateMachine.Monster.NextSkillRange)
         {
-            // Look, Y축 회전만 적용
-            Vector3 vectorLook = targetPosition - transform.position;
-            vectorLook.y = 0f;
-            if (vectorLook != Vector3.zero)
-            {
-                Quaternion rotation = Quaternion.LookRotation(vectorLook);
-                transform.rotation = Quaternion.Euler(0, rotation.eulerAngles.y, 0);
-            }
-
-            // Move
-            transform.Translate(stateMachine.Monster.Stat.moveSpeed * transform.forward * Time.deltaTime, Space.World);
+            Look(targetPosition);
+            Move();
         }
         // 공격 개시
         else
@@ -82,5 +73,22 @@ public class MonsterState_Chase : MonsterBaseState
         {
             chaseTimeRemain = stateMachine.Monster.Stat.chasePeriod;
         }
+    }
+
+    // Y축 회전만 적용
+    private void Look(Vector3 targetPos)
+    {
+        Vector3 vectorLook = targetPos - transform.position;
+        vectorLook.y = 0f;
+        if (vectorLook != Vector3.zero)
+        {
+            Quaternion rotation = Quaternion.LookRotation(vectorLook);
+            transform.rotation = Quaternion.Euler(0, rotation.eulerAngles.y, 0);
+        }
+    }
+
+    private void Move()
+    {
+        transform.Translate(stateMachine.Monster.Stat.moveSpeed * transform.forward * Time.deltaTime, Space.World);
     }
 }

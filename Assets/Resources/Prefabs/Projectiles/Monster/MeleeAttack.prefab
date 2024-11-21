@@ -14678,7 +14678,7 @@ GameObject:
   - component: {fileID: 1813216641617687664}
   - component: {fileID: 2799972619155513681}
   m_Layer: 0
-  m_Name: SkeletonMinion_Default
+  m_Name: MeleeAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

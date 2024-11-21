@@ -107,6 +107,7 @@ public class UIRewardPopup : UIPopupBase
     {
         base.Open(type);
         Time.timeScale = 0;
+        Managers.Game.Player.Input.InputDisable();
         List<ItemEntity> items = GetRewards();
 
         for (int i = 0; i < rewardCount; i++)
@@ -115,6 +116,7 @@ public class UIRewardPopup : UIPopupBase
 
     public override void Close(Defines.UIAnimationType type = Defines.UIAnimationType.None)
     {
+        Managers.Game.Player.Input.InputEnable();
         Time.timeScale = 1f;
         base.Close(type);
     }

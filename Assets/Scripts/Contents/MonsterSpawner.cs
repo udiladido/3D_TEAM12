@@ -12,7 +12,7 @@ public class MonsterSpawner
     private int Identifier;
 
     public int currentWave { get; private set; }
-    public int spawnCount { get; private set; }
+    public int SpawnCount { get; private set; }
     private bool isSpawning;
     private bool waveEnd;
 
@@ -121,17 +121,15 @@ public class MonsterSpawner
         WorldMonster.Add(Identifier, go);
         monster.OnDead += Dead;
         monster.OnDisabled += Disabled;
-        spawnCount++;
-
-        Managers.Game.IncreaseMonsterCount();
+        SpawnCount++;
+        Managers.Game.UpdateMonsterCounter();
     }
 
     private void Dead(int identifier)
     {
-        spawnCount--;
-        Managers.Game.DecreaseMonsterCount();
-
-        if (isSpawning == false && spawnCount == 0)
+        SpawnCount--;
+        Managers.Game.UpdateMonsterCounter();
+        if (isSpawning == false && SpawnCount == 0)
         {
             waveEnd = true;
         }

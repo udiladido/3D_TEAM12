@@ -17,8 +17,7 @@ public class MonsterProjectileController : ProjectileBaseController
     {
         if (isLaunched)
         {
-            durationTimer += Time.deltaTime;
-            if (durationTimer > skillEntity.duration)
+            if (Time.time - durationTimer > skillEntity.duration)
                 DestroySelf();
             
             if (skillEntity.moveSpeed > 0)
@@ -33,6 +32,7 @@ public class MonsterProjectileController : ProjectileBaseController
         this.skillEntity = skillEntity;
         this.targetLayer = targetLayer;
         isLaunched = false;
+        EnableHitBox(false);
         transform.localScale = new Vector3(skillEntity.startScale, skillEntity.startScale, skillEntity.startScale);
         transform.position = owner.position;
         direction = (target.position - owner.position).normalized;
@@ -48,6 +48,8 @@ public class MonsterProjectileController : ProjectileBaseController
     protected override void ApplyLaunch()
     {
         // Do nothing
+        EnableHitBox(true);
+        durationTimer = Time.time;
         isLaunched = true;
     }
     

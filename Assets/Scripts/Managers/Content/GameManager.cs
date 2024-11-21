@@ -48,6 +48,8 @@ public class GameManager : IManager
         LevelContainer level = GameObject.FindFirstObjectByType<LevelContainer>();
         monsterSpawner.StartSpawn(level);
         monsterSpawner.OnClearWave += UpdateWaveCounter;
+        
+        Player.Input.InputEnable();
     }
 
     public void GameOver()
@@ -85,28 +87,15 @@ public class GameManager : IManager
 
     public void UpdateWaveCounter(int waveCount)
     {
-        if (monsterSpawner != null)
-            Managers.UI.GetCurrentSceneUI<UIGameScene>()?.SetWaveCounter(waveCount);
+        if (monsterSpawner == null) return;
+        Managers.UI.GetCurrentSceneUI<UIGameScene>()?.SetWaveCounter(waveCount);
+        Managers.UI.ShowPopupUI<UIRewardPopup>();
     }
 
     public void UpdateMonsterCounter()
     {
-        Managers.UI.GetCurrentSceneUI<UIGameScene>()?.SetMonsterCounter(monsterCount);
-    }
-
-    public void IncreaseMonsterCount()
-    {
-        monsterCount++;
-        UpdateMonsterCounter(); // UI 업데이트
-    }
-
-    public void DecreaseMonsterCount()
-    {
-        if (monsterCount > 0)
-        {
-            monsterCount--;
-            UpdateMonsterCounter(); // UI 업데이트
-        }
+        if (monsterSpawner == null) return;
+        Managers.UI.GetCurrentSceneUI<UIGameScene>()?.SetMonsterCounter(monsterSpawner.SpawnCount);
     }
 
     public void ItemKeyPressed(int index)

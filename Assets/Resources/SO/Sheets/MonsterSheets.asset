@@ -129,7 +129,7 @@ MonoBehaviour:
     skillEntities: []
   SkillList:
   - monsterId: 10001
-    projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
+    projectilePrefabPath: /Projectiles/Monster/MeleeAttack
     selectWeight: 1
     attackRange: 1.5
     attackDamage: 20
@@ -142,7 +142,7 @@ MonoBehaviour:
     knockbackPower: 0
     knockbackDuration: 0
   - monsterId: 10002
-    projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
+    projectilePrefabPath: /Projectiles/Monster/MeleeAttack
     selectWeight: 1
     attackRange: 2.25
     attackDamage: 50
@@ -155,7 +155,7 @@ MonoBehaviour:
     knockbackPower: 0
     knockbackDuration: 0
   - monsterId: 10002
-    projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
+    projectilePrefabPath: /Projectiles/Monster/MeleeAttack
     selectWeight: 0.3
     attackRange: 3
     attackDamage: 50
@@ -168,7 +168,7 @@ MonoBehaviour:
     knockbackPower: 0
     knockbackDuration: 0
   - monsterId: 10003
-    projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
+    projectilePrefabPath: /Projectiles/Monster/MeleeAttack
     selectWeight: 1
     attackRange: 2
     attackDamage: 30
@@ -181,7 +181,7 @@ MonoBehaviour:
     knockbackPower: 0
     knockbackDuration: 0
   - monsterId: 10003
-    projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
+    projectilePrefabPath: /Projectiles/Monster/MeleeAttack
     selectWeight: 0.8
     attackRange: 2.2
     attackDamage: 50
@@ -194,33 +194,33 @@ MonoBehaviour:
     knockbackPower: 0
     knockbackDuration: 0
   - monsterId: 10004
-    projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
+    projectilePrefabPath: /Projectiles/Monster/Fireball
     selectWeight: 1
     attackRange: 15
     attackDamage: 30
     attackPeriod: 2
     duration: 0.4
-    startScale: 1
-    endScale: 1
+    startScale: 0.5
+    endScale: 0.5
     moveSpeed: 0
     waitTime: 0
     knockbackPower: 0
     knockbackDuration: 0
   - monsterId: 10005
-    projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
+    projectilePrefabPath: /Projectiles/Monster/Fireball
     selectWeight: 1
     attackRange: 15
     attackDamage: 15
     attackPeriod: 2
     duration: 0.4
-    startScale: 1
-    endScale: 1
+    startScale: 0.5
+    endScale: 0.5
     moveSpeed: 0
     waitTime: 0
     knockbackPower: 0
     knockbackDuration: 0
   - monsterId: 10006
-    projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
+    projectilePrefabPath: /Projectiles/Monster/MeleeAttack
     selectWeight: 1
     attackRange: 2.25
     attackDamage: 50
@@ -233,7 +233,7 @@ MonoBehaviour:
     knockbackPower: 0
     knockbackDuration: 0
   - monsterId: 10006
-    projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
+    projectilePrefabPath: /Projectiles/Monster/MeleeAttack
     selectWeight: 1
     attackRange: 3
     attackDamage: 70
@@ -246,7 +246,7 @@ MonoBehaviour:
     knockbackPower: 0
     knockbackDuration: 0
   - monsterId: 10006
-    projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
+    projectilePrefabPath: /Projectiles/Monster/MeleeAttack
     selectWeight: 0.5
     attackRange: 3
     attackDamage: 55
@@ -259,27 +259,27 @@ MonoBehaviour:
     knockbackPower: 0
     knockbackDuration: 0
   - monsterId: 10007
-    projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
+    projectilePrefabPath: /Projectiles/Monster/MeleeAttack
     selectWeight: 1
     attackRange: 5.5
     attackDamage: 110
     attackPeriod: 3.5
     duration: 0.4
-    startScale: 1
-    endScale: 1
+    startScale: 3
+    endScale: 3
     moveSpeed: 0
     waitTime: 0
     knockbackPower: 0
     knockbackDuration: 0
   - monsterId: 10007
-    projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
+    projectilePrefabPath: /Projectiles/Monster/MeleeAttack
     selectWeight: 1
     attackRange: 4
     attackDamage: 110
     attackPeriod: 2.5
     duration: 0.4
-    startScale: 1
-    endScale: 1
+    startScale: 3
+    endScale: 3
     moveSpeed: 0
     waitTime: 0
     knockbackPower: 0

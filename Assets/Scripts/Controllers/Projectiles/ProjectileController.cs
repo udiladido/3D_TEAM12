@@ -8,11 +8,6 @@ public class ProjectileController : ProjectileBaseController
 
     private Vector3 direction;
 
-    private ParticleSystem parentParticleSystem;
-    private ParticleSystem[] particleSystems;
-    private MeshRenderer meshRenderer;
-    private Collider hitBoxCollider;
-
     private bool isLaunched;
     private CombatBase combat;
     private Condition condition;
@@ -25,13 +20,6 @@ public class ProjectileController : ProjectileBaseController
     private float durationTimer;
     [SerializeField] private LayerMask targetLayer;
 
-    private void Awake()
-    {
-        meshRenderer = GetComponentInChildren<MeshRenderer>();
-        hitBoxCollider = GetComponentInChildren<Collider>();
-        parentParticleSystem = GetComponentInChildren<ParticleSystem>();
-        particleSystems = GetComponentsInChildren<ParticleSystem>();
-    }
 
     private void Update()
     {
@@ -70,16 +58,6 @@ public class ProjectileController : ProjectileBaseController
         {
             DestroySelf();
         }
-    }
-
-    private void EnableHitBox(bool enable)
-    {
-        if (hitBoxCollider != null)
-            hitBoxCollider.enabled = enable;
-        if (meshRenderer != null)
-            meshRenderer.enabled = enable;
-        if (parentParticleSystem != null)
-            parentParticleSystem.gameObject.SetActive(enable);
     }
 
     private void Scale()

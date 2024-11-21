@@ -24,11 +24,13 @@ public class UIGameOverPopup : UIPopupBase
     public override void Open(Defines.UIAnimationType type = Defines.UIAnimationType.None)
     {
         base.Open(type);
+        Managers.Game.Player.Input.InputDisable();
         Time.timeScale = 0;
     }
  
     public void IntroSceneEvent()
     {
+        Managers.Game.Player.Input.InputEnable();
         Time.timeScale = 1f;
         Managers.Scene.LoadScene(Defines.SceneType.IntroScene);
     }

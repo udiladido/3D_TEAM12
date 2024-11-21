@@ -43,8 +43,6 @@ public class ResourceManager : IManager
         {
             return Resources.Load<T>(path);
         }
-
-        return null;
     }
     private Sprite LoadSprite(string filePath, bool isMultiple = false)
     {

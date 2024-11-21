@@ -18,6 +18,12 @@ public class PlayerCustomEditor : Editor
 
         if (Application.isPlaying)
         {
+            GUILayout.Space(20);
+            if (GUILayout.Button("보상 팝업"))
+            {
+                Managers.UI.ShowPopupUI<UIRewardPopup>();
+            }
+            
             List<ItemEntity> items = Managers.DB.GetAll<ItemEntity>();
             List<ItemEntity> equips = items.Where(s => s.itemType == Defines.ItemType.Equipment).ToList();
             GUILayout.Space(20);

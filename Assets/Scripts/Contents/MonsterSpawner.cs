@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class MonsterSpawner
 {
@@ -107,6 +108,7 @@ public class MonsterSpawner
 
         Identifier++;
         Vector3 spawnPoint = spawnPoints[pointGroup][point];
+        spawnPoint += new Vector3(Random.Range(0f, 1f), 0, Random.Range(0f, 1f));
         if (monster.Initialize(Identifier, monsterID, spawnPoint) == false)
         {
             Managers.Pool.Despawn(go);
@@ -177,7 +179,7 @@ public class MonsterSpawner
         smallWave.startInterval = 5;
         smallWave.waveType = SmallWaveType.AllPoint;
         smallWave.pointGroup = 1;
-        smallWave.monsterID = 10007;
+        smallWave.monsterID = 10001;
         smallWave.monsterCount = 0;
         smallWave.spawnInterval = 0;
         waveData.smallWaveDatas.Add(smallWave);

@@ -4,8 +4,12 @@ using UnityEngine.UIElements;
 
 public class MonsterState_Attack : MonsterBaseState
 {
-    public MonsterState_Attack(MonsterStateMachine stateMachine) : base(stateMachine) { }
+    public MonsterState_Attack(MonsterStateMachine stateMachine) : base(stateMachine)
+    {
+        transform = stateMachine.Monster.transform;
+    }
 
+    private Transform transform;
     private bool triggered;
     private float attackTimeDelay;
 
@@ -29,6 +33,8 @@ public class MonsterState_Attack : MonsterBaseState
 
     public override void Update()
     {
+        Look(Managers.Game.Player.transform.position);
+
         if (triggered)
         {
             attackTimeDelay -= Time.deltaTime;
@@ -72,6 +78,19 @@ public class MonsterState_Attack : MonsterBaseState
         if (isStagger)
         {
             stateMachine.ChangeState(stateMachine.State_Hit);
+        }
+    }
+
+
+    // Y축 회전만 적용
+    private void Look(Vector3 targetPos)
+    {
+        Vector3 vectorLook = targetPos - transform.position;
+        vectorLook.y = 0f;
+        if (vectorLook != Vector3.zero)
+        {
+            Quaternion rotation = Quaternion.LookRotation(vectorLook);
+            transform.rotation = Quaternion.Euler(0, rotation.eulerAngles.y, 0);
         }
     }
 }

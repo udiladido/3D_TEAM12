@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public ForceReceiveController ForceReceiver { get; private set; }
     public CombatSlots CombatSlots { get; private set; }
     public Equipment Equipment { get; private set; }
+    public ItemQuickSlots ItemQuickSlots { get; private set; }
 
     private PlayerStateMachine stateMachine;
 
@@ -55,6 +56,7 @@ public class Player : MonoBehaviour
         ForceReceiver = GetComponent<ForceReceiveController>();
         CombatSlots = GetComponent<CombatSlots>();
         Equipment = GetComponent<Equipment>();
+        ItemQuickSlots = GetComponent<ItemQuickSlots>();
 
         stateMachine = new PlayerStateMachine(this);
         AnimationData.Initialize();

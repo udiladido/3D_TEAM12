@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class UIEquippedSlot : UISlotBase
 {
-    enum Images { EquippedIcon, CooltimeSlider }
+    enum Images { EquippedIcon, CooltimeSlider, BackGround }
 
 
     public Defines.UIEquipmentType equipmentType;
@@ -57,10 +57,18 @@ public class UIEquippedSlot : UISlotBase
 
     private void SetEquipped(Defines.UIEquipmentType equipmentType, ItemEntity equip)
     {
+        Image image = GetImage(Images.EquippedIcon);
+        Image background = GetImage(Images.BackGround);
         if (this.equipmentType == equipmentType && equip != null)
-            GetImage(Images.EquippedIcon).sprite = Managers.Resource.Load<Sprite>(equip.iconPath);
+        {
+            image.sprite = Managers.Resource.Load<Sprite>(equip.iconPath);
+            background.color = Utils.GetItemRarityColor(equip.rarityType);
+        }
         else if (equip == null)
-            GetImage(Images.EquippedIcon).sprite = null;
+        {
+            image.sprite = null;
+            background.color = Utils.GetItemRarityColor(Defines.ItemRarityType.None);
+        }
     }
 
     private void SetSkillCooltime(float cooltime, float maxCooltime)

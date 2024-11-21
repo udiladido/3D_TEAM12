@@ -73,6 +73,13 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
     public void Heal(float heal)
     {
         currentHp = Mathf.Clamp(currentHp + heal, 0, CurrentStat.maxHp);
+        OnHpChanged?.Invoke(currentHp, CurrentStat.maxHp);
+    }
+    
+    public void MpRecovery(float recovery)
+    {
+        currentMp = Mathf.Clamp(currentMp + recovery, 0, CurrentStat.maxMp);
+        OnMpChanged?.Invoke(currentMp, CurrentStat.maxMp);
     }
 
     private void HpRegen()
@@ -135,13 +142,6 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
     }
     private void ApplyStatModifier(StatModifier modifier)
     {
-        Func<float, float, float> operation = modifier.calcType switch
-        {
-            Defines.CalcType.Add => (current, value) => current + value,
-            Defines.CalcType.Multiply => (current, value) => current * value,
-            _ => (current, value) => value
-        };
-        
-        CurrentStat.UpdateStat(operation, modifier);
+        CurrentStat.UpdateStat(Utils.Operation(modifier.calcType), modifier);
     }
 }

@@ -140,16 +140,7 @@ public class Equipment : MonoBehaviour, IEquipment
                 break;
         }
     }
-    public ItemEquipableEntity GetWeaponInfo(Defines.CharacterAttackInputType inputType)
-    {
-        if (inputType == Defines.CharacterAttackInputType.Skill)
-            return EquippedWeapon?.equipableEntity;
-        else if (inputType == Defines.CharacterAttackInputType.ComboAttack)
-            return EquippedComboWeapon?.equipableEntity;
-
-        return null;
-    }
-
+    
     public bool CanAction(Defines.CharacterAttackInputType inputType)
     {
         if (inputType == Defines.CharacterAttackInputType.Skill)

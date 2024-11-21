@@ -112,4 +112,13 @@ public class GameManager : IManager
     {
         Timer(); 
     }
+    
+    public void ItemKeyPressed(int index)
+    {
+        if (System.Enum.IsDefined(typeof(Defines.ItemQuickSlotInputType), index))
+        {
+            Defines.ItemQuickSlotInputType inputType = (Defines.ItemQuickSlotInputType) index;
+            Managers.Game.Player?.ItemQuickSlots?.Use(inputType);
+        }
+    }
 }

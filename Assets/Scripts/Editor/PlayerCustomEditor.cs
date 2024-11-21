@@ -19,26 +19,33 @@ public class PlayerCustomEditor : Editor
         if (Application.isPlaying)
         {
             List<ItemEntity> items = Managers.DB.GetAll<ItemEntity>();
-            items = items.Where(s => s.itemType == Defines.ItemType.Equipment).ToList();
+            List<ItemEntity> equips = items.Where(s => s.itemType == Defines.ItemType.Equipment).ToList();
             GUILayout.Space(20);
             GUILayout.Label("콤보 무기 장착");
-            DrawComboWeaponButtons(items);
+            DrawComboWeaponButtons(equips);
             DrawUnEquipButton(Defines.ItemEquipmentType.Weapon, Defines.CharacterCombatStyleType.ComboAttack);
             
             GUILayout.Space(20);
             GUILayout.Label("스킬 무기 장착");
-            DrawWeaponButtons(items);
+            DrawWeaponButtons(equips);
             DrawUnEquipButton(Defines.ItemEquipmentType.Weapon);
             
             GUILayout.Space(20);
             GUILayout.Label("방어구 장착");
-            DrawEquipableButtons(items, Defines.ItemEquipmentType.Armor);
+            DrawEquipableButtons(equips, Defines.ItemEquipmentType.Armor);
             DrawUnEquipButton(Defines.ItemEquipmentType.Armor);
             
             GUILayout.Space(20);
             GUILayout.Label("악세사리 장착");
-            DrawEquipableButtons(items, Defines.ItemEquipmentType.Accessory);
+            DrawEquipableButtons(equips, Defines.ItemEquipmentType.Accessory);
             DrawUnEquipButton(Defines.ItemEquipmentType.Accessory);
+            
+            GUILayout.Space(20);
+            GUILayout.Label("물약 장착");
+            ItemEntity hpPotion = Managers.DB.Get<ItemEntity>(1001);
+            DrawConsumableItem(hpPotion);
+            ItemEntity mpPotion = Managers.DB.Get<ItemEntity>(1002);
+            DrawConsumableItem(mpPotion);
         }
     }
     
@@ -87,6 +94,16 @@ public class PlayerCustomEditor : Editor
         {
             Player player = (Player)target;
             player.Equipment.UnEquip(equipmentType, combatStyleType);
+        }
+    }
+
+    private void DrawConsumableItem(ItemEntity item)
+    {
+        if (GUILayout.Button($"{item.displayTitle} 장착"))
+        {
+            Player player = (Player)target;
+            player.gameObject.name = nameof(Player);
+            player.ItemQuickSlots.Equip(item);
         }
     }
 }

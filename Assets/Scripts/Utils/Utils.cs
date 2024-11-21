@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Utils
@@ -68,12 +69,21 @@ public class Utils
             Defines.ItemRarityType.Rare => HexToColor(Defines.ITEM_RARIY_RARE_COLOR),
             Defines.ItemRarityType.Epic => HexToColor(Defines.ITEM_RARIY_EPIC_COLOR),
             Defines.ItemRarityType.Unique => HexToColor(Defines.ITEM_RARIY_UNIQUE_COLOR),
-            _ => Color.white,
+            _ => Color.black,
         };
     }
     
     public static bool LayerMaskContains(LayerMask layerMask, int targetLayer)
     {
         return (layerMask & (1 << targetLayer)) != 0;
+    }
+    
+    public static Func<float, float, float> Operation (Defines.CalcType calcType) {
+        return calcType switch
+        {
+            Defines.CalcType.Add => (current, value) => current + value,
+            Defines.CalcType.Multiply => (current, value) => current * value,
+            _ => (current, value) => value
+        };
     }
 }

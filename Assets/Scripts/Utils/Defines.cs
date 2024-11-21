@@ -122,6 +122,13 @@ public static class Defines
         Skill,
     }
 
+    public enum ItemQuickSlotInputType
+    {
+        None,
+        QuickSlot1,
+        QuickSlot2,
+    }
+
     public enum CharacterCombatStyleType
     {
         None, // Base Layer Index

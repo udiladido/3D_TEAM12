@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 1419057431946147549}
   - component: {fileID: 702018519351761310}
   - component: {fileID: -8287460433744117890}
+  - component: {fileID: 6830399685893120967}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -132,6 +133,7 @@ MonoBehaviour:
     armor: 2
     attackSpeed: 1
     moveSpeed: 3
+    cooltimeReduction: 0
   currentHp: 0
   currentMp: 0
   IsDead: 0
@@ -305,6 +307,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a6d39103-c1ab-42f0-a7eb-02b33aabaa09
     m_ActionName: Player/Zoom[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8117852675393999964}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: OnItemSlot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a81e9fe0-e252-4259-9097-0e0ac98a5723
+    m_ActionName: Player/ItemSlot[/Keyboard/1,/Keyboard/2]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -416,3 +434,15 @@ MonoBehaviour:
   defaultFollowOffset: {x: -15, y: 20, z: 15}
   zoomSpeed: 50
   trackedObjectOffset: {x: 0, y: 1, z: 0}
+--- !u!114 &6830399685893120967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518671117097245982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32204deee41c47848c39510236ce5d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

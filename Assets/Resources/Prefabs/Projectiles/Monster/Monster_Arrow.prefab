@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1813216641617687664}
   - component: {fileID: 5254457787293200461}
   m_Layer: 0
-  m_Name: Arrow
+  m_Name: Monster_Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -31,7 +31,7 @@ MonoBehaviour:
     chasePeriod: 5
     skillEntities:
     - monsterId: 10001
-      projectilePrefabPath: /Projectiles/Monster/MeleeAttack
+      projectilePrefabPath: /Projectiles/Monster/Monster_MeleeAttack
       selectWeight: 1
       attackRange: 1.5
       attackDamage: 20
@@ -60,7 +60,7 @@ MonoBehaviour:
     chasePeriod: 10
     skillEntities:
     - monsterId: 10002
-      projectilePrefabPath: /Projectiles/Monster/MeleeAttack
+      projectilePrefabPath: /Projectiles/Monster/Monster_MeleeAttack
       selectWeight: 1
       attackRange: 2.25
       attackDamage: 50
@@ -73,7 +73,7 @@ MonoBehaviour:
       knockbackPower: 0
       knockbackDuration: 0
     - monsterId: 10002
-      projectilePrefabPath: /Projectiles/Monster/MeleeAttack
+      projectilePrefabPath: /Projectiles/Monster/Monster_MeleeAttack
       selectWeight: 0.3
       attackRange: 3
       attackDamage: 50
@@ -102,7 +102,7 @@ MonoBehaviour:
     chasePeriod: 15
     skillEntities:
     - monsterId: 10003
-      projectilePrefabPath: /Projectiles/Monster/MeleeAttack
+      projectilePrefabPath: /Projectiles/Monster/Monster_MeleeAttack
       selectWeight: 1
       attackRange: 2
       attackDamage: 30
@@ -115,7 +115,7 @@ MonoBehaviour:
       knockbackPower: 0
       knockbackDuration: 0
     - monsterId: 10003
-      projectilePrefabPath: /Projectiles/Monster/MeleeAttack
+      projectilePrefabPath: /Projectiles/Monster/Monster_MeleeAttack
       selectWeight: 0.8
       attackRange: 2.2
       attackDamage: 50
@@ -144,7 +144,7 @@ MonoBehaviour:
     chasePeriod: 5
     skillEntities:
     - monsterId: 10004
-      projectilePrefabPath: /Projectiles/Monster/Fireball
+      projectilePrefabPath: /Projectiles/Monster/Monster_Fireball
       selectWeight: 1
       attackRange: 15
       attackDamage: 30
@@ -173,7 +173,7 @@ MonoBehaviour:
     chasePeriod: 5
     skillEntities:
     - monsterId: 10005
-      projectilePrefabPath: /Projectiles/Monster/Arrow
+      projectilePrefabPath: /Projectiles/Monster/Monster_Arrow
       selectWeight: 1
       attackRange: 15
       attackDamage: 15
@@ -202,7 +202,7 @@ MonoBehaviour:
     chasePeriod: 15
     skillEntities:
     - monsterId: 10006
-      projectilePrefabPath: /Projectiles/Monster/MeleeAttack
+      projectilePrefabPath: /Projectiles/Monster/Monster_MeleeAttack
       selectWeight: 1
       attackRange: 2.25
       attackDamage: 50
@@ -215,7 +215,7 @@ MonoBehaviour:
       knockbackPower: 0
       knockbackDuration: 0
     - monsterId: 10006
-      projectilePrefabPath: /Projectiles/Monster/MeleeAttack
+      projectilePrefabPath: /Projectiles/Monster/Monster_MeleeAttack
       selectWeight: 1
       attackRange: 3
       attackDamage: 70
@@ -228,7 +228,7 @@ MonoBehaviour:
       knockbackPower: 0
       knockbackDuration: 0
     - monsterId: 10006
-      projectilePrefabPath: /Projectiles/Monster/MeleeAttack
+      projectilePrefabPath: /Projectiles/Monster/Monster_MeleeAttack
       selectWeight: 0.5
       attackRange: 3
       attackDamage: 55
@@ -258,7 +258,7 @@ MonoBehaviour:
     chasePeriod: 1000
     skillEntities:
     - monsterId: 10007
-      projectilePrefabPath: /Projectiles/Monster/MeleeAttack
+      projectilePrefabPath: /Projectiles/Monster/Monster_MeleeAttack
       selectWeight: 1
       attackRange: 5.5
       attackDamage: 110
@@ -271,7 +271,7 @@ MonoBehaviour:
       knockbackPower: 0
       knockbackDuration: 0
     - monsterId: 10007
-      projectilePrefabPath: /Projectiles/Monster/MeleeAttack
+      projectilePrefabPath: /Projectiles/Monster/Monster_MeleeAttack
       selectWeight: 1
       attackRange: 4
       attackDamage: 110

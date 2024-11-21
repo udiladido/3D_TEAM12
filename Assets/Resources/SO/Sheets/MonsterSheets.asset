@@ -26,8 +26,105 @@ MonoBehaviour:
     armor: 0
     moveSpeed: 3
     staggerDamage: 0
-    attractDistance: 5
+    attractDistance: 20
     chasePeriod: 5
+    skillEntities: []
+  - id: 10002
+    displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uC6CC\uB9AC\uC5B4"
+    description: "\uC591\uC190\uB3C4\uB07C\uB97C \uB4E0 \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
+    level: 5
+    prefabPath: /Prefabs/Monsters/Skeleton_Warrior
+    iconPath: /Textures/icons/monsters/monster
+    colliderRadius: 0.5
+    colliderHeight: 1.5
+    colliderCenterY: 0.75
+    maxHp: 30
+    armor: 3
+    moveSpeed: 2.8
+    staggerDamage: 5
+    attractDistance: 25
+    chasePeriod: 10
+    skillEntities: []
+  - id: 10003
+    displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uB85C\uADF8"
+    description: "\uB2E8\uAC80\uC744 \uB4E0 \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
+    level: 4
+    prefabPath: /Prefabs/Monsters/Skeleton_Rogue
+    iconPath: /Textures/icons/monsters/monster
+    colliderRadius: 0.5
+    colliderHeight: 1.5
+    colliderCenterY: 0.75
+    maxHp: 20
+    armor: 0
+    moveSpeed: 4.5
+    staggerDamage: 0
+    attractDistance: 35
+    chasePeriod: 15
+    skillEntities: []
+  - id: 10004
+    displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uBA54\uC774\uC9C0"
+    description: "\uB9C8\uBC95\uC744 \uC3E0 \uC218 \uC788\uB294 \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
+    level: 6
+    prefabPath: /Prefabs/Monsters/Skeleton_Mage
+    iconPath: /Textures/icons/monsters/monster
+    colliderRadius: 0.5
+    colliderHeight: 1.5
+    colliderCenterY: 0.75
+    maxHp: 25
+    armor: 0
+    moveSpeed: 3.5
+    staggerDamage: 0
+    attractDistance: 30
+    chasePeriod: 5
+    skillEntities: []
+  - id: 10005
+    displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uB808\uC778\uC800"
+    description: "\uC11D\uAD81\uC744 \uB4E0 \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
+    level: 3
+    prefabPath: /Prefabs/Monsters/Skeleton_Ranger
+    iconPath: /Textures/icons/monsters/monster
+    colliderRadius: 0.5
+    colliderHeight: 1.5
+    colliderCenterY: 0.75
+    maxHp: 15
+    armor: 0
+    moveSpeed: 3
+    staggerDamage: 0
+    attractDistance: 25
+    chasePeriod: 5
+    skillEntities: []
+  - id: 10006
+    displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uAC00\uB514\uC5B8"
+    description: "\uC911\uBB34\uC7A5\uC744 \uD55C \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
+    level: 7
+    prefabPath: /Prefabs/Monsters/Skeleton_Guardian
+    iconPath: /Textures/icons/monsters/monster
+    colliderRadius: 0.5
+    colliderHeight: 1.5
+    colliderCenterY: 0.75
+    maxHp: 40
+    armor: 7
+    moveSpeed: 2.5
+    staggerDamage: 15
+    attractDistance: 30
+    chasePeriod: 15
+    skillEntities: []
+  - id: 10007
+    displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uC790\uC774\uC5B8\uD2B8\uAC70\uB300\uD55C
+      \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
+    description: 
+    level: 10
+    prefabPath: /Prefabs/Monsters/Skeleton_Giant
+    iconPath: /Textures/icons/monsters/monster
+    colliderRadius: 1.5
+    colliderHeight: 4.5
+    colliderCenterY: 2.25
+    maxHp: 150
+    armor: 5
+    moveSpeed: 3.5
+    staggerDamage: 20
+    attractDistance: 1000
+    chasePeriod: 1000
     skillEntities: []
   SkillList:
   - monsterId: 10001
@@ -35,4 +132,70 @@ MonoBehaviour:
     selectWeight: 1
     attackRange: 1.5
     attackDamage: 5
+    attackPeriod: 1.5
+  - monsterId: 10002
+    projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+    selectWeight: 1
+    attackRange: 2.25
+    attackDamage: 15
     attackPeriod: 2
+  - monsterId: 10002
+    projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+    selectWeight: 0.3
+    attackRange: 3
+    attackDamage: 15
+    attackPeriod: 3
+  - monsterId: 10003
+    projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+    selectWeight: 1
+    attackRange: 2
+    attackDamage: 10
+    attackPeriod: 1.2
+  - monsterId: 10003
+    projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+    selectWeight: 0.8
+    attackRange: 2.2
+    attackDamage: 15
+    attackPeriod: 2
+  - monsterId: 10004
+    projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+    selectWeight: 1
+    attackRange: 15
+    attackDamage: 10
+    attackPeriod: 2
+  - monsterId: 10005
+    projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+    selectWeight: 1
+    attackRange: 15
+    attackDamage: 8
+    attackPeriod: 2
+  - monsterId: 10006
+    projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+    selectWeight: 1
+    attackRange: 2.25
+    attackDamage: 15
+    attackPeriod: 1.5
+  - monsterId: 10006
+    projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+    selectWeight: 1
+    attackRange: 3
+    attackDamage: 20
+    attackPeriod: 2
+  - monsterId: 10006
+    projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+    selectWeight: 0.5
+    attackRange: 3
+    attackDamage: 20
+    attackPeriod: 3
+  - monsterId: 10007
+    projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+    selectWeight: 1
+    attackRange: 5.5
+    attackDamage: 30
+    attackPeriod: 3.5
+  - monsterId: 10007
+    projectilePrefabPath: /Prefabs/Projectiles/Monster/SkeletonMinion_Default
+    selectWeight: 1
+    attackRange: 4
+    attackDamage: 30
+    attackPeriod: 2.5

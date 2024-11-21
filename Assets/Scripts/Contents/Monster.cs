@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR;
 using static UnityEditor.Progress;
 using Random = UnityEngine.Random;
@@ -16,6 +17,7 @@ public class Monster : MonoBehaviour
     public MonsterAnimatorController AnimationController { get; private set; }
 
     private MonsterStateMachine stateMachine;
+    private Camera mainCamera;
 
     //Event
     /// <summary>
@@ -41,6 +43,8 @@ public class Monster : MonoBehaviour
     public bool ValidAnimator { get; private set; }
     public bool ValidSkill { get; private set; }
     [SerializeField] private LayerMask targetLayer;
+    [SerializeField] private Canvas canvas;
+    [SerializeField] private Image healthbar;
 
     private void Awake()
     {
@@ -51,6 +55,7 @@ public class Monster : MonoBehaviour
         RigidBody = GetComponent<Rigidbody>();
 
         stateMachine = new MonsterStateMachine(this);
+        mainCamera = Camera.main;
     }
 
 
@@ -104,12 +109,19 @@ public class Monster : MonoBehaviour
         }
         if (ValidSkill) SetNextSkill();
 
+        canvas.transform.localPosition = new Vector3(0, Stat.colliderHeight * 1.5f + 0.5f);
+        canvas.transform.localScale = new Vector3(Stat.colliderRadius * 0.02f, Stat.colliderRadius * 0.02f, 0);
+        canvas.enabled = false;
+
         return true;
     }
 
     private void Update()
     {
         stateMachine.Update();
+
+        canvas.transform.LookAt(mainCamera.transform);
+        healthbar.fillAmount = Condition.CurrentHp / Condition.MaxHp;
     }
 
 
@@ -136,20 +148,24 @@ public class Monster : MonoBehaviour
         }
     }
 
+    public void ShowCanvas(bool show)
+    {
+        canvas.enabled = show;
+    }
+
 
     private void Die()
     {
+        canvas.enabled = false;
         stateMachine.ChangeState(stateMachine.State_Dead);
         OnDead?.Invoke(Identifier);
     }
     public void SetDisable()
     {
         ValidAnimator = false;
+        if (AnimationController != null)
+            Destroy(AnimationController.gameObject);
         AnimationController = null;
-        foreach (Transform child in transform)
-        {
-            Destroy(child.gameObject);
-        }
 
         OnDisabled?.Invoke(Identifier);
 

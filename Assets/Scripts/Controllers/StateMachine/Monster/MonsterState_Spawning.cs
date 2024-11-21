@@ -30,6 +30,7 @@ public class MonsterState_Spawning : MonsterBaseState
     {
         stateMachine.Monster.HitCollider.enabled = true;
         stateMachine.Monster.RigidBody.isKinematic = false;
+        stateMachine.Monster.ShowCanvas(true);
 
         if (stateMachine.Monster.ValidAnimator)
         {

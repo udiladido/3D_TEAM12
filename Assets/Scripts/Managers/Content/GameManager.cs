@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : IManager
 {
-    public Player Player {get; private set;}
+    public Player Player { get; private set; }
     public int JobId { get; private set; }
 
     private int monsterCount;
@@ -18,14 +18,8 @@ public class GameManager : IManager
     private GameObject monsterCounter;
     private GameObject waveCounter;
     private GameObject countDownPopupUI;
-    private UICountDownPopup uiCountDownPopup;
-    private Text timerTextObjectText;
-    private Text waveCounterText;
-    private Text monsterCounterText;
 
     private MonsterSpawner monsterSpawner;
-
-    //HashSet<MonsterDataList> monsterDataList = new HashSet<MonsterDataList>();
 
     public void Init()
     {
@@ -33,11 +27,9 @@ public class GameManager : IManager
         // 몬스터 데이터 연동, 웨이브 데이터 연동
         // 여기서 캐릭터 생성을 해야 하는가 아니면 캐릭터 선택창을 따로 만들 것인가
         startTime = Time.time;
-        
-        CreateTimer(); // 타이머 UI 텍스트 생성
-        CreateWaveCounter();
-        //uiCountDownPopup.CreateCountDown();
-        //CreateMonsterCounter();
+        monsterCount = 0;
+        waveCount = 0;
+        isWaveActive = false;
     }
 
     public void Clear()
@@ -51,11 +43,8 @@ public class GameManager : IManager
         // 실제로 게임을 시작하는 함수
         // 타이틀씬에서 버튼 연동 필요
         startTime = Time.time;
-        elapsedTime = 0f;
 
         monsterSpawner = new MonsterSpawner();
-        timerTextObjectText = timerTextObject.GetComponentInChildren<Text>();
-        Managers.Coroutine.StartCoroutine("UpdateTimer", UpdateTimer());
         LevelContainer level = GameObject.FindFirstObjectByType<LevelContainer>();
         monsterSpawner.StartSpawn(level);
         monsterSpawner.OnClearWave += UpdateWaveCounter;
@@ -64,42 +53,7 @@ public class GameManager : IManager
     public void GameOver()
     {
         // 실제로 게임이 종료되었을때 함수
-        Managers.UI.ShowPopupUI<UIGameOverPopup>();
-
-        if (!isWaveActive)
-        {
-            Managers.Coroutine.StopCoroutine("UpdateTimer");
-        }
-    }
-
-    public void Timer()
-    {
-        if (isWaveActive)
-        {
-            elapsedTime = Time.time - startTime; // 경과 시간 계산    
-        }
-
-        timerTextObjectText.text = Mathf.FloorToInt(elapsedTime).ToString();
-    }
-
-    private void CreateTimer()
-    {
-        GameObject timerTextPrefab = Managers.Resource.Instantiate("UI/Popup/TimerTextPrefab"); // Resources 폴더에서 프리팹 로드
-        timerTextObject = GameObject.Instantiate(timerTextPrefab); 
-    }
-
-    private void CreateWaveCounter()
-    {
-        GameObject waveCounterPrefab = Managers.Resource.Instantiate("UI/Popup/WaveCounter"); // Resources 폴더에서 프리팹 로드
-        waveCounter = GameObject.Instantiate(waveCounterPrefab);
-        waveCounterText = waveCounter.GetComponentInChildren<Text>();
-    }
-
-    private void CreateMonsterCounter()
-    {
-        GameObject monsterCounterPrefab = Managers.Resource.Instantiate("Prefabs/UI/Popup/MonsterCounter");
-        monsterCounter = GameObject.Instantiate(monsterCounterPrefab);
-        monsterCounterText = monsterCounter.GetComponentInChildren<Text>();
+        Managers.UI.ShowPopupUI<UIGameOverScene>();
     }
 
     public void CreatePlayer()
@@ -129,28 +83,15 @@ public class GameManager : IManager
         Player = player;
     }
 
-    private IEnumerator UpdateTimer()
-    {
-        WaitForSeconds wait1Sec = new WaitForSeconds(1f);
-
-        while (true) 
-        {
-            Timer();
-            yield return wait1Sec;
-        }
-    }
-
     public void UpdateWaveCounter(int waveCount)
     {
         if (monsterSpawner != null)
-        {
-            waveCounter.GetComponentInChildren<Text>().text = $"WAVE {waveCount}";
-        }
+            Managers.UI.GetCurrentSceneUI<UIGameScene>()?.SetWaveCounter(waveCount);
     }
 
     public void UpdateMonsterCounter()
     {
-        monsterCounterText.text = $"남은 몬스터 수: {monsterCount}";
+        Managers.UI.GetCurrentSceneUI<UIGameScene>()?.SetMonsterCounter(monsterCount);
     }
 
     public void IncreaseMonsterCount()
@@ -167,12 +108,12 @@ public class GameManager : IManager
             UpdateMonsterCounter(); // UI 업데이트
         }
     }
-    
+
     public void ItemKeyPressed(int index)
     {
         if (Enum.IsDefined(typeof(Defines.ItemQuickSlotInputType), index))
         {
-            Defines.ItemQuickSlotInputType inputType = (Defines.ItemQuickSlotInputType) index;
+            Defines.ItemQuickSlotInputType inputType = (Defines.ItemQuickSlotInputType)index;
             Managers.Game.Player?.ItemQuickSlots?.Use(inputType);
         }
     }

@@ -51,6 +51,7 @@ public class MonsterSpawner
             isSpawning = true;
             StartWave(i);
             yield return new WaitUntil(() => waveEnd);
+            currentWave++;
             OnClearWave?.Invoke(i + 1);
         }
     }

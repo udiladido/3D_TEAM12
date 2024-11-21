@@ -104,6 +104,8 @@ public class ResourceManager : IManager
 
     public GameObject Instantiate(string prefabPath, Transform parent = null)
     {
+        if (prefabPath.StartsWith("/Prefabs"))
+            prefabPath = prefabPath.Substring(8);
         if (prefabPath.StartsWith("/"))
             prefabPath = prefabPath.Substring(1);
         

@@ -17,16 +17,16 @@ public class InputController : BaseController
     [SerializeField] private bool isRunning;
 
     private CameraController cameraController;
-    private bool inputEnabled = true;
+    private bool inputDisabled = true;
 
     public void InputDisable()
     {
-        inputEnabled = false;
+        inputDisabled = true;
     }
     
     public void InputEnable()
     {
-        inputEnabled = true;
+        inputDisabled = false;
     }
 
     private void Awake()
@@ -40,7 +40,7 @@ public class InputController : BaseController
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (inputEnabled)
+        if (inputDisabled)
         {
             OnMoveCancelEvent?.Invoke();
             return;
@@ -53,28 +53,28 @@ public class InputController : BaseController
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        if (inputEnabled) return;
+        if (inputDisabled) return;
         if (context.phase == InputActionPhase.Performed)
             OnLookEvent?.Invoke(context.ReadValue<Vector2>());
     }
 
     public void OnDodge(InputAction.CallbackContext context)
     {
-        if (inputEnabled) return;
+        if (inputDisabled) return;
         if (context.phase == InputActionPhase.Started)
             OnDodgeEvent?.Invoke();
     }
     
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (inputEnabled) return;
+        if (inputDisabled) return;
         if (context.phase == InputActionPhase.Started)
             OnJumpEvent?.Invoke();
     }
     
     public void OnRun(InputAction.CallbackContext context)
     {
-        if (inputEnabled)
+        if (inputDisabled)
         {
             isRunning = false;
             OnRunEvent?.Invoke(false);
@@ -94,7 +94,7 @@ public class InputController : BaseController
     
     public void OnRunToggle(InputAction.CallbackContext context)
     {
-        if (inputEnabled) return;
+        if (inputDisabled) return;
         if (context.phase == InputActionPhase.Started)
         {
             isRunning = !isRunning;
@@ -104,7 +104,7 @@ public class InputController : BaseController
     
     public void OnComboAttack(InputAction.CallbackContext context)
     {
-        if (inputEnabled)
+        if (inputDisabled)
         {
             OnAttackCancelEvent?.Invoke(Defines.CharacterAttackInputType.ComboAttack);
             return;
@@ -117,7 +117,7 @@ public class InputController : BaseController
     
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (inputEnabled)
+        if (inputDisabled)
         {
             OnAttackCancelEvent?.Invoke(Defines.CharacterAttackInputType.Skill);
             return;
@@ -130,7 +130,7 @@ public class InputController : BaseController
     
     public void OnZoom(InputAction.CallbackContext context)
     {
-        if (inputEnabled) return;
+        if (inputDisabled) return;
         if (cameraController == null) return;
         
         if (context.phase == InputActionPhase.Performed)
@@ -143,7 +143,7 @@ public class InputController : BaseController
     
     public void OnItemSlot(InputAction.CallbackContext context)
     {
-        if (inputEnabled) return;
+        if (inputDisabled) return;
         if (context.phase == InputActionPhase.Started)
         {
             if (int.TryParse( context.control.name, out int slotKey))

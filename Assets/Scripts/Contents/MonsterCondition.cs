@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
-public class MonsterCondition : IDamageable
+public class MonsterCondition : MonoBehaviour, IDamageable
 {
+    public event Action<float> OnHit;
     public event Action OnDead;
 
     [field: SerializeField] public bool IsDead { get; private set; }
@@ -28,6 +30,10 @@ public class MonsterCondition : IDamageable
         {
             IsDead = true;
             OnDead?.Invoke();
+        }
+        else
+        {
+            OnHit?.Invoke(damage);
         }
     }
 

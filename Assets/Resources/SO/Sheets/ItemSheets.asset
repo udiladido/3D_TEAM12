@@ -19,7 +19,7 @@ MonoBehaviour:
     itemType: 2
     rarityType: 1
     dropPrefabPath: /DropItems/Potion
-    iconPath: /Textures/icons/consumables/hp_position
+    iconPath: /Textures/status/hp_potion
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -34,7 +34,7 @@ MonoBehaviour:
     itemType: 2
     rarityType: 1
     dropPrefabPath: /DropItems/Potion
-    iconPath: /Textures/icons/consumables/mp_position
+    iconPath: /Textures/status/mp_potion
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
     itemType: 2
     rarityType: 2
     dropPrefabPath: /DropItems/Potion
-    iconPath: /Textures/icons/consumables/movespeed_potion
+    iconPath: /Textures/status/movespeed_potion
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
     itemType: 2
     rarityType: 2
     dropPrefabPath: /DropItems/Potion
-    iconPath: /Textures/icons/consumables/attackspeed_potion
+    iconPath: /Textures/status/attackspeed_potion
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -81,7 +81,7 @@ MonoBehaviour:
     itemType: 2
     rarityType: 2
     dropPrefabPath: /DropItems/Potion
-    iconPath: /Textures/icons/consumables/attackdamage_potion
+    iconPath: /Textures/status/attackdamage_potion
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
     itemType: 2
     rarityType: 2
     dropPrefabPath: /DropItems/Potion
-    iconPath: /Textures/icons/consumables/maxhp_potion
+    iconPath: /Textures/status/maxhp_potion
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 1
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon
+    iconPath: /Textures/icons/equipments/weapon/combo_weapon
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -190,7 +190,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 2
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon
+    iconPath: /Textures/icons/equipments/weapon/combo_weapon
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -205,7 +205,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 3
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon
+    iconPath: /Textures/icons/equipments/weapon/combo_weapon
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 4
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon
+    iconPath: /Textures/icons/equipments/weapon/combo_weapon
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 3
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon
+    iconPath: /Textures/icons/equipments/weapon/skill_melee_weapon
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -253,7 +253,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 3
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon
+    iconPath: /Textures/icons/equipments/weapon/skill_ranged_weapon
     equipableEntity:
       itemId: 0
       equipmentType: 0
@@ -269,7 +269,7 @@ MonoBehaviour:
     itemType: 1
     rarityType: 3
     dropPrefabPath: /DropItems/Weapon
-    iconPath: /Textures/icons/equipments/weapon
+    iconPath: /Textures/icons/equipments/weapon/skill_magic_weapon
     equipableEntity:
       itemId: 0
       equipmentType: 0

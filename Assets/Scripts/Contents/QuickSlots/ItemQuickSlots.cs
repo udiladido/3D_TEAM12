@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemQuickSlots : MonoBehaviour
 {
     public event Action<Defines.ItemQuickSlotInputType, QuickSlotItem> OnQuickSlotChanged;
-    
+
     private Dictionary<Defines.ItemQuickSlotInputType, QuickSlotItem> quickSlots =
         new Dictionary<Defines.ItemQuickSlotInputType, QuickSlotItem>();
     public Condition Condition { get; private set; }
@@ -63,7 +63,10 @@ public class ItemQuickSlots : MonoBehaviour
         if (quickSlots.TryGetValue(inputType, out QuickSlotItem item))
         {
             item?.Use();
-            OnQuickSlotChanged?.Invoke(inputType, item);
+            if (item != null && item.Count <= 0)
+                UnEquip(inputType);
+            else
+                OnQuickSlotChanged?.Invoke(inputType, item);
         }
     }
 
@@ -88,7 +91,7 @@ public class ItemQuickSlots : MonoBehaviour
 
         return Defines.ItemQuickSlotInputType.None;
     }
-    
+
     public QuickSlotItem GetQuickSlotItem(Defines.ItemQuickSlotInputType inputType)
     {
         return quickSlots.GetValueOrDefault(inputType);

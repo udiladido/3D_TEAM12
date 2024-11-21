@@ -1,8 +1,7 @@
-using UnityEngine;
+using System;
 using System.Collections;
-using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 public class GameManager : IManager
 {
@@ -92,7 +91,7 @@ public class GameManager : IManager
 
     public void CreatePlayer(int jobId)
     {
-        JobEntity job = Managers.DB.Get<JobEntity>(jobid);
+        JobEntity job = Managers.DB.Get<JobEntity>(jobId);
 
         Player player = GameObject.FindObjectOfType<Player>();
 
@@ -126,7 +125,7 @@ public class GameManager : IManager
     
     public void ItemKeyPressed(int index)
     {
-        if (System.Enum.IsDefined(typeof(Defines.ItemQuickSlotInputType), index))
+        if (Enum.IsDefined(typeof(Defines.ItemQuickSlotInputType), index))
         {
             Defines.ItemQuickSlotInputType inputType = (Defines.ItemQuickSlotInputType) index;
             Managers.Game.Player?.ItemQuickSlots?.Use(inputType);

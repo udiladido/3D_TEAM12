@@ -48,8 +48,6 @@ public class QuickSlotItem
             }
             
             Count--;
-            if (Count <= 0)
-                itemQuickSlots.UnEquip(inputType);
         }
     }
 }

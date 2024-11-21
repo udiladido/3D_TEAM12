@@ -53,7 +53,7 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
     }
     public void TakeDamage(float damage)
     {
-        float value = (CurrentStat.armor / 100) * damage;
+        float value = (1 - CurrentStat.armor * 0.01f) * damage;
         
         currentHp = Mathf.Clamp(currentHp - value, 0, CurrentStat.maxHp);
         OnHpChanged?.Invoke(currentHp, CurrentStat.maxHp);

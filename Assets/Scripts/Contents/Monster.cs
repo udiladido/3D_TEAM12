@@ -40,6 +40,7 @@ public class Monster : MonoBehaviour
 
     public bool ValidAnimator { get; private set; }
     public bool ValidSkill { get; private set; }
+    [SerializeField] private LayerMask targetLayer;
 
     private void Awake()
     {
@@ -165,7 +166,7 @@ public class Monster : MonoBehaviour
         GameObject go = Managers.Pool.Spawn(skill.projectilePrefabPath);
         MonsterProjectileController projectile = go.GetComponent<MonsterProjectileController>();
         Transform target = Managers.Game.Player.gameObject.transform;
-        projectile.SetData(transform, target, skill, target.gameObject.layer);
+        projectile.SetData(transform, target, skill, targetLayer);
         projectile.Launch();
     }
 }

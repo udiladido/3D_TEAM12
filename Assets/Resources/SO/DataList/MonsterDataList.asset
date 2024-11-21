@@ -34,7 +34,7 @@ MonoBehaviour:
       projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 1.5
-      attackDamage: 5
+      attackDamage: 20
       attackPeriod: 1.5
       duration: 0.4
       startScale: 1
@@ -63,7 +63,7 @@ MonoBehaviour:
       projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 2.25
-      attackDamage: 15
+      attackDamage: 50
       attackPeriod: 2
       duration: 0.4
       startScale: 1
@@ -76,7 +76,7 @@ MonoBehaviour:
       projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 0.3
       attackRange: 3
-      attackDamage: 15
+      attackDamage: 50
       attackPeriod: 3
       duration: 0.4
       startScale: 1
@@ -105,7 +105,7 @@ MonoBehaviour:
       projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 2
-      attackDamage: 10
+      attackDamage: 30
       attackPeriod: 1.2
       duration: 0.4
       startScale: 1
@@ -118,7 +118,7 @@ MonoBehaviour:
       projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 0.8
       attackRange: 2.2
-      attackDamage: 15
+      attackDamage: 50
       attackPeriod: 2
       duration: 0.4
       startScale: 1
@@ -147,7 +147,7 @@ MonoBehaviour:
       projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 15
-      attackDamage: 10
+      attackDamage: 30
       attackPeriod: 2
       duration: 0.4
       startScale: 1
@@ -176,7 +176,7 @@ MonoBehaviour:
       projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 15
-      attackDamage: 8
+      attackDamage: 15
       attackPeriod: 2
       duration: 0.4
       startScale: 1
@@ -205,7 +205,7 @@ MonoBehaviour:
       projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 2.25
-      attackDamage: 15
+      attackDamage: 50
       attackPeriod: 1.5
       duration: 0.4
       startScale: 1
@@ -218,7 +218,7 @@ MonoBehaviour:
       projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 3
-      attackDamage: 20
+      attackDamage: 70
       attackPeriod: 2
       duration: 0.4
       startScale: 1
@@ -231,7 +231,7 @@ MonoBehaviour:
       projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 0.5
       attackRange: 3
-      attackDamage: 20
+      attackDamage: 55
       attackPeriod: 3
       duration: 0.4
       startScale: 1
@@ -261,7 +261,7 @@ MonoBehaviour:
       projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 5.5
-      attackDamage: 30
+      attackDamage: 110
       attackPeriod: 3.5
       duration: 0.4
       startScale: 1
@@ -274,7 +274,7 @@ MonoBehaviour:
       projectilePrefabPath: /Projectiles/Monster/SkeletonMinion_Default
       selectWeight: 1
       attackRange: 4
-      attackDamage: 30
+      attackDamage: 110
       attackPeriod: 2.5
       duration: 0.4
       startScale: 1

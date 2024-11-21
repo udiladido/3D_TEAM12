@@ -171,7 +171,7 @@ public class MonsterSpawner
         smallWave.startInterval = 1;
         smallWave.waveType = SmallWaveType.RandomPoint;
         smallWave.pointGroup = 2;
-        smallWave.monsterID = 10001;
+        smallWave.monsterID = 10004;
         smallWave.monsterCount = 10;
         smallWave.spawnInterval = 0.4f;
         waveData.smallWaveDatas.Add(smallWave);

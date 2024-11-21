@@ -48,8 +48,8 @@ public class MonsterState_Dead : MonsterBaseState
         }
 
         List<Material[]> skinnedMaterials = new(); 
-        SkinnedMeshRenderer[] skinnedMeshRenderers = stateMachine.Monster.AnimationController.transform.GetComponentsInChildren<SkinnedMeshRenderer>();
-        foreach (SkinnedMeshRenderer skinnedMeshRenderer in skinnedMeshRenderers)
+        Renderer[] skinnedMeshRenderers = stateMachine.Monster.AnimationController.transform.GetComponentsInChildren<Renderer>();
+        foreach (Renderer skinnedMeshRenderer in skinnedMeshRenderers)
         {
             skinnedMaterials.Add(skinnedMeshRenderer.materials);
         }

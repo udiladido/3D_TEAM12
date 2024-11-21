@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class MonsterState_Attack : MonsterBaseState
 {
@@ -32,7 +34,18 @@ public class MonsterState_Attack : MonsterBaseState
             attackTimeDelay -= Time.deltaTime;
             if (attackTimeDelay < 0)
             {
-                stateMachine.ChangeState(stateMachine.State_Chase);
+                stateMachine.Monster.SetNextSkill();
+
+                float targetDistance = Vector3.Distance(stateMachine.Monster.transform.position, Managers.Game.Player.transform.position);
+
+                if (targetDistance > stateMachine.Monster.NextSkillRange)
+                {
+                    stateMachine.ChangeState(stateMachine.State_Chase);
+                }
+                else
+                {
+                    stateMachine.ChangeState(stateMachine.State_Attack);
+                }
             }
         }
         else

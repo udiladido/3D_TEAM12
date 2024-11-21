@@ -1,6 +1,8 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.XR;
+using static UnityEditor.Progress;
 using Random = UnityEngine.Random;
 
 public class Monster : MonoBehaviour
@@ -10,6 +12,7 @@ public class Monster : MonoBehaviour
     public MonsterEntity Stat { get; private set; }
     [field: SerializeField] public MonsterCondition Condition { get; private set; }
     public CapsuleCollider HitCollider { get; private set; }
+    public Rigidbody RigidBody { get; private set; }
     public MonsterAnimatorController AnimationController { get; private set; }
 
     private MonsterStateMachine stateMachine;
@@ -39,15 +42,23 @@ public class Monster : MonoBehaviour
     private void Awake()
     {
         Condition = new MonsterCondition();
+
         Condition.OnDead += Die;
         HitCollider = GetComponent<CapsuleCollider>();
+        RigidBody = GetComponent<Rigidbody>();
 
         stateMachine = new MonsterStateMachine(this);
     }
 
-    public void Initialize(int identifier, MonsterEntity monsterEntity)
+
+    public bool Initialize(int identifier, int monsterID)
     {
         Identifier = identifier;
+        
+        MonsterEntity monsterEntity = Managers.DB.Get<MonsterEntity>(monsterID);
+        if (monsterEntity == null) return false;
+        GameObject go = Managers.Resource.Instantiate(monsterEntity.prefabPath, this.transform);
+        if (go == null) return false;
 
         Stat = monsterEntity;
         Condition.SetData(Stat.maxHp);
@@ -58,10 +69,6 @@ public class Monster : MonoBehaviour
         if (ValidAnimator) AnimationController.Initialize();
 
         stateMachine.ChangeState(stateMachine.State_Spawning);
-
-        OnHit = null;
-        OnDead = null;
-        OnDisabled = null;
 
         // 스킬 데이터
         if (Stat.skillEntities != null && Stat.skillEntities.Count > 0)
@@ -86,18 +93,14 @@ public class Monster : MonoBehaviour
 
             ValidSkill = false;
         }
+        if (ValidSkill) SetNextSkill();
+
+        return true;
     }
 
-    public float testtime = 10;
     private void Update()
     {
         stateMachine.Update();
-
-        testtime -= Time.deltaTime;
-        if ( testtime < 0 )
-        {
-            TakeDamage(10);
-        }
     }
     
 
@@ -138,7 +141,16 @@ public class Monster : MonoBehaviour
     {
         ValidAnimator = false;
         AnimationController = null;
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
 
         OnDisabled?.Invoke(Identifier);
+
+        OnHit = null;
+        OnDead = null;
+        OnDisabled = null;
+        gameObject.SetActive(false);
     }
 }

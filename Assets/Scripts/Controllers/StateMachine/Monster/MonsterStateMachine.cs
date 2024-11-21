@@ -20,8 +20,7 @@ public class MonsterStateMachine : StateMachine
         State_Taunting = new MonsterState_Taunting(this);
         State_Chase = new MonsterState_Chase(this);
         State_Attack = new MonsterState_Attack(this);
+        State_Hit = new MonsterState_Hit(this);
         State_Dead = new MonsterState_Dead(this);
     }
-
-
 }

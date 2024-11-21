@@ -9,6 +9,7 @@ public class MonsterState_Spawning : MonsterBaseState
 
     public override void Enter()
     {
+        stateMachine.Monster.RigidBody.isKinematic = true;
         stateMachine.Monster.HitCollider.enabled = false;
 
         if (stateMachine.Monster.ValidAnimator)
@@ -30,6 +31,7 @@ public class MonsterState_Spawning : MonsterBaseState
     public override void Exit()
     {
         stateMachine.Monster.HitCollider.enabled = true;
+        stateMachine.Monster.RigidBody.isKinematic = false;
 
         if (stateMachine.Monster.ValidAnimator)
         {

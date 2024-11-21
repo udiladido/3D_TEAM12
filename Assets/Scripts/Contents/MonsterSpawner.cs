@@ -10,9 +10,9 @@ public class MonsterSpawner
     private Dictionary<int, GameObject> WorldMonster;
     private int Identifier;
 
-    private int currentWave;
+    public int currentWave { get; private set; }
+    public int spawnCount { get; private set; }
     private bool isSpawning;
-    private int spawnCount;
     private bool waveEnd;
 
     /// <summary>
@@ -146,76 +146,309 @@ public class MonsterSpawner
 
 
 
-    // 웨이브 정보 하드코딩
+    // TODO : 웨이브 정보 데이터 리스트 만들기
     private void SetWaveData()
     {
         waveDatas = new List<WaveData>();
 
-        int smallWaveCount;
+        WaveData waveData;
+        SmallWave smallWave;
 
 
-        WaveData waveData0 = new WaveData();
-        smallWaveCount = 3;
-        waveData0.smallWaveDatas = new List<SmallWave>(smallWaveCount);
-        for (int i = 0; i < smallWaveCount; i++)
-        {
-            waveData0.smallWaveDatas.Add(new SmallWave());
-        }
-        
-        waveData0.smallWaveDatas[0].startInterval = 0;
-        waveData0.smallWaveDatas[0].waveType = SmallWaveType.RandomPoint;
-        waveData0.smallWaveDatas[0].pointGroup = 2;
-        waveData0.smallWaveDatas[0].monsterID = 10001;
-        waveData0.smallWaveDatas[0].monsterCount = 10;
-        waveData0.smallWaveDatas[0].spawnInterval = 0.4f;
 
-        waveData0.smallWaveDatas[1].startInterval = 5;
-        waveData0.smallWaveDatas[1].waveType = SmallWaveType.AllPoint;
-        waveData0.smallWaveDatas[1].pointGroup = 1;
-        waveData0.smallWaveDatas[1].monsterID = 10001;
-        waveData0.smallWaveDatas[1].monsterCount = 0;
-        waveData0.smallWaveDatas[1].spawnInterval = 0;
+        waveData = new WaveData();
+        waveData.smallWaveDatas = new List<SmallWave>();
 
-        waveData0.smallWaveDatas[2].startInterval = 5;
-        waveData0.smallWaveDatas[2].waveType = SmallWaveType.SequentialPoint;
-        waveData0.smallWaveDatas[2].pointGroup = 0;
-        waveData0.smallWaveDatas[2].monsterID = 10001;
-        waveData0.smallWaveDatas[2].monsterCount = 0;
-        waveData0.smallWaveDatas[2].spawnInterval = 0.2f;
+        smallWave = new SmallWave();
+        smallWave.startInterval = 0;
+        smallWave.waveType = SmallWaveType.RandomPoint;
+        smallWave.pointGroup = 2;
+        smallWave.monsterID = 10001;
+        smallWave.monsterCount = 10;
+        smallWave.spawnInterval = 0.4f;
+        waveData.smallWaveDatas.Add(smallWave);
 
-        waveDatas.Add(waveData0);
+        smallWave = new SmallWave();
+        smallWave.startInterval = 5;
+        smallWave.waveType = SmallWaveType.AllPoint;
+        smallWave.pointGroup = 1;
+        smallWave.monsterID = 10007;
+        smallWave.monsterCount = 0;
+        smallWave.spawnInterval = 0;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 5;
+        smallWave.waveType = SmallWaveType.SequentialPoint;
+        smallWave.pointGroup = 0;
+        smallWave.monsterID = 10001;
+        smallWave.monsterCount = 0;
+        smallWave.spawnInterval = 0.2f;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 5;
+        smallWave.waveType = SmallWaveType.RandomPoint;
+        smallWave.pointGroup = 3;
+        smallWave.monsterID = 10003;
+        smallWave.monsterCount = 3;
+        smallWave.spawnInterval = 1;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        waveDatas.Add(waveData);
 
 
-        WaveData waveData1 = new WaveData();
-        smallWaveCount = 5;
-        waveData1.smallWaveDatas = new List<SmallWave>(smallWaveCount);
-        for (int i = 0; i < smallWaveCount; i++)
-        {
-            waveData1.smallWaveDatas.Add(new SmallWave());
-        }
 
-        waveData1.smallWaveDatas[0].startInterval = 0;
-        waveData1.smallWaveDatas[0].waveType = SmallWaveType.AllPoint;
-        waveData1.smallWaveDatas[0].pointGroup = 0;
-        waveData1.smallWaveDatas[0].monsterID = 10001;
-        waveData1.smallWaveDatas[0].monsterCount = 0;
-        waveData1.smallWaveDatas[0].spawnInterval = 0;
-                
-        waveData1.smallWaveDatas[1].startInterval = 5;
-        waveData1.smallWaveDatas[1].waveType = SmallWaveType.AllPoint;
-        waveData1.smallWaveDatas[1].pointGroup = 1;
-        waveData1.smallWaveDatas[1].monsterID = 10001;
-        waveData1.smallWaveDatas[1].monsterCount = 0;
-        waveData1.smallWaveDatas[1].spawnInterval = 0;
-                
-        waveData1.smallWaveDatas[2].startInterval = 5;
-        waveData1.smallWaveDatas[2].waveType = SmallWaveType.SequentialPoint;
-        waveData1.smallWaveDatas[2].pointGroup = 3;
-        waveData1.smallWaveDatas[2].monsterID = 10001;
-        waveData1.smallWaveDatas[2].monsterCount = 0;
-        waveData1.smallWaveDatas[2].spawnInterval = 0;
+        waveData = new WaveData();
+        waveData.smallWaveDatas = new List<SmallWave>();
 
-        waveDatas.Add(waveData1);
+        smallWave = new SmallWave();
+        smallWave.startInterval = 0;
+        smallWave.waveType = SmallWaveType.SequentialPoint;
+        smallWave.pointGroup = 1;
+        smallWave.monsterID = 10001;
+        smallWave.monsterCount = 0;
+        smallWave.spawnInterval = 0.4f;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 2;
+        smallWave.waveType = SmallWaveType.RandomPoint;
+        smallWave.pointGroup = 2;
+        smallWave.monsterID = 10003;
+        smallWave.monsterCount = 6;
+        smallWave.spawnInterval = 0.75f;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 1;
+        smallWave.waveType = SmallWaveType.RandomPoint;
+        smallWave.pointGroup = 0;
+        smallWave.monsterID = 10001;
+        smallWave.monsterCount = 20;
+        smallWave.spawnInterval = 1f;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 5;
+        smallWave.waveType = SmallWaveType.AllPoint;
+        smallWave.pointGroup = 3;
+        smallWave.monsterID = 10005;
+        smallWave.monsterCount = 0;
+        smallWave.spawnInterval = 0;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 10;
+        smallWave.waveType = SmallWaveType.RandomPoint;
+        smallWave.pointGroup = 1;
+        smallWave.monsterID = 10002;
+        smallWave.monsterCount = 3;
+        smallWave.spawnInterval = 0.5f;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        waveDatas.Add(waveData);
+
+
+
+        waveData = new WaveData();
+        waveData.smallWaveDatas = new List<SmallWave>();
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 0;
+        smallWave.waveType = SmallWaveType.RandomPoint;
+        smallWave.pointGroup = 0;
+        smallWave.monsterID = 10002;
+        smallWave.monsterCount = 10;
+        smallWave.spawnInterval = 2;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 0;
+        smallWave.waveType = SmallWaveType.RandomPoint;
+        smallWave.pointGroup = 1;
+        smallWave.monsterID = 10001;
+        smallWave.monsterCount = 20;
+        smallWave.spawnInterval = 1;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 0;
+        smallWave.waveType = SmallWaveType.RandomPoint;
+        smallWave.pointGroup = 2;
+        smallWave.monsterID = 10004;
+        smallWave.monsterCount = 10;
+        smallWave.spawnInterval = 2;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 0;
+        smallWave.waveType = SmallWaveType.RandomPoint;
+        smallWave.pointGroup = 3;
+        smallWave.monsterID = 10005;
+        smallWave.monsterCount = 15;
+        smallWave.spawnInterval = 1.333f;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 21;
+        smallWave.waveType = SmallWaveType.AllPoint;
+        smallWave.pointGroup = 0;
+        smallWave.monsterID = 10003;
+        smallWave.monsterCount = 0;
+        smallWave.spawnInterval = 0;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 0;
+        smallWave.waveType = SmallWaveType.AllPoint;
+        smallWave.pointGroup = 3;
+        smallWave.monsterID = 10003;
+        smallWave.monsterCount = 0;
+        smallWave.spawnInterval = 0;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        waveDatas.Add(waveData);
+
+
+
+        waveData = new WaveData();
+        waveData.smallWaveDatas = new List<SmallWave>();
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 0;
+        smallWave.waveType = SmallWaveType.RandomPoint;
+        smallWave.pointGroup = 2;
+        smallWave.monsterID = 10005;
+        smallWave.monsterCount = 12;
+        smallWave.spawnInterval = 0.3f;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 0;
+        smallWave.waveType = SmallWaveType.SequentialPoint;
+        smallWave.pointGroup = 1;
+        smallWave.monsterID = 10001;
+        smallWave.monsterCount = 0;
+        smallWave.spawnInterval = 0.2f;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 2;
+        smallWave.waveType = SmallWaveType.SequentialPoint;
+        smallWave.pointGroup = 1;
+        smallWave.monsterID = 10003;
+        smallWave.monsterCount = 0;
+        smallWave.spawnInterval = 0.1f;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 5;
+        smallWave.waveType = SmallWaveType.AllPoint;
+        smallWave.pointGroup = 2;
+        smallWave.monsterID = 10003;
+        smallWave.monsterCount = 0;
+        smallWave.spawnInterval = 0;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 8;
+        smallWave.waveType = SmallWaveType.RandomPoint;
+        smallWave.pointGroup = 3;
+        smallWave.monsterID = 10007;
+        smallWave.monsterCount = 1;
+        smallWave.spawnInterval = 0;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 0.5f;
+        smallWave.waveType = SmallWaveType.RandomPoint;
+        smallWave.pointGroup = 0;
+        smallWave.monsterID = 10004;
+        smallWave.monsterCount = 6;
+        smallWave.spawnInterval = 1f;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        waveDatas.Add(waveData);
+
+
+
+        waveData = new WaveData();
+        waveData.smallWaveDatas = new List<SmallWave>();
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 0;
+        smallWave.waveType = SmallWaveType.AllPoint;
+        smallWave.pointGroup = 0;
+        smallWave.monsterID = 10001;
+        smallWave.monsterCount = 0;
+        smallWave.spawnInterval = 0;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 2;
+        smallWave.waveType = SmallWaveType.AllPoint;
+        smallWave.pointGroup = 1;
+        smallWave.monsterID = 10003;
+        smallWave.monsterCount = 0;
+        smallWave.spawnInterval = 0;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 2;
+        smallWave.waveType = SmallWaveType.AllPoint;
+        smallWave.pointGroup = 2;
+        smallWave.monsterID = 10002;
+        smallWave.monsterCount = 0;
+        smallWave.spawnInterval = 0;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 2;
+        smallWave.waveType = SmallWaveType.AllPoint;
+        smallWave.pointGroup = 3;
+        smallWave.monsterID = 10005;
+        smallWave.monsterCount = 0;
+        smallWave.spawnInterval = 0;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 5;
+        smallWave.waveType = SmallWaveType.RandomPoint;
+        smallWave.pointGroup = 0;
+        smallWave.monsterID = 10004;
+        smallWave.monsterCount = 10;
+        smallWave.spawnInterval = 0.5f;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 3;
+        smallWave.waveType = SmallWaveType.RandomPoint;
+        smallWave.pointGroup = 2;
+        smallWave.monsterID = 10006;
+        smallWave.monsterCount = 10;
+        smallWave.spawnInterval = 3;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 3;
+        smallWave.waveType = SmallWaveType.SequentialPoint;
+        smallWave.pointGroup = 1;
+        smallWave.monsterID = 10002;
+        smallWave.monsterCount = 0;
+        smallWave.spawnInterval = 0.75f;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        smallWave = new SmallWave();
+        smallWave.startInterval = 3;
+        smallWave.waveType = SmallWaveType.SequentialPoint;
+        smallWave.pointGroup = 3;
+        smallWave.monsterID = 10005;
+        smallWave.monsterCount = 0;
+        smallWave.spawnInterval = 0.5f;
+        waveData.smallWaveDatas.Add(smallWave);
+
+        waveDatas.Add(waveData);
     }
 }
 

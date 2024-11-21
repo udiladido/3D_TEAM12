@@ -11,22 +11,22 @@ public class MonsterCondition : MonoBehaviour, IDamageable
     public event Action OnDead;
 
     [field: SerializeField] public bool IsDead { get; private set; }
-    [SerializeField] private float maxHp;
-    [SerializeField] private float currentHp;
+    [field: SerializeField] public float MaxHp { get; private set; }
+    [field: SerializeField] public float CurrentHp { get; private set; }
 
     public void SetData(float _maxHp)
     {
         IsDead = false;
-        maxHp = _maxHp;
-        currentHp = maxHp;
+        MaxHp = _maxHp;
+        CurrentHp = MaxHp;
     }
 
     public void TakeDamage(float damage)
     {
-        currentHp = Mathf.Clamp(currentHp - damage, 0, maxHp);
+        CurrentHp = Mathf.Clamp(CurrentHp - damage, 0, MaxHp);
         // TODO : 피격 이펙트
         // TODO : 피격 사운드
-        if (currentHp <= 0)
+        if (CurrentHp <= 0)
         {
             IsDead = true;
             OnDead?.Invoke();
@@ -39,7 +39,7 @@ public class MonsterCondition : MonoBehaviour, IDamageable
 
     public void Heal(float heal)
     {
-        currentHp = Mathf.Clamp(currentHp + heal, 0, maxHp);
+        CurrentHp = Mathf.Clamp(CurrentHp + heal, 0, MaxHp);
     }
 
     public void Knockback(Vector3 direction, float force, float duration)

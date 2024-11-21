@@ -53,7 +53,7 @@ public class GameManager : IManager
     public void GameOver()
     {
         // 실제로 게임이 종료되었을때 함수
-        Managers.UI.ShowPopupUI<UIGameOverScene>();
+        Managers.UI.ShowPopupUI<UIGameOverPopup>();
     }
 
     public void CreatePlayer()

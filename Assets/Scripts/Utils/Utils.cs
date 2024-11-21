@@ -86,4 +86,11 @@ public class Utils
             _ => (current, value) => value
         };
     }
+    
+    public static string GetTimeString(float time)
+    {
+        int minute = (int)time / 60;
+        int second = (int)time % 60;
+        return $"{minute:D2}:{second:D2}";
+    }
 }

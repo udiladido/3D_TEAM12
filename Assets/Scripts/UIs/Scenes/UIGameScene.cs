@@ -72,7 +72,7 @@ public class UIGameScene : UISceneBase
         if (gameTime == null)
             gameTime = GetText(Texts.GameTime);
         
-        gameTime.text = $"Time : {Mathf.FloorToInt(ElapsedTime > 60f ? ElapsedTime / 60 : ElapsedTime):00}";
+        gameTime.text = $"Time : {Utils.GetTimeString(ElapsedTime)}";
     }
 
     public void SetMonsterCounter(int monsterCount)

@@ -221,6 +221,7 @@ MonoBehaviour:
   currentHp: 0
   currentMp: 0
   IsDead: 0
+  invincibilityPeriod: 0.5
 --- !u!114 &8006664061986191744
 MonoBehaviour:
   m_ObjectHideFlags: 0

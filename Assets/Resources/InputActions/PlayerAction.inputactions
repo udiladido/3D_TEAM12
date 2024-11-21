@@ -166,7 +166,7 @@
                 {
                     "name": "",
                     "id": "79e8af3a-e314-47ff-a356-0fb6353c6a45",
-                    "path": "<Keyboard>/leftCtrl",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -177,7 +177,7 @@
                 {
                     "name": "",
                     "id": "0fe52f5b-e66f-45ab-9555-eda6570b0adc",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/leftCtrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

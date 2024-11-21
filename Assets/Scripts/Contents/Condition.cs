@@ -20,6 +20,11 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
     private StatData baseStat;
     private List<StatModifier> statsModifiers = new List<StatModifier>();
 
+    // 무적 시간
+    [SerializeField] private float invincibilityPeriod = 0.5f;
+    private float invincibilityTimer;
+    
+    
     private void Start()
     {
         currentHp = CurrentStat.maxHp;
@@ -38,6 +43,8 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
 
     public void Update()
     {
+        invincibilityTimer += Time.deltaTime;
+        
         // 임시로 체력, 마나 바로 리젠 
         HpRegen();
         MpRegen();
@@ -53,6 +60,10 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
     }
     public void TakeDamage(float damage)
     {
+        if (invincibilityTimer < invincibilityPeriod)
+            return;
+
+        invincibilityTimer = 0;
         float value = (1 - CurrentStat.armor * 0.01f) * damage;
         
         currentHp = Mathf.Clamp(currentHp - value, 0, CurrentStat.maxHp);

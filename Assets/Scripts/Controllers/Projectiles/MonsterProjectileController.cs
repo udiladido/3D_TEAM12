@@ -34,7 +34,7 @@ public class MonsterProjectileController : ProjectileBaseController
         isLaunched = false;
         EnableHitBox(false);
         transform.localScale = new Vector3(skillEntity.startScale, skillEntity.startScale, skillEntity.startScale);
-        transform.position = owner.position;
+        transform.position = owner.position + Vector3.up;
         direction = (target.position - owner.position).normalized;
         transform.forward = direction;
         durationTimer = 0;
@@ -61,7 +61,6 @@ public class MonsterProjectileController : ProjectileBaseController
             if (other.transform.parent.TryGetComponent(out IDamageable damageable))
             {
                 damageable.TakeDamage(skillEntity.attackDamage);
-                DestroySelf();
             }
         }
     }

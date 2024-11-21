@@ -761,10 +761,18 @@ MonoBehaviour:
     statType: 3
     amount: 50
     calcType: 0
+  - itemId: 1505
+    statType: 7
+    amount: 10
+    calcType: 0
   - itemId: 1506
     statType: 3
     amount: 50
     calcType: 0
+  - itemId: 1506
+    statType: 4
+    amount: 1.5
+    calcType: 1
   - itemId: 1507
     statType: 3
     amount: 50
@@ -772,6 +780,10 @@ MonoBehaviour:
   - itemId: 1507
     statType: 9
     amount: 0.1
+    calcType: 0
+  - itemId: 1507
+    statType: 8
+    amount: 10
     calcType: 0
   - itemId: 1601
     statType: 6
@@ -851,6 +863,10 @@ MonoBehaviour:
     calcType: 1
   - itemId: 1704
     statType: 6
+    amount: 1.5
+    calcType: 1
+  - itemId: 1704
+    statType: 9
     amount: 1.5
     calcType: 1
   - itemId: 1704

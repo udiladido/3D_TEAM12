@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 1774535442187927303}
   - component: {fileID: 6649715191977905567}
   m_Layer: 5
-  m_Name: Weapons
+  m_Name: EquippedSlots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 6620460105172175623}
   - component: {fileID: 7199321671805966807}
   m_Layer: 5
-  m_Name: Status
+  m_Name: StatusBarSlots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

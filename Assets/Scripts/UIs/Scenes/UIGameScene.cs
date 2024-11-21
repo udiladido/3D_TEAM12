@@ -4,8 +4,8 @@ public class UIGameScene : UISceneBase
 {
     enum Objects
     {
-        Status,
-        Weapons,
+        StatusBarSlots,
+        EquippedSlots,
     }
     
     protected override bool Init()
@@ -20,13 +20,13 @@ public class UIGameScene : UISceneBase
     
     public void HideUI()
     {
-        GetObject(Objects.Status).SetActive(false);
-        GetObject(Objects.Weapons).SetActive(false);
+        GetObject(Objects.StatusBarSlots).SetActive(false);
+        GetObject(Objects.EquippedSlots).SetActive(false);
     }
     
     public void ShowUI()
     {
-        GetObject(Objects.Status).SetActive(true);
-        GetObject(Objects.Weapons).SetActive(true);
+        GetObject(Objects.StatusBarSlots).SetActive(true);
+        GetObject(Objects.EquippedSlots).SetActive(true);
     }
 }

@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIWeaponSlot : UISlotBase
+public class UIEquippedSlot : UISlotBase
 {
     enum Images { EquippedIcon, CooltimeSlider }
 

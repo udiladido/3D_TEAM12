@@ -524,6 +524,10 @@ MonoBehaviour:
       statType: 3
       amount: 50
       calcType: 0
+    - itemId: 1505
+      statType: 7
+      amount: 10
+      calcType: 0
     consumableEntities: []
   - id: 1506
     displayTitle: "\uC608\uB9AC\uD55C \uC11D\uAD81"
@@ -561,6 +565,10 @@ MonoBehaviour:
       statType: 3
       amount: 50
       calcType: 0
+    - itemId: 1506
+      statType: 4
+      amount: 1.5
+      calcType: 1
     consumableEntities: []
   - id: 1507
     displayTitle: "\uB9C8\uBC95 \uC9C0\uD321\uC774"
@@ -601,6 +609,10 @@ MonoBehaviour:
     - itemId: 1507
       statType: 9
       amount: 0.1
+      calcType: 0
+    - itemId: 1507
+      statType: 8
+      amount: 10
       calcType: 0
     consumableEntities: []
   - id: 1601
@@ -802,6 +814,10 @@ MonoBehaviour:
       calcType: 1
     - itemId: 1704
       statType: 6
+      amount: 1.5
+      calcType: 1
+    - itemId: 1704
+      statType: 9
       amount: 1.5
       calcType: 1
     - itemId: 1704

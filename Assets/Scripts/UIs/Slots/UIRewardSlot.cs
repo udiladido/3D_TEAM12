@@ -28,10 +28,10 @@ public class UIRewardSlot : UISlotBase
         this.popup = popup;
     }
 
-    public void SetData(ItemEntity item)
+    public void SetData(ItemEntity item, int count = 1)
     {
         this.item = item;
-        GetText(Texts.Title).text = item.displayTitle;
+        GetText(Texts.Title).text = $"{item.displayTitle}{(count > 1 ? $" x{count}" : "")}";
         GetText(Texts.Description).text = item.description;
         GetImage(Images.Icon).sprite = Managers.Resource.Load<Sprite>(item.iconPath);
         GetImage(Images.Background).color = Utils.GetItemRarityColor(item.rarityType);

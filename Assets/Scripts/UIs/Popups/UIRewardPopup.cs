@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class UIRewardPopup : UIPopupBase
 {
     private int rewardCount = 3;
+    private int rewardItemCount = 3;
 
     enum Objects { Layout }
 
@@ -99,7 +100,7 @@ public class UIRewardPopup : UIPopupBase
         if (item.itemType == Defines.ItemType.Equipment)
             Managers.Game.Player.Equipment.Equip(item);
         else if (item.itemType == Defines.ItemType.Consumable)
-            Managers.Game.Player.ItemQuickSlots.Equip(item, 3);
+            Managers.Game.Player.ItemQuickSlots.Equip(item, rewardItemCount);
 
         Managers.Game.Player.ItemQuickSlots.Equip(hpPotion);
         Managers.Game.Player.ItemQuickSlots.Equip(mpPotion);
@@ -111,18 +112,17 @@ public class UIRewardPopup : UIPopupBase
     public override void Open(Defines.UIAnimationType type = Defines.UIAnimationType.None)
     {
         base.Open(type);
-        Time.timeScale = 0;
-        Managers.Game.Player.Input.InputDisable();
+        Managers.Game.StopGame();
         List<ItemEntity> items = GetRewards();
 
         for (int i = 0; i < rewardCount; i++)
-            slots[i].SetData(items[i]);
+            slots[i].SetData(items[i], items[i].itemType == Defines.ItemType.Consumable ? rewardItemCount : 1);
     }
 
     public override void Close(Defines.UIAnimationType type = Defines.UIAnimationType.None)
     {
-        Managers.Game.Player.Input.InputEnable();
-        Time.timeScale = 1f;
+        Managers.Game.ResumeGame();
+        Managers.Game.StartNextWave();
         base.Close(type);
     }
 

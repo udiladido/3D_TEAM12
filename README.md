@@ -12,6 +12,13 @@
 - 웨이브 별로 생성되는 몬스터는 변칙적으로 생성되며 특정 웨이브 도달 시 보스급 몬스터도 생성 됩니다.
 - 웨이브가 종료되면 장착가능한 아이템 및 소모품을 획득 할 수 있습니다.
 
+## Keys
+- 콤보 공격 : Mouse Left Button
+- 특수 공격 : Mouse Right Button
+- 이동 : WASD
+- 회피 : SpaceBar
+- 아이템 퀵슬롯 : 1,2
+
 ## Project Key Features
 - [unity-excel-importer](https://github.com/mikito/unity-excel-importer)를 통해 엑셀 데이터 시트를 SO 데이터 파일로 변환 합니다.
 - 추가적으로 변환 된 데이터를 그룹화 하여 관리 할 수 있도록 구조화 하였습니다.

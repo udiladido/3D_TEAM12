@@ -57,8 +57,8 @@ MonoBehaviour:
       jobId: 13
       maxHp: 200
       passiveHpRegen: 3
-      maxMp: 200
-      passiveMpRegen: 5
+      maxMp: 250
+      passiveMpRegen: 8
       attack: 5
       armor: 5
       attackSpeed: 1.5

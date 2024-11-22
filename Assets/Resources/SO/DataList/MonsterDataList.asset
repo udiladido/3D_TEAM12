@@ -318,8 +318,8 @@ MonoBehaviour:
       attackDamage: 150
       attackPeriod: 5
       duration: 5
-      startScale: 1
-      endScale: 1
+      startScale: 0.5
+      endScale: 0.5
       moveSpeed: 8
       waitTime: 0
       knockbackPower: 0

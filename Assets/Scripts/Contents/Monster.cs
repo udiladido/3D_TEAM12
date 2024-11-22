@@ -1,11 +1,6 @@
 using System;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
-using UnityEngine.XR;
-using static UnityEditor.Progress;
 using Random = UnityEngine.Random;
 
 public class Monster : MonoBehaviour

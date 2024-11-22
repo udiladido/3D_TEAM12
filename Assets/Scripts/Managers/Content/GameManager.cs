@@ -44,6 +44,7 @@ public class GameManager : IManager
         LevelContainer level = GameObject.FindFirstObjectByType<LevelContainer>();
         monsterSpawner.Initialize(level);
         monsterSpawner.OnClearWave += UpdateWaveCounter;
+        monsterSpawner.OnWaveAllClear += GameClear;
         monsterSpawner.StartWave(waveCount);
         UpdateWaveCounter(waveCount);
         Player.Input.InputEnable();
@@ -69,6 +70,12 @@ public class GameManager : IManager
     public void GameOver()
     {
         // 실제로 게임이 종료되었을때 함수
+        Managers.UI.ShowPopupUI<UIGameOverPopup>();
+    }
+    
+    public void GameClear()
+    {
+        // 게임 클리어시 함수
         Managers.UI.ShowPopupUI<UIGameOverPopup>();
     }
 
@@ -114,8 +121,6 @@ public class GameManager : IManager
     {
         if (monsterSpawner == null) return;
         Managers.UI.GetCurrentSceneUI<UIGameScene>()?.SetWaveCounter(waveCount + 1);
-        if (waveCount > 0)
-            Managers.UI.ShowPopupUI<UIRewardPopup>();
     }
 
     public void UpdateMonsterCounter()

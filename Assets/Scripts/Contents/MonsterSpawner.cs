@@ -20,6 +20,7 @@ public class MonsterSpawner
     /// 매개변수 : 완료된 웨이브 인덱스
     /// </summary>
     public event Action<int> OnClearWave;
+
     public event Action OnWaveAllClear;
 
     public void Initialize(LevelContainer levelContainer)
@@ -54,7 +55,7 @@ public class MonsterSpawner
         Monster.UnlimitRangeOfDetection = false;
 
         Managers.Coroutine.StartCoroutine($"StartWave_{waveIndex}", RunSmallWaves(waveIndex));
-        
+
         return true;
     }
     private void EndWave()
@@ -65,7 +66,9 @@ public class MonsterSpawner
         if (currentWave == waveDatas.Count - 1)
         {
             OnWaveAllClear?.Invoke();
+            return;
         }
+        Managers.UI.ShowPopupUI<UIRewardPopup>();
     }
 
 
@@ -93,8 +96,6 @@ public class MonsterSpawner
         IsSpawning = false;
         Monster.UnlimitRangeOfDetection = true;
     }
-
-
 
 
     private void SpawnEntity(int pointGroup, int point, int monsterID)
@@ -158,5 +159,3 @@ public class MonsterSpawner
         }
     }
 }
-
-

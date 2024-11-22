@@ -1,6 +1,3 @@
-
-using TMPro;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class MonsterState_Taunting : MonsterBaseState

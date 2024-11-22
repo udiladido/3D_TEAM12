@@ -8,7 +8,6 @@ public class PlayerHitState : PlayerBaseState
 
     public override void Enter()
     {
-        MoveCancelHandle();
         stateMachine.CombatSlots?.UnUse();
         if (stateMachine.Player.ForceReceiver.IsGrounded())
             StartAnimation(stateMachine.AnimationData.GroundHash);
@@ -31,7 +30,7 @@ public class PlayerHitState : PlayerBaseState
     public override void Update()
     {
         float normalizedTime = GetNormalizedTime(stateMachine.Player.Animator, "Hit");
-        if (normalizedTime >= 0.1f)
+        if (normalizedTime >= 0.5f)
         {
             if (stateMachine.LastInputValue == Vector2.zero)
                 stateMachine.ChangeState(stateMachine.IdleState);

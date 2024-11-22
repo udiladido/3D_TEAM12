@@ -7,6 +7,8 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
 {
     public event Action<float, float> OnHpChanged;
     public event Action<float, float> OnMpChanged;
+    public event Action OnHpWarning;
+    public event Action OnMpWarning;
     public event Action<StatData> OnStatChanged;
     public event Action OnDead;
     public event Action OnHit;
@@ -89,6 +91,7 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
         else
         {
             OnHit?.Invoke();
+            OnHpWarning?.Invoke();
         }
     }
 
@@ -125,7 +128,10 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
     public bool TryUseMana(float cost)
     {
         if (currentMp < cost)
+        {
+            OnMpWarning?.Invoke();
             return false;
+        }
 
         currentMp = Mathf.Clamp(currentMp - cost, 0, CurrentStat.maxMp);
         OnMpChanged?.Invoke(currentMp, CurrentStat.maxMp);

@@ -14,7 +14,7 @@ public class ProjectileController : ProjectileBaseController
 
     private List<IDamageable> hitTargets = new List<IDamageable>();
     private float hitTimer = 0f;
-    private int hitCounter = 0;
+    
     private float damage = 0;
 
     private float durationTimer;

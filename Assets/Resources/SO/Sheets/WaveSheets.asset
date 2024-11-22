@@ -38,6 +38,31 @@ MonoBehaviour:
     description: "\uBAAC\uC2A4\uD130\uB97C \uACA9\uD30C\uD558\uB77C!"
     waveSeq: 5
     SmallWaveEntities: []
+  - id: 100600
+    displayTitle: Wave 6
+    description: "\uBAAC\uC2A4\uD130\uB97C \uACA9\uD30C\uD558\uB77C!"
+    waveSeq: 1
+    SmallWaveEntities: []
+  - id: 100700
+    displayTitle: Wave 7
+    description: "\uBAAC\uC2A4\uD130\uB97C \uACA9\uD30C\uD558\uB77C!"
+    waveSeq: 2
+    SmallWaveEntities: []
+  - id: 100800
+    displayTitle: Wave 8
+    description: "\uBAAC\uC2A4\uD130\uB97C \uACA9\uD30C\uD558\uB77C!"
+    waveSeq: 3
+    SmallWaveEntities: []
+  - id: 100900
+    displayTitle: Wave 9
+    description: "\uBAAC\uC2A4\uD130\uB97C \uACA9\uD30C\uD558\uB77C!"
+    waveSeq: 4
+    SmallWaveEntities: []
+  - id: 101000
+    displayTitle: Wave 10
+    description: "\uBAAC\uC2A4\uD130\uB97C \uACA9\uD30C\uD558\uB77C!"
+    waveSeq: 5
+    SmallWaveEntities: []
   SmallWaveList:
   - waveId: 100100
     startInterval: 1
@@ -240,5 +265,285 @@ MonoBehaviour:
     waveType: 2
     pointGroup: 3
     monsterID: 10005
+    monsterCount: 0
+    spawnInterval: 0.5
+  - waveId: 100600
+    startInterval: 2
+    waveType: 1
+    pointGroup: 0
+    monsterID: 10001
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 100600
+    startInterval: 2
+    waveType: 1
+    pointGroup: 1
+    monsterID: 10003
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 100600
+    startInterval: 2
+    waveType: 1
+    pointGroup: 2
+    monsterID: 10002
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 100600
+    startInterval: 2
+    waveType: 1
+    pointGroup: 3
+    monsterID: 10005
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 100600
+    startInterval: 5
+    waveType: 0
+    pointGroup: 0
+    monsterID: 10004
+    monsterCount: 10
+    spawnInterval: 0.5
+  - waveId: 100600
+    startInterval: 3
+    waveType: 0
+    pointGroup: 2
+    monsterID: 10006
+    monsterCount: 10
+    spawnInterval: 3
+  - waveId: 100600
+    startInterval: 3
+    waveType: 2
+    pointGroup: 1
+    monsterID: 10002
+    monsterCount: 0
+    spawnInterval: 0.75
+  - waveId: 100600
+    startInterval: 3
+    waveType: 2
+    pointGroup: 3
+    monsterID: 10005
+    monsterCount: 0
+    spawnInterval: 0.5
+  - waveId: 100700
+    startInterval: 2
+    waveType: 1
+    pointGroup: 0
+    monsterID: 10001
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 100700
+    startInterval: 2
+    waveType: 1
+    pointGroup: 1
+    monsterID: 10003
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 100700
+    startInterval: 2
+    waveType: 1
+    pointGroup: 2
+    monsterID: 10002
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 100700
+    startInterval: 2
+    waveType: 1
+    pointGroup: 3
+    monsterID: 10005
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 100700
+    startInterval: 5
+    waveType: 0
+    pointGroup: 0
+    monsterID: 10004
+    monsterCount: 10
+    spawnInterval: 0.5
+  - waveId: 100700
+    startInterval: 3
+    waveType: 0
+    pointGroup: 2
+    monsterID: 10006
+    monsterCount: 10
+    spawnInterval: 3
+  - waveId: 100700
+    startInterval: 3
+    waveType: 2
+    pointGroup: 1
+    monsterID: 10002
+    monsterCount: 0
+    spawnInterval: 0.75
+  - waveId: 100700
+    startInterval: 3
+    waveType: 2
+    pointGroup: 3
+    monsterID: 10005
+    monsterCount: 0
+    spawnInterval: 0.5
+  - waveId: 100800
+    startInterval: 2
+    waveType: 1
+    pointGroup: 0
+    monsterID: 10001
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 100800
+    startInterval: 2
+    waveType: 1
+    pointGroup: 1
+    monsterID: 10003
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 100800
+    startInterval: 2
+    waveType: 1
+    pointGroup: 2
+    monsterID: 10002
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 100800
+    startInterval: 2
+    waveType: 1
+    pointGroup: 3
+    monsterID: 10005
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 100800
+    startInterval: 5
+    waveType: 0
+    pointGroup: 0
+    monsterID: 10004
+    monsterCount: 10
+    spawnInterval: 0.5
+  - waveId: 100800
+    startInterval: 3
+    waveType: 0
+    pointGroup: 2
+    monsterID: 10006
+    monsterCount: 10
+    spawnInterval: 3
+  - waveId: 100800
+    startInterval: 3
+    waveType: 2
+    pointGroup: 1
+    monsterID: 10002
+    monsterCount: 0
+    spawnInterval: 0.75
+  - waveId: 100800
+    startInterval: 3
+    waveType: 2
+    pointGroup: 3
+    monsterID: 10005
+    monsterCount: 0
+    spawnInterval: 0.5
+  - waveId: 100900
+    startInterval: 2
+    waveType: 1
+    pointGroup: 0
+    monsterID: 10001
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 100900
+    startInterval: 2
+    waveType: 1
+    pointGroup: 1
+    monsterID: 10003
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 100900
+    startInterval: 2
+    waveType: 1
+    pointGroup: 2
+    monsterID: 10002
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 100900
+    startInterval: 2
+    waveType: 1
+    pointGroup: 3
+    monsterID: 10005
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 100900
+    startInterval: 5
+    waveType: 0
+    pointGroup: 0
+    monsterID: 10004
+    monsterCount: 10
+    spawnInterval: 0.5
+  - waveId: 100900
+    startInterval: 3
+    waveType: 0
+    pointGroup: 2
+    monsterID: 10006
+    monsterCount: 10
+    spawnInterval: 3
+  - waveId: 100900
+    startInterval: 3
+    waveType: 2
+    pointGroup: 1
+    monsterID: 10002
+    monsterCount: 0
+    spawnInterval: 0.75
+  - waveId: 100900
+    startInterval: 3
+    waveType: 2
+    pointGroup: 3
+    monsterID: 10005
+    monsterCount: 0
+    spawnInterval: 0.5
+  - waveId: 101000
+    startInterval: 2
+    waveType: 1
+    pointGroup: 0
+    monsterID: 10006
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 101000
+    startInterval: 2
+    waveType: 1
+    pointGroup: 1
+    monsterID: 10006
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 101000
+    startInterval: 2
+    waveType: 1
+    pointGroup: 2
+    monsterID: 10006
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 101000
+    startInterval: 2
+    waveType: 1
+    pointGroup: 3
+    monsterID: 10006
+    monsterCount: 0
+    spawnInterval: 0
+  - waveId: 101000
+    startInterval: 5
+    waveType: 0
+    pointGroup: 0
+    monsterID: 10006
+    monsterCount: 10
+    spawnInterval: 0.5
+  - waveId: 101000
+    startInterval: 3
+    waveType: 0
+    pointGroup: 2
+    monsterID: 10006
+    monsterCount: 10
+    spawnInterval: 3
+  - waveId: 101000
+    startInterval: 3
+    waveType: 2
+    pointGroup: 1
+    monsterID: 10006
+    monsterCount: 0
+    spawnInterval: 0.75
+  - waveId: 101000
+    startInterval: 3
+    waveType: 2
+    pointGroup: 3
+    monsterID: 10006
     monsterCount: 0
     spawnInterval: 0.5

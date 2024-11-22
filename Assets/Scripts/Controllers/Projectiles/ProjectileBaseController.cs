@@ -7,7 +7,7 @@ public abstract class ProjectileBaseController : BaseController
     protected ParticleSystem[] particleSystems;
     protected MeshRenderer meshRenderer;
     protected Collider hitBoxCollider;
-    
+    protected int hitCounter = 0;
     
     protected virtual void Awake()
     {

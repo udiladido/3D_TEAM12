@@ -60,15 +60,24 @@ public class MonsterSpawner
     }
     private void EndWave()
     {
-        IsRunningWave = false;
-        OnClearWave?.Invoke(currentWave);
+        Managers.Coroutine.StartCoroutine("WaveEndDelay", DelayTime(2.5f));
 
-        if (currentWave == waveDatas.Count - 1)
+        IsRunningWave = false;
+
+        if (currentWave < waveDatas.Count - 1)
+        {
+            OnClearWave?.Invoke(currentWave);
+
+            Managers.UI.ShowPopupUI<UIRewardPopup>();
+        }
+        else
         {
             OnWaveAllClear?.Invoke();
-            return;
         }
-        Managers.UI.ShowPopupUI<UIRewardPopup>();
+    }
+    private IEnumerator DelayTime(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
     }
 
 

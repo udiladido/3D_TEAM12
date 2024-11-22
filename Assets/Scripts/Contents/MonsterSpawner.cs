@@ -58,9 +58,9 @@ public class MonsterSpawner
 
         return true;
     }
-    private void EndWave()
+    private IEnumerator EndWave()
     {
-        Managers.Coroutine.StartCoroutine("WaveEndDelay", DelayTime(2.5f));
+        yield return new WaitForSecondsRealtime(2.5f);
 
         IsRunningWave = false;
 
@@ -74,10 +74,6 @@ public class MonsterSpawner
         {
             OnWaveAllClear?.Invoke();
         }
-    }
-    private IEnumerator DelayTime(float delay)
-    {
-        yield return new WaitForSecondsRealtime(delay);
     }
 
 
@@ -144,7 +140,7 @@ public class MonsterSpawner
         Managers.Game.UpdateMonsterCounter();
         if (IsSpawning == false && SpawnCount == 0)
         {
-            EndWave();
+            Managers.Coroutine.StartCoroutine("WaveEndSequence", EndWave());
         }
     }
 

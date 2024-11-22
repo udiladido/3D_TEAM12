@@ -8,7 +8,6 @@ public class PlayerHitState : PlayerBaseState
 
     public override void Enter()
     {
-        MoveCancelHandle();
         stateMachine.CombatSlots?.UnUse();
         if (stateMachine.Player.ForceReceiver.IsGrounded())
             StartAnimation(stateMachine.AnimationData.GroundHash);

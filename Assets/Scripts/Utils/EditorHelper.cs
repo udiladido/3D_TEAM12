@@ -1,3 +1,4 @@
+#if (UNITY_EDITOR)
 using UnityEditor;
 using UnityEngine;
 
@@ -34,3 +35,4 @@ public class EditorHelper : EditorWindow
         Debug.Log($"{Selection.gameObjects.Length} objects moved by {moveOffset}");
     }
 }
+#endif

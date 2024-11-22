@@ -712,7 +712,7 @@ MonoBehaviour:
     knockbackPower: 2
     knockbackDuration: 0.5
     hitInterval: 0
-    numberOfProjectilePerShot: 5
+    numberOfProjectilePerShot: 10
     multipleProjectilesAngle: 45
     pierceCount: 2
   - itemId: 1507

@@ -20,6 +20,7 @@ public class MonsterSpawner
     /// 매개변수 : 완료된 웨이브 인덱스
     /// </summary>
     public event Action<int> OnClearWave;
+
     public event Action OnWaveAllClear;
 
     public void Initialize(LevelContainer levelContainer)
@@ -65,7 +66,9 @@ public class MonsterSpawner
         if (currentWave == waveDatas.Count - 1)
         {
             OnWaveAllClear?.Invoke();
+            return;
         }
+        Managers.UI.ShowPopupUI<UIRewardPopup>();
     }
 
 
@@ -95,8 +98,6 @@ public class MonsterSpawner
     }
 
 
-
-
     private void SpawnEntity(int pointGroup, int point, int monsterID)
     {
         GameObject go = Managers.Pool.Spawn("/Monster");
@@ -114,7 +115,7 @@ public class MonsterSpawner
 
         Identifier++;
         Vector3 spawnPoint = spawnPoints[pointGroup][point];
-        spawnPoint += new Vector3(Random.Range(0f, 1f), 0, Random.Range(0f, 1f));
+        spawnPoint += new Vector3(Random.Range(-2f, 2f), 0, Random.Range(-2f, 2f));
         if (monster.Initialize(Identifier, monsterID, spawnPoint) == false)
         {
             Managers.Pool.Despawn(go);
@@ -158,5 +159,3 @@ public class MonsterSpawner
         }
     }
 }
-
-

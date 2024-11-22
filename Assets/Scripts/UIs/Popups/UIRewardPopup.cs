@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class UIRewardPopup : UIPopupBase
 {
     private int rewardCount = 3;
+    private int rewardItemCount = 3;
 
     enum Objects { Layout }
 
@@ -99,7 +100,7 @@ public class UIRewardPopup : UIPopupBase
         if (item.itemType == Defines.ItemType.Equipment)
             Managers.Game.Player.Equipment.Equip(item);
         else if (item.itemType == Defines.ItemType.Consumable)
-            Managers.Game.Player.ItemQuickSlots.Equip(item, 3);
+            Managers.Game.Player.ItemQuickSlots.Equip(item, rewardItemCount);
 
         Managers.Game.Player.ItemQuickSlots.Equip(hpPotion);
         Managers.Game.Player.ItemQuickSlots.Equip(mpPotion);
@@ -115,7 +116,7 @@ public class UIRewardPopup : UIPopupBase
         List<ItemEntity> items = GetRewards();
 
         for (int i = 0; i < rewardCount; i++)
-            slots[i].SetData(items[i]);
+            slots[i].SetData(items[i], items[i].itemType == Defines.ItemType.Consumable ? rewardItemCount : 1);
     }
 
     public override void Close(Defines.UIAnimationType type = Defines.UIAnimationType.None)

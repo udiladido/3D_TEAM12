@@ -222,6 +222,8 @@ MonoBehaviour:
   currentMp: 0
   IsDead: 0
   invincibilityPeriod: 0.5
+  dodgeCost: 10
+  dodgeCooltime: 1
 --- !u!114 &8006664061986191744
 MonoBehaviour:
   m_ObjectHideFlags: 0

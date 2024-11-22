@@ -93,4 +93,21 @@ public class Utils
         int second = (int)time % 60;
         return $"{minute:D2}:{second:D2}";
     }
+    
+    public static string GetStatName(Defines.CharacterStatType statType)
+    {
+        return statType switch
+        {
+            Defines.CharacterStatType.Hp => "HP",
+            Defines.CharacterStatType.Mp => "MP",
+            Defines.CharacterStatType.AttackDamage => "공격력",
+            Defines.CharacterStatType.AttackSpeed => "공격속도",
+            Defines.CharacterStatType.MoveSpeed => "이동속도",
+            Defines.CharacterStatType.Armor => "방어도",
+            Defines.CharacterStatType.HpRegen => "HP회복",
+            Defines.CharacterStatType.MpRegen => "MP회복",
+            Defines.CharacterStatType.CooltimeReduction => "쿨타임감소",
+            _ => "None"
+        };
+    }
 }

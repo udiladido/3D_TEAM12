@@ -13,7 +13,6 @@ public class GameManager : IManager
     private float elapsedTime;
     private float startTime;
 
-    private bool isWaveActive = false;
     private GameObject timerTextObject;
     private GameObject monsterCounter;
     private GameObject waveCounter;
@@ -29,7 +28,6 @@ public class GameManager : IManager
         startTime = Time.time;
         monsterCount = 0;
         waveCount = 0;
-        isWaveActive = false;
     }
 
     public void Clear()
@@ -46,10 +44,28 @@ public class GameManager : IManager
 
         monsterSpawner = new MonsterSpawner();
         LevelContainer level = GameObject.FindFirstObjectByType<LevelContainer>();
-        monsterSpawner.StartSpawn(level);
+        monsterSpawner.Initialize(level);
         monsterSpawner.OnClearWave += UpdateWaveCounter;
-        
+        monsterSpawner.StartWave(waveCount);
+
         Player.Input.InputEnable();
+    }
+
+    public void StopGame()
+    {
+        Time.timeScale = 0f;
+        Player.Input.InputDisable();
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        Player.Input.InputEnable();
+    }
+
+    public void StartNextWave()
+    {
+        waveCount++;
+        monsterSpawner.StartWave(waveCount);
     }
 
     public void GameOver()
@@ -99,7 +115,7 @@ public class GameManager : IManager
     public void UpdateWaveCounter(int waveCount)
     {
         if (monsterSpawner == null) return;
-        Managers.UI.GetCurrentSceneUI<UIGameScene>()?.SetWaveCounter(waveCount);
+        Managers.UI.GetCurrentSceneUI<UIGameScene>()?.SetWaveCounter(waveCount + 1);
         Managers.UI.ShowPopupUI<UIRewardPopup>();
     }
 

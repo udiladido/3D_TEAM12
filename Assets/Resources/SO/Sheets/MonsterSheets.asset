@@ -111,16 +111,31 @@ MonoBehaviour:
     chasePeriod: 15
     skillEntities: []
   - id: 10007
-    displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uC790\uC774\uC5B8\uD2B8\uAC70\uB300\uD55C
-      \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
-    description: 
-    level: 10
+    displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uC790\uC774\uC5B8\uD2B8"
+    description: "\uAC70\uB300\uD55C \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
+    level: 9
     prefabPath: /Prefabs/Monsters/Skeleton_Giant
     iconPath: /Textures/icons/monsters/monster
     colliderRadius: 1.5
     colliderHeight: 4.5
     colliderCenterY: 2.25
     maxHp: 750
+    armor: 5
+    moveSpeed: 3.5
+    staggerDamage: 20
+    attractDistance: 1000
+    chasePeriod: 1000
+    skillEntities: []
+  - id: 10008
+    displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uC790\uC774\uC5B8\uD2B8 \uAC00\uB514\uC5B8"
+    description: "\uC911\uBB34\uC7A5\uC744 \uD55C \uAC70\uB300\uD55C \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
+    level: 10
+    prefabPath: /Prefabs/Monsters/Skeleton_GiantGuardian
+    iconPath: /Textures/icons/monsters/monster
+    colliderRadius: 1.5
+    colliderHeight: 4.5
+    colliderCenterY: 2.25
+    maxHp: 5000
     armor: 5
     moveSpeed: 3.5
     staggerDamage: 20
@@ -262,7 +277,7 @@ MonoBehaviour:
     projectilePrefabPath: /Projectiles/Monster/Monster_MeleeAttack
     selectWeight: 1
     attackRange: 5.5
-    attackDamage: 110
+    attackDamage: 90
     attackPeriod: 3.5
     duration: 0.4
     startScale: 3
@@ -275,12 +290,38 @@ MonoBehaviour:
     projectilePrefabPath: /Projectiles/Monster/Monster_MeleeAttack
     selectWeight: 1
     attackRange: 4
-    attackDamage: 110
+    attackDamage: 90
     attackPeriod: 2.5
     duration: 0.4
     startScale: 3
     endScale: 3
     moveSpeed: 0
+    waitTime: 0
+    knockbackPower: 0
+    knockbackDuration: 0
+  - monsterId: 10008
+    projectilePrefabPath: /Projectiles/Monster/Monster_MeleeAttack
+    selectWeight: 1
+    attackRange: 5.5
+    attackDamage: 100
+    attackPeriod: 4
+    duration: 0.4
+    startScale: 3
+    endScale: 3
+    moveSpeed: 0
+    waitTime: 0
+    knockbackPower: 0
+    knockbackDuration: 0
+  - monsterId: 10008
+    projectilePrefabPath: /Projectiles/Monster/Monster_Fireball
+    selectWeight: 0.3
+    attackRange: 15
+    attackDamage: 150
+    attackPeriod: 5
+    duration: 5
+    startScale: 0.5
+    endScale: 0.5
+    moveSpeed: 8
     waitTime: 0
     knockbackPower: 0
     knockbackDuration: 0

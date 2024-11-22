@@ -31,7 +31,7 @@ public class PlayerHitState : PlayerBaseState
     public override void Update()
     {
         float normalizedTime = GetNormalizedTime(stateMachine.Player.Animator, "Hit");
-        if (normalizedTime >= 0.5f)
+        if (normalizedTime >= 0.1f)
         {
             if (stateMachine.LastInputValue == Vector2.zero)
                 stateMachine.ChangeState(stateMachine.IdleState);

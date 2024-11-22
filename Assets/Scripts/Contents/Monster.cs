@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
@@ -77,7 +78,7 @@ public class Monster : MonoBehaviour
         HitCollider.radius = Stat.colliderRadius;
         HitCollider.height = Stat.colliderHeight;
         HitCollider.center = new Vector3(0, Stat.colliderCenterY, 0);
-        AnimationController = GetComponentInChildren<MonsterAnimatorController>();
+        AnimationController = go.GetComponent<MonsterAnimatorController>();
         ValidAnimator = AnimationController != null;
         if (ValidAnimator)
         {

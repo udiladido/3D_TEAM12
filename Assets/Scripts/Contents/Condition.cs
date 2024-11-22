@@ -134,12 +134,11 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
 
     public bool TryDodge()
     {
-        if (TryUseMana(dodgeCost) == false) return false;
         if (dodgeTimer < dodgeCooltime) return false;
+        if (TryUseMana(dodgeCost) == false) return false;
         dodgeTimer = 0;
         return true;
     }
-
 
     public void Knockback(Vector3 direction, float force, float duration)
     {

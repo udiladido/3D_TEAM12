@@ -8,7 +8,6 @@ public class GameManager : IManager
     public Player Player { get; private set; }
     public int JobId { get; private set; }
 
-    private int monsterCount;
     private int waveCount;
     private float elapsedTime;
     private float startTime;
@@ -26,7 +25,6 @@ public class GameManager : IManager
         // 몬스터 데이터 연동, 웨이브 데이터 연동
         // 여기서 캐릭터 생성을 해야 하는가 아니면 캐릭터 선택창을 따로 만들 것인가
         startTime = Time.time;
-        monsterCount = 0;
         waveCount = 0;
     }
 
@@ -47,7 +45,7 @@ public class GameManager : IManager
         monsterSpawner.Initialize(level);
         monsterSpawner.OnClearWave += UpdateWaveCounter;
         monsterSpawner.StartWave(waveCount);
-
+        UpdateWaveCounter(waveCount);
         Player.Input.InputEnable();
     }
 
@@ -116,7 +114,8 @@ public class GameManager : IManager
     {
         if (monsterSpawner == null) return;
         Managers.UI.GetCurrentSceneUI<UIGameScene>()?.SetWaveCounter(waveCount + 1);
-        Managers.UI.ShowPopupUI<UIRewardPopup>();
+        if (waveCount > 0)
+            Managers.UI.ShowPopupUI<UIRewardPopup>();
     }
 
     public void UpdateMonsterCounter()

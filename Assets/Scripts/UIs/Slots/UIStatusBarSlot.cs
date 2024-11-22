@@ -38,7 +38,7 @@ public class UIStatusBarSlot : UISlotBase
             Managers.Game.Player.Condition.OnMpChanged += SetValue;
             Managers.Game.Player.Condition.OnMpWarning += ShakeMotion;
         }
-        initialPosition = this.transform.position;
+        initialPosition = this.transform.localPosition;
     }
 
     public void SetValue(float value, float maxValue)
@@ -60,7 +60,7 @@ public class UIStatusBarSlot : UISlotBase
     }
     private void ShakeCompele()
     {
-        this.transform.position = initialPosition;
+        this.transform.localPosition = initialPosition;
         isShaking = false;
     }
 }

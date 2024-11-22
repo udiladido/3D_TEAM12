@@ -43,7 +43,7 @@ MonoBehaviour:
       startInterval: 5
       waveType: 0
       pointGroup: 3
-      monsterID: 10008
+      monsterID: 10001
       monsterCount: 3
       spawnInterval: 1
   - id: 100200

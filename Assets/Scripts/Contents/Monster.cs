@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 using UnityEngine.XR;
 using static UnityEditor.Progress;
@@ -8,6 +9,10 @@ using Random = UnityEngine.Random;
 
 public class Monster : MonoBehaviour
 {
+    // 전역 몬스터 설정
+    public static Camera MainCamera;
+    public static bool UnlimitRangeOfDetection;
+
     public int Identifier { get; private set; }
 
     public MonsterEntity Stat { get; private set; }
@@ -17,7 +22,6 @@ public class Monster : MonoBehaviour
     public MonsterAnimatorController AnimationController { get; private set; }
 
     private MonsterStateMachine stateMachine;
-    private Camera mainCamera;
 
     //Event
     /// <summary>
@@ -55,7 +59,6 @@ public class Monster : MonoBehaviour
         RigidBody = GetComponent<Rigidbody>();
 
         stateMachine = new MonsterStateMachine(this);
-        mainCamera = Camera.main;
     }
 
 
@@ -120,7 +123,7 @@ public class Monster : MonoBehaviour
     {
         stateMachine.Update();
 
-        canvas.transform.LookAt(mainCamera.transform);
+        canvas.transform.LookAt(MainCamera.transform);
         healthbar.fillAmount = Condition.CurrentHp / Condition.MaxHp;
     }
 

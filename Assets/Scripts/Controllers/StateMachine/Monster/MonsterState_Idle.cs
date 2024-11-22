@@ -23,7 +23,11 @@ public class MonsterState_Idle : MonsterBaseState
         targetPosition = Managers.Game.Player.transform.position;
         targetDistance = Vector3.Distance(stateMachine.Monster.transform.position, targetPosition);
 
-        if (doOnce)
+        if (Monster.UnlimitRangeOfDetection)
+        {
+            stateMachine.ChangeState(stateMachine.State_Chase);
+        }
+        else if (doOnce)
         {
             doOnce = false;
 

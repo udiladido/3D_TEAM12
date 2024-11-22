@@ -12,9 +12,9 @@ public class MonsterSpawner
     private int Identifier;
 
     public int currentWave { get; private set; }
+    public bool IsRunningWave { get; private set; }
+    public bool IsSpawning { get; private set; }
     public int SpawnCount { get; private set; }
-    private bool isSpawning;
-    private bool waveEnd;
 
     /// <summary>
     /// 매개변수 : 완료된 웨이브 인덱스
@@ -22,7 +22,7 @@ public class MonsterSpawner
     public event Action<int> OnClearWave;
     public event Action OnWaveAllClear;
 
-    public void StartSpawn(LevelContainer levelContainer)
+    public void Initialize(LevelContainer levelContainer)
     {
         spawnPoints = new List<List<Vector3>>();
         List<Vector3> spawnPointsInner;
@@ -39,33 +39,35 @@ public class MonsterSpawner
         SmallWave.SpawnFunc = SpawnEntity;
 
         WorldMonster = new Dictionary<int, GameObject>();
+        Monster.MainCamera = Camera.main;
 
         SetWaveData();
-        
-        Managers.Coroutine.StartCoroutine("RunWaves", RunWaves());
     }
 
-    private IEnumerator RunWaves()
+    public bool StartWave(int waveIndex)
     {
-        for (int i = 0; i < waveDatas.Count; i++)
-        {
-            currentWave++;
-            waveEnd = false;
-            isSpawning = true;
-            StartWave(i);
-            yield return new WaitUntil(() => waveEnd);
-            OnClearWave?.Invoke(currentWave);
-        }
+        if (waveIndex < 0 || waveIndex >= waveDatas.Count) return false;
 
-        OnWaveAllClear?.Invoke();
-    }
-
-    private void StartWave(int waveIndex)
-    {
-        if (waveIndex < 0 || waveIndex >= waveDatas.Count) return;
+        currentWave = waveIndex;
+        IsRunningWave = true;
+        IsSpawning = true;
+        Monster.UnlimitRangeOfDetection = false;
 
         Managers.Coroutine.StartCoroutine($"StartWave_{waveIndex}", RunSmallWaves(waveIndex));
+
+        return true;
     }
+    private void EndWave()
+    {
+        IsRunningWave = false;
+        OnClearWave?.Invoke(currentWave);
+
+        if (currentWave == waveDatas.Count - 1)
+        {
+            OnWaveAllClear?.Invoke();
+        }
+    }
+
 
     private IEnumerator RunSmallWaves(int waveIndex)
     {
@@ -88,7 +90,8 @@ public class MonsterSpawner
 
     private void SpawnEndCollback()
     {
-        isSpawning = false;
+        IsSpawning = false;
+        Monster.UnlimitRangeOfDetection = true;
     }
 
 
@@ -98,7 +101,7 @@ public class MonsterSpawner
     {
         GameObject go = Managers.Pool.Spawn("/Monster");
         if (go == null)
-        { 
+        {
             return;
         }
 
@@ -129,9 +132,9 @@ public class MonsterSpawner
     {
         SpawnCount--;
         Managers.Game.UpdateMonsterCounter();
-        if (isSpawning == false && SpawnCount == 0)
+        if (IsSpawning == false && SpawnCount == 0)
         {
-            waveEnd = true;
+            EndWave();
         }
     }
 

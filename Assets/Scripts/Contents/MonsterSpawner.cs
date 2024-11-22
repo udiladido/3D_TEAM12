@@ -63,7 +63,6 @@ public class MonsterSpawner
         yield return new WaitForSecondsRealtime(2.5f);
 
         IsRunningWave = false;
-
         if (currentWave < waveDatas.Count - 1)
         {
             OnClearWave?.Invoke(currentWave);

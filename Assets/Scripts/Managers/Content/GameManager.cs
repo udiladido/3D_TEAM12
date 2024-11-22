@@ -76,7 +76,7 @@ public class GameManager : IManager
     public void GameClear()
     {
         // 게임 클리어시 함수
-        Managers.UI.ShowPopupUI<UIGameOverPopup>();
+        Managers.UI.ShowPopupUI<UIGameClearPopup>();
     }
 
     public void CreatePlayer()

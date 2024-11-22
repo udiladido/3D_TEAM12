@@ -89,7 +89,7 @@ MonoBehaviour:
     startInterval: 5
     waveType: 0
     pointGroup: 3
-    monsterID: 10003
+    monsterID: 10001
     monsterCount: 3
     spawnInterval: 1
   - waveId: 100200
@@ -495,55 +495,55 @@ MonoBehaviour:
     startInterval: 2
     waveType: 1
     pointGroup: 0
-    monsterID: 10006
+    monsterID: 10001
     monsterCount: 0
     spawnInterval: 0
   - waveId: 101000
     startInterval: 2
     waveType: 1
     pointGroup: 1
-    monsterID: 10006
+    monsterID: 10001
     monsterCount: 0
     spawnInterval: 0
   - waveId: 101000
     startInterval: 2
     waveType: 1
     pointGroup: 2
-    monsterID: 10006
+    monsterID: 10001
     monsterCount: 0
     spawnInterval: 0
   - waveId: 101000
     startInterval: 2
     waveType: 1
     pointGroup: 3
-    monsterID: 10006
+    monsterID: 10001
     monsterCount: 0
     spawnInterval: 0
   - waveId: 101000
     startInterval: 5
     waveType: 0
     pointGroup: 0
-    monsterID: 10006
+    monsterID: 10001
     monsterCount: 10
     spawnInterval: 0.5
   - waveId: 101000
     startInterval: 3
     waveType: 0
     pointGroup: 2
-    monsterID: 10006
+    monsterID: 10001
     monsterCount: 10
     spawnInterval: 3
   - waveId: 101000
     startInterval: 3
     waveType: 2
     pointGroup: 1
-    monsterID: 10006
+    monsterID: 10001
     monsterCount: 0
     spawnInterval: 0.75
   - waveId: 101000
     startInterval: 3
-    waveType: 2
+    waveType: 0
     pointGroup: 3
-    monsterID: 10006
-    monsterCount: 0
+    monsterID: 10008
+    monsterCount: 1
     spawnInterval: 0.5

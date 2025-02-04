@@ -10,7 +10,7 @@ public class UISettingPopup : UIPopupBase
     enum Buttons
     {
         CloseButton,
-
+        ExitButton,
     }
 
     enum Toggle
@@ -38,18 +38,43 @@ public class UISettingPopup : UIPopupBase
         BindToggle(typeof(Toggle));
         BindSlider(typeof(Slider));
 
-        GetButton(Buttons.CloseButton).gameObject.BindEvent(() => { Close(Defines.UIAnimationType.Bounce); });
-        GetToggle(Toggle.MuteToggle).gameObject.BindEvent(OnMuteClick);
+        GetButton(Buttons.CloseButton).onClick.AddListener(() => { Close(Defines.UIAnimationType.Bounce); });
+        GetButton(Buttons.ExitButton).onClick.AddListener(() => {  Application.Quit(); });
+        GetToggle(Toggle.MuteToggle).onValueChanged.AddListener(OnMuteClick);
 
         GetSlider(Slider.BGMSlider).onValueChanged.AddListener(SetBGMVolume);
         GetSlider(Slider.SFXSlider).onValueChanged.AddListener(SetSFXVolume);
         GetSlider(Slider.MasterSlider).onValueChanged.AddListener(SetMasterVolume);
 
-        Managers.Sound.PrevSoundBgmValue = GetSlider(Slider.BGMSlider).value;
-        Managers.Sound.PrevSoundSfxValue = GetSlider(Slider.SFXSlider).value;
-
-
         return true;
+    }
+    
+    public override void Open(Defines.UIAnimationType type = Defines.UIAnimationType.None)
+    {
+        base.Open(type);
+        
+        GetToggle(Toggle.MuteToggle).SetIsOnWithoutNotify(Managers.Sound.IsSoundOn);
+        
+        if (Managers.Sound.IsSoundOn)
+        {
+            GetSlider(Slider.BGMSlider).value = Managers.Sound.PrevSoundBgmValue;
+            GetSlider(Slider.SFXSlider).value = Managers.Sound.PrevSoundSfxValue;
+            GetSlider(Slider.MasterSlider).value = Managers.Sound.PrevSoundMasterValue;
+        }
+        else
+        {
+            GetSlider(Slider.BGMSlider).value = 0f;
+            GetSlider(Slider.SFXSlider).value = 0f;
+            GetSlider(Slider.MasterSlider).value = 0f;
+        }
+
+        Time.timeScale = 0;
+    }
+    
+    public override void Close(Defines.UIAnimationType type = Defines.UIAnimationType.None)
+    {
+        base.Close(type);
+        Time.timeScale = 1;
     }
 
 
@@ -70,47 +95,43 @@ public class UISettingPopup : UIPopupBase
     }
 
     // 음소거 이벤트
-    public void OnMuteClick()
+    public void OnMuteClick(bool isOn)
     {
        
-        if (Managers.Sound.IsSoundOn)
+        if (isOn)
         {
-           
             // 먼저 IsSoundOn 상태를 변경
-            Managers.Sound.IsSoundOn = false;
+            Managers.Sound.ToggleSound(true);
+            GetSlider(Slider.BGMSlider).enabled = true;
+            GetSlider(Slider.SFXSlider).enabled = true;
+            GetSlider(Slider.MasterSlider).enabled = true;
 
             // 그 다음 슬라이더 값 변경
-            GetSlider(Slider.BGMSlider).value = Managers.Sound.PrevSoundBgmValue;
-            GetSlider(Slider.SFXSlider).value = Managers.Sound.PrevSoundSfxValue;
-            GetSlider(Slider.MasterSlider).value = Managers.Sound.PrevSoundMasterValue;
-
-            // 직접 볼륨 설정
-            Managers.Sound.SetBGMVolume(Managers.Sound.PrevSoundBgmValue);
-            Managers.Sound.SetSFXVolume(Managers.Sound.PrevSoundSfxValue);
-            Managers.Sound.SetMasterVolume(Managers.Sound.PrevSoundMasterValue);
-  
+            GetSlider(Slider.BGMSlider).SetValueWithoutNotify(Managers.Sound.PrevSoundBgmValue);
+            GetSlider(Slider.SFXSlider).SetValueWithoutNotify(Managers.Sound.PrevSoundSfxValue);
+            GetSlider(Slider.MasterSlider).SetValueWithoutNotify(Managers.Sound.PrevSoundMasterValue);
         }
         else
         {
-
             // 현재 값 저장
             Managers.Sound.PrevSoundBgmValue = GetSlider(Slider.BGMSlider).value;
             Managers.Sound.PrevSoundSfxValue = GetSlider(Slider.SFXSlider).value;
             Managers.Sound.PrevSoundMasterValue = GetSlider(Slider.MasterSlider).value;
            
             // IsSoundOn 상태 변경
-            Managers.Sound.IsSoundOn = true;
+            Managers.Sound.ToggleSound(false);
 
             // 슬라이더 값을 0으로
+            GetSlider(Slider.BGMSlider).enabled = false;
             GetSlider(Slider.BGMSlider).value = 0f;
+            GetSlider(Slider.SFXSlider).enabled = false;
             GetSlider(Slider.SFXSlider).value = 0f;
+            GetSlider(Slider.MasterSlider).enabled = false;
             GetSlider(Slider.MasterSlider).value = 0f;
-
-            // 직접 볼륨 0으로 설정
-            Managers.Sound.SetBGMVolume(0);
-            Managers.Sound.SetSFXVolume(0);
-            Managers.Sound.SetMasterVolume(0);
-
+            
+            Managers.Sound.SetMasterVolume(0, false);
+            Managers.Sound.SetBGMVolume(0, false);
+            Managers.Sound.SetSFXVolume(0, false);
         }
     }
 

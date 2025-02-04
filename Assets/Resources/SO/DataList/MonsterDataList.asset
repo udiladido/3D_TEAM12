@@ -43,6 +43,7 @@ MonoBehaviour:
       waitTime: 0
       knockbackPower: 0
       knockbackDuration: 0
+      sfxPath: AttackPlayer
   - id: 10002
     displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uC6CC\uB9AC\uC5B4"
     description: "\uC591\uC190\uB3C4\uB07C\uB97C \uB4E0 \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
@@ -72,6 +73,7 @@ MonoBehaviour:
       waitTime: 0
       knockbackPower: 0
       knockbackDuration: 0
+      sfxPath: AttackPlayer
     - monsterId: 10002
       projectilePrefabPath: /Projectiles/Monster/Monster_MeleeAttack
       selectWeight: 0.3
@@ -85,6 +87,7 @@ MonoBehaviour:
       waitTime: 0
       knockbackPower: 0
       knockbackDuration: 0
+      sfxPath: AttackPlayer
   - id: 10003
     displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uB85C\uADF8"
     description: "\uB2E8\uAC80\uC744 \uB4E0 \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
@@ -114,6 +117,7 @@ MonoBehaviour:
       waitTime: 0
       knockbackPower: 0
       knockbackDuration: 0
+      sfxPath: AttackPlayer
     - monsterId: 10003
       projectilePrefabPath: /Projectiles/Monster/Monster_MeleeAttack
       selectWeight: 0.8
@@ -127,6 +131,7 @@ MonoBehaviour:
       waitTime: 0
       knockbackPower: 0
       knockbackDuration: 0
+      sfxPath: AttackWarrior
   - id: 10004
     displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uBA54\uC774\uC9C0"
     description: "\uB9C8\uBC95\uC744 \uC3E0 \uC218 \uC788\uB294 \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
@@ -156,6 +161,7 @@ MonoBehaviour:
       waitTime: 0
       knockbackPower: 0
       knockbackDuration: 0
+      sfxPath: AttackMage
   - id: 10005
     displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uB808\uC778\uC800"
     description: "\uC11D\uAD81\uC744 \uB4E0 \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
@@ -185,6 +191,7 @@ MonoBehaviour:
       waitTime: 0
       knockbackPower: 0
       knockbackDuration: 0
+      sfxPath: HitResource
   - id: 10006
     displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uAC00\uB514\uC5B8"
     description: "\uC911\uBB34\uC7A5\uC744 \uD55C \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
@@ -214,6 +221,7 @@ MonoBehaviour:
       waitTime: 0
       knockbackPower: 0
       knockbackDuration: 0
+      sfxPath: AttackRougue
     - monsterId: 10006
       projectilePrefabPath: /Projectiles/Monster/Monster_MeleeAttack
       selectWeight: 1
@@ -227,6 +235,7 @@ MonoBehaviour:
       waitTime: 0
       knockbackPower: 0
       knockbackDuration: 0
+      sfxPath: AttackRougue
     - monsterId: 10006
       projectilePrefabPath: /Projectiles/Monster/Monster_MeleeAttack
       selectWeight: 0.5
@@ -240,6 +249,7 @@ MonoBehaviour:
       waitTime: 0
       knockbackPower: 0
       knockbackDuration: 0
+      sfxPath: AttackRougue
   - id: 10007
     displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uC790\uC774\uC5B8\uD2B8"
     description: "\uAC70\uB300\uD55C \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
@@ -269,6 +279,7 @@ MonoBehaviour:
       waitTime: 0
       knockbackPower: 0
       knockbackDuration: 0
+      sfxPath: AttackRougue
     - monsterId: 10007
       projectilePrefabPath: /Projectiles/Monster/Monster_MeleeAttack
       selectWeight: 1
@@ -282,6 +293,7 @@ MonoBehaviour:
       waitTime: 0
       knockbackPower: 0
       knockbackDuration: 0
+      sfxPath: AttackWarrior
   - id: 10008
     displayTitle: "\uC2A4\uCF08\uB808\uD1A4 \uC790\uC774\uC5B8\uD2B8 \uAC00\uB514\uC5B8"
     description: "\uC911\uBB34\uC7A5\uC744 \uD55C \uAC70\uB300\uD55C \uC2A4\uCF08\uB808\uD1A4\uC774\uB2E4"
@@ -311,6 +323,7 @@ MonoBehaviour:
       waitTime: 0
       knockbackPower: 0
       knockbackDuration: 0
+      sfxPath: AttackWarrior
     - monsterId: 10008
       projectilePrefabPath: /Projectiles/Monster/Monster_Fireball
       selectWeight: 0.3
@@ -324,3 +337,4 @@ MonoBehaviour:
       waitTime: 0
       knockbackPower: 0
       knockbackDuration: 0
+      sfxPath: AttackMage

@@ -152,4 +152,17 @@ public class InputController : BaseController
             }
         }
     }
+    
+    public void OnEscape(InputAction.CallbackContext context)
+    {
+        if (inputDisabled) return;
+        if (context.phase == InputActionPhase.Started)
+        {
+            UISettingPopup popup = Managers.UI.FindPopup<UISettingPopup>();
+            if (popup == null)
+                Managers.UI.ShowPopupUI<UISettingPopup>();
+            else
+                Managers.UI.ClosePopupUI<UISettingPopup>();
+        }
+    }
 }

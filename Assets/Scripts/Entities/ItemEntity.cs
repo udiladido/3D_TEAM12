@@ -52,6 +52,7 @@ public class ItemWeaponCombatEntity
     public int numberOfProjectilePerShot; // 다중 발사 수
     public float multipleProjectilesAngle; // 다중 발사 각도
     public int pierceCount; // 관통 수 (0이면 무한)
+    public string sfxPath; // 공격 사운드 경로
 }
 
 [Serializable]

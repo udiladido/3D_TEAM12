@@ -54,6 +54,7 @@ public class MonsterProjectileController : ProjectileBaseController
         EnableHitBox(true);
         durationTimer = Time.time;
         isLaunched = true;
+        Managers.Sound.PlaySFX(skillEntity.sfxPath, transform.position);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -10,7 +10,6 @@ public class UIStatusBarSlot : UISlotBase
     
     private Image sliderImage;
     private Image OverrayImage;
-    private Vector3 initialPosition;
     private bool isShaking;
     
     protected override bool Init()
@@ -38,7 +37,6 @@ public class UIStatusBarSlot : UISlotBase
             Managers.Game.Player.Condition.OnMpChanged += SetValue;
             Managers.Game.Player.Condition.OnMpWarning += ShakeMotion;
         }
-        initialPosition = this.transform.position;
     }
 
     public void SetValue(float value, float maxValue)
@@ -60,7 +58,8 @@ public class UIStatusBarSlot : UISlotBase
     }
     private void ShakeCompele()
     {
-        this.transform.position = initialPosition;
+        if (statusType == Defines.UIStatusType.Hp) this.transform.localPosition = new Vector3(200, -25, 0);
+        else this.transform.localPosition = new Vector3(200, -95, 0);
         isShaking = false;
     }
 }

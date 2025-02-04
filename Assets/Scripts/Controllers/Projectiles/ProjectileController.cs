@@ -97,6 +97,7 @@ public class ProjectileController : ProjectileBaseController
         EnableHitBox(true);
         durationTimer = Time.time;
         isLaunched = true;
+        Managers.Sound.PlaySFX(projectileData.sfxPath, transform.position);
     }
 
     private void Move()

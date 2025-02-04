@@ -1406,6 +1406,9 @@ MonoBehaviour:
   power: 0.1
   duration: 0.2
   animationRoot: {fileID: 0}
+  waveCounter: {fileID: 923023999557370673}
+  gameTime: {fileID: 5536470319280071947}
+  monsterCounter: {fileID: 1164995452533499264}
 --- !u!1001 &2545709608606110010
 PrefabInstance:
   m_ObjectHideFlags: 0

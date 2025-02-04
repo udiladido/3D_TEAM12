@@ -40,5 +40,6 @@ public class MonsterSkillEntity
     public float waitTime;
     public float knockbackPower;
     public float knockbackDuration;
+    public string sfxPath;
 
 }

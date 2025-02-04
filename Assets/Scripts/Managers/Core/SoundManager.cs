@@ -93,9 +93,10 @@ public class SoundManager : IManager
             maxSize: maxSize
         );
 
-        prevSoundBgmValue = 1f;
-        prevSoundMasterValue = 1f;
-        prevSoundMasterValue = 1f;
+        isSoundOn = PlayerPrefs.GetInt("IsSoundOn", 1) == 1;
+        prevSoundBgmValue = PlayerPrefs.GetFloat("BGMVolume", 1f);
+        prevSoundMasterValue = PlayerPrefs.GetFloat("MasterVolume", 1f);
+        prevSoundMasterValue = PlayerPrefs.GetFloat("SFXVolume", 1f);
     }
     public void Clear()
     {
@@ -111,9 +112,12 @@ public class SoundManager : IManager
             source.transform.position = position;
             source.clip = clip;
             source.Play();
+            
+            string clipName = $"{clip.name}_{Managers.GetNextSequence()}";
+            Debug.Log($"Play SFX : {clipName}");
 
             // 사운드가 끝나면 반환
-            Managers.Coroutine.StartCoroutine(name, ReturnSourceWhenFinished(source, clip.length));
+            Managers.Coroutine.StartCoroutine(clipName, ReturnSourceWhenFinished(source, clip.length));
         }
         else
         {
@@ -125,6 +129,12 @@ public class SoundManager : IManager
     {
         yield return new WaitForSeconds(delay);
         audioSourcePool.Push(source);
+    }
+
+    public void ToggleSound(bool isOn)
+    {
+        IsSoundOn = isOn;
+        PlayerPrefs.SetInt("IsSoundOn", isOn ? 1 : 0);
     }
 
     // BGM 재생 (전역 사운드)
@@ -146,49 +156,25 @@ public class SoundManager : IManager
         BgmSource.Stop();
     }
 
-
-
-    public void SetSFXVolume()
-    {
-        if (masterMixer == null) return;
-        masterMixer.SetFloat("SFX", LinearToDecibel(prevSoundSfxValue));
-    }
-
-
-    public void SetSFXVolume(float volume)
+    public void SetSFXVolume(float volume, bool isSave = true)
     {
         if (masterMixer == null) return;
         masterMixer.SetFloat("SFX", LinearToDecibel(volume));
+        if (isSave) PlayerPrefs.SetFloat("SFXVolume", volume);
     }
 
-
-    public void SetBGMVolume()
-    {
-        if (masterMixer == null) return;
-        masterMixer.SetFloat("BGM", LinearToDecibel(prevSoundBgmValue));
-    }
-
-
-    public void SetBGMVolume(float volume)
+    public void SetBGMVolume(float volume, bool isSave = true)
     {
         if (masterMixer == null) return;
         masterMixer.SetFloat("BGM", LinearToDecibel(volume));
+        if (isSave) PlayerPrefs.SetFloat("BGMVolume", volume);
     }
 
-
-
-    public void SetMasterVolume(float volume)
+    public void SetMasterVolume(float volume, bool isSave = true)
     {
         if (masterMixer == null) return;
         masterMixer.SetFloat("Master", LinearToDecibel(volume));
-    }
-
-    public void SetMasterVolume()
-    {
-        if (masterMixer == null) return;
-
-        Debug.Log(prevSoundMasterValue);
-        masterMixer.SetFloat("Master", LinearToDecibel(prevSoundMasterValue));
+        if (isSave) PlayerPrefs.SetFloat("MasterVolume", volume);
     }
 
 
@@ -200,18 +186,5 @@ public class SoundManager : IManager
         else
             dB = -80f; // 음소거 수준
         return dB;
-    }
-
-    public void TransitionToSnapshot(string snapshotName, float transitionTime)
-    {
-        AudioMixerSnapshot snapshot = masterMixer.FindSnapshot(snapshotName);
-        if (snapshot != null)
-        {
-            snapshot.TransitionTo(transitionTime);
-        }
-        else
-        {
-            Debug.LogWarning($"Snapshot '{snapshotName}' not found!");
-        }
     }
 }

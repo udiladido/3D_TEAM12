@@ -21,7 +21,7 @@ public class UIGameScene : UISceneBase
     private TMP_Text waveCounter;
     private TMP_Text gameTime;
     private TMP_Text monsterCounter;
-
+    
     public float ElapsedTime { get; private set; }
 
     protected override bool Init()

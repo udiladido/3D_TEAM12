@@ -9,7 +9,7 @@ public class PlayerBaseState : IState
     }
     public virtual void Enter()
     {
-        Debug.Log($"{GetType().Name} Enter");
+        // Debug.Log($"{GetType().Name} Enter");
         InputController input = stateMachine.Input;
         if (input == null) return;
 

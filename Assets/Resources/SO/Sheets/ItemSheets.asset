@@ -494,6 +494,7 @@ MonoBehaviour:
     numberOfProjectilePerShot: 1
     multipleProjectilesAngle: 0
     pierceCount: 0
+    sfxPath: AttackPlayer
   - itemId: 1501
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
@@ -511,6 +512,7 @@ MonoBehaviour:
     numberOfProjectilePerShot: 1
     multipleProjectilesAngle: 0
     pierceCount: 0
+    sfxPath: AttackRougue
   - itemId: 1501
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
@@ -528,6 +530,7 @@ MonoBehaviour:
     numberOfProjectilePerShot: 1
     multipleProjectilesAngle: 0
     pierceCount: 0
+    sfxPath: AttackWarrior
   - itemId: 1502
     comboIndex: 1
     projectilePrefabPath: /Projectiles/Player/ComboAttack1
@@ -545,6 +548,7 @@ MonoBehaviour:
     numberOfProjectilePerShot: 1
     multipleProjectilesAngle: 0
     pierceCount: 0
+    sfxPath: AttackPlayer
   - itemId: 1502
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
@@ -562,6 +566,7 @@ MonoBehaviour:
     numberOfProjectilePerShot: 1
     multipleProjectilesAngle: 0
     pierceCount: 0
+    sfxPath: AttackRougue
   - itemId: 1502
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
@@ -579,6 +584,7 @@ MonoBehaviour:
     numberOfProjectilePerShot: 1
     multipleProjectilesAngle: 0
     pierceCount: 0
+    sfxPath: AttackWarrior
   - itemId: 1503
     comboIndex: 1
     projectilePrefabPath: /Projectiles/Player/ComboAttack1
@@ -596,6 +602,7 @@ MonoBehaviour:
     numberOfProjectilePerShot: 1
     multipleProjectilesAngle: 0
     pierceCount: 0
+    sfxPath: AttackPlayer
   - itemId: 1503
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
@@ -613,6 +620,7 @@ MonoBehaviour:
     numberOfProjectilePerShot: 1
     multipleProjectilesAngle: 0
     pierceCount: 0
+    sfxPath: AttackRougue
   - itemId: 1503
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
@@ -630,6 +638,7 @@ MonoBehaviour:
     numberOfProjectilePerShot: 1
     multipleProjectilesAngle: 0
     pierceCount: 0
+    sfxPath: AttackWarrior
   - itemId: 1504
     comboIndex: 1
     projectilePrefabPath: /Projectiles/Player/ComboAttack1
@@ -647,6 +656,7 @@ MonoBehaviour:
     numberOfProjectilePerShot: 1
     multipleProjectilesAngle: 0
     pierceCount: 0
+    sfxPath: AttackPlayer
   - itemId: 1504
     comboIndex: 2
     projectilePrefabPath: /Projectiles/Player/ComboAttack2
@@ -664,6 +674,7 @@ MonoBehaviour:
     numberOfProjectilePerShot: 1
     multipleProjectilesAngle: 0
     pierceCount: 0
+    sfxPath: AttackRougue
   - itemId: 1504
     comboIndex: 3
     projectilePrefabPath: /Projectiles/Player/ComboAttack3
@@ -681,6 +692,7 @@ MonoBehaviour:
     numberOfProjectilePerShot: 1
     multipleProjectilesAngle: 0
     pierceCount: 0
+    sfxPath: AttackWarrior
   - itemId: 1505
     comboIndex: 0
     projectilePrefabPath: /Projectiles/Player/MeleeAttack
@@ -698,6 +710,7 @@ MonoBehaviour:
     numberOfProjectilePerShot: 1
     multipleProjectilesAngle: 0
     pierceCount: 0
+    sfxPath: AttackWarrior
   - itemId: 1506
     comboIndex: 0
     projectilePrefabPath: /Projectiles/Player/RangedAttack
@@ -715,6 +728,7 @@ MonoBehaviour:
     numberOfProjectilePerShot: 10
     multipleProjectilesAngle: 45
     pierceCount: 2
+    sfxPath: HitResource
   - itemId: 1507
     comboIndex: 0
     projectilePrefabPath: /Projectiles/Player/MagicAttack
@@ -732,6 +746,7 @@ MonoBehaviour:
     numberOfProjectilePerShot: 1
     multipleProjectilesAngle: 0
     pierceCount: 0
+    sfxPath: AttackMage
   StatBoostEffectList:
   - itemId: 1501
     statType: 3

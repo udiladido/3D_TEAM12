@@ -90,6 +90,7 @@ public class Condition : MonoBehaviour, IDamageable, IStatHandler
         }
         else
         {
+            Managers.Sound.PlaySFX("Damaged", transform.position);
             OnHit?.Invoke();
             OnHpWarning?.Invoke();
         }
